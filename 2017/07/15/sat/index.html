@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat3.png">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat4.png">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat5.png">
-<meta property="og:updated_time" content="2017-07-15T12:21:21.581Z">
+<meta property="og:updated_time" content="2017-07-15T12:25:16.482Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅析基于分离轴原理的碰撞检测及分离算法">
 <meta name="twitter:description" content="导言分离轴原理（SAT）是一个能用于2d游戏中凸多边形碰撞检测的算法，在自制游戏中我将其作为玩家、怪物、子弹和墙壁碰撞检测及分离的核心算法。 想要实现分离轴原理首先需要有一定的向量知识以及算法实现能力，在实现过程中我自行实现了一个Vector向量类作为基本函数、向量对象的提供者。 以下是个人对这个算法的理解，若有不当之处，还请指正，不胜感激。  适用范围： 2D游戏，凸多边形（常见的三角形、四边形">
@@ -188,12 +188,12 @@
 <ol>
 <li><p>将物体划分成多个凸多边形</p>
 </li>
-<li><p>将物体看作一个凸多边形，前提是对碰撞检测的精度要求并不高。</p>
-</li>
+<li><p>将物体看作一个凸多边形，前提是对碰撞检测的精度要求并不高。 <a id="more"></a></p>
+<h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a><strong>原理介绍</strong></h1></li>
 </ol>
 </blockquote>
 </blockquote>
-<h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a><strong>原理介绍</strong></h1><h2 id="什么是碰撞？"><a href="#什么是碰撞？" class="headerlink" title="什么是碰撞？"></a><strong>什么是碰撞？</strong></h2><p>首先来看这个问题：什么是碰撞？什么才叫发生了碰撞？ 最简单的解释就足够了：两个物体之间没有间隙，或者它们的图像之间有重叠，由此我们可以想到一个最常规的判断方法：光线检测法（自编名词，仅为帮助理解）。</p>
+<h2 id="什么是碰撞？"><a href="#什么是碰撞？" class="headerlink" title="什么是碰撞？"></a><strong>什么是碰撞？</strong></h2><p>首先来看这个问题：什么是碰撞？什么才叫发生了碰撞？ 最简单的解释就足够了：两个物体之间没有间隙，或者它们的图像之间有重叠，由此我们可以想到一个最常规的判断方法：光线检测法（自编名词，仅为帮助理解）。</p>
 <h2 id="光线检测法"><a href="#光线检测法" class="headerlink" title="光线检测法"></a><strong>光线检测法</strong></h2><p><img src="http://ot1c7ttzm.bkt.clouddn.com/sat1.png" alt="光线检测法"></p>
 <p>假设我们手上拿着手电筒，360°绕着这两个物体照射，当有一束光能够从两个物体中间穿过去，那么这两个物体之间就存在间隙，也就是说它们没有发生碰撞。 到此我们可以得到：</p>
 <blockquote>
@@ -379,6 +379,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#导言"><span class="toc-number">1.</span> <span class="toc-text">导言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原理介绍"><span class="toc-number">2.</span> <span class="toc-text">原理介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是碰撞？"><span class="toc-number">2.1.</span> <span class="toc-text">什么是碰撞？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#光线检测法"><span class="toc-number">2.2.</span> <span class="toc-text">光线检测法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#投影"><span class="toc-number">2.3.</span> <span class="toc-text">投影</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进一步优化"><span class="toc-number">2.4.</span> <span class="toc-text">进一步优化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现步骤"><span class="toc-number">3.</span> <span class="toc-text">实现步骤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分离"><span class="toc-number">4.</span> <span class="toc-text">分离</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#圆的碰撞检测及分离"><span class="toc-number">5.</span> <span class="toc-text">圆的碰撞检测及分离</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -434,7 +447,7 @@
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
-		toc_hide_index: true,
+		toc_hide_index: false,
 		root: "/",
 		innerArchive: true,
 		showTags: false
