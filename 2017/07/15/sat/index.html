@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat3.png">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat4.png">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat5.png">
-<meta property="og:updated_time" content="2017-07-15T11:40:53.173Z">
+<meta property="og:updated_time" content="2017-07-15T11:47:33.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅析基于分离轴原理的碰撞检测及分离算法">
 <meta name="twitter:description" content="导言分离轴原理（SAT）是一个能用于2d游戏中凸多边形碰撞检测的算法，在自制游戏中我将其作为玩家、怪物、子弹和墙壁碰撞检测及分离的核心算法。 想要实现分离轴原理首先需要有一定的向量知识以及算法实现能力，在实现过程中我自行实现了一个Vector向量类作为基本函数、向量对象的提供者。 以下是个人对这个算法的理解，若有不当之处，还请指正，不胜感激。  适用范围： 2D游戏，凸多边形（常见的三角形、四边形">
@@ -227,25 +227,25 @@
 </li>
 </ol>
 <blockquote>
-<ol>
+<ul>
 <li>未发生碰撞</li>
-</ol>
+</ul>
 <blockquote>
 <p>min2 &gt; max1或 min1 &gt; max2 两者中间有空隙，未发生碰撞</p>
 </blockquote>
-<ol>
+<ul>
 <li>发生碰撞（若不需分离可直接跳至下一步）</li>
-</ol>
+</ul>
 <blockquote>
-<ol>
+<ul>
 <li>min2 &lt;= max1 分离最小距离与 abs(min2-max1)（此为两物体重叠距离） 比较，保留较小值并保留投影轴方向</li>
-</ol>
+</ul>
 <blockquote>
 <p>因向量方向任意，因此在计算距离时要记得加上绝对值abs</p>
 </blockquote>
-<ol>
+<ul>
 <li>min1 &lt;= max2 分离最小距离与 abs(min1-max2)（此为两物体重叠距离） 比较，保留较小值并保留投影轴方向</li>
-</ol>
+</ul>
 </blockquote>
 </blockquote>
 <ol>
