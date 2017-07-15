@@ -8,22 +8,22 @@
   <link rel="dns-prefetch" href="https://zedom1.github.io">
   <title>浅析基于分离轴原理的碰撞检测及分离算法 | Zedom</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="导言分离轴原理（SAT）是一个能用于2d游戏中凸多边形碰撞检测的算法，在自制游戏中我将其作为玩家、怪物、子弹和墙壁碰撞检测及分离的核心算法。 想要实现分离轴原理首先需要有一定的向量知识以及算法实现能力，在实现过程中我自行实现了一个Vector向量类作为基本函数、向量对象的提供者。 以下是个人对这个算法的理解，若有不当之处，还请指正，不胜感激。  适用范围： 2D游戏，凸多边形（常见的三角形、四边形">
+  <meta name="description" content="导言分离轴原理（SAT）是一个能用于2d游戏中凸多边形碰撞检测的算法，在自制游戏中我将其作为玩家、怪物、子弹和墙壁碰撞检测及分离的核心算法。 想要实现分离轴原理首先需要有一定的向量知识以及算法实现能力，在实现过程中我自行实现了一个Vector向量类作为基本函数、向量对象的提供者。">
 <meta name="keywords" content="算法,游戏制作">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅析基于分离轴原理的碰撞检测及分离算法">
 <meta property="og:url" content="https://zedom1.github.io/2017/07/15/sat/index.html">
 <meta property="og:site_name" content="Zedom">
-<meta property="og:description" content="导言分离轴原理（SAT）是一个能用于2d游戏中凸多边形碰撞检测的算法，在自制游戏中我将其作为玩家、怪物、子弹和墙壁碰撞检测及分离的核心算法。 想要实现分离轴原理首先需要有一定的向量知识以及算法实现能力，在实现过程中我自行实现了一个Vector向量类作为基本函数、向量对象的提供者。 以下是个人对这个算法的理解，若有不当之处，还请指正，不胜感激。  适用范围： 2D游戏，凸多边形（常见的三角形、四边形">
+<meta property="og:description" content="导言分离轴原理（SAT）是一个能用于2d游戏中凸多边形碰撞检测的算法，在自制游戏中我将其作为玩家、怪物、子弹和墙壁碰撞检测及分离的核心算法。 想要实现分离轴原理首先需要有一定的向量知识以及算法实现能力，在实现过程中我自行实现了一个Vector向量类作为基本函数、向量对象的提供者。">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat1.png">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat2.png">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat3.png">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat4.png">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat5.png">
-<meta property="og:updated_time" content="2017-07-15T12:25:16.482Z">
+<meta property="og:updated_time" content="2017-07-15T12:27:54.661Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅析基于分离轴原理的碰撞检测及分离算法">
-<meta name="twitter:description" content="导言分离轴原理（SAT）是一个能用于2d游戏中凸多边形碰撞检测的算法，在自制游戏中我将其作为玩家、怪物、子弹和墙壁碰撞检测及分离的核心算法。 想要实现分离轴原理首先需要有一定的向量知识以及算法实现能力，在实现过程中我自行实现了一个Vector向量类作为基本函数、向量对象的提供者。 以下是个人对这个算法的理解，若有不当之处，还请指正，不胜感激。  适用范围： 2D游戏，凸多边形（常见的三角形、四边形">
+<meta name="twitter:description" content="导言分离轴原理（SAT）是一个能用于2d游戏中凸多边形碰撞检测的算法，在自制游戏中我将其作为玩家、怪物、子弹和墙壁碰撞检测及分离的核心算法。 想要实现分离轴原理首先需要有一定的向量知识以及算法实现能力，在实现过程中我自行实现了一个Vector向量类作为基本函数、向量对象的提供者。">
 <meta name="twitter:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat1.png">
   
     <link rel="alternative" href="/atom.xml" title="Zedom" type="application/atom+xml">
@@ -179,7 +179,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="导言"><a href="#导言" class="headerlink" title="导言"></a><strong>导言</strong></h1><p>分离轴原理（SAT）是一个能用于2d游戏中凸多边形碰撞检测的算法，在自制游戏中我将其作为玩家、怪物、子弹和墙壁碰撞检测及分离的核心算法。</p>
-<p>想要实现分离轴原理首先需要有一定的向量知识以及算法实现能力，在实现过程中我自行实现了一个Vector向量类作为基本函数、向量对象的提供者。</p>
+<p>想要实现分离轴原理首先需要有一定的向量知识以及算法实现能力，在实现过程中我自行实现了一个Vector向量类作为基本函数、向量对象的提供者。 <a id="more"></a></p>
 <p>以下是个人对这个算法的理解，若有不当之处，还请指正，不胜感激。</p>
 <blockquote>
 <p>适用范围： 2D游戏，凸多边形（常见的三角形、四边形等），碰撞检测，分离</p>
@@ -188,7 +188,7 @@
 <ol>
 <li><p>将物体划分成多个凸多边形</p>
 </li>
-<li><p>将物体看作一个凸多边形，前提是对碰撞检测的精度要求并不高。 <a id="more"></a></p>
+<li><p>将物体看作一个凸多边形，前提是对碰撞检测的精度要求并不高。</p>
 <h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a><strong>原理介绍</strong></h1></li>
 </ol>
 </blockquote>
