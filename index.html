@@ -208,7 +208,7 @@
 <p>$$Vector\ \vec{b}=(\frac{-\vec{a}.y}{\sqrt{\vec{a}.y^2+\vec{a}.x^2}},\frac{\vec{a}.x}{\sqrt{\vec{a}.y^2+\vec{a}.x^2}})$$</p>
 </blockquote>
 </li>
-<li><p>任取第一个多边形上一点，作从原点指向该点的向量\vec{c}\ (first.x,first.y)，计算c在b上的投影$$ 投影=|\vec{c}|cos\theta=\frac{\vec{c} \cdot \vec{b}}{|\vec{b}|}=\vec{c} \cdot \vec{b} $$,又因为b已经化为单位向量，因此c在b上的投影就是b和c的点乘值。</p>
+<li><p>任取第一个多边形上一点，作从原点指向该点的向量c(first.x,first.y)，计算c在b上的投影$$ 投影=|\vec{c}|cos\theta=\frac{\vec{c} \cdot \vec{b}}{|\vec{b}|}=\vec{c} \cdot \vec{b} $$,又因为b已经化为单位向量，因此c在b上的投影就是b和c的点乘值。</p>
 <p>以此枚举第一个多边形上所有的点，记录下最大值max1和最小值min1</p>
 <p><img src="http://ot1c7ttzm.bkt.clouddn.com/sat4.png" alt="投影2"></p>
 </li>
@@ -239,8 +239,14 @@
 </ul>
 </blockquote>
 </blockquote>
-<p>*. 只要在任意一轴上检测到没发生碰撞，则可立刻得到未发生碰撞的结论！无需继续检测其它轴。 回到步骤一，同理枚举第一、第二个多边形所有边。</p>
-<p>*. 得出判断</p>
+<ul>
+<li><p>只要在任意一轴上检测到没发生碰撞，则可立刻得到未发生碰撞的结论！无需继续检测其它轴。</p>
+</li>
+<li><p>回到步骤一，枚举第一、第二个多边形所有边作为投影轴，重复步骤1-5。</p>
+</li>
+<li><p>得出判断</p>
+</li>
+</ul>
 <h1 id="分离"><a href="#分离" class="headerlink" title="分离"></a><strong>分离</strong></h1><p>在检测到碰撞基础上进行分离： 在第五步中我们得到了最小分离距离和投影轴方向，又因为投影轴向量已经单位化，因此向量分别乘以距离即是坐标需要移动的距离，至于分离谁则需要自行根据情况决定。 $$ x-=min \times \vec{bmin}.x; $$ $$ y-=min \times \vec{bmin}.y; $$</p>
 <p>(（x，y）为物体中心坐标，bmin为保留的投影轴，min为最小分离距离)</p>
 <h1 id="圆的碰撞检测及分离"><a href="#圆的碰撞检测及分离" class="headerlink" title="圆的碰撞检测及分离"></a><strong>圆的碰撞检测及分离</strong></h1><p>圆与其它凸多边形又有些许不同，它没有可以用于生成投影轴的边，于是乎我们用圆心和另一个凸多边形距离圆心最近的点的连线作为投影轴，再结合枚举第二个凸多边形的各边的法线，就可以按老方法进行检测和分离了。 至于圆投影到投影轴上，只需要作原点到圆心的向量，将该向量投影到投影轴上然后加减半径就好了。 <img src="http://ot1c7ttzm.bkt.clouddn.com/sat5.png" alt="投影3"></p>
