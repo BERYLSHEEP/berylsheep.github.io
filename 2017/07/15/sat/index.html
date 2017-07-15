@@ -6,14 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://zedom1.github.io">
-  <title>Archives: 2017/7 | Zedom</title>
+  <title>浅析基于分离轴原理的碰撞检测及分离算法 | Zedom</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Zedom">
-<meta property="og:url" content="https://zedom1.github.io/archives/2017/07/index.html">
+  <meta name="description" content="导言分离轴原理（SAT）是一个能用于2d游戏中凸多边形碰撞检测的算法，在自制游戏中我将其作为玩家、怪物、子弹和墙壁碰撞检测及分离的核心算法。 想要实现分离轴原理首先需要有一定的向量知识以及算法实现能力，在实现过程中我自行实现了一个Vector向量类作为基本函数、向量对象的提供者。 以下是个人对这个算法的理解，若有不当之处，还请指正，不胜感激。  适用范围： 2D游戏，凸多边形（常见的三角形、四边形">
+<meta name="keywords" content="算法,游戏制作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅析基于分离轴原理的碰撞检测及分离算法">
+<meta property="og:url" content="https://zedom1.github.io/2017/07/15/sat/index.html">
 <meta property="og:site_name" content="Zedom">
+<meta property="og:description" content="导言分离轴原理（SAT）是一个能用于2d游戏中凸多边形碰撞检测的算法，在自制游戏中我将其作为玩家、怪物、子弹和墙壁碰撞检测及分离的核心算法。 想要实现分离轴原理首先需要有一定的向量知识以及算法实现能力，在实现过程中我自行实现了一个Vector向量类作为基本函数、向量对象的提供者。 以下是个人对这个算法的理解，若有不当之处，还请指正，不胜感激。  适用范围： 2D游戏，凸多边形（常见的三角形、四边形">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat1.png">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat2.png">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat3.png">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat4.png">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat5.png">
+<meta property="og:updated_time" content="2017-07-15T11:40:53.173Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zedom">
+<meta name="twitter:title" content="浅析基于分离轴原理的碰撞检测及分离算法">
+<meta name="twitter:description" content="导言分离轴原理（SAT）是一个能用于2d游戏中凸多边形碰撞检测的算法，在自制游戏中我将其作为玩家、怪物、子弹和墙壁碰撞检测及分离的核心算法。 想要实现分离轴原理首先需要有一定的向量知识以及算法实现能力，在实现过程中我自行实现了一个Vector向量类作为基本函数、向量对象的提供者。 以下是个人对这个算法的理解，若有不当之处，还请指正，不胜感激。  适用范围： 2D游戏，凸多边形（常见的三角形、四边形">
+<meta name="twitter:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat1.png">
   
     <link rel="alternative" href="/atom.xml" title="Zedom" type="application/atom+xml">
   
@@ -147,36 +158,113 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-sat" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/15/sat/" class="archive-article-date">
-  	<time datetime="2017-07-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-15</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/15/sat/">浅析基于分离轴原理的碰撞检测及分离算法</a>
+    <h1 class="article-title" itemprop="name">
+      浅析基于分离轴原理的碰撞检测及分离算法
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/07/15/sat/" class="archive-article-date">
+  	<time datetime="2017-07-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="导言"><a href="#导言" class="headerlink" title="导言"></a><strong>导言</strong></h1><p>分离轴原理（SAT）是一个能用于2d游戏中凸多边形碰撞检测的算法，在自制游戏中我将其作为玩家、怪物、子弹和墙壁碰撞检测及分离的核心算法。</p>
+<p>想要实现分离轴原理首先需要有一定的向量知识以及算法实现能力，在实现过程中我自行实现了一个Vector向量类作为基本函数、向量对象的提供者。</p>
+<p>以下是个人对这个算法的理解，若有不当之处，还请指正，不胜感激。</p>
+<blockquote>
+<p>适用范围： 2D游戏，凸多边形（常见的三角形、四边形等），碰撞检测，分离</p>
+<p>非凸多边形的改进办法：</p>
+<blockquote>
+<ol>
+<li><p>将物体划分成多个凸多边形</p>
+</li>
+<li><p>将物体看作一个凸多边形，前提是对碰撞检测的精度要求并不高。</p>
+</li>
+</ol>
+</blockquote>
+</blockquote>
+<h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a><strong>原理介绍</strong></h1><h2 id="什么是碰撞？"><a href="#什么是碰撞？" class="headerlink" title="什么是碰撞？"></a><strong>什么是碰撞？</strong></h2><p>首先来看这个问题：什么是碰撞？什么才叫发生了碰撞？ 最简单的解释就足够了：两个物体之间没有间隙，或者它们的图像之间有重叠，由此我们可以想到一个最常规的判断方法：光线检测法（自编名词，仅为帮助理解）。</p>
+<h2 id="光线检测法"><a href="#光线检测法" class="headerlink" title="光线检测法"></a><strong>光线检测法</strong></h2><p><img src="http://ot1c7ttzm.bkt.clouddn.com/sat1.png" alt="光线检测法"></p>
+<p>假设我们手上拿着手电筒，360°绕着这两个物体照射，当有一束光能够从两个物体中间穿过去，那么这两个物体之间就存在间隙，也就是说它们没有发生碰撞。 到此我们可以得到：</p>
+<blockquote>
+<ol>
+<li><p>一个非常简单粗暴的检测方法：枚举360个角度，判断能否找到存在有这么一个角度，有条直线能够从两个物体之间穿过。</p>
+</li>
+<li><p>为什么说这个方法仅适用于凸多边形，如下图，无法找到存在这么一条直线能够从两者之间穿过去，但这两个物体本身并没有发生碰撞。 <img src="http://ot1c7ttzm.bkt.clouddn.com/sat2.png" alt="非凸多边形"></p>
+</li>
+</ol>
+</blockquote>
+<h2 id="投影"><a href="#投影" class="headerlink" title="投影"></a><strong>投影</strong></h2><p>现在介绍一下一个非常关键的概念，也是整个算法的基础：<strong>投影</strong>。 两个物体未发生碰撞 -&gt; 两个物体之间有空隙 -&gt; 可以找到一条穿过它们中间的一条直线。 那么，<strong>两个物体在垂直这条线的投影轴上的投影也必定存在空隙</strong>。 <img src="http://ot1c7ttzm.bkt.clouddn.com/sat3.png" alt="投影1"></p>
+<h2 id="进一步优化"><a href="#进一步优化" class="headerlink" title="进一步优化"></a><strong>进一步优化</strong></h2><p>若要枚举所有角度所有直线，需要大量的时间用于计算，最直接的影响就是游戏卡顿。所幸，这是两个凸多边形，基于多边形的性质，我们可以把检测的角度数量缩减为两个多边形边数之和，也就是这个算法的核心：<strong>以两个凸多边形边的法线作为投影轴，将两个凸多边形投影至投影轴上，判断是否相交。</strong></p>
+<h1 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a><strong>实现步骤</strong></h1><ol>
+<li><p>取第一个凸多边形相邻的两个点，得到向量a</p>
+<blockquote>
+<p>$$Vector\ a=(first.x,first.y)$$</p>
+</blockquote>
+</li>
+<li><p>求取向量a的法向量b并化为单位向量（为方便求取投影），b即为投影轴</p>
+<blockquote>
+<p>$$Vector\ b=(\frac{-first.y}{\sqrt{first.y^2+first.x^2}},\frac{first.x}{\sqrt{first.y^2+first.x^2}})$$</p>
+</blockquote>
+</li>
+<li><p>任取第一个多边形上一点，作从原点指向该点的向量c(first.x,first.y)，计算c在b上的投影$$投影=|c|cos\theta=\frac{c_b}{|b|}=c_b$$,又因为b已经化为单位向量，因此c在b上的投影就是b和c的点乘值。</p>
+<p>以此枚举第一个多边形上所有的点，记录下最大值max1和最小值min1</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/sat4.png" alt="投影2"></p>
+</li>
+<li><p>同样枚举第二个多边形上所有点，得到最大值max2,最小值min2</p>
+</li>
+<li><p>判断是否碰撞</p>
+</li>
+</ol>
+<blockquote>
+<ol>
+<li>未发生碰撞</li>
+</ol>
+<blockquote>
+<p>min2 &gt; max1或 min1 &gt; max2 两者中间有空隙，未发生碰撞</p>
+</blockquote>
+<ol>
+<li>发生碰撞（若不需分离可直接跳至下一步）</li>
+</ol>
+<blockquote>
+<ol>
+<li>min2 &lt;= max1 分离最小距离与 abs(min2-max1)（此为两物体重叠距离） 比较，保留较小值并保留投影轴方向</li>
+</ol>
+<blockquote>
+<p>因向量方向任意，因此在计算距离时要记得加上绝对值abs</p>
+</blockquote>
+<ol>
+<li>min1 &lt;= max2 分离最小距离与 abs(min1-max2)（此为两物体重叠距离） 比较，保留较小值并保留投影轴方向</li>
+</ol>
+</blockquote>
+</blockquote>
+<ol>
+<li><p>只要在任意一轴上检测到没发生碰撞，则可立刻得到未发生碰撞的结论！无需继续检测其它轴。 回到步骤一，同理枚举第一、第二个多边形所有边。</p>
+</li>
+<li><p>得出判断</p>
+</li>
+</ol>
+<h1 id="分离"><a href="#分离" class="headerlink" title="分离"></a><strong>分离</strong></h1><p>在检测到碰撞基础上进行分离： 在第五步中我们得到了最小分离距离和投影轴方向，又因为投影轴向量已经单位化，因此向量分别乘以距离即是坐标需要移动的距离，至于分离谁则需要自行根据情况决定。 $$ x-=bmin.x_min; $$ $$ y-=bmin.y_min; $$</p>
+<p>(（x，y）为物体中心坐标，bmin为保留的投影轴，min为最小分离距离)</p>
+<h1 id="圆的碰撞检测及分离"><a href="#圆的碰撞检测及分离" class="headerlink" title="圆的碰撞检测及分离"></a><strong>圆的碰撞检测及分离</strong></h1><p>圆与其它凸多边形又有些许不同，它没有可以用于生成投影轴的边，于是乎我们用圆心和另一个凸多边形距离圆心最近的点的连线作为投影轴，再结合枚举第二个凸多边形的各边的法线，就可以按老方法进行检测和分离了。 至于圆投影到投影轴上，只需要作原点到圆心的向量，将该向量投影到投影轴上然后加减半径就好了。 <img src="http://ot1c7ttzm.bkt.clouddn.com/sat5.png" alt="投影3"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -192,7 +280,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -205,70 +293,118 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://zedom1.github.io/2017/07/15/sat/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/14/Hello,World/" class="archive-article-date">
-  	<time datetime="2017-07-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-14</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2017/07/14/Hello,World/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello,World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/14/Hello,World/">Hello,World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">others</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/others/" class="article-tag-list-link color2">others</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'true'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  
 
 
           </div>
@@ -291,8 +427,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
