@@ -200,12 +200,12 @@
 <h1 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a><strong>实现步骤</strong></h1><ol>
 <li><p>取第一个凸多边形相邻的两个点，得到向量a</p>
 <blockquote>
-<p>$$Vector\ a=(first.x,first.y)$$</p>
+<p>$$Vector\ a=(first.x1-first.x2,first.y-first.y2)$$</p>
 </blockquote>
 </li>
 <li><p>求取向量a的法向量b并化为单位向量（为方便求取投影），b即为投影轴</p>
 <blockquote>
-<p>$$Vector\ b=(\frac{-first.y}{\sqrt{first.y^2+first.x^2}},\frac{first.x}{\sqrt{first.y^2+first.x^2}})$$</p>
+<p>$$Vector\ b=(\frac{-a.y}{\sqrt{a.y^2+a.x^2}},\frac{a.x}{\sqrt{a.y^2+a.x^2}})$$</p>
 </blockquote>
 </li>
 <li><p>任取第一个多边形上一点，作从原点指向该点的向量c(first.x,first.y)，计算c在b上的投影$$投影=|c|cos\theta=\frac{c \cdot b}{|b|}=c \cdot b$$,又因为b已经化为单位向量，因此c在b上的投影就是b和c的点乘值。</p>

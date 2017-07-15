@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat3.png">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat4.png">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat5.png">
-<meta property="og:updated_time" content="2017-07-15T12:08:04.759Z">
+<meta property="og:updated_time" content="2017-07-15T12:11:17.682Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅析基于分离轴原理的碰撞检测及分离算法">
 <meta name="twitter:description" content="导言分离轴原理（SAT）是一个能用于2d游戏中凸多边形碰撞检测的算法，在自制游戏中我将其作为玩家、怪物、子弹和墙壁碰撞检测及分离的核心算法。 想要实现分离轴原理首先需要有一定的向量知识以及算法实现能力，在实现过程中我自行实现了一个Vector向量类作为基本函数、向量对象的提供者。 以下是个人对这个算法的理解，若有不当之处，还请指正，不胜感激。  适用范围： 2D游戏，凸多边形（常见的三角形、四边形">
@@ -209,12 +209,12 @@
 <h1 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a><strong>实现步骤</strong></h1><ol>
 <li><p>取第一个凸多边形相邻的两个点，得到向量a</p>
 <blockquote>
-<p>$$Vector\ a=(first.x,first.y)$$</p>
+<p>$$Vector\ a=(first.x1-first.x2,first.y-first.y2)$$</p>
 </blockquote>
 </li>
 <li><p>求取向量a的法向量b并化为单位向量（为方便求取投影），b即为投影轴</p>
 <blockquote>
-<p>$$Vector\ b=(\frac{-first.y}{\sqrt{first.y^2+first.x^2}},\frac{first.x}{\sqrt{first.y^2+first.x^2}})$$</p>
+<p>$$Vector\ b=(\frac{-a.y}{\sqrt{a.y^2+a.x^2}},\frac{a.x}{\sqrt{a.y^2+a.x^2}})$$</p>
 </blockquote>
 </li>
 <li><p>任取第一个多边形上一点，作从原点指向该点的向量c(first.x,first.y)，计算c在b上的投影$$投影=|c|cos\theta=\frac{c \cdot b}{|b|}=c \cdot b$$,又因为b已经化为单位向量，因此c在b上的投影就是b和c的点乘值。</p>
