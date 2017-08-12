@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://zedom1.github.io">
-  <title>Zedom</title>
+  <title>数据结构笔记（一）：链表 | Zedom</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Zedom">
-<meta property="og:url" content="https://zedom1.github.io/index.html">
+  <meta name="description" content="概述线性表的操作类型：  静态操作：仅读取，内容和组成一般不变，如get、search 动态操作：需写入，局部或整体将改变，如insert、remove">
+<meta name="keywords" content="数据结构,链表,学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构笔记（一）：链表">
+<meta property="og:url" content="https://zedom1.github.io/2017/08/12/list/index.html">
 <meta property="og:site_name" content="Zedom">
+<meta property="og:description" content="概述线性表的操作类型：  静态操作：仅读取，内容和组成一般不变，如get、search 动态操作：需写入，局部或整体将改变，如insert、remove">
+<meta property="og:updated_time" content="2017-08-12T18:43:34.219Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zedom">
+<meta name="twitter:title" content="数据结构笔记（一）：链表">
+<meta name="twitter:description" content="概述线性表的操作类型：  静态操作：仅读取，内容和组成一般不变，如get、search 动态操作：需写入，局部或整体将改变，如insert、remove">
   
     <link rel="alternative" href="/atom.xml" title="Zedom" type="application/atom+xml">
   
@@ -147,16 +152,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-list" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-list" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/12/list/">数据结构笔记（一）：链表</a>
+    <h1 class="article-title" itemprop="name">
+      数据结构笔记（一）：链表
     </h1>
   
 
@@ -174,9 +177,186 @@
 <li>静态操作：仅读取，内容和组成一般不变，如get、search</li>
 <li>动态操作：需写入，局部或整体将改变，如insert、remove</li>
 </ol>
-        
-          <a class="article-more-a" href="/2017/08/12/list/#more">more >></a>
-        
+<a id="more"></a>
+<h2 id="链表特点："><a href="#链表特点：" class="headerlink" title="链表特点："></a><strong>链表特点：</strong></h2><p>动态存储：</p>
+<ol>
+<li>各元素动态地分配和回收空间</li>
+<li>逻辑上相邻的元素记录彼此的物理地址</li>
+<li>动态操作高效，静态操作费时，循秩访问低效</li>
+</ol>
+<p>各节点通过指针或引用连接，在逻辑上形成线性序列</p>
+<p><strong>链表实现过程中，代码的执行顺序非常重要！要注意的细节也很多。</strong></p>
+<h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a><strong>分类</strong></h1><p>1.单向链表</p>
+<blockquote>
+<p>仅有succ指针</p>
+</blockquote>
+<p>2.双向链表</p>
+<blockquote>
+<p>有pred和succ指针</p>
+</blockquote>
+<p>3.循环单链表</p>
+<blockquote>
+<p>单向链表 + 末节点和首节点相连</p>
+</blockquote>
+<p>4.循环双链表</p>
+<blockquote>
+<p>双向链表 + 末节点和首节点相连</p>
+</blockquote>
+<p>5.静态链表</p>
+<blockquote>
+<p>在没有指针的语言中使用，借用数组模拟链表</p>
+</blockquote>
+<h2 id="建议"><a href="#建议" class="headerlink" title="建议"></a><strong>建议</strong></h2><p>使用<strong>哨兵</strong>节点</p>
+<p>单向链表增加<strong>首</strong>哨兵</p>
+<p>双向链表增加<strong>首末</strong>哨兵</p>
+<p>哨兵不对外公开，在一开始创建，最后销毁</p>
+<p><strong>优点：简化边界条件，增加鲁棒性</strong></p>
+<h1 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a><strong>单链表</strong></h1><p><strong>基本定义</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></div><div class="line">&#123;</div><div class="line">    T data;</div><div class="line">    node&lt;T&gt; *succ;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">list</span></span></div><div class="line">&#123;</div><div class="line">    node&lt;T&gt; *header;</div><div class="line">    <span class="keyword">int</span> _size;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>带接口完整定义</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></div><div class="line">&#123;</div><div class="line">    T data;</div><div class="line">    node&lt;T&gt; *succ;</div><div class="line">    node( T <span class="keyword">const</span> &amp; e , node&lt;T&gt; * suc=<span class="literal">NULL</span>):data(e),succ(suc) &#123;&#125;</div><div class="line">    node() &#123;succ=<span class="literal">NULL</span>;&#125;</div><div class="line">    node&lt;T&gt; * insertAft( T <span class="keyword">const</span> &amp; e );</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">list</span></span></div><div class="line">&#123;</div><div class="line"><span class="keyword">private</span>:</div><div class="line">    node&lt;T&gt; *header;</div><div class="line">    <span class="keyword">int</span> _size;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span> <span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">clear</span> <span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">copyNodes</span> <span class="params">( node&lt;T&gt; *p , <span class="keyword">int</span> n )</span></span>;     </div><div class="line">    <span class="comment">//从p开始复制n个节点到链表末尾</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span> <span class="params">( node&lt;T&gt; *&amp; p1, <span class="keyword">int</span> n1, node&lt;T&gt; *&amp;p2, <span class="keyword">int</span> n2 )</span></span>;</div><div class="line">    <span class="comment">//[p1,p1+n) 本串p1开始n1个节点与 L串p2开始n2个节点归并排序</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">mergeSort</span> <span class="params">( node&lt;T&gt; *&amp;p, <span class="keyword">int</span> n )</span></span>;      </div><div class="line">    <span class="comment">// 对从p开始连续的n个节点归并排序</span></div><div class="line"></div><div class="line">    <span class="built_in">list</span>() &#123; init(); &#125;</div><div class="line">    <span class="built_in">list</span>( node&lt;T&gt; *p , <span class="keyword">int</span> n );     <span class="comment">// 从p开始复制n个节点</span></div><div class="line">    ~<span class="built_in">list</span>();</div><div class="line"></div><div class="line">    <span class="comment">// 只读接口</span></div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">empty</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> _size==<span class="number">0</span>; &#125;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> _size; &#125;</div><div class="line">    T&amp; <span class="keyword">operator</span>[] ( <span class="keyword">int</span> r ) <span class="keyword">const</span>;    <span class="comment">// 实现寻秩访问</span></div><div class="line">    node&lt;T&gt; * find( T <span class="keyword">const</span>&amp;e ) <span class="keyword">const</span>;</div><div class="line">    node&lt;T&gt; * find( T <span class="keyword">const</span>&amp; e,  node&lt;T&gt;* p, <span class="keyword">int</span> n ) <span class="keyword">const</span>;</div><div class="line">    <span class="comment">// (无序)从节点p向后n个节点（不含p）内找e</span></div><div class="line">    node&lt;T&gt; * search( T <span class="keyword">const</span> &amp; e , node&lt;T&gt; * p , <span class="keyword">int</span> n ) <span class="keyword">const</span>;</div><div class="line">    <span class="comment">// (有序) 不大于e的最后一个</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="comment">// 可写接口</span></div><div class="line">    node&lt;T&gt; * insertBefore( node&lt;T&gt; *p, T <span class="keyword">const</span> &amp; e );</div><div class="line">    node&lt;T&gt; * insertAfter( node&lt;T&gt; *p, T <span class="keyword">const</span> &amp; e );</div><div class="line">    node&lt;T&gt; * insertLast( T <span class="keyword">const</span> &amp; e );</div><div class="line">    node&lt;T&gt; * insertFirst( T <span class="keyword">const</span> &amp; e );</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">createListT</span><span class="params">( T <span class="keyword">const</span> * e , <span class="keyword">int</span> n )</span></span>; <span class="comment">// 尾插法创建链表</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">createListH</span><span class="params">( T <span class="keyword">const</span> * e , <span class="keyword">int</span> n )</span></span>; <span class="comment">// 头插法创建链表</span></div><div class="line">    <span class="function">T <span class="title">remove</span><span class="params">( node&lt;T&gt; *p )</span></span>;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">deduplicate</span> <span class="params">()</span></span>; <span class="comment">// 无序列表去重</span></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">uniquify</span> <span class="params">()</span></span>;    <span class="comment">// 有序列表去重</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">()</span></span>; <span class="comment">// 排序</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><strong>基本接口</strong>：</p>
+<p>1. 创建链表</p>
+<blockquote>
+<p>分为：创建空链表、根据已有数据进行头、尾插入、复制已有链表</p>
+</blockquote>
+<p>2. 插入单节点</p>
+<blockquote>
+<p>分为在某节点前、后插入，在表头、表尾插入</p>
+</blockquote>
+<p>3. 查找数据</p>
+<blockquote>
+<p>无序单链表：查找是否存在 有序单链表：返回不大于目标数据的最后一个元素</p>
+</blockquote>
+<p>4. 循秩访问第n个节点</p>
+<blockquote>
+<p>可重载[]运算符，也可单独使用一个函数</p>
+</blockquote>
+<p>5. 删除单个节点</p>
+<p>6. 清空链表</p>
+<blockquote>
+<p>思路：循环调用删除单个节点的remove函数删除header的直接后继，直至header的直接后继为NULL</p>
+</blockquote>
+<p>7. 打印链表</p>
+<p>8. 检查链表是否为空</p>
+<p>9. 返回链表长度</p>
+<p>10. 排序（归并、插入、选择等）</p>
+<p>11. 去重（无序、有序版）</p>
+<p>12. 反转</p>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><h3 id="1-创建链表"><a href="#1-创建链表" class="headerlink" title="1. 创建链表"></a>1. 创建链表</h3><p>1-1 创建空链表</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div><div class="line"><span class="keyword">void</span> <span class="built_in">list</span>&lt;T&gt;::init()</div><div class="line">&#123;</div><div class="line">    header = <span class="keyword">new</span> node&lt;T&gt;; <span class="comment">//构造函数已将后继默认置位NULL</span></div><div class="line">    _size=<span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>1-2 尾插法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div><div class="line"><span class="keyword">void</span> <span class="built_in">list</span>&lt;T&gt;::createListT( T <span class="keyword">const</span> *&amp; e , <span class="keyword">int</span> n )</div><div class="line">&#123;</div><div class="line">    node&lt;T&gt; * last=header; <span class="comment">// last作为链表最后一个节点</span></div><div class="line">    node&lt;T&gt; * tem;</div><div class="line">    _size+=n;</div><div class="line">    <span class="keyword">for</span>( <span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++ )</div><div class="line">    &#123;</div><div class="line">        tem = <span class="keyword">new</span> node&lt;T&gt;( e[i] );</div><div class="line">        last-&gt;succ=tem;  <span class="comment">// 顺序不可反</span></div><div class="line">        last=tem;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>1-3 头插法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div><div class="line"><span class="keyword">void</span> <span class="built_in">list</span>&lt;T&gt;::createListH( T <span class="keyword">const</span> *&amp; e , <span class="keyword">int</span> n )</div><div class="line">&#123;</div><div class="line">    node&lt;T&gt; * tem;</div><div class="line">    _size+=n;</div><div class="line">    <span class="keyword">for</span>( <span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++ )</div><div class="line">    &#123;</div><div class="line">        tem = <span class="keyword">new</span> node&lt;T&gt;( e[i], header-&gt;succ );</div><div class="line">        header-&gt;succ=tem;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>1-4 复制链表</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div><div class="line"><span class="built_in">list</span>&lt;T&gt;::<span class="built_in">list</span>( node&lt;T&gt; * p, <span class="keyword">int</span> n )</div><div class="line">&#123;</div><div class="line">    init();</div><div class="line">    copyNodes( p , n );</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div><div class="line"><span class="keyword">void</span> <span class="built_in">list</span>&lt;T&gt;::copyNodes( node&lt;T&gt; * p, <span class="keyword">int</span> n )</div><div class="line">&#123;</div><div class="line">    node&lt;T&gt; *tem=header;</div><div class="line">    <span class="keyword">while</span>( tem-&gt;succ ) <span class="comment">// 先探好路再迈步</span></div><div class="line">        tem=tem-&gt;succ;  <span class="comment">// tem指向存在的最后一个元素</span></div><div class="line">    node&lt;T&gt; *create;</div><div class="line">    _size+=n;</div><div class="line">    <span class="keyword">while</span>(n--)</div><div class="line">    &#123;</div><div class="line">        create=<span class="keyword">new</span> node&lt;T&gt; ( p-&gt;data );</div><div class="line">        tem-&gt;succ=create;</div><div class="line">        p=p-&gt;succ;</div><div class="line">        tem=tem-&gt;succ;  <span class="comment">// 实时更新链表尾</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2-插入单节点"><a href="#2-插入单节点" class="headerlink" title="2. 插入单节点"></a>2. 插入单节点</h3><p>2-0. 准备：node类的插入函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div><div class="line">node&lt;T&gt; * node&lt;T&gt;::insertAft( T <span class="keyword">const</span> &amp; e )</div><div class="line">&#123;</div><div class="line">    node&lt;T&gt; *tem=<span class="keyword">new</span> node&lt;T&gt;( e , succ );</div><div class="line">    succ=tem;</div><div class="line">    <span class="keyword">return</span> tem;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2-1. 在某节点前插入</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div><div class="line">node&lt;T&gt; * insertBefore( node&lt;T&gt; *p, T <span class="keyword">const</span> &amp; e )</div><div class="line">&#123;</div><div class="line">    _size++;</div><div class="line">    node&lt;T&gt; *tem=header;</div><div class="line">    <span class="keyword">while</span>( (tem=tem-&gt;succ)!=p );</div><div class="line">    <span class="keyword">return</span> tem-&gt;insertAft(e);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2-2. 在某节点后插入</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div><div class="line">node&lt;T&gt; * <span class="built_in">list</span>&lt;T&gt;::insertAfter( node&lt;T&gt; *p, T <span class="keyword">const</span> &amp; e)</div><div class="line">&#123;</div><div class="line">    _size++;</div><div class="line">    <span class="keyword">return</span> p-&gt;insertAft(e);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2-3. 插入表头</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div><div class="line">node&lt;T&gt; * <span class="built_in">list</span>&lt;T&gt;::insertFirst( T <span class="keyword">const</span> &amp; e )</div><div class="line">&#123;</div><div class="line">    _size++;</div><div class="line">    <span class="keyword">return</span> header-&gt;insertAft(e);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2-4. 插入表尾</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div><div class="line">node&lt;T&gt; * <span class="built_in">list</span>&lt;T&gt;::insertLast( T <span class="keyword">const</span> &amp; e )</div><div class="line">&#123;</div><div class="line">    _size++;</div><div class="line">    node&lt;T&gt; *tem=header;</div><div class="line">    <span class="keyword">while</span>( tem-&gt;succ )</div><div class="line">        tem=tem-&gt;succ;</div><div class="line">    <span class="keyword">return</span> tem-&gt;insertAft(e);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-查找元素"><a href="#3-查找元素" class="headerlink" title="3. 查找元素"></a>3. 查找元素</h3><p>3-1. 无序链表查找</p>
+<p>3-1-0. 整链表查找</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div><div class="line">node&lt;T&gt; * <span class="built_in">list</span>&lt;T&gt;::find( T <span class="keyword">const</span>&amp; e ) <span class="keyword">const</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> find( e, header, ,_size );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>3-1-1. 部分链表查找</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line">node&lt;T&gt; * <span class="built_in">list</span>&lt;T&gt;::find( T <span class="keyword">const</span>&amp; e, node&lt;T&gt;* p , <span class="keyword">int</span> n ) <span class="keyword">const</span></div><div class="line">&#123;  ( p , p+n ]</div><div class="line">    <span class="keyword">while</span>(n--)</div><div class="line">        <span class="keyword">if</span>( e==( p=p-&gt;succ )-&gt;data )</div><div class="line">            <span class="keyword">return</span> p;</div><div class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>3-2. 有序链表查找</p>
+<p>返回不大于e的最后一个元素，方便后续插入操作</p>
+<p>此处与顺序表不同，哪怕是在有序链表中查找，和无序相比时间复杂度同为O(n）,原因在于链表的循秩访问问题，详见4. 而在顺序表中，有序表可以借由二分等算法将复杂度降低</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line">node&lt;T&gt; * <span class="built_in">list</span>&lt;T&gt;::search( T <span class="keyword">const</span> &amp; e, node&lt;T&gt; * p, <span class="keyword">int</span> n ) <span class="keyword">const</span></div><div class="line">&#123;  [ p , p+n )</div><div class="line">    node&lt;T&gt; *tem=header;  <span class="comment">// tem作为p的直接前驱</span></div><div class="line">    <span class="keyword">while</span>( tem-&gt;succ != p )</div><div class="line">        tem=tem-&gt;succ;</div><div class="line">    <span class="keyword">while</span>( n-- &amp;&amp;p )</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>( p-&gt;data&gt;e )</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        p=p-&gt;succ;</div><div class="line">        tem=tem-&gt;succ;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> tem;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="4-循秩访问单个节点"><a href="#4-循秩访问单个节点" class="headerlink" title="4. 循秩访问单个节点"></a>4. 循秩访问单个节点</h3><p>方式：重载()运算符</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line">T &amp; <span class="built_in">list</span>&lt;T&gt;::<span class="keyword">operator</span> [] (<span class="keyword">int</span> r) <span class="keyword">const</span></div><div class="line">&#123;</div><div class="line">    node&lt;T&gt; *p=header;</div><div class="line">    <span class="keyword">while</span>( ( p=p-&gt;succ ) &amp;&amp; r-- );</div><div class="line">    <span class="keyword">return</span> p-&gt;data;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>此处为链表和顺序表的区别，哪怕重载了[]运算符，但链表的循秩访问和顺序表的循秩访问<strong>本质不同</strong>。</p>
+<p>链表的为披着循秩访问外皮的按位置访问。</p>
+<p>而顺序表 V[i] = V + i*s (s为单个元素大小)</p>
+<p>时间复杂度为O(n)，哪怕在双向链表中可以通过判断r和_size/2的大小选择从前或后访问来节省一些时间，但复杂度依旧为O(n/2)=O(n)。</p>
+<h3 id="5-删除单个节点"><a href="#5-删除单个节点" class="headerlink" title="5. 删除单个节点"></a>5. 删除单个节点</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line">T <span class="built_in">list</span>&lt;T&gt;::remove( node&lt;T&gt; * p )</div><div class="line">&#123;</div><div class="line">    T tem=p-&gt;data;</div><div class="line">    node&lt;T&gt; *pre=header;</div><div class="line">    <span class="keyword">while</span>( pre-&gt;succ!=p )</div><div class="line">        pre=pre-&gt;succ;</div><div class="line">    pre-&gt;succ=p-&gt;succ;</div><div class="line">    <span class="keyword">delete</span> p;</div><div class="line">    _size--;</div><div class="line">    <span class="keyword">return</span> tem;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="6-清空链表"><a href="#6-清空链表" class="headerlink" title="6. 清空链表"></a>6. 清空链表</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="keyword">int</span> <span class="built_in">list</span>&lt;T&gt;::clear()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> old_size=_size;</div><div class="line">    <span class="keyword">if</span>( header-&gt;succ==<span class="literal">NULL</span> )</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span>( header-&gt;succ )</div><div class="line">        remove( header-&gt;succ );</div><div class="line">    <span class="comment">// 在remove操作里有_size自减的操作，因此这里不再重新将_size置零</span></div><div class="line">    <span class="keyword">return</span> old_size;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="10-排序"><a href="#10-排序" class="headerlink" title="10. 排序"></a>10. 排序</h3><p>10-1 归并排序</p>
+<p>归并排序思路：将表不断二分再重新合并，每次合并从两个已有序的表头选取较小的加入目标表尾，若其中一个表为空，则将另一表整体接入目标表尾</p>
+<p>该算法思路：同一链表内的归并排序：现将p1段和p2段截断，以px3保留非排序区域的头节点。以p1的直接前继做新表头，每次绑定两表头较小的节点，直至p1、p2段其中一段为空，然后连接上另一非空链表剩余部分，最后将非排序区域的尾部接上</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="keyword">void</span> <span class="built_in">list</span>&lt;T&gt;::merge ( node&lt;T&gt; * &amp;p1, <span class="keyword">int</span> n1, node&lt;T&gt; *&amp;p2, <span class="keyword">int</span> n2 ) <span class="comment">//使用引用绑定节点防止丢失</span></div><div class="line">&#123;</div><div class="line">    node&lt;T&gt; *head;</div><div class="line">    node&lt;T&gt; *pree=header;</div><div class="line">    <span class="keyword">while</span>( pree-&gt;succ!=p1 )</div><div class="line">        pree=pree-&gt;succ;</div><div class="line">    head=pree;</div><div class="line">    node&lt;T&gt; *px1=p1,*px2=p2,*px3;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n1<span class="number">-1</span> ; i++)</div><div class="line">        px1=px1-&gt;succ;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n2<span class="number">-1</span> ; i++)</div><div class="line">        px2=px2-&gt;succ;</div><div class="line">    px3=px2-&gt;succ;</div><div class="line">    px1-&gt;succ=px2-&gt;succ=<span class="literal">NULL</span>;</div><div class="line">    px1=p1;</div><div class="line">    <span class="keyword">while</span>( n1&amp;&amp;n2 )</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>( px1-&gt;data&lt;=p2-&gt;data )</div><div class="line">        &#123;</div><div class="line">            pree-&gt;succ=px1;</div><div class="line">            pree=pree-&gt;succ;</div><div class="line">            px1=px1-&gt;succ;</div><div class="line">            n1--;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            pree-&gt;succ=p2;</div><div class="line">            pree=pree-&gt;succ;</div><div class="line">            p2=p2-&gt;succ;</div><div class="line">            n2--;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>( n1 )</div><div class="line">        pree-&gt;succ=px1;</div><div class="line">    <span class="keyword">if</span>( n2 )</div><div class="line">        pree-&gt;succ=p2;</div><div class="line">    <span class="keyword">while</span>( pree-&gt;succ )</div><div class="line">        pree=pree-&gt;succ;</div><div class="line">    pree-&gt;succ=px3;</div><div class="line">    p1=head-&gt;succ;  <span class="comment">// 最后设置好排序后的头结点</span></div><div class="line">    <span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="keyword">void</span> <span class="built_in">list</span>&lt;T&gt;::mergeSort( node&lt;T&gt; *&amp;p, <span class="keyword">int</span> n )</div><div class="line">&#123; <span class="comment">// [ p, p+n ]</span></div><div class="line">    <span class="keyword">if</span>(n&lt;<span class="number">2</span>) <span class="keyword">return</span>;</div><div class="line">    <span class="keyword">int</span> mid=n/<span class="number">2</span>;</div><div class="line">    node&lt;T&gt; *tem=p;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;mid; i++)  tem=tem-&gt;succ;</div><div class="line">    mergeSort( p, mid );</div><div class="line">    mergeSort( tem, n-mid );</div><div class="line">    merge( p,mid, tem , n-mid );</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="keyword">void</span> <span class="built_in">list</span>&lt;T&gt;::sort( )</div><div class="line">&#123;</div><div class="line">    mergeSort( header-&gt;succ , _size );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="11-去重"><a href="#11-去重" class="headerlink" title="11. 去重"></a>11. 去重</h3><p>11-1. 无序链表</p>
+<p>常规思路：将链表分为已去重和未去重区域，每次取未去重区域第一个元素，在已去重区域查找是否有相同数值的节点，若存在，则任意删除其一，若不存在，则将该节点加入已去重区域。 时间复杂度 O(n2)</p>
+<p>其它思路：将链表数据以数组保存，在数组中剔除重复数据后再赋值并删除多余节点。时间复杂度O(nlogn)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="keyword">int</span> <span class="built_in">list</span>&lt;T&gt;::deduplicate()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>( _size&lt;<span class="number">2</span> ) <span class="comment">// 少于2个节点无需去重</span></div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    node&lt;T&gt; *p=header-&gt;succ-&gt;succ; <span class="comment">//第一个节点必定已去重</span></div><div class="line">    node&lt;T&gt; *pre=header-&gt;succ;</div><div class="line">    <span class="keyword">int</span> old_size=_size;  <span class="comment">// 保存_size，方便返回删除数目</span></div><div class="line">    <span class="keyword">int</span> r=<span class="number">1</span>;  <span class="comment">// 已去重数目</span></div><div class="line">    <span class="keyword">while</span>( p )</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>( find( p-&gt;data , header , r )!=<span class="literal">NULL</span> )</div><div class="line">        &#123;    <span class="comment">// 借用find接口</span></div><div class="line">            pre-&gt;succ=p-&gt;succ;</div><div class="line">            <span class="keyword">delete</span> p;</div><div class="line">            p=pre-&gt;succ;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        r++;</div><div class="line">        p=p-&gt;succ;</div><div class="line">        pre=pre-&gt;succ;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> old_size-_size;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>11-2. 有序链表</p>
+<p>思路：一指针A从表头开始，每次检测相邻节点，若相同则删除后节点，若不同，A向后移动直至表尾。 时间复杂度O(n)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="keyword">int</span> <span class="built_in">list</span>&lt;T&gt;::uniquify()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(_size&lt;<span class="number">2</span>)</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> old_size=_size;</div><div class="line">    node&lt;T&gt; *p=header-&gt;succ,*q;</div><div class="line">    <span class="keyword">while</span>( <span class="literal">NULL</span> != ( q = p-&gt;succ ) ) <span class="comment">// q作为p的直接后继，检测是否重复</span></div><div class="line">        (p-&gt;data == q-&gt;data) ? remove(q) : p=q; <span class="comment">// 若重复则删除直接后继，若不重复则p向后一步</span></div><div class="line">    <span class="keyword">return</span> old_size-_size;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="12-反转"><a href="#12-反转" class="headerlink" title="12. 反转"></a>12. 反转</h3><p>思路：固定目前的首节点，即header-&gt;succ，每次将它的直接后继重新绑定至header的直接后继。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="keyword">void</span> <span class="built_in">list</span>&lt;T&gt;::reverse()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(_size&lt;<span class="number">2</span>)</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    node&lt;T&gt; *fir=header-&gt;succ;</div><div class="line">    node&lt;T&gt; *tem;</div><div class="line">    <span class="keyword">while</span>( fir-&gt;succ )</div><div class="line">    &#123;</div><div class="line">        tem=fir-&gt;succ;</div><div class="line">        fir-&gt;succ=tem-&gt;succ;</div><div class="line">        tem-&gt;succ=header-&gt;succ;</div><div class="line">        header-&gt;succ=tem;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a><strong>双向链表</strong></h1><p>双链表和单链表类似，但不同在于有<strong>首末</strong>两个哨兵，每个节点有<strong>前驱</strong>和<strong>后缀</strong>指针，可以省去从头访问到某节点的前驱的时间。</p>
+<p>代码实现与单向链表相差不大，只是需要额外注意需要多维护pred指针和trailer哨兵。</p>
+<p><strong>基本定义</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span></div><div class="line">&#123;</div><div class="line">    T data;</div><div class="line">    ListNode&lt;T&gt; * pred;</div><div class="line">    ListNode&lt;T&gt; * succ;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">List</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> _size ;</div><div class="line">    ListNode&lt;T&gt; * header,*trailer;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><strong>带接口定义</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span></span></div><div class="line">    //列表节点模板类（以双向链表形式实现）</div><div class="line">&#123;</div><div class="line">    T data;</div><div class="line">    ListNode&lt;T&gt; * pred;</div><div class="line">    ListNode&lt;T&gt; * succ;</div><div class="line"></div><div class="line">    ListNode () &#123;&#125;</div><div class="line">    ListNode ( T <span class="keyword">const</span> &amp; e, ListNode&lt;T&gt; * p = <span class="literal">NULL</span>, ListNode&lt;T&gt; *a = <span class="literal">NULL</span>)</div><div class="line">        :data(e),pred(p),succ(a)&#123;&#125;</div><div class="line"></div><div class="line">    ListNode&lt;T&gt; * insertAsPred ( T <span class="keyword">const</span> &amp; e );</div><div class="line">    ListNode&lt;T&gt; * insertAsSucc ( T <span class="keyword">const</span> &amp; e );</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">List</span></span></div><div class="line">&#123;</div><div class="line"><span class="keyword">private</span>:</div><div class="line"></div><div class="line">    <span class="keyword">int</span> _size ;</div><div class="line">    ListNode&lt;T&gt; * header,*trailer;</div><div class="line"></div><div class="line"><span class="keyword">protected</span>:</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span> <span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span> <span class="params">( ListNode&lt;T&gt; * p1, <span class="keyword">int</span> n1 , List&lt;T&gt;&amp;L,  ListNode&lt;T&gt; *p2, <span class="keyword">int</span> n2)</span></span>; <span class="comment">//[p1,p1+n) 本串p1开始n1个节点与 L串p2开始n2个节点归并排序</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">mergeSort</span> <span class="params">( ListNode&lt;T&gt; *p, <span class="keyword">int</span> n )</span></span>;      <span class="comment">// 对从p开始连续的n个节点归并排序</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">selectionSort</span> <span class="params">( ListNode&lt;T&gt; *p, <span class="keyword">int</span> n )</span></span>;   <span class="comment">// [ p,p+n ) 选择排序</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insertionSort</span> <span class="params">( ListNode&lt;T&gt; *p, <span class="keyword">int</span> n )</span></span>;   <span class="comment">// 对从p开始连续的n个节点插入排序</span></div><div class="line"></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    List() &#123; init(); &#125;</div><div class="line">    List( ListNode&lt;T&gt; *p , <span class="keyword">int</span> n );     <span class="comment">// 从p开始复制n个节点</span></div><div class="line">    List( T *p , <span class="keyword">int</span> n );</div><div class="line">    ~List();</div><div class="line"></div><div class="line">    <span class="comment">// 只读接口</span></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> _size; &#125;</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">empty</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> _size==<span class="number">0</span>; &#125;</div><div class="line">    T &amp; <span class="keyword">operator</span> [] ( <span class="keyword">int</span> r ) <span class="keyword">const</span>;    <span class="comment">// 实现寻秩访问</span></div><div class="line">    ListNode&lt;T&gt; * first()<span class="keyword">const</span></div><div class="line">        &#123;<span class="keyword">return</span> header-&gt;succ;&#125;</div><div class="line">    ListNode&lt;T&gt; * last() <span class="keyword">const</span></div><div class="line">        &#123;<span class="keyword">return</span> trailer-&gt;pred;&#125;</div><div class="line">    ListNode&lt;T&gt; * find( T <span class="keyword">const</span>&amp;e ) <span class="keyword">const</span></div><div class="line">        &#123;<span class="keyword">return</span> find(e,_size,trailer);&#125;</div><div class="line">    ListNode&lt;T&gt; * find( T <span class="keyword">const</span>&amp; e, <span class="keyword">int</span> n, ListNode&lt;T&gt;* p ) <span class="keyword">const</span>; <span class="comment">// (无序)从节点p向前n个节点（不含p）内找e</span></div><div class="line">    ListNode&lt;T&gt; * search( T <span class="keyword">const</span> &amp; e , <span class="keyword">int</span> n , ListNode&lt;T&gt; * p ) <span class="keyword">const</span>; <span class="comment">// (有序) 不大于e的最后一个</span></div><div class="line">    ListNode&lt;T&gt; * selectMax ( ListNode&lt;T&gt; *p , <span class="keyword">int</span> n )<span class="keyword">const</span> ;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> <span class="keyword">const</span></span>;</div><div class="line"></div><div class="line">    <span class="comment">// 可写接口</span></div><div class="line">    ListNode&lt;T&gt; * insertBefore( ListNode&lt;T&gt; *p, T <span class="keyword">const</span> &amp; e)</div><div class="line">        &#123; _size++; <span class="keyword">return</span> p-&gt;insertAsPred(e); &#125;</div><div class="line">    ListNode&lt;T&gt; * insertAfter( ListNode&lt;T&gt; *p, T <span class="keyword">const</span> &amp; e)</div><div class="line">        &#123; _size++; <span class="keyword">return</span> p-&gt;insertAsSucc(e); &#125;</div><div class="line">    ListNode&lt;T&gt; * insertLast( T <span class="keyword">const</span> &amp; e )</div><div class="line">        &#123; _size++; <span class="keyword">return</span> trailer-&gt;insertAsPred(e);&#125;</div><div class="line">    ListNode&lt;T&gt; * insertFirst( T <span class="keyword">const</span> &amp; e )</div><div class="line">        &#123; _size++; <span class="keyword">return</span> header-&gt;insertAsSucc(e);&#125;</div><div class="line">    <span class="function">T <span class="title">remove</span><span class="params">( ListNode&lt;T&gt; *p )</span></span>;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">deduplicate</span> <span class="params">()</span></span>; <span class="comment">// 无序列表去重</span></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">uniquify</span> <span class="params">()</span></span>;    <span class="comment">// 有序列表去重</span></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">clear</span> <span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">copyNodes</span> <span class="params">( ListNode&lt;T&gt; *p , <span class="keyword">int</span> n )</span></span>;     <span class="comment">// 从p开始复制n个节点</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">( ListNode&lt;T&gt; *p, <span class="keyword">int</span> n, <span class="keyword">int</span> mod )</span></span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="1-排序"><a href="#1-排序" class="headerlink" title="1. 排序"></a>1. 排序</h2><p>1-1. 插入排序</p>
+<p>思路：将链表分为前后已排序和未排序区域，每次取未排序区域首节点在已排序区域选位置插入。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="keyword">void</span> List&lt;T&gt;::insertionSort( ListNode&lt;T&gt; * p , <span class="keyword">int</span> n )</div><div class="line">&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> r=<span class="number">0</span>; r&lt;n; r++)</div><div class="line">    &#123;</div><div class="line">        insertAfter( search( p-&gt;data , r , p ) , p-&gt;data );</div><div class="line">        p=p-&gt;succ;</div><div class="line">        remove( p-&gt;pred );</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line">T List&lt;T&gt;::remove( ListNode&lt;T&gt; * p )</div><div class="line">&#123;</div><div class="line">    T tem=p-&gt;data;</div><div class="line">    p-&gt;pred-&gt;succ=p-&gt;succ;</div><div class="line">    p-&gt;succ-&gt;pred=p-&gt;pred;</div><div class="line">    <span class="keyword">delete</span> p;</div><div class="line">    _size--;</div><div class="line">    <span class="keyword">return</span> tem;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// node类的准备工作</span></div><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line">ListNode&lt;T&gt;* ListNode&lt;T&gt;::insertAsSucc( T <span class="keyword">const</span> &amp; e )</div><div class="line">&#123;</div><div class="line">    ListNode&lt;T&gt; *a=<span class="keyword">new</span> ListNode&lt;T&gt;( e, <span class="keyword">this</span>, succ );</div><div class="line">    succ-&gt;pred=a;</div><div class="line">    succ=a;</div><div class="line">    <span class="keyword">return</span> a;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>1-2. 选择排序</p>
+<p>思路：每次从未排序区域中选择最大元素并移入未排序区域最后，即已排序区域之首。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="keyword">void</span> List&lt;T&gt;::selectionSort( ListNode&lt;T&gt; *p, <span class="keyword">int</span> n )</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(n&lt;<span class="number">2</span>) <span class="keyword">return</span>;</div><div class="line">    ListNode&lt;T&gt; *head=p-&gt;pred , *tail=p;</div><div class="line">    <span class="keyword">for</span>( <span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++ )</div><div class="line">        tail=tail-&gt;succ;</div><div class="line">    <span class="keyword">while</span>( <span class="number">1</span>&lt;n )</div><div class="line">    &#123;</div><div class="line">        insertBefore( tail, remove( selectMax( head-&gt;succ , n ) ) );</div><div class="line">        tail=tail-&gt;pred;</div><div class="line">        n--;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line">ListNode&lt;T&gt; * List&lt;T&gt;::selectMax ( ListNode&lt;T&gt; *p , <span class="keyword">int</span> n )<span class="keyword">const</span></div><div class="line">&#123;</div><div class="line">    ListNode&lt;T&gt; *tem=p;</div><div class="line">    <span class="keyword">while</span>(n--&amp;&amp;p)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(p-&gt;data&gt;=tem-&gt;data)</div><div class="line">            tem=p;</div><div class="line">        p=p-&gt;succ;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> tem;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// node类的准备工作</span></div><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line">ListNode&lt;T&gt;* ListNode&lt;T&gt;::insertAsPred( T <span class="keyword">const</span> &amp; e )</div><div class="line">&#123;</div><div class="line">    ListNode&lt;T&gt; *a=<span class="keyword">new</span> ListNode&lt;T&gt;( e, pred, <span class="keyword">this</span> );</div><div class="line">    pred-&gt;succ=a;</div><div class="line">    pred=a;</div><div class="line">    <span class="keyword">return</span> a;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="常见的链表问题"><a href="#常见的链表问题" class="headerlink" title="常见的链表问题"></a><strong>常见的链表问题</strong></h1><p>最常用方法：</p>
+<blockquote>
+<ol>
+<li><strong>快慢指针法</strong></li>
+<li><strong>数组过渡法</strong></li>
+<li><strong>先断后接、先接后断法</strong></li>
+</ol>
+</blockquote>
+<p>1. 单链表反转</p>
+<blockquote>
+<p>两个搬运工（指针），一个在header，一个在原链表的第一个节点，每次将第一个节点的直接后继断开接到header直接后继，直至原第一个节点后继为NULL。</p>
+</blockquote>
+<p>2. 找单链表倒数第n个元素、或中间元素</p>
+<blockquote>
+<p>快慢指针法。</p>
+<p>找倒数第n个元素，两指针同时走并相差n步，若前面指针到末尾，则后面指针则是倒数第n个节点。（细节：链表长度是否大于等于n）</p>
+<p>找中间元素，慢指针每走一步 快指针则走两步，快指针到尾时慢指针在中间。</p>
+<p>找中间元素，在允许遍历两遍的情况下也可以先遍历一遍求出链表长度，再走第二遍。</p>
+</blockquote>
+<p>3. 删除无头单链表的某个节点</p>
+<blockquote>
+<p>题意为不知header，但需要删除目前current指针指向的节点。</p>
+<p>思路：删除节点需要找到该节点的前驱，既然无法知道current节点的前驱，那就改为删除current的直接后继。将直接后继的数据复制给current，然后删除current的直接后继。</p>
+</blockquote>
+<p>4. 在无头单链表某节点前增加节点</p>
+<blockquote>
+<p>思路和3类似，先将要创建的节点连接在current节点的直接后继，然后交换两节点的数据。</p>
+</blockquote>
+<p>5. 判断单链表是否有环(可能是部分环，非循环单链表)</p>
+<blockquote>
+<p>快慢指针法</p>
+<p>一个步长为2，一个步长为1，若步长为2的跑到末尾，则没有环，若在跑到末尾之前(可能没有末尾)，两指针相遇，则说明有环。</p>
+</blockquote>
+<p>6. 判断两单链表是否相交</p>
+<blockquote>
+<p>首先明确：两单链表一旦相交，自交点之后的节点将完全相同！</p>
+<p>时间复杂度均为O( len1+len2 )</p>
+<ol>
+<li>法1：数组过渡法，将两个单链表每个节点的地址记录于两个数组，看两个数组是否有相同元素</li>
+<li>法2：先接后断法，将第一个链表首尾相接，然后用法5对第二个链表进行判断，若有环则相交，若无环则不相交，注意完成判断后要将第一个链表断开。</li>
+<li>法3：直接法：直接判断两链表末节点是否相同</li>
+</ol>
+</blockquote>
+<p>7. 已知两单链表相交，求相交点</p>
+<blockquote>
+<p>快慢指针法</p>
+<p>先求两链表长度len1,len2，快指针先走abs(len1-len2)步，而后两指针同时前走并判断是否相等，若在某时刻之前不等，而在此时相等，则此时为交点</p>
+</blockquote>
+<p>8. 求两递增单链表AB差集A-B(元素在A而不在B)</p>
+<blockquote>
+<p>归并的思想</p>
+<p>每次取表头元素进行大小判断，若A’&lt;’B则通过，若A==B则剃除，若A&gt;B则将B指针向后移动直至A’&lt;’B或A==B</p>
+</blockquote>
+
       
 
       
@@ -217,16 +397,75 @@
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/12/list/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://zedom1.github.io/2017/08/12/list/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/07/15/sat/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">浅析基于分离轴原理的碰撞检测及分离算法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -241,196 +480,46 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-sat" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/15/sat/">浅析基于分离轴原理的碰撞检测及分离算法</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/15/sat/" class="archive-article-date">
-  	<time datetime="2017-07-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="导言"><a href="#导言" class="headerlink" title="导言"></a><strong>导言</strong></h1><p>分离轴原理（SAT）是一个能用于2d游戏中凸多边形碰撞检测的算法，在自制游戏中我将其作为玩家、怪物、子弹和墙壁碰撞检测及分离的核心算法。</p>
-<p>想要实现分离轴原理首先需要有一定的向量知识以及算法实现能力，在实现过程中我自行实现了一个Vector向量类作为基本函数、向量对象的提供者。
-        
-          <a class="article-more-a" href="/2017/07/15/sat/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">游戏制作</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法/" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/15/sat/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#链表特点："><span class="toc-number">1.1.</span> <span class="toc-text">链表特点：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分类"><span class="toc-number">2.</span> <span class="toc-text">分类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#建议"><span class="toc-number">2.1.</span> <span class="toc-text">建议</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#单链表"><span class="toc-number">3.</span> <span class="toc-text">单链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实现"><span class="toc-number">3.1.</span> <span class="toc-text">具体实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-创建链表"><span class="toc-number">3.1.1.</span> <span class="toc-text">1. 创建链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-插入单节点"><span class="toc-number">3.1.2.</span> <span class="toc-text">2. 插入单节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-查找元素"><span class="toc-number">3.1.3.</span> <span class="toc-text">3. 查找元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-循秩访问单个节点"><span class="toc-number">3.1.4.</span> <span class="toc-text">4. 循秩访问单个节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-删除单个节点"><span class="toc-number">3.1.5.</span> <span class="toc-text">5. 删除单个节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-清空链表"><span class="toc-number">3.1.6.</span> <span class="toc-text">6. 清空链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-排序"><span class="toc-number">3.1.7.</span> <span class="toc-text">10. 排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-去重"><span class="toc-number">3.1.8.</span> <span class="toc-text">11. 去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-反转"><span class="toc-number">3.1.9.</span> <span class="toc-text">12. 反转</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#双向链表"><span class="toc-number">4.</span> <span class="toc-text">双向链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-排序"><span class="toc-number">4.1.</span> <span class="toc-text">1. 排序</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常见的链表问题"><span class="toc-number">5.</span> <span class="toc-text">常见的链表问题</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
   
-    <article id="post-Hello,World" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/14/Hello,World/">Hello,World</a>
-    </h1>
   
 
-        
-        <a href="/2017/07/14/Hello,World/" class="archive-article-date">
-  	<time datetime="2017-07-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>自踏入大学也近一年了，在这一年的大一生活中，从零开始学习计算机方面的基础知识，一点点接触c++、算法，再到windows编程、git，并打算建立个人博客记录自己学习的点滴，分享些自己的看法。
-        
-          <a class="article-more-a" href="/2017/07/14/Hello,World/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">others</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/others/" class="article-tag-list-link color2">others</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/14/Hello,World/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
+  
 
   
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'true'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
   
 
 
@@ -454,8 +543,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
