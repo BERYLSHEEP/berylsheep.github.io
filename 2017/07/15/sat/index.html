@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat3.png">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat4.png">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat5.png">
-<meta property="og:updated_time" content="2017-08-14T17:33:43.588Z">
+<meta property="og:updated_time" content="2017-08-14T18:20:06.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅析基于分离轴原理的碰撞检测及分离算法">
 <meta name="twitter:description" content="导言分离轴原理（SAT）是一个能用于2d游戏中凸多边形碰撞检测的算法，在自制游戏中我将其作为玩家、怪物、子弹和墙壁碰撞检测及分离的核心算法。 想要实现分离轴原理首先需要有一定的向量知识以及算法实现能力，在实现过程中我自行实现了一个Vector向量类作为基本函数、向量对象的提供者。">
@@ -251,6 +251,7 @@
 <h1 id="分离"><a href="#分离" class="headerlink" title="分离"></a><strong>分离</strong></h1><p>在检测到碰撞基础上进行分离： 在第五步中我们得到了最小分离距离和投影轴方向，又因为投影轴向量已经单位化，因此向量分别乘以距离即是坐标需要移动的距离，至于分离谁则需要自行根据情况决定。 $$ x-=min \times \vec{bmin}.x; $$ $$ y-=min \times \vec{bmin}.y; $$</p>
 <p>(（x，y）为物体中心坐标，bmin为保留的投影轴，min为最小分离距离)</p>
 <h1 id="圆的碰撞检测及分离"><a href="#圆的碰撞检测及分离" class="headerlink" title="圆的碰撞检测及分离"></a><strong>圆的碰撞检测及分离</strong></h1><p>圆与其它凸多边形又有些许不同，它没有可以用于生成投影轴的边，于是乎我们用圆心和另一个凸多边形距离圆心最近的点的连线作为投影轴，再结合枚举第二个凸多边形的各边的法线，就可以按老方法进行检测和分离了。 至于圆投影到投影轴上，只需要作原点到圆心的向量，将该向量投影到投影轴上然后加减半径就好了。 <img src="http://ot1c7ttzm.bkt.clouddn.com/sat5.png" alt="投影3"></p>
+<h1 id="完整实现代码"><a href="#完整实现代码" class="headerlink" title="完整实现代码"></a><strong>完整实现代码</strong></h1><p><a href="https://gist.github.com/zedom1/8c5aa61a92e6c077307586303f30f0c6" target="_blank" rel="external">碰撞检测完整实现(两凸多边形版和圆形凸多边形版) </a></p>
 
       
 
@@ -387,7 +388,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#导言"><span class="toc-number">1.</span> <span class="toc-text">导言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原理介绍"><span class="toc-number">2.</span> <span class="toc-text">原理介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是碰撞？"><span class="toc-number">2.1.</span> <span class="toc-text">什么是碰撞？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#光线检测法"><span class="toc-number">2.2.</span> <span class="toc-text">光线检测法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#投影"><span class="toc-number">2.3.</span> <span class="toc-text">投影</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进一步优化"><span class="toc-number">2.4.</span> <span class="toc-text">进一步优化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现步骤"><span class="toc-number">3.</span> <span class="toc-text">实现步骤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分离"><span class="toc-number">4.</span> <span class="toc-text">分离</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#圆的碰撞检测及分离"><span class="toc-number">5.</span> <span class="toc-text">圆的碰撞检测及分离</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#导言"><span class="toc-number">1.</span> <span class="toc-text">导言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原理介绍"><span class="toc-number">2.</span> <span class="toc-text">原理介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是碰撞？"><span class="toc-number">2.1.</span> <span class="toc-text">什么是碰撞？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#光线检测法"><span class="toc-number">2.2.</span> <span class="toc-text">光线检测法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#投影"><span class="toc-number">2.3.</span> <span class="toc-text">投影</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进一步优化"><span class="toc-number">2.4.</span> <span class="toc-text">进一步优化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现步骤"><span class="toc-number">3.</span> <span class="toc-text">实现步骤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分离"><span class="toc-number">4.</span> <span class="toc-text">分离</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#圆的碰撞检测及分离"><span class="toc-number">5.</span> <span class="toc-text">圆的碰撞检测及分离</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#完整实现代码"><span class="toc-number">6.</span> <span class="toc-text">完整实现代码</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -551,15 +552,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">游戏制作</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">栈</a>
               </li>
             
             <div class="clearfix"></div>
