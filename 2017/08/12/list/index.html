@@ -9,13 +9,13 @@
   <title>数据结构笔记（一）：链表 | Zedom</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="概述线性表的操作类型：  静态操作：仅读取，内容和组成一般不变，如get、search 动态操作：需写入，局部或整体将改变，如insert、remove">
-<meta name="keywords" content="数据结构,链表,学习笔记">
+<meta name="keywords" content="数据结构,链表,学习笔记,c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构笔记（一）：链表">
 <meta property="og:url" content="https://zedom1.github.io/2017/08/12/list/index.html">
 <meta property="og:site_name" content="Zedom">
 <meta property="og:description" content="概述线性表的操作类型：  静态操作：仅读取，内容和组成一般不变，如get、search 动态操作：需写入，局部或整体将改变，如insert、remove">
-<meta property="og:updated_time" content="2017-08-12T18:43:34.219Z">
+<meta property="og:updated_time" content="2017-08-14T16:59:23.632Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构笔记（一）：链表">
 <meta name="twitter:description" content="概述线性表的操作类型：  静态操作：仅读取，内容和组成一般不变，如get、search 动态操作：需写入，局部或整体将改变，如insert、remove">
@@ -83,6 +83,8 @@
 				
 					<a class="github" target="_blank" href="https://github.com/zedom1" title="github"><i class="icon-github"></i></a>
 		        
+					<a class="qq" target="_blank" href="/402255686" title="qq"><i class="icon-qq"></i></a>
+		        
 					<a class="mail" target="_blank" href="/402255686@qq.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
@@ -123,6 +125,8 @@
 				<div class="social">
 					
 						<a class="github" target="_blank" href="https://github.com/zedom1" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="qq" target="_blank" href="/402255686" title="qq"><i class="icon-qq"></i></a>
 			        
 						<a class="mail" target="_blank" href="/402255686@qq.com" title="mail"><i class="icon-mail"></i></a>
 			        
@@ -186,6 +190,7 @@
 </ol>
 <p>各节点通过指针或引用连接，在逻辑上形成线性序列</p>
 <p><strong>链表实现过程中，代码的执行顺序非常重要！要注意的细节也很多。</strong></p>
+<p>以下均用c++实现。</p>
 <h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a><strong>分类</strong></h1><p>1.单向链表</p>
 <blockquote>
 <p>仅有succ指针</p>
@@ -356,6 +361,8 @@
 <p>归并的思想</p>
 <p>每次取表头元素进行大小判断，若A’&lt;’B则通过，若A==B则剃除，若A&gt;B则将B指针向后移动直至A’&lt;’B或A==B</p>
 </blockquote>
+<h1 id="完整实现代码"><a href="#完整实现代码" class="headerlink" title="完整实现代码"></a><strong>完整实现代码</strong></h1><p><a href="https://github.com/zedom1/DSA/blob/master/list/single_list.cpp" target="_blank" rel="external">单向链表的完整实现 </a></p>
+<p><a href="https://github.com/zedom1/DSA/blob/master/list/double_list.cpp" target="_blank" rel="external">双向链表的完整实现</a></p>
 
       
 
@@ -378,6 +385,10 @@
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
         		</li>
       		
 		</ul>
@@ -458,6 +469,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2017/08/14/stack/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          数据结构笔记（二）：栈和队列
+        
+      </div>
+    </a>
+  
   
     <a href="/2017/07/15/sat/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">浅析基于分离轴原理的碰撞检测及分离算法</div>
@@ -487,7 +507,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#链表特点："><span class="toc-number">1.1.</span> <span class="toc-text">链表特点：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分类"><span class="toc-number">2.</span> <span class="toc-text">分类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#建议"><span class="toc-number">2.1.</span> <span class="toc-text">建议</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#单链表"><span class="toc-number">3.</span> <span class="toc-text">单链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实现"><span class="toc-number">3.1.</span> <span class="toc-text">具体实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-创建链表"><span class="toc-number">3.1.1.</span> <span class="toc-text">1. 创建链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-插入单节点"><span class="toc-number">3.1.2.</span> <span class="toc-text">2. 插入单节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-查找元素"><span class="toc-number">3.1.3.</span> <span class="toc-text">3. 查找元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-循秩访问单个节点"><span class="toc-number">3.1.4.</span> <span class="toc-text">4. 循秩访问单个节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-删除单个节点"><span class="toc-number">3.1.5.</span> <span class="toc-text">5. 删除单个节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-清空链表"><span class="toc-number">3.1.6.</span> <span class="toc-text">6. 清空链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-排序"><span class="toc-number">3.1.7.</span> <span class="toc-text">10. 排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-去重"><span class="toc-number">3.1.8.</span> <span class="toc-text">11. 去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-反转"><span class="toc-number">3.1.9.</span> <span class="toc-text">12. 反转</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#双向链表"><span class="toc-number">4.</span> <span class="toc-text">双向链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-排序"><span class="toc-number">4.1.</span> <span class="toc-text">1. 排序</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常见的链表问题"><span class="toc-number">5.</span> <span class="toc-text">常见的链表问题</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#链表特点："><span class="toc-number">1.1.</span> <span class="toc-text">链表特点：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分类"><span class="toc-number">2.</span> <span class="toc-text">分类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#建议"><span class="toc-number">2.1.</span> <span class="toc-text">建议</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#单链表"><span class="toc-number">3.</span> <span class="toc-text">单链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实现"><span class="toc-number">3.1.</span> <span class="toc-text">具体实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-创建链表"><span class="toc-number">3.1.1.</span> <span class="toc-text">1. 创建链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-插入单节点"><span class="toc-number">3.1.2.</span> <span class="toc-text">2. 插入单节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-查找元素"><span class="toc-number">3.1.3.</span> <span class="toc-text">3. 查找元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-循秩访问单个节点"><span class="toc-number">3.1.4.</span> <span class="toc-text">4. 循秩访问单个节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-删除单个节点"><span class="toc-number">3.1.5.</span> <span class="toc-text">5. 删除单个节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-清空链表"><span class="toc-number">3.1.6.</span> <span class="toc-text">6. 清空链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-排序"><span class="toc-number">3.1.7.</span> <span class="toc-text">10. 排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-去重"><span class="toc-number">3.1.8.</span> <span class="toc-text">11. 去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-反转"><span class="toc-number">3.1.9.</span> <span class="toc-text">12. 反转</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#双向链表"><span class="toc-number">4.</span> <span class="toc-text">双向链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-排序"><span class="toc-number">4.1.</span> <span class="toc-text">1. 排序</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常见的链表问题"><span class="toc-number">5.</span> <span class="toc-text">常见的链表问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#完整实现代码"><span class="toc-number">6.</span> <span class="toc-text">完整实现代码</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -644,6 +664,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">栈</a>
               </li>
              
               <li class="article-tag-list-item">

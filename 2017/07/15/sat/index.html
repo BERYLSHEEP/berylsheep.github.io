@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat3.png">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat4.png">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/sat5.png">
-<meta property="og:updated_time" content="2017-07-15T12:27:54.661Z">
+<meta property="og:updated_time" content="2017-08-14T17:33:43.588Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅析基于分离轴原理的碰撞检测及分离算法">
 <meta name="twitter:description" content="导言分离轴原理（SAT）是一个能用于2d游戏中凸多边形碰撞检测的算法，在自制游戏中我将其作为玩家、怪物、子弹和墙壁碰撞检测及分离的核心算法。 想要实现分离轴原理首先需要有一定的向量知识以及算法实现能力，在实现过程中我自行实现了一个Vector向量类作为基本函数、向量对象的提供者。">
@@ -89,6 +89,8 @@
 				
 					<a class="github" target="_blank" href="https://github.com/zedom1" title="github"><i class="icon-github"></i></a>
 		        
+					<a class="qq" target="_blank" href="/402255686" title="qq"><i class="icon-qq"></i></a>
+		        
 					<a class="mail" target="_blank" href="/402255686@qq.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
@@ -129,6 +131,8 @@
 				<div class="social">
 					
 						<a class="github" target="_blank" href="https://github.com/zedom1" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="qq" target="_blank" href="/402255686" title="qq"><i class="icon-qq"></i></a>
 			        
 						<a class="mail" target="_blank" href="/402255686@qq.com" title="mail"><i class="icon-mail"></i></a>
 			        
@@ -189,11 +193,11 @@
 <li><p>将物体划分成多个凸多边形</p>
 </li>
 <li><p>将物体看作一个凸多边形，前提是对碰撞检测的精度要求并不高。</p>
-<h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a><strong>原理介绍</strong></h1></li>
+</li>
 </ol>
 </blockquote>
 </blockquote>
-<h2 id="什么是碰撞？"><a href="#什么是碰撞？" class="headerlink" title="什么是碰撞？"></a><strong>什么是碰撞？</strong></h2><p>首先来看这个问题：什么是碰撞？什么才叫发生了碰撞？ 最简单的解释就足够了：两个物体之间没有间隙，或者它们的图像之间有重叠，由此我们可以想到一个最常规的判断方法：光线检测法（自编名词，仅为帮助理解）。</p>
+<h1 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a><strong>原理介绍</strong></h1><h2 id="什么是碰撞？"><a href="#什么是碰撞？" class="headerlink" title="什么是碰撞？"></a><strong>什么是碰撞？</strong></h2><p>首先来看这个问题：什么是碰撞？什么才叫发生了碰撞？ 最简单的解释就足够了：两个物体之间没有间隙，或者它们的图像之间有重叠，由此我们可以想到一个最常规的判断方法：光线检测法（自编名词，仅为帮助理解）。</p>
 <h2 id="光线检测法"><a href="#光线检测法" class="headerlink" title="光线检测法"></a><strong>光线检测法</strong></h2><p><img src="http://ot1c7ttzm.bkt.clouddn.com/sat1.png" alt="光线检测法"></p>
 <p>假设我们手上拿着手电筒，360°绕着这两个物体照射，当有一束光能够从两个物体中间穿过去，那么这两个物体之间就存在间隙，也就是说它们没有发生碰撞。 到此我们可以得到：</p>
 <blockquote>
@@ -206,26 +210,19 @@
 </blockquote>
 <h2 id="投影"><a href="#投影" class="headerlink" title="投影"></a><strong>投影</strong></h2><p>现在介绍一下一个非常关键的概念，也是整个算法的基础：<strong>投影</strong>。 两个物体未发生碰撞 -&gt; 两个物体之间有空隙 -&gt; 可以找到一条穿过它们中间的一条直线。 那么，<strong>两个物体在垂直这条线的投影轴上的投影也必定存在空隙</strong>。 <img src="http://ot1c7ttzm.bkt.clouddn.com/sat3.png" alt="投影1"></p>
 <h2 id="进一步优化"><a href="#进一步优化" class="headerlink" title="进一步优化"></a><strong>进一步优化</strong></h2><p>若要枚举所有角度所有直线，需要大量的时间用于计算，最直接的影响就是游戏卡顿。所幸，这是两个凸多边形，基于多边形的性质，我们可以把检测的角度数量缩减为两个多边形边数之和，也就是这个算法的核心：<strong>以两个凸多边形边的法线作为投影轴，将两个凸多边形投影至投影轴上，判断是否相交。</strong></p>
-<h1 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a><strong>实现步骤</strong></h1><ol>
-<li><p>取第一个凸多边形相邻的两个点，得到向量a</p>
+<h1 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a><strong>实现步骤</strong></h1><p>1.取第一个凸多边形相邻的两个点，得到向量a</p>
 <blockquote>
 <p>$$Vector\ \vec{a}=(first.x1-first.x2,first.y1-first.y2)$$</p>
 </blockquote>
-</li>
-<li><p>求取向量a的法向量b并化为单位向量（为方便求取投影），b即为投影轴</p>
+<p>2.求取向量a的法向量b并化为单位向量（为方便求取投影），b即为投影轴</p>
 <blockquote>
 <p>$$Vector\ \vec{b}=(\frac{-\vec{a}.y}{\sqrt{\vec{a}.y^2+\vec{a}.x^2}},\frac{\vec{a}.x}{\sqrt{\vec{a}.y^2+\vec{a}.x^2}})$$</p>
 </blockquote>
-</li>
-<li><p>任取第一个多边形上一点，作从原点指向该点的向量c(first.x,first.y)，计算c在b上的投影$$ 投影=|\vec{c}|cos\theta=\frac{\vec{c} \cdot \vec{b}}{|\vec{b}|}=\vec{c} \cdot \vec{b} $$,又因为b已经化为单位向量，因此c在b上的投影就是b和c的点乘值。</p>
-<p>以此枚举第一个多边形上所有的点，记录下最大值max1和最小值min1</p>
-<p><img src="http://ot1c7ttzm.bkt.clouddn.com/sat4.png" alt="投影2"></p>
-</li>
-<li><p>同样枚举第二个多边形上所有点，得到最大值max2,最小值min2</p>
-</li>
-<li><p>判断是否碰撞</p>
-</li>
-</ol>
+<p>3.任取第一个多边形上一点，作从原点指向该点的向量c(first.x,first.y)，计算c在b上的投影$$ 投影=|\vec{c}|cos\theta=\frac{\vec{c} \cdot \vec{b}}{|\vec{b}|}=\vec{c} \cdot \vec{b} $$,又因为b已经化为单位向量，因此c在b上的投影就是b和c的点乘值。</p>
+<p>  以此枚举第一个多边形上所有的点，记录下最大值max1和最小值min1</p>
+<p>  <img src="http://ot1c7ttzm.bkt.clouddn.com/sat4.png" alt="投影2"></p>
+<p>4.同样枚举第二个多边形上所有点，得到最大值max2,最小值min2</p>
+<p>5.判断是否碰撞</p>
 <blockquote>
 <ul>
 <li>未发生碰撞</li>
@@ -248,14 +245,9 @@
 </ul>
 </blockquote>
 </blockquote>
-<ul>
-<li><p>只要在任意一轴上检测到没发生碰撞，则可立刻得到未发生碰撞的结论！无需继续检测其它轴。</p>
-</li>
-<li><p>回到步骤一，枚举第一、第二个多边形所有边作为投影轴，重复步骤1-5。</p>
-</li>
-<li><p>得出判断</p>
-</li>
-</ul>
+<p>6.只要在任意一轴上检测到没发生碰撞，则可立刻得到未发生碰撞的结论！无需继续检测其它轴。</p>
+<p>7.回到步骤1，枚举第一、第二个多边形所有边作为投影轴，重复步骤1-5。</p>
+<p>8.得出判断</p>
 <h1 id="分离"><a href="#分离" class="headerlink" title="分离"></a><strong>分离</strong></h1><p>在检测到碰撞基础上进行分离： 在第五步中我们得到了最小分离距离和投影轴方向，又因为投影轴向量已经单位化，因此向量分别乘以距离即是坐标需要移动的距离，至于分离谁则需要自行根据情况决定。 $$ x-=min \times \vec{bmin}.x; $$ $$ y-=min \times \vec{bmin}.y; $$</p>
 <p>(（x，y）为物体中心坐标，bmin为保留的投影轴，min为最小分离距离)</p>
 <h1 id="圆的碰撞检测及分离"><a href="#圆的碰撞检测及分离" class="headerlink" title="圆的碰撞检测及分离"></a><strong>圆的碰撞检测及分离</strong></h1><p>圆与其它凸多边形又有些许不同，它没有可以用于生成投影轴的边，于是乎我们用圆心和另一个凸多边形距离圆心最近的点的连线作为投影轴，再结合枚举第二个凸多边形的各边的法线，就可以按老方法进行检测和分离了。 至于圆投影到投影轴上，只需要作原点到圆心的向量，将该向量投影到投影轴上然后加减半径就好了。 <img src="http://ot1c7ttzm.bkt.clouddn.com/sat5.png" alt="投影3"></p>
@@ -552,6 +544,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">栈</a>
               </li>
              
               <li class="article-tag-list-item">

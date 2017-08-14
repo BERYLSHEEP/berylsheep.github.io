@@ -6,14 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://zedom1.github.io">
-  <title>Archives | Zedom</title>
+  <title>数据结构笔记（二）：栈和队列 | Zedom</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Zedom">
-<meta property="og:url" content="https://zedom1.github.io/archives/index.html">
+  <meta name="description" content="概述栈(stack)和队列(queue)均属于线性存储结构 栈特性：   LIFO ( last in first out ) 后进先出 元素插入和删除仅在一端进行   队列特性：   FIFO ( first in first out ) 先进先出 元素在队尾插入，在队头删除">
+<meta name="keywords" content="数据结构,学习笔记,c++,栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构笔记（二）：栈和队列">
+<meta property="og:url" content="https://zedom1.github.io/2017/08/14/stack/index.html">
 <meta property="og:site_name" content="Zedom">
+<meta property="og:description" content="概述栈(stack)和队列(queue)均属于线性存储结构 栈特性：   LIFO ( last in first out ) 后进先出 元素插入和删除仅在一端进行   队列特性：   FIFO ( first in first out ) 先进先出 元素在队尾插入，在队头删除">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/stack0.jpg">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/stack8.JPG">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/stack2.jpg">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/stack3.jpg">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/stack4.jpg">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/stack6.jpg">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/stack7.jpg">
+<meta property="og:updated_time" content="2017-08-14T17:30:24.699Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zedom">
+<meta name="twitter:title" content="数据结构笔记（二）：栈和队列">
+<meta name="twitter:description" content="概述栈(stack)和队列(queue)均属于线性存储结构 栈特性：   LIFO ( last in first out ) 后进先出 元素插入和删除仅在一端进行   队列特性：   FIFO ( first in first out ) 先进先出 元素在队尾插入，在队头删除">
+<meta name="twitter:image" content="http://ot1c7ttzm.bkt.clouddn.com/stack0.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Zedom" type="application/atom+xml">
   
@@ -151,36 +164,235 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-stack" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/14/stack/" class="archive-article-date">
-  	<time datetime="2017-08-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-14</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/14/stack/">数据结构笔记（二）：栈和队列</a>
+    <h1 class="article-title" itemprop="name">
+      数据结构笔记（二）：栈和队列
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/08/14/stack/" class="archive-article-date">
+  	<time datetime="2017-08-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a><strong>概述</strong></h1><p><strong>栈</strong>(stack)和<strong>队列</strong>(queue)均属于<strong>线性存储</strong>结构</p>
+<p>栈特性：</p>
+<blockquote>
+<ol>
+<li>LIFO ( last in first out ) 后进先出</li>
+<li>元素插入和删除仅在一端进行</li>
+</ol>
+</blockquote>
+<p>队列特性：</p>
+<blockquote>
+<ol>
+<li>FIFO ( first in first out ) 先进先出</li>
+<li>元素在队尾插入，在队头删除</li>
+</ol>
+</blockquote>
+<a id="more"></a>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/stack0.jpg" alt="栈和队列" title="栈和队列"></p>
+<p>这两种结构均可以用数组或链表实现</p>
+<p>本文主要介绍栈，以下实现均为c++.</p>
+<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a><strong>栈</strong></h1><h2 id="一-常用接口："><a href="#一-常用接口：" class="headerlink" title="一. 常用接口："></a><strong>一. 常用接口：</strong></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>函数名</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>empty()</td>
+<td>判断是否为空</td>
+</tr>
+<tr>
+<td>int</td>
+<td>size()</td>
+<td>获取栈的大小</td>
+</tr>
+<tr>
+<td>void</td>
+<td>push(n)</td>
+<td>将n压入栈</td>
+</tr>
+<tr>
+<td>T&amp;</td>
+<td>top()</td>
+<td>取栈顶元素而不弹出</td>
+</tr>
+<tr>
+<td>T</td>
+<td>pop()</td>
+<td>弹出栈顶元素</td>
+</tr>
+</tbody>
+</table>
+<h2 id="二-基本定义："><a href="#二-基本定义：" class="headerlink" title="二. 基本定义："></a><strong>二. 基本定义：</strong></h2><p>本文用数组实现栈。<br>在开始给栈初始化一定空间，每当插入数据达到一定规模则进行扩容，删除数据达到一定规模则进行缩容。</p>
+<p>（ 扩容和缩容均采用加倍或减半策略，分摊时间复杂度为O(1) ）</p>
+<p>栈顶在数据数组的末尾，增加元素和删除元素只需要O(1)的时间。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Stack</span></span></div><div class="line">&#123;</div><div class="line"><span class="keyword">private</span>:</div><div class="line">	T *data;</div><div class="line">	<span class="keyword">int</span> _size,maxsize;   <span class="comment">// 当前规模和最大规模</span></div><div class="line"></div><div class="line"><span class="keyword">protected</span>:</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">expand</span><span class="params">()</span></span>;  <span class="comment">// 扩容</span></div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">shrink</span><span class="params">()</span></span>;  <span class="comment">// 缩容</span></div><div class="line"></div><div class="line"><span class="keyword">public</span>:</div><div class="line">	Stack()&#123; _size =<span class="number">0</span> ; maxsize=<span class="number">4</span>; data=<span class="keyword">new</span> T[maxsize]; &#125;;</div><div class="line">	Stack( T * origin , <span class="keyword">int</span> n );   <span class="comment">// 可由数据数组进行初始化，origin[0]对应栈顶</span></div><div class="line">	~Stack() &#123; <span class="keyword">delete</span> []data; &#125;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">( T <span class="keyword">const</span> &amp; e )</span> </span>&#123; expand(); data[_size++]=e;  &#125;</div><div class="line">	<span class="function">T <span class="title">pop</span><span class="params">( )</span> </span>&#123; shrink(); <span class="keyword">return</span> data[--_size];   &#125;</div><div class="line">	<span class="function">T &amp; <span class="title">top</span><span class="params">( )</span> </span>&#123; <span class="keyword">return</span> data[_size<span class="number">-1</span>];&#125;;</div><div class="line">	<span class="function"><span class="keyword">int</span> <span class="title">empty</span><span class="params">()</span><span class="keyword">const</span> </span>&#123;<span class="keyword">return</span> _size==<span class="number">0</span>;&#125;</div><div class="line">	<span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span><span class="keyword">const</span> </span>&#123;<span class="keyword">return</span> _size;&#125;</div><div class="line">	<span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">( T <span class="keyword">const</span> &amp; e )</span><span class="keyword">const</span></span>;  <span class="comment">// 查询栈内是否有该元素，有则返回秩，用于n皇后问题</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="三-典型应用："><a href="#三-典型应用：" class="headerlink" title="三. 典型应用："></a><strong>三. 典型应用：</strong></h2><p><strong>一. 逆序输出</strong></p>
+<p>输出次序和处理过程颠倒</p>
+<p>例如：进制转换</p>
+<p><strong>二. 递归嵌套</strong></p>
+<p>具有自相似性 ( 总体和局部相似 )</p>
+<p>例如：括号匹配、栈混洗(stack permutation)</p>
+<p><strong>三. 延迟缓冲</strong></p>
+<p>线性扫描算法模式</p>
+<p>例如：中缀表达式求值</p>
+<p><strong>四. 栈式计算</strong></p>
+<p>例如：逆波兰表达式转换（RPN Reverse Polish Notation）</p>
+<p><strong>五. 试探回溯</strong></p>
+<p>例如：n皇后问题、寻路</p>
+<p>下面开始一一介绍这些应用：</p>
+<h3 id="3-1-进制转换："><a href="#3-1-进制转换：" class="headerlink" title="3-1. 进制转换："></a><strong>3-1. 进制转换：</strong></h3><p>思路：短除法。对于目前的数字n和数制base，每次记录n%base的值，而后将n除以base，最后将之前记录的值逆向输出即是n在base数制下的值。</p>
+<p>借用栈的特性我们能够很容易的实现将之前记录的值逆向输出这一功能，只需要不断将n%base入栈即可，在短除完毕后不断出栈直至栈为空。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">convert</span><span class="params">(  <span class="keyword">int</span> n , <span class="keyword">int</span> base )</span> </span></div><div class="line">&#123;</div><div class="line">	Stack&lt;<span class="keyword">char</span>&gt;s;</div><div class="line">	<span class="keyword">static</span> <span class="keyword">char</span> digit[]=</div><div class="line">	&#123;<span class="string">'0'</span>,<span class="string">'1'</span>,<span class="string">'2'</span>,<span class="string">'3'</span>,<span class="string">'4'</span>,<span class="string">'5'</span>,<span class="string">'6'</span>,<span class="string">'7'</span>,<span class="string">'8'</span>,<span class="string">'9'</span>,<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>,<span class="string">'E'</span>,<span class="string">'F'</span>&#125;;</div><div class="line">	<span class="comment">// 进制限定在2-16，有需要可以继续扩展</span></div><div class="line">	<span class="keyword">while</span>(n)</div><div class="line">	&#123;</div><div class="line">		s.push( digit[n%base]);</div><div class="line">		n/=base;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">while</span>( !s.empty() )</div><div class="line">		<span class="built_in">cout</span>&lt;&lt;s.pop();</div><div class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-2-括号匹配："><a href="#3-2-括号匹配：" class="headerlink" title="3-2. 括号匹配："></a><strong>3-2. 括号匹配：</strong></h3><p>判断某一表达式内的括号是否完全匹配</p>
+<p>对于只有一种括号 () 的情况，我们可以用一个变量n记录括号的数目，当碰到左括号n自增，碰到右括号n自减，扫描完表达式之后若n==0同时在此期间n均大于等于0，则说明该表达式内的括号完全匹配。</p>
+<p>然而，这仅适用于只需要检测一种括号的情况，若是不仅有小括号(),还有中括号[],乃至html中自定义的括号类型 <body> </body>，则计数法将失效。</p>
+<p>而借助栈我们能够很轻松地完成多括号匹配的任务。</p>
+<p>思路：每当遇到一个左括号（无论是小括号还是中括号还是其它自定义类型），就将其入栈，每当遇到一个右括号，则取栈顶元素进行鉴定，若是和右括号类型匹配的左括号，则将其出栈，若是和其类型不匹配，则可返回匹配失败。当进行到表达式结束后，若栈为空，则说明表达式匹配成功，若栈不为空，则匹配失败。</p>
+<p>显示为流程图即是</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/stack8.JPG" alt="流程图"></p>
+<p>下面来看一下代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">judge</span> <span class="params">( <span class="keyword">char</span> *s , <span class="keyword">int</span> n )</span> </span></div><div class="line">&#123;</div><div class="line">	Stack&lt;<span class="keyword">char</span>&gt;a;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span> ; i&lt;n; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span>( s[i]!=<span class="string">'('</span> &amp;&amp; s[i]!=<span class="string">')'</span> &amp;&amp; s[i]!=<span class="string">'['</span> &amp;&amp; s[i]!=<span class="string">']'</span> )</div><div class="line">			<span class="keyword">continue</span>;</div><div class="line">		<span class="keyword">if</span>( s[i]==<span class="string">'('</span>|| s[i]==<span class="string">'['</span>)</div><div class="line">			a.push(s[i]);</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(a.empty())</div><div class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>( (s[i]==<span class="string">')'</span>&amp;&amp;a.top()==<span class="string">'('</span>) || (s[i]==<span class="string">']'</span>&amp;&amp;a.top()==<span class="string">'['</span>) )</div><div class="line">			a.pop();</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(	a.empty() )</div><div class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-3-栈混洗："><a href="#3-3-栈混洗：" class="headerlink" title="3-3. 栈混洗："></a><strong>3-3. 栈混洗：</strong></h3><h4 id="3-3-0-概念："><a href="#3-3-0-概念：" class="headerlink" title="3-3-0. 概念："></a><strong>3-3-0. 概念：</strong></h4><p>栈混洗 ( Stack permutation )指的是：将栈A的所有元素借助中转栈S转移到栈B中。</p>
+<p>栈混洗的过程中只允许以下两个操作：</p>
+<blockquote>
+<ol>
+<li>A栈顶弹出并压入栈S         S.push(A.pop())</li>
+<li>S栈顶弹出并压入栈B          B.push(S.pop())</li>
+</ol>
+</blockquote>
+<h4 id="3-3-1-排列种数："><a href="#3-3-1-排列种数：" class="headerlink" title="3-3-1. 排列种数："></a><strong>3-3-1. 排列种数：</strong></h4><p>先来计算一下栈通过栈混洗操作后有多少种排列方式：</p>
+<p>设总数为n的栈有SP(n)种排列方式</p>
+<p>推导：对于第一个元素通过S进入栈B后，此时S为空，设B中有k个元素，则第一个元素后面有k-1个元素，而A中剩余n-k个元素，第一个元素可能第一个进入B，也可能最后一个进入B，所以k取值为[1,n]<br>对于第一个元素而言，它的排列方式有SP(n)种。</p>
+<p>$$SP(n)=\sum_{k=1}^n SP(k-1)*SP(n-k)$$</p>
+<p>解得$SP(n) = catalan(n) = \frac{(2n)!}{(n+1)!n!}$</p>
+<h4 id="3-3-2-甄别栈混洗："><a href="#3-3-2-甄别栈混洗：" class="headerlink" title="3-3-2. 甄别栈混洗："></a><strong>3-3-2. 甄别栈混洗：</strong></h4><p>如何甄别一个序列是否是栈混洗呢？</p>
+<p>三个元素栈混洗有5种，全排列有6种, &lt;1,2,3] 非栈混洗的排列为 &lt;2,1,3]  ( ‘&lt;’为栈顶方向 )</p>
+<p>而通过观察可得，对于任意三个元素，能否按某种相对次序出现在混洗中与其他元素无关</p>
+<p>对于 1&lt;=i &lt; j &lt; k&lt;=n,若出现 k i j的排列，则非栈混洗 （称为<strong>禁形</strong>）</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/stack2.jpg" alt="禁形1" title="禁形1"></p>
+<p>通过证明，禁形对于是否是栈混洗为 <strong>充要条件 </strong></p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/stack3.jpg" alt="禁形2" title="禁形2"></p>
+<p>那么我们可以得到如下的判别方法：</p>
+<p>O(n3)判别方法：分别枚举i，j，k</p>
+<p>O(n2)判别方法：枚举 i , j , j+1</p>
+<p>O(n)判别方法：贪心模拟栈混洗过程，看是否能够形成输出序列，若需要pop时S为空或者需要的元素在S中但不是栈顶，则判定不是栈混洗</p>
+<p>以下为O(n)的判别方法的实现：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">stackPermutation</span><span class="params">( T *origin, T * b , <span class="keyword">int</span> n )</span></span></div><div class="line">&#123;</div><div class="line">	Stack&lt;T&gt; s;</div><div class="line">	Stack&lt;T&gt; ori( origin ,n );</div><div class="line">	<span class="keyword">for</span>( <span class="keyword">int</span> j=<span class="number">0</span>; j&lt;n ; j++ )</div><div class="line">	&#123;	</div><div class="line">		<span class="keyword">if</span>( s.empty() )</div><div class="line">		&#123;	</div><div class="line">			<span class="keyword">if</span>( ori.empty() ) </div><div class="line">				<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">			s.push( ori.pop() );</div><div class="line">			<span class="built_in">cout</span>&lt;&lt;<span class="string">"push\n"</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">while</span>( !s.empty() )</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span>( s.top()==b[j] )</div><div class="line">			&#123;</div><div class="line">				s.pop();</div><div class="line">				<span class="built_in">cout</span>&lt;&lt;<span class="string">"pop\n"</span>;</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span></div><div class="line">			&#123;</div><div class="line">				<span class="keyword">if</span>( ori.empty() ) </div><div class="line">					<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">				s.push( ori.pop() );</div><div class="line">				<span class="built_in">cout</span>&lt;&lt;<span class="string">"push\n"</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>( !s.empty() || !ori.empty() )</div><div class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="3-3-3-栈混洗与括号匹配："><a href="#3-3-3-栈混洗与括号匹配：" class="headerlink" title="3-3-3. 栈混洗与括号匹配："></a><strong>3-3-3. 栈混洗与括号匹配：</strong></h4><p>值得注意的是，合法的栈混洗的过程中，同一元素的入栈和出栈操作和括号匹配相同，需要出栈的时候栈顶却不是对应的元素，则不是合法的栈混洗序列，在括号匹配中则是匹配失败。</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/stack4.jpg" alt="栈混洗与括号匹配" title="栈混洗与括号匹配"></p>
+<p>结论：合法的括号匹配相当于合法的栈混洗，若是输出不合法的混洗序列则说明表达式的括号不匹配</p>
+<p>同时，n对括号所能构成的合法表达式同为$SP(n) = catalan(n) = \frac{(2n)!}{(n+1)!n!}$种</p>
+<h3 id="3-4-中缀表达式求值："><a href="#3-4-中缀表达式求值：" class="headerlink" title="3-4. 中缀表达式求值："></a><strong>3-4. 中缀表达式求值：</strong></h3><h4 id="3-4-0-概述："><a href="#3-4-0-概述：" class="headerlink" title="3-4-0. 概述："></a><strong>3-4-0. 概述：</strong></h4><p>中缀表达式即是我们最常在数学中使用的形式：运算符在运算数中间，使用约定俗成的运算符优先级和使用括号来强调优先级。<br>例如 1+1 即是一个中缀表达式</p>
+<h4 id="3-4-1-算法："><a href="#3-4-1-算法：" class="headerlink" title="3-4-1. 算法："></a><strong>3-4-1. 算法：</strong></h4><p>主体思路：用两个栈分别保存<strong>操作数</strong>和<strong>运算符</strong>，每当有一个新的运算符，则判断栈顶运算符和当前运算符的优先级，若栈顶的优先级高，则进行栈顶的运算，若当前优先级高，则将该运算符压入栈。</p>
+<p>此外，值得注意的是</p>
+<p>一：为了方便判断优先级，在优先级表中<strong>同一阶级的运算符根据出现次序不同优先级也不同</strong>，如‘+’和‘-’，当‘+’在栈顶而’-‘作为新运算符时，’+’优先级大于’-‘，反之若’-‘在栈顶，则’-‘优先级大于’+’.</p>
+<p>二：默认表达式为合法，因此不会出现栈顶为右括号的情况(因为右括号想要入栈时，因优先级小于除左括号和\0之外的运算符，所以它和左括号之间的运算符都会出栈)</p>
+<p>三：同时，对于优先级为’=’的运算符不予入栈处理，反而是将栈顶元素出栈，此时是将一对对子(左右括号或\0)处理完毕。</p>
+<p>四：表达式开始前先将’\0‘压入运算符栈，和表达式字符串末尾的\0形成对子，可以看作一对括号。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> Prior[<span class="number">9</span>][<span class="number">9</span>] = </div><div class="line">&#123;  </div><div class="line"><span class="comment">//        +   -   *   /   ^   !   (   )  \0</span></div><div class="line"><span class="comment">/* + */</span>  <span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,</div><div class="line"><span class="comment">/* - */</span>  <span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,</div><div class="line"><span class="comment">/* * */</span>  <span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,</div><div class="line"><span class="comment">/* / */</span>  <span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,</div><div class="line"><span class="comment">/* ^ */</span>  <span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,</div><div class="line"><span class="comment">/* ! */</span>  <span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,<span class="string">' '</span>,<span class="string">'&gt;'</span>,<span class="string">'&gt;'</span>,</div><div class="line"><span class="comment">/* ( */</span>  <span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'='</span>,<span class="string">' '</span>,</div><div class="line"><span class="comment">/* ) */</span>  <span class="string">' '</span>,<span class="string">' '</span>,<span class="string">' '</span>,<span class="string">' '</span>,<span class="string">' '</span>,<span class="string">' '</span>,<span class="string">' '</span>,<span class="string">' '</span>,<span class="string">' '</span>,</div><div class="line"><span class="comment">/* \0*/</span>  <span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">'&lt;'</span>,<span class="string">' '</span>,<span class="string">'='</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">readNumber</span><span class="params">( <span class="keyword">char</span> *&amp;s , Stack&lt;<span class="keyword">float</span>&gt;&amp; opnd)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">float</span> ans=<span class="number">0</span>;</div><div class="line">	opnd.push( *s-<span class="string">'0'</span> );</div><div class="line">	<span class="keyword">while</span>( *(++s)&lt;=<span class="string">'9'</span>&amp;&amp; *s&gt;=<span class="string">'0'</span> )</div><div class="line">		opnd.push( opnd.pop()*<span class="number">10</span> + *s-<span class="string">'0'</span> );</div><div class="line">	<span class="keyword">if</span>(*s!=<span class="string">'.'</span>)   <span class="comment">// 可能是小数</span></div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	<span class="keyword">float</span> f=<span class="number">1</span>;</div><div class="line">	<span class="keyword">while</span>( *(++s)&lt;=<span class="string">'9'</span>&amp;&amp; *s&gt;=<span class="string">'0'</span> )</div><div class="line">		opnd.push( opnd.pop() + (*s-<span class="string">'0'</span>)*(f/=<span class="number">10.0</span>) );</div><div class="line">	<span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">getnum</span><span class="params">( <span class="keyword">char</span> a, <span class="keyword">int</span> &amp; num)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">switch</span>(a)</div><div class="line">	&#123;</div><div class="line">	<span class="keyword">case</span> <span class="string">'+'</span>: num=<span class="number">0</span>;<span class="keyword">return</span>;</div><div class="line">	<span class="keyword">case</span> <span class="string">'-'</span>: num=<span class="number">1</span>;<span class="keyword">return</span>;</div><div class="line">	<span class="keyword">case</span> <span class="string">'*'</span>: num=<span class="number">2</span>;<span class="keyword">return</span>;</div><div class="line">	<span class="keyword">case</span> <span class="string">'/'</span>: num=<span class="number">3</span>;<span class="keyword">return</span>;</div><div class="line">	<span class="keyword">case</span> <span class="string">'^'</span>: num=<span class="number">4</span>;<span class="keyword">return</span>;</div><div class="line">	<span class="keyword">case</span> <span class="string">'!'</span>: num=<span class="number">5</span>;<span class="keyword">return</span>;</div><div class="line">	<span class="keyword">case</span> <span class="string">'('</span>: num=<span class="number">6</span>;<span class="keyword">return</span>;</div><div class="line">	<span class="keyword">case</span> <span class="string">')'</span>: num=<span class="number">7</span>;<span class="keyword">return</span>;</div><div class="line">	<span class="keyword">case</span> <span class="string">'\0'</span>: num=<span class="number">8</span>;<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">char</span> <span class="title">orderBetween</span> <span class="params">( <span class="keyword">char</span> a, <span class="keyword">char</span> b)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> num1,num2;</div><div class="line">	getnum( a, num1 );</div><div class="line">	getnum( b, num2 );</div><div class="line">	<span class="keyword">return</span> Prior[num1][num2];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">float</span> <span class="title">cal</span><span class="params">( <span class="keyword">float</span> num1, <span class="keyword">char</span> op , <span class="keyword">float</span> num2)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">switch</span> (op)</div><div class="line">	&#123;</div><div class="line">	<span class="keyword">case</span> <span class="string">'+'</span>: <span class="keyword">return</span> num1+num2;</div><div class="line">	<span class="keyword">case</span> <span class="string">'-'</span>: <span class="keyword">return</span> num1-num2;</div><div class="line">	<span class="keyword">case</span> <span class="string">'*'</span>: <span class="keyword">return</span> num1*num2;</div><div class="line">	<span class="keyword">case</span> <span class="string">'/'</span>: <span class="keyword">return</span> num1/num2;</div><div class="line">	<span class="keyword">case</span> <span class="string">'^'</span>: <span class="keyword">return</span> <span class="built_in">pow</span>(num1,num2);</div><div class="line">	<span class="keyword">default</span> : <span class="built_in">exit</span>(<span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">float</span> <span class="title">cal</span><span class="params">( <span class="keyword">char</span> op, <span class="keyword">float</span> num1)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span>( <span class="built_in">abs</span>(num1<span class="number">-0</span>)&lt;<span class="number">1e-6</span> )</div><div class="line">		<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;num1 ; i++)</div><div class="line">		num1*=i;</div><div class="line">	<span class="keyword">return</span> num1;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">float</span> <span class="title">evaluate</span> <span class="params">( <span class="keyword">char</span> * s )</span></span></div><div class="line">&#123;</div><div class="line">	Stack&lt;<span class="keyword">float</span>&gt; opnd;</div><div class="line">	Stack&lt;<span class="keyword">char</span>&gt; optr;</div><div class="line">	<span class="keyword">float</span> num1,num2;</div><div class="line">	s[<span class="built_in">strlen</span>(s)]=<span class="string">'\0'</span>;</div><div class="line">	optr.push(<span class="string">'\0'</span>); <span class="comment">// 结尾操作符</span></div><div class="line">	<span class="keyword">while</span>( !optr.empty() )</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span>( (*s)&lt;=<span class="string">'9'</span>&amp;&amp;(*s)&gt;=<span class="string">'0'</span> ) <span class="comment">//当前是操作数</span></div><div class="line">		&#123;	</div><div class="line">			readNumber( s, opnd );  <span class="comment">// 可能是多位数</span></div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">			<span class="keyword">switch</span>( orderBetween( optr.top(),*s ) )</div><div class="line">			&#123;</div><div class="line">			<span class="keyword">case</span> <span class="string">'&lt;'</span>: optr.push(*s); s++; <span class="keyword">break</span>;</div><div class="line">			<span class="keyword">case</span> <span class="string">'='</span>: optr.pop(); s++; <span class="keyword">break</span>; <span class="comment">// () \0</span></div><div class="line">			<span class="keyword">case</span> <span class="string">'&gt;'</span>: </div><div class="line">			&#123;</div><div class="line">				<span class="keyword">char</span> op=optr.pop();</div><div class="line">				<span class="keyword">if</span>(op==<span class="string">'!'</span>)</div><div class="line">					opnd.push( cal( op, opnd.pop() ) );</div><div class="line">				<span class="keyword">else</span></div><div class="line">				&#123;</div><div class="line">				<span class="comment">// 逆向取数，可能是'-'号这些和次序相关的运算符</span></div><div class="line">					num2=opnd.pop();</div><div class="line">					num1=opnd.pop();</div><div class="line">					opnd.push( cal(num1,op,num2));</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> opnd.pop();  <span class="comment">// 表达式处理完毕后运算数栈最后剩下的就是表达式结果了</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-5-逆波兰表达式："><a href="#3-5-逆波兰表达式：" class="headerlink" title="3-5. 逆波兰表达式："></a><strong>3-5. 逆波兰表达式：</strong></h3><p>中缀表达式虽然符合人的使用和思维习惯，但是对于计算机处理而言过于繁琐了，于是就诞生了其它类型的表达式来简化计算机的运算，而逆波兰表达式就是其中一种。</p>
+<h4 id="3-5-0-概念："><a href="#3-5-0-概念：" class="headerlink" title="3-5-0. 概念："></a><strong>3-5-0. 概念：</strong></h4><p>逆波兰表达式 ( RPN : Reverse Polish Notation )</p>
+<p>没有括号和约定俗成的优先级，从左至右扫描表达式，运算符<strong>谁先出现算谁</strong>。</p>
+<p>运算符位于参与运算的运算数之后。</p>
+<p>例如：</p>
+<p>0！1+2 3！*4+5-^</p>
+<p>值得注意的是：不同运算数之间可能仅是以空格分格，同一运算数数字之间没有空格。</p>
+<p>以上表达式翻译成中缀表达式即是：</p>
+<p>( 0! + 1 )^( 2 * 3! +4 - 5  )</p>
+<p>和中缀表达式相比，逆波兰表达式的优点在于<strong>计算速度更快</strong>。</p>
+<p>在得到一个函数表达式后，若是之后的调用仅是修改数字而不修改运算符，那么对于中缀表达式则需要算n次，对于逆波兰表达式需要1次转换+算n次，效率将高很多，当然代价就是转换的速度很慢。</p>
+<h4 id="3-5-2-计算："><a href="#3-5-2-计算：" class="headerlink" title="3-5-2. 计算："></a><strong>3-5-2. 计算：</strong></h4><p>计算逆波兰表达式相比中缀表达式要简单的多，只需要一个运算数栈，遇到数字则入栈，遇到运算符就取数字计算。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">float</span> <span class="title">rpnEvaluate</span><span class="params">( <span class="keyword">char</span> * RPN )</span></span></div><div class="line">&#123;</div><div class="line">	Stack&lt;<span class="keyword">float</span>&gt; opnd;</div><div class="line">	<span class="keyword">float</span> num1,num2;</div><div class="line">	<span class="keyword">int</span> len=<span class="built_in">strlen</span>(RPN);</div><div class="line">	RPN[len++]=<span class="string">'\0'</span>;</div><div class="line">	<span class="keyword">while</span>(len--)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span>( (*RPN)&lt;=<span class="string">'9'</span>&amp;&amp;(*RPN)&gt;=<span class="string">'0'</span> ) <span class="comment">//当前是操作数</span></div><div class="line">		&#123;	</div><div class="line">			readNumber( RPN, opnd );  <span class="comment">// 可能是多位数</span></div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			<span class="keyword">char</span> op=*RPN;</div><div class="line">			<span class="keyword">if</span>(op==<span class="string">'!'</span>)</div><div class="line">				opnd.push( cal( op, opnd.pop() ) );</div><div class="line">			<span class="keyword">else</span></div><div class="line">			&#123;</div><div class="line">				num2=opnd.pop();</div><div class="line">				num1=opnd.pop();</div><div class="line">				opnd.push( cal(num1,op,num2));</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> opnd.pop();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="3-5-2-手工转换："><a href="#3-5-2-手工转换：" class="headerlink" title="3-5-2. 手工转换："></a><strong>3-5-2. 手工转换：</strong></h4><p>手工将中缀表达式转换成逆波兰表达式的方法如下：</p>
+<p>1.用括号显式界定所有运算符</p>
+<p>2.将所有运算符移到对应的右括号后面</p>
+<p>3.去掉所有括号</p>
+<p>4.稍加整理</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/stack6.jpg" alt="手工转换" title="手工转换"></p>
+<h4 id="3-5-3-转换算法："><a href="#3-5-3-转换算法：" class="headerlink" title="3-5-3. 转换算法："></a><strong>3-5-3. 转换算法：</strong></h4><p>非常有意思的是，计算中缀表达式的算法流程和转换成RPN的算法流程大致相同，只需要在将数字入栈的同时接入RPN的末尾，弹出运算符时接入RPN末尾即可。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// evaluate函数中调用的其它函数和中缀表达式中的一样，在此不重复附上</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">append</span><span class="params">( <span class="keyword">char</span> *&amp;RPN, <span class="keyword">float</span> num )</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> len=<span class="built_in">strlen</span>(RPN);</div><div class="line">	<span class="keyword">char</span> buf[<span class="number">64</span>];</div><div class="line">	<span class="keyword">if</span>( num!= (<span class="keyword">float</span>)(<span class="keyword">int</span>)num )   <span class="comment">// 判断是否为整数</span></div><div class="line">		<span class="built_in">sprintf</span>( buf, <span class="string">"%.2f \0"</span>,num); <span class="comment">// 小数暂取两位</span></div><div class="line">	<span class="keyword">else</span></div><div class="line">		<span class="built_in">sprintf</span>( buf, <span class="string">"%d \0"</span>,(<span class="keyword">int</span>)num);</div><div class="line">	RPN=(<span class="keyword">char</span> *)<span class="built_in">realloc</span>( RPN, <span class="keyword">sizeof</span>( <span class="keyword">char</span> )*( len+<span class="built_in">strlen</span>( buf )+<span class="number">1</span> ) );   <span class="comment">// 扩容</span></div><div class="line">	<span class="built_in">strcat</span>( RPN,buf );</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">append</span><span class="params">( <span class="keyword">char</span> *&amp;RPN, <span class="keyword">char</span> op )</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> len=<span class="built_in">strlen</span>( RPN );</div><div class="line">	RPN=(<span class="keyword">char</span> *)<span class="built_in">realloc</span>( RPN, <span class="keyword">sizeof</span>( <span class="keyword">char</span> )*( len + <span class="number">3</span> ) );</div><div class="line">	<span class="built_in">sprintf</span>( RPN+len, <span class="string">"%c \0"</span>,op );</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">float</span> <span class="title">evaluate</span> <span class="params">( <span class="keyword">char</span> * s , <span class="keyword">char</span> *&amp;RPN )</span></span></div><div class="line">&#123; <span class="comment">// s：中缀表达式， RPN：需要存放转换后表达式的位置</span></div><div class="line">	Stack&lt;<span class="keyword">float</span>&gt; opnd;</div><div class="line">	Stack&lt;<span class="keyword">char</span>&gt; optr;</div><div class="line">	<span class="keyword">float</span> num1,num2;</div><div class="line">	s[<span class="built_in">strlen</span>(s)]=<span class="string">'\0'</span>;</div><div class="line">	RPN[<span class="number">0</span>]=<span class="string">'\0'</span>;</div><div class="line">	optr.push(<span class="string">'\0'</span>); <span class="comment">// 结尾操作符</span></div><div class="line">	<span class="keyword">while</span>( !optr.empty() )</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span>( (*s)&lt;=<span class="string">'9'</span>&amp;&amp;(*s)&gt;=<span class="string">'0'</span> ) <span class="comment">//当前是操作数</span></div><div class="line">		&#123;	</div><div class="line">			readNumber( s, opnd );  <span class="comment">// 可能是多位数</span></div><div class="line"><span class="comment">//////// RPN转换 ////////</span></div><div class="line">			append( RPN, opnd.top());</div><div class="line"><span class="comment">//////// RPN转换 ////////</span></div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">			<span class="keyword">switch</span>( orderBetween( optr.top(),*s ) )</div><div class="line">			&#123;</div><div class="line">			<span class="keyword">case</span> <span class="string">'&lt;'</span>: optr.push(*s); s++; <span class="keyword">break</span>;</div><div class="line">			<span class="keyword">case</span> <span class="string">'='</span>: optr.pop(); s++; <span class="keyword">break</span>; <span class="comment">// () \0</span></div><div class="line">			<span class="keyword">case</span> <span class="string">'&gt;'</span>: </div><div class="line">			&#123;</div><div class="line">				<span class="keyword">char</span> op=optr.pop();</div><div class="line"><span class="comment">//////// RPN转换 ////////</span></div><div class="line">				append( RPN, op );</div><div class="line"><span class="comment">//////// RPN转换 ////////</span></div><div class="line">				<span class="keyword">if</span>(op==<span class="string">'!'</span>)</div><div class="line">					opnd.push( cal( op, opnd.pop() ) );</div><div class="line">				<span class="keyword">else</span></div><div class="line">				&#123;</div><div class="line">					num2=opnd.pop();</div><div class="line">					num1=opnd.pop();</div><div class="line">					opnd.push( cal(num1,op,num2));</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> opnd.pop();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-6-n皇后问题："><a href="#3-6-n皇后问题：" class="headerlink" title="3-6. n皇后问题："></a><strong>3-6. n皇后问题：</strong></h3><h4 id="3-6-0-概述："><a href="#3-6-0-概述：" class="headerlink" title="3-6-0. 概述："></a><strong>3-6-0. 概述：</strong></h4><p>试探：逐步增加候选解的长度 ，逐步向目标解靠近</p>
+<p>回溯：一旦发现和目标解不同，则回溯到上一步继续试探</p>
+<p>一个形象的比方：拿着绳子探索迷宫，绳子一段绑在入口，人随意选择一方向前进，一旦遇到死路，做好标记，沿着绳子后退到上一个分叉口，选择另一个方向，若是该分叉口所有前进方向均是死路，则沿着绳子返回再上一个分支，以此直到找到出口或是试完所有可能。</p>
+<p>n皇后问题：在n*n的棋盘中放置n个皇后，n个皇后间两两不冲突。冲突的条件是一个皇后在另一个皇后同一行或同一列或正反对角线上。</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/stack7.jpg" alt="n皇后问题" title="n皇后问题"></p>
+<h4 id="3-6-1-算法："><a href="#3-6-1-算法：" class="headerlink" title="3-6-1. 算法："></a><strong>3-6-1. 算法：</strong></h4><p>用栈保存当前探索进度，逐行放置皇后，每当确定皇后可以在当前列放置时，将其入栈，若所有列均不可放置，则取出栈顶元素，继续向后面的列尝试放置。 若是栈的大小等于n，说明已经构成一个解，此时可以输出栈内元素也可将计数器自增。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="keyword">int</span> Stack&lt;T&gt;::find( T <span class="keyword">const</span> &amp; e ) <span class="keyword">const</span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">for</span>( <span class="keyword">int</span> i=<span class="number">0</span> ; i&lt;_size ; i++)</div><div class="line">		<span class="keyword">if</span>( data[i] == e )</div><div class="line">			<span class="keyword">return</span> i;</div><div class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Queen</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> x,y;</div><div class="line">	Queen( <span class="keyword">int</span> xx=<span class="number">0</span>, <span class="keyword">int</span> yy=<span class="number">0</span> ):x(xx),y(yy)&#123;&#125;</div><div class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> == ( Queen <span class="keyword">const</span> &amp; a ) <span class="keyword">const</span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span>( x==a.x || y==a.y || x+y==a.x+a.y || x-y==a.x-a.y )</div><div class="line">			<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> != ( Queen <span class="keyword">const</span> &amp; a ) <span class="keyword">const</span> &#123; <span class="keyword">return</span> !( *<span class="keyword">this</span> == a );&#125;</div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">placeQueens</span><span class="params">( <span class="keyword">int</span> n )</span> <span class="comment">// n皇后</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> num_solution=<span class="number">0</span>;</div><div class="line">	Stack&lt; Queen &gt;a; </div><div class="line">	<span class="function">Queen <span class="title">q</span><span class="params">(<span class="number">0</span>,<span class="number">0</span>)</span></span>;  <span class="comment">//当前寻求位置放的皇后</span></div><div class="line">	<span class="keyword">do</span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span>( a.size()&gt;=n || q.y&gt;=n ) <span class="comment">// 若是列数超出边界或已经构成一个解</span></div><div class="line">		&#123;	</div><div class="line">			q=a.pop();   <span class="comment">// 取出栈顶元素，列数自增继续尝试</span></div><div class="line">			q.y++;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">while</span>( q.y&lt;n &amp;&amp; a.find(q)&gt;=<span class="number">0</span> ) <span class="comment">// 若和其它皇后发生冲突，则find函数会返回冲突的皇后的秩 [0,n) 若是-1则无冲突</span></div><div class="line">			q.y++;</div><div class="line">		<span class="keyword">if</span>( q.y&lt;n )  <span class="comment">// 找到位置放置皇后</span></div><div class="line">		&#123;</div><div class="line">			a.push( q );</div><div class="line">			<span class="keyword">if</span>( a.size()&gt;=n )</div><div class="line">				num_solution++;</div><div class="line">			q.x++;  <span class="comment">// 前往下一行找解，列数重置</span></div><div class="line">			q.y=<span class="number">0</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">while</span>( !( q.x==<span class="number">0</span> &amp;&amp; q.y&gt;=n ) );</div><div class="line">	<span class="keyword">return</span> num_solution;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a><strong>队列</strong></h1><h2 id="一-常用接口：-1"><a href="#一-常用接口：-1" class="headerlink" title="一. 常用接口："></a><strong>一. 常用接口：</strong></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>函数名</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>empty()</td>
+<td>判断是否为空</td>
+</tr>
+<tr>
+<td>int</td>
+<td>size()</td>
+<td>获取队列的大小</td>
+</tr>
+<tr>
+<td>void</td>
+<td>enqueue(n)</td>
+<td>将n入队</td>
+</tr>
+<tr>
+<td>T&amp;</td>
+<td>front()</td>
+<td>查看队头元素</td>
+</tr>
+<tr>
+<td>T</td>
+<td>dequeue()</td>
+<td>删除队头元素</td>
+</tr>
+<tr>
+<td>T&amp;</td>
+<td>rear()</td>
+<td>查看队尾元素</td>
+</tr>
+</tbody>
+</table>
+<h2 id="二-基本定义：-1"><a href="#二-基本定义：-1" class="headerlink" title="二. 基本定义："></a><strong>二. 基本定义：</strong></h2><p>队列同样可以用数组或链表实现</p>
+<h3 id="2-1-版本一：继承List类"><a href="#2-1-版本一：继承List类" class="headerlink" title="2-1. 版本一：继承List类"></a><strong>2-1. 版本一：继承List类</strong></h3><p>在这里选择继承<a href="https://zedom1.github.io/2017/08/12/list/">笔记一</a>中实现的双向链表List类</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">queue</span>:</span><span class="keyword">public</span> List&lt;T&gt; <span class="comment">//利用双向链表版</span></div><div class="line">&#123; <span class="comment">// size和empty直接沿用</span></div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">enqueue</span> <span class="params">( T <span class="keyword">const</span>&amp; e )</span> </span>&#123;insertAsLast(e);&#125;</div><div class="line">	<span class="function">T <span class="title">dequeue</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> remove(first()); &#125;</div><div class="line">	<span class="function">T&amp; <span class="title">front</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> first()-&gt;data; &#125;</div><div class="line">	<span class="function">T&amp; <span class="title">rear</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> last()-&gt;data; &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="2-1-版本二：从零开始的数组版"><a href="#2-1-版本二：从零开始的数组版" class="headerlink" title="2-1. 版本二：从零开始的数组版"></a><strong>2-1. 版本二：从零开始的数组版</strong></h3><p>用数组模拟队列时，为方便起见，用first和last作为队头和队尾的秩，而不是在删除元素时将后面所有的元素迁移一位。只是需要注意在last逼近数组边界时需要扩容或者重新安排位置。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">queue</span>  // 数组模拟版</span></div><div class="line">&#123;</div><div class="line"><span class="keyword">private</span>:</div><div class="line">	T *data;</div><div class="line">	<span class="keyword">int</span> first,last,maxsize;</div><div class="line"></div><div class="line"><span class="keyword">protected</span>:</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">expand</span><span class="params">()</span></span>;</div><div class="line"><span class="comment">// expand()判断 last 或 last-first 是否接近maxsize</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="built_in">queue</span>();</div><div class="line">	~<span class="built_in">queue</span>() &#123;<span class="keyword">delete</span> []data;&#125;</div><div class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">empty</span><span class="params">()</span><span class="keyword">const</span> </span>&#123;<span class="keyword">return</span> first==last;&#125;</div><div class="line">	<span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span><span class="keyword">const</span> </span>&#123;<span class="keyword">return</span> last-first;&#125;</div><div class="line">	<span class="function">T&amp; <span class="title">front</span><span class="params">()</span><span class="keyword">const</span> </span>&#123; <span class="keyword">if</span>(!empty())<span class="keyword">return</span> data[first]; <span class="keyword">else</span> <span class="built_in">exit</span>(<span class="number">1</span>);&#125;</div><div class="line">	<span class="function">T&amp; <span class="title">rear</span><span class="params">()</span><span class="keyword">const</span> </span>&#123; <span class="keyword">if</span>(!empty())<span class="keyword">return</span> data[last<span class="number">-1</span>]; <span class="keyword">else</span> <span class="built_in">exit</span>(<span class="number">1</span>);&#125;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">enqueue</span><span class="params">( T <span class="keyword">const</span> &amp; e)</span> </span>&#123; expand(); data[last++]=e; &#125;</div><div class="line">	<span class="function">T <span class="title">dequeue</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> data[(first++)<span class="number">-1</span>]; &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="完整实现代码"><a href="#完整实现代码" class="headerlink" title="完整实现代码"></a><strong>完整实现代码</strong></h2><p><a href="https://github.com/zedom1/DSA/blob/master/stack%20and%20queue/stack.cpp" target="_blank" rel="external">栈的完整实现 ( 附带应用的实现 ) </a></p>
+<p><a href="https://github.com/zedom1/DSA/blob/master/stack%20and%20queue/queue.cpp" target="_blank" rel="external">队列的完整实现</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -204,7 +416,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -217,184 +429,131 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://zedom1.github.io/2017/08/14/stack/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/12/list/" class="archive-article-date">
-  	<time datetime="2017-08-11T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-12</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2017/08/12/list/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据结构笔记（一）：链表</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/12/list/">数据结构笔记（一）：链表</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">链表</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构/" class="article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#栈"><span class="toc-number">2.</span> <span class="toc-text">栈</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-常用接口："><span class="toc-number">2.1.</span> <span class="toc-text">一. 常用接口：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-基本定义："><span class="toc-number">2.2.</span> <span class="toc-text">二. 基本定义：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-典型应用："><span class="toc-number">2.3.</span> <span class="toc-text">三. 典型应用：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-进制转换："><span class="toc-number">2.3.1.</span> <span class="toc-text">3-1. 进制转换：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-括号匹配："><span class="toc-number">2.3.2.</span> <span class="toc-text">3-2. 括号匹配：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-栈混洗："><span class="toc-number">2.3.3.</span> <span class="toc-text">3-3. 栈混洗：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-0-概念："><span class="toc-number">2.3.3.1.</span> <span class="toc-text">3-3-0. 概念：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-1-排列种数："><span class="toc-number">2.3.3.2.</span> <span class="toc-text">3-3-1. 排列种数：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-2-甄别栈混洗："><span class="toc-number">2.3.3.3.</span> <span class="toc-text">3-3-2. 甄别栈混洗：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-3-栈混洗与括号匹配："><span class="toc-number">2.3.3.4.</span> <span class="toc-text">3-3-3. 栈混洗与括号匹配：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-中缀表达式求值："><span class="toc-number">2.3.4.</span> <span class="toc-text">3-4. 中缀表达式求值：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-0-概述："><span class="toc-number">2.3.4.1.</span> <span class="toc-text">3-4-0. 概述：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-1-算法："><span class="toc-number">2.3.4.2.</span> <span class="toc-text">3-4-1. 算法：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-逆波兰表达式："><span class="toc-number">2.3.5.</span> <span class="toc-text">3-5. 逆波兰表达式：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-0-概念："><span class="toc-number">2.3.5.1.</span> <span class="toc-text">3-5-0. 概念：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-2-计算："><span class="toc-number">2.3.5.2.</span> <span class="toc-text">3-5-2. 计算：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-2-手工转换："><span class="toc-number">2.3.5.3.</span> <span class="toc-text">3-5-2. 手工转换：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-3-转换算法："><span class="toc-number">2.3.5.4.</span> <span class="toc-text">3-5-3. 转换算法：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-n皇后问题："><span class="toc-number">2.3.6.</span> <span class="toc-text">3-6. n皇后问题：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-6-0-概述："><span class="toc-number">2.3.6.1.</span> <span class="toc-text">3-6-0. 概述：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-6-1-算法："><span class="toc-number">2.3.6.2.</span> <span class="toc-text">3-6-1. 算法：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#队列"><span class="toc-number">3.</span> <span class="toc-text">队列</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-常用接口：-1"><span class="toc-number">3.1.</span> <span class="toc-text">一. 常用接口：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-基本定义：-1"><span class="toc-number">3.2.</span> <span class="toc-text">二. 基本定义：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-版本一：继承List类"><span class="toc-number">3.2.1.</span> <span class="toc-text">2-1. 版本一：继承List类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-版本二：从零开始的数组版"><span class="toc-number">3.2.2.</span> <span class="toc-text">2-1. 版本二：从零开始的数组版</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完整实现代码"><span class="toc-number">3.3.</span> <span class="toc-text">完整实现代码</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/15/sat/" class="archive-article-date">
-  	<time datetime="2017-07-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/15/sat/">浅析基于分离轴原理的碰撞检测及分离算法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">游戏制作</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法/" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/14/Hello,World/" class="archive-article-date">
-  	<time datetime="2017-07-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-14</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/14/Hello,World/">Hello,World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">others</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/others/" class="article-tag-list-link color2">others</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'true'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  
 
 
           </div>
@@ -418,8 +577,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
