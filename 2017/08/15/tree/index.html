@@ -15,6 +15,7 @@
 <meta property="og:url" content="https://zedom1.github.io/2017/08/15/tree/index.html">
 <meta property="og:site_name" content="Zedom">
 <meta property="og:description" content="树概述出现原因：向量在静态操作速度快O(1)，在动态操作速度慢O(n)列表在静态操作速度慢O(n)，在动态操作速度快O(1)树结合了两者的优点，可看作是一种半线性的结构应用：组织层次关系，如文件系统、学院层级关系等">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170820/B1l8I45KkG.png?imageslim">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170815/5hgCeKb8ed.jpg?imageslim">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170815/CB0aKme08c.jpg?imageslim">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170815/Lgcj768L1E.png?imageslim">
@@ -28,11 +29,11 @@
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170817/a6h1hlafBm.jpg?imageslim">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170815/Hci6Ijk2bg.JPG">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170815/C89dHdbAkF.JPG">
-<meta property="og:updated_time" content="2017-08-19T02:39:03.459Z">
+<meta property="og:updated_time" content="2017-08-20T07:53:18.555Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构笔记（三）：二叉树">
 <meta name="twitter:description" content="树概述出现原因：向量在静态操作速度快O(1)，在动态操作速度慢O(n)列表在静态操作速度慢O(n)，在动态操作速度快O(1)树结合了两者的优点，可看作是一种半线性的结构应用：组织层次关系，如文件系统、学院层级关系等">
-<meta name="twitter:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170815/5hgCeKb8ed.jpg?imageslim">
+<meta name="twitter:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170820/B1l8I45KkG.png?imageslim">
   
     <link rel="alternative" href="/atom.xml" title="Zedom" type="application/atom+xml">
   
@@ -97,9 +98,9 @@
 				
 					<a class="github" target="_blank" href="https://github.com/zedom1" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="qq" target="_blank" href="/402255686" title="qq"><i class="icon-qq"></i></a>
+					<a class="qq" target="_blank" href="tencent://message/?uin=402255686" title="qq"><i class="icon-qq"></i></a>
 		        
-					<a class="mail" target="_blank" href="/402255686@qq.com" title="mail"><i class="icon-mail"></i></a>
+					<a class="mail" target="_blank" href="/“http:/mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=79vf3d3a2tnX2a_ensGMgII"" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -140,9 +141,9 @@
 					
 						<a class="github" target="_blank" href="https://github.com/zedom1" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="qq" target="_blank" href="/402255686" title="qq"><i class="icon-qq"></i></a>
+						<a class="qq" target="_blank" href="tencent://message/?uin=402255686" title="qq"><i class="icon-qq"></i></a>
 			        
-						<a class="mail" target="_blank" href="/402255686@qq.com" title="mail"><i class="icon-mail"></i></a>
+						<a class="mail" target="_blank" href="/“http:/mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=79vf3d3a2tnX2a_ensGMgII"" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -192,6 +193,7 @@
       
         <h1 id="树"><a href="#树" class="headerlink" title="树"></a><strong>树</strong></h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a><strong>概述</strong></h2><h3 id="出现原因："><a href="#出现原因：" class="headerlink" title="出现原因："></a>出现原因：</h3><p>向量在静态操作速度快O(1)，在动态操作速度慢O(n)<br>列表在静态操作速度慢O(n)，在动态操作速度快O(1)<br>树结合了两者的优点，可看作是一种<strong>半线性的结构</strong><br>应用：组织层次关系，如文件系统、学院层级关系等</p>
 <a id="more"></a>
+<h3 id="树的分类："><a href="#树的分类：" class="headerlink" title="树的分类："></a>树的分类：</h3><p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170820/B1l8I45KkG.png?imageslim" alt="树的分类"></p>
 <h3 id="概念1-有根树rooted-tree"><a href="#概念1-有根树rooted-tree" class="headerlink" title="概念1. 有根树rooted tree"></a>概念1. 有根树rooted tree</h3><p>指定任一节点为根<br>可以为一系列有根树指定一个节点并连接所有有根树，从而形成一棵更大的有根树，此时各有根树称为子树</p>
 <p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170815/5hgCeKb8ed.jpg?imageslim" alt="子树"></p>
 <p>ri 为r的孩子( child )， ri之间互为兄弟( sibling )<br>r为父亲( parent ),<br>d=degree(r)为r的度=一节点拥有的孩子的数目<br>任何一棵树中边数e和节点数目n同阶</p>
@@ -255,7 +257,7 @@
 <p><strong>长子兄弟法</strong>：</p>
 <p>每个节点除了储存数据外，还额外记录下父亲，长子和下一个兄弟的秩</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></div><div class="line">&#123;</div><div class="line">	T data;</div><div class="line">	<span class="keyword">int</span> father, child, nextSibling;</div><div class="line">&#125;;</div><div class="line">node  *tree;</div></pre></td></tr></table></figure>
-<h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a><strong>二叉树</strong></h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a><strong>概念</strong></h2><p>节点度数不超过2（孩子数目&lt;=2）的数</p>
+<h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a><strong>二叉树</strong></h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a><strong>概念</strong></h2><p>节点度数<strong>不超过2</strong>（孩子数目&lt;=2）的树</p>
 <p>同一节点的孩子和子树以<strong>左右</strong>区分</p>
 <p>二叉树是一种特殊的树。然而，二叉树却能够描述所有类型的树。</p>
 <p>基于二叉树的概念，我们可以得到下列关系：<br>1.深度为k的节点最多有$2^k$个<br>2.高度为h的二叉树的节点数n满足$h’&lt;’n’&lt;’2^(h+1)$<br>    1.当n=h+1时，二叉树退化为一条单链<br>    2.当$n=2^(h+1)-1$时，二叉树为满二叉树</p>
@@ -476,7 +478,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#树"><span class="toc-number">1.</span> <span class="toc-text">树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#出现原因："><span class="toc-number">1.1.1.</span> <span class="toc-text">出现原因：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#概念1-有根树rooted-tree"><span class="toc-number">1.1.2.</span> <span class="toc-text">概念1. 有根树rooted tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#概念2-有序树"><span class="toc-number">1.1.3.</span> <span class="toc-text">概念2. 有序树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#概念3-连通性和无环性："><span class="toc-number">1.1.4.</span> <span class="toc-text">概念3. 连通性和无环性：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表示"><span class="toc-number">1.2.</span> <span class="toc-text">表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-接口"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-构造方法"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 构造方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二叉树"><span class="toc-number">2.</span> <span class="toc-text">二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-number">2.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#真二叉树-Proper-binary-tree"><span class="toc-number">2.2.</span> <span class="toc-text">真二叉树(Proper binary tree)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完全二叉树-complete-binary-tree"><span class="toc-number">2.3.</span> <span class="toc-text">完全二叉树(complete binary tree)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#满二叉树-full-binary-tree"><span class="toc-number">2.4.</span> <span class="toc-text">满二叉树(full binary tree)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用二叉树描述多叉树"><span class="toc-number">2.5.</span> <span class="toc-text">用二叉树描述多叉树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本定义"><span class="toc-number">2.6.</span> <span class="toc-text">基本定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遍历"><span class="toc-number">2.7.</span> <span class="toc-text">遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-先序遍历-中-左-右"><span class="toc-number">2.7.1.</span> <span class="toc-text">1. 先序遍历( 中 左 右 )</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-递归版本"><span class="toc-number">2.7.1.1.</span> <span class="toc-text">1. 递归版本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-迭代版本1"><span class="toc-number">2.7.1.2.</span> <span class="toc-text">2. 迭代版本1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-迭代版本2"><span class="toc-number">2.7.1.3.</span> <span class="toc-text">3. 迭代版本2</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-中序遍历-左-中-右"><span class="toc-number">2.7.2.</span> <span class="toc-text">2. 中序遍历( 左 中 右 )</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-迭代版本1"><span class="toc-number">2.7.2.1.</span> <span class="toc-text">1. 迭代版本1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-迭代版本2"><span class="toc-number">2.7.2.2.</span> <span class="toc-text">2. 迭代版本2</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-后序遍历-左-右-中"><span class="toc-number">2.7.3.</span> <span class="toc-text">3. 后序遍历( 左 右 中 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-层次遍历"><span class="toc-number">2.7.4.</span> <span class="toc-text">4. 层次遍历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重构"><span class="toc-number">2.8.</span> <span class="toc-text">重构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-中序-先序-后序"><span class="toc-number">2.8.1.</span> <span class="toc-text">一. 中序+(先序|后序)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-先序-后序-真二叉树"><span class="toc-number">2.8.2.</span> <span class="toc-text">二. (先序+后序)*真二叉树</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#完整实现代码"><span class="toc-number">3.</span> <span class="toc-text">完整实现代码</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#树"><span class="toc-number">1.</span> <span class="toc-text">树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#出现原因："><span class="toc-number">1.1.1.</span> <span class="toc-text">出现原因：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#树的分类："><span class="toc-number">1.1.2.</span> <span class="toc-text">树的分类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#概念1-有根树rooted-tree"><span class="toc-number">1.1.3.</span> <span class="toc-text">概念1. 有根树rooted tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#概念2-有序树"><span class="toc-number">1.1.4.</span> <span class="toc-text">概念2. 有序树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#概念3-连通性和无环性："><span class="toc-number">1.1.5.</span> <span class="toc-text">概念3. 连通性和无环性：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表示"><span class="toc-number">1.2.</span> <span class="toc-text">表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-接口"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-构造方法"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 构造方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二叉树"><span class="toc-number">2.</span> <span class="toc-text">二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-number">2.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#真二叉树-Proper-binary-tree"><span class="toc-number">2.2.</span> <span class="toc-text">真二叉树(Proper binary tree)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完全二叉树-complete-binary-tree"><span class="toc-number">2.3.</span> <span class="toc-text">完全二叉树(complete binary tree)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#满二叉树-full-binary-tree"><span class="toc-number">2.4.</span> <span class="toc-text">满二叉树(full binary tree)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用二叉树描述多叉树"><span class="toc-number">2.5.</span> <span class="toc-text">用二叉树描述多叉树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本定义"><span class="toc-number">2.6.</span> <span class="toc-text">基本定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遍历"><span class="toc-number">2.7.</span> <span class="toc-text">遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-先序遍历-中-左-右"><span class="toc-number">2.7.1.</span> <span class="toc-text">1. 先序遍历( 中 左 右 )</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-递归版本"><span class="toc-number">2.7.1.1.</span> <span class="toc-text">1. 递归版本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-迭代版本1"><span class="toc-number">2.7.1.2.</span> <span class="toc-text">2. 迭代版本1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-迭代版本2"><span class="toc-number">2.7.1.3.</span> <span class="toc-text">3. 迭代版本2</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-中序遍历-左-中-右"><span class="toc-number">2.7.2.</span> <span class="toc-text">2. 中序遍历( 左 中 右 )</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-迭代版本1"><span class="toc-number">2.7.2.1.</span> <span class="toc-text">1. 迭代版本1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-迭代版本2"><span class="toc-number">2.7.2.2.</span> <span class="toc-text">2. 迭代版本2</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-后序遍历-左-右-中"><span class="toc-number">2.7.3.</span> <span class="toc-text">3. 后序遍历( 左 右 中 )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-层次遍历"><span class="toc-number">2.7.4.</span> <span class="toc-text">4. 层次遍历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重构"><span class="toc-number">2.8.</span> <span class="toc-text">重构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-中序-先序-后序"><span class="toc-number">2.8.1.</span> <span class="toc-text">一. 中序+(先序|后序)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-先序-后序-真二叉树"><span class="toc-number">2.8.2.</span> <span class="toc-text">二. (先序+后序)*真二叉树</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#完整实现代码"><span class="toc-number">3.</span> <span class="toc-text">完整实现代码</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -628,7 +630,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">链表</a>
+                <a href="javascript:void(0)" class="js-tag color2">图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -640,15 +642,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">游戏制作</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
+                <a href="javascript:void(0)" class="js-tag color3">链表</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -656,7 +650,27 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">水题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">游戏制作</a>
               </li>
             
             <div class="clearfix"></div>
@@ -707,7 +721,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">个人博客&lt;br&gt;&lt;br&gt;记录学习过程的点滴&lt;br&gt;&lt;br&gt;敬畏而热爱技术</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">98年双子男&lt;br&gt;&lt;br&gt;16-20年华南理工大学软件工程专业在读&lt;br&gt;&lt;br&gt;此为个人博客&lt;br&gt;&lt;br&gt;记录学习过程的点滴&lt;br&gt;&lt;br&gt;敬畏而热爱技术</div>
   	  	
     	</section>
     
