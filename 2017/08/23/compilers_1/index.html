@@ -6,14 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://zedom1.github.io">
-  <title>Archives | Zedom</title>
+  <title>编译原理笔记（一）：概述 | Zedom</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Zedom">
-<meta property="og:url" content="https://zedom1.github.io/archives/index.html">
+  <meta name="description" content="Stanford的CS1 Compilers 课程学习笔记 学习编译知识并最终制作COOL语言的编译器 01-01. IntroductionTwo major approaches to implementing programming languages:Compilers(编译器) 、 Interpreters(解释器) 1. Interpreters(解释器)">
+<meta name="keywords" content="编译原理,学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编译原理笔记（一）：概述">
+<meta property="og:url" content="https://zedom1.github.io/2017/08/23/compilers_1/index.html">
 <meta property="og:site_name" content="Zedom">
+<meta property="og:description" content="Stanford的CS1 Compilers 课程学习笔记 学习编译知识并最终制作COOL语言的编译器 01-01. IntroductionTwo major approaches to implementing programming languages:Compilers(编译器) 、 Interpreters(解释器) 1. Interpreters(解释器)">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170823/5908CiF8j3.JPG">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170823/Af9BI1GDC1.JPG">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170823/I3eDhhmCgf.JPG">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170823/EkedKA1ch4.JPG">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170823/kAjm7Bi5B2.JPG">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170823/6bhGdDehIL.JPG">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170823/d07LaK2mgh.JPG">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170823/lKCdIdhI1K.JPG">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170823/CAJ9Dbc8jJ.JPG">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170823/gcEe09H4AH.JPG">
+<meta property="og:updated_time" content="2017-08-23T12:26:56.976Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zedom">
+<meta name="twitter:title" content="编译原理笔记（一）：概述">
+<meta name="twitter:description" content="Stanford的CS1 Compilers 课程学习笔记 学习编译知识并最终制作COOL语言的编译器 01-01. IntroductionTwo major approaches to implementing programming languages:Compilers(编译器) 、 Interpreters(解释器) 1. Interpreters(解释器)">
+<meta name="twitter:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170823/5908CiF8j3.JPG">
   
     <link rel="alternative" href="/atom.xml" title="Zedom" type="application/atom+xml">
   
@@ -151,36 +167,92 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-compilers_1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/23/compilers_1/" class="archive-article-date">
-  	<time datetime="2017-08-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-23</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/23/compilers_1/">编译原理笔记（一）：概述</a>
+    <h1 class="article-title" itemprop="name">
+      编译原理笔记（一）：概述
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/08/23/compilers_1/" class="archive-article-date">
+  	<time datetime="2017-08-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Stanford的CS1 Compilers 课程学习笔记</p>
+<p>学习编译知识并最终制作COOL语言的编译器</p>
+<h2 id="01-01-Introduction"><a href="#01-01-Introduction" class="headerlink" title="01-01. Introduction"></a>01-01. Introduction</h2><p>Two major approaches to implementing programming languages:<br><strong>Compilers(编译器)</strong> 、 <strong>Interpreters(解释器)</strong></p>
+<h3 id="1-Interpreters-解释器"><a href="#1-Interpreters-解释器" class="headerlink" title="1. Interpreters(解释器)"></a>1. Interpreters(解释器)</h3><p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170823/5908CiF8j3.JPG" alt="Interpreters"></p>
+<a id="more"></a>
+<p><strong>Online</strong>: the work it does is all part of running your program.</p>
+<p>The Interpreter produces the output with data and program directly</p>
+<p>It doesn’t do any processing of the program before it executes the program on the input.</p>
+<h3 id="2-Compilers-编译器"><a href="#2-Compilers-编译器" class="headerlink" title="2. Compilers(编译器)"></a>2. Compilers(编译器)</h3><p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170823/Af9BI1GDC1.JPG" alt="Compilers"></p>
+<p><strong>Offline</strong>: produces an executable<br>The executable is <strong>another program</strong>, might be another language or bytecode, it can be <strong>run separately</strong> on data.</p>
+<h3 id="01-02-FORTRAN"><a href="#01-02-FORTRAN" class="headerlink" title="01-02. FORTRAN:"></a>01-02. FORTRAN:</h3><p>FORTRAN ( Formula Translation Project )：<strong>The first successful high level language</strong>.<br>Meanings : The formulas were translated into a form that the machine could execute directly.</p>
+<p>Programming languages =  fairly deep theory + good engineering skills</p>
+<p>The structure of FORTRAN one:<br>1.Lexical Analysis (词法分析)<br>2.Parsing (语法分析)<br>3.Semantic Analysis (语义分析)<br>4.Optimization (优化)<br>5.Code Generation (代码生成)</p>
+<h4 id="1-Lexical-Analysis-词法分析"><a href="#1-Lexical-Analysis-词法分析" class="headerlink" title="1.Lexical Analysis (词法分析)"></a>1.Lexical Analysis (词法分析)</h4><p>Goal :<strong> divide </strong>the program text into its <strong>tokens</strong>(words)(符号).</p>
+<p>Example of tokens :<br>1.key words  关键词 ( like “if”)<br>2.variable names 变量名  (“x”,”y”,”z”)<br>3.constants 常量 (“1”,”2”)<br>4.operators 运算符(“=”,”==”)<br>5.punctuation  标点符号(“;” “,”)</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170823/I3eDhhmCgf.JPG" alt="tokens"></p>
+<h4 id="2-Parsing-语法分析"><a href="#2-Parsing-语法分析" class="headerlink" title="2.Parsing (语法分析)"></a>2.Parsing (语法分析)</h4><p>Goal : <strong>diagramming sentences </strong>(分析句子)</p>
+<p>The first step : Identify the role of each word<br><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170823/EkedKA1ch4.JPG" alt="structure tree"></p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170823/kAjm7Bi5B2.JPG" alt="structure tree"></p>
+<h4 id="3-Semantic-Analysis-语义分析"><a href="#3-Semantic-Analysis-语义分析" class="headerlink" title="3.Semantic Analysis (语义分析)"></a>3.Semantic Analysis (语义分析)</h4><p>The compilers can only do very<strong> limited</strong> kinds of semantic analysis.</p>
+<p>It generally try to catch inconsistencies. (捕捉异常)</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170823/6bhGdDehIL.JPG" alt="mark"></p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170823/d07LaK2mgh.JPG" alt="lexically scoped"></p>
+<h4 id="4-Optimization-优化"><a href="#4-Optimization-优化" class="headerlink" title="4.Optimization (优化)"></a>4.Optimization (优化)</h4><p>Goal : To modify the program so that it <strong>uses less of some resource</strong> ,(use less time, run faster or use less space)</p>
+<p>if(x and y are integers)<br><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170823/lKCdIdhI1K.JPG" alt="Optimization"></p>
+<h4 id="5-Code-Generation-代码生成"><a href="#5-Code-Generation-代码生成" class="headerlink" title="5.Code Generation (代码生成)"></a>5.Code Generation (代码生成)</h4><p>The most common goal : produce assembly code (生成汇编代码)</p>
+<p>General goal : do a translation into some other languages.</p>
+<h4 id="The-proportions-比例"><a href="#The-proportions-比例" class="headerlink" title="The proportions (比例)"></a>The proportions (比例)</h4><p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170823/CAJ9Dbc8jJ.JPG" alt="proportions"></p>
+<p>FORTRAN I :<br>complex lexical analysis phase and parsing phase,<br>small semantic anaysis phase (very weak)</p>
+<p>Today:<br>very little in parsing and lexical analysis.  ( we have good tools to help us )<br>very large optimization phase<br>a small code-generation phase ( we also have good tools )</p>
+<h3 id="01-03-The-Economy-of-Programming-Languages"><a href="#01-03-The-Economy-of-Programming-Languages" class="headerlink" title="01-03. The Economy of Programming Languages"></a>01-03. The Economy of Programming Languages</h3><p>1.Why are there so many programming languages<br>2.Why are there new programming languages<br>3.What is a good programming language</p>
+<h4 id="1-Why-are-there-so-many-programming-languages"><a href="#1-Why-are-there-so-many-programming-languages" class="headerlink" title="1. Why are there so many programming languages"></a>1. Why are there so many programming languages</h4><p>1.<strong>application domains</strong>(应用域) have distinctive and conflicting needs.</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170823/gcEe09H4AH.JPG" alt="application domains"></p>
+<p>It would be<strong> difficult to integrate all of these into one system </strong>that would do good job on all of these things.</p>
+<h4 id="2-Why-are-there-new-programming-languages"><a href="#2-Why-are-there-new-programming-languages" class="headerlink" title="2. Why are there new programming languages"></a>2. Why are there new programming languages</h4><p><strong>Programmer training</strong> is the dominant cost for a programming language</p>
+<p>Here are some facts:</p>
+<ol>
+<li><p>Widely-used languages are slow to change</p>
+<blockquote>
+<p>Design and build a compiler for a new language are not actually taht expensive.<br>The real cost is in all the <strong>users and educating them</strong>.</p>
+</blockquote>
+</li>
+<li><p>Easy to start a new language</p>
+<blockquote>
+<p>Zero or low training cost<br>Adapt quickly to changing situations, not very costly to experiment.</p>
+</blockquote>
+</li>
+<li><p>Languages adopted to fill a void </p>
+<blockquote>
+<p>Programming languages exist for <strong>purpose</strong>.<br>There are <strong>new application domains</strong> coming along all the time.</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="3-What-is-a-good-programming-language"><a href="#3-What-is-a-good-programming-language" class="headerlink" title="3. What is a good programming language"></a>3. What is a good programming language</h4><p>There is <strong>no universally accepted metric</strong>(普遍接受的标准) for language design.</p>
+<h3 id="02-01-03-Cool-Overview"><a href="#02-01-03-Cool-Overview" class="headerlink" title="02-(01-03). Cool Overview"></a>02-(01-03). Cool Overview</h3><p><strong>COOL</strong>: Classroom Object Oriented Language</p>
+<p>COOL -&gt; MIPS assembly language</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div></pre></td><td class="code"><pre><div class="line">class Main</div><div class="line">&#123;</div><div class="line">	main():Int &#123; 1 &#125;;</div><div class="line">&#125;;</div><div class="line">class Main</div><div class="line">&#123;</div><div class="line">	i : IO &lt;- new IO;</div><div class="line">	main():IO &#123;  i.out_string(&quot;Hello World!\n&quot;) &#125;;</div><div class="line">&#125;;</div><div class="line">class Main</div><div class="line">&#123;</div><div class="line">	i : IO &lt;- new IO;</div><div class="line">	main():Object &#123;  i.out_string(&quot;Hello World!\n&quot;); 1; &#125;;</div><div class="line">&#125;;</div><div class="line">class Main</div><div class="line">&#123;</div><div class="line">	main():IO &#123;  (new IO).out_string(&quot;Hello World!\n&quot;) &#125;;</div><div class="line">&#125;;</div><div class="line">class Main inherits IO</div><div class="line">&#123;</div><div class="line">	main():IO &#123;  self.out_string(&quot;Hello World!\n&quot;) &#125;;</div><div class="line">&#125;;</div><div class="line">class Main inherits IO</div><div class="line">&#123;</div><div class="line">	main():IO &#123;  out_string(&quot;Hello World!\n&quot;) &#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">class Main</div><div class="line">&#123;</div><div class="line">	main():Object </div><div class="line">	&#123;</div><div class="line">		(new IO).out_string( (new IO).in_string.concat(&quot;\n\&quot;) )</div><div class="line">	&#125;;</div><div class="line">&#125;;</div><div class="line">// in_string : 接受输入，返回string</div><div class="line">// concat :  连接字符串</div><div class="line">class Main inherits A2I    // ascii to integer</div><div class="line">&#123;</div><div class="line">	main():Object </div><div class="line">	&#123;</div><div class="line">		(new IO).out_string(  i2a( a2i(new IO).in_string)+1 ).concat(&quot;\n\&quot;)       )</div><div class="line">	&#125;;</div><div class="line">&#125;;</div><div class="line">class Main inherits A2I</div><div class="line">&#123;</div><div class="line">	main():Object </div><div class="line">	&#123;</div><div class="line">		(new IO).out_string(  i2a( fact(a2i(new IO).in_string) ).concat(&quot;\n\&quot;)       )</div><div class="line">	&#125;;</div><div class="line">	fact( i: Int ) : Int &#123; if(i=0) then 1 else i*fact(i-1) fi &#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">class Main inherits A2I</div><div class="line">&#123;</div><div class="line">	main():Object </div><div class="line">	&#123;</div><div class="line">		(new IO).out_string(  i2a( fact(a2i(new IO).in_string) ).concat(&quot;\n\&quot;)       )</div><div class="line">	&#125;;</div><div class="line">	fact( i: Int ) : Int </div><div class="line">	&#123; </div><div class="line">		let fact: Int &lt;- 1 in  // 声明局部变量</div><div class="line">		&#123;</div><div class="line">			while ( not (i=0) ) loop</div><div class="line">			&#123;</div><div class="line">				fact &lt;- fact*i;</div><div class="line">				i &lt;- i-1;</div><div class="line">			&#125;</div><div class="line">			pool;</div><div class="line">			fact;</div><div class="line">		&#125;</div><div class="line">	&#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"></div><div class="line">class List inherits A2I    //链表类</div><div class="line">&#123;</div><div class="line">	item : Object;    // 数据</div><div class="line">	next : List ;    // 指向下一个</div><div class="line">	init ( i: Object , n: List ): List</div><div class="line">	&#123;</div><div class="line">		item &lt;- i;</div><div class="line">		next &lt;- n;</div><div class="line">		self;    // 返回值为List </div><div class="line">	&#125;</div><div class="line">	flatten (): String</div><div class="line">	&#123;</div><div class="line">		let string : String &lt;-</div><div class="line">			case item of       // 相当于switch    关键词为 case .. of </div><div class="line">				i : Int =&gt; i2a(i);     //  变量名+“:”+类型+操作</div><div class="line">				s : String =&gt; s;</div><div class="line">				o : Object =&gt; &#123; abort(); &quot;&quot;; &#125;;    // 相当于default分支，因abort返回Object类，为避免编译错误所以在最后加了&quot;&quot; 以返回String</div><div class="line">			esac;    // case的结束标志</div><div class="line">		in    // 局部变量范围</div><div class="line">			if ( isvoid next ) then    // 若next为空</div><div class="line">				string</div><div class="line">			else</div><div class="line">				string.concat(next.flatte())</div><div class="line">			fi     // if的结束标志</div><div class="line">	&#125;;</div><div class="line">&#125;;</div><div class="line">	</div><div class="line">class Main inherits IO</div><div class="line">&#123;</div><div class="line">	main(): Object</div><div class="line">	&#123;</div><div class="line">		let 	hello : String &lt;- &quot;Hello &quot;,</div><div class="line">			world : String &lt;- &quot;World!&quot;,</div><div class="line">			newline: String &lt;- &quot;\n&quot;,</div><div class="line">			nil : List,    // 不初始化则自动为空，因没有NULL标记</div><div class="line">			list : List &lt;-</div><div class="line">				(new List).init(hello, </div><div class="line">					(new List).init(world,</div><div class="line">						(new List).init(newline, nil ) ) )</div><div class="line">		in</div><div class="line">			out_string(list.flatten())</div><div class="line">	&#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>语法：<br>class 是一系列method(函数)的集合，每个method以大括号+分号结尾<br>必有Main class和main函数<br>函数后用 “：”+”type” 声明函数的返回类型<br>单个表达式无需分号，多个表达式以分号分隔，无需写明返回值为哪个，返回值为最后一个表达式<br>所有类继承自Object,  self相当于其它语言中的this<br>用“=”作判断，用”&lt;-“作赋值<br>if以fi作为结尾<br>loop以pool结尾<br>case..of以esac结尾，每个分支都要以分号结尾</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -196,407 +268,133 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://zedom1.github.io/2017/08/23/compilers_1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/19/graph/" class="archive-article-date">
-  	<time datetime="2017-08-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-19</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2017/08/19/graph/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据结构笔记（四）：图</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/19/graph/">数据结构笔记（四）：图</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">图</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-01-Introduction"><span class="toc-number">1.</span> <span class="toc-text">01-01. Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Interpreters-解释器"><span class="toc-number">1.1.</span> <span class="toc-text">1. Interpreters(解释器)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Compilers-编译器"><span class="toc-number">1.2.</span> <span class="toc-text">2. Compilers(编译器)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#01-02-FORTRAN"><span class="toc-number">1.3.</span> <span class="toc-text">01-02. FORTRAN:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Lexical-Analysis-词法分析"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.Lexical Analysis (词法分析)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Parsing-语法分析"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.Parsing (语法分析)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Semantic-Analysis-语义分析"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.Semantic Analysis (语义分析)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Optimization-优化"><span class="toc-number">1.3.4.</span> <span class="toc-text">4.Optimization (优化)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Code-Generation-代码生成"><span class="toc-number">1.3.5.</span> <span class="toc-text">5.Code Generation (代码生成)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#The-proportions-比例"><span class="toc-number">1.3.6.</span> <span class="toc-text">The proportions (比例)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#01-03-The-Economy-of-Programming-Languages"><span class="toc-number">1.4.</span> <span class="toc-text">01-03. The Economy of Programming Languages</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Why-are-there-so-many-programming-languages"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. Why are there so many programming languages</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Why-are-there-new-programming-languages"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. Why are there new programming languages</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-What-is-a-good-programming-language"><span class="toc-number">1.4.3.</span> <span class="toc-text">3. What is a good programming language</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#02-01-03-Cool-Overview"><span class="toc-number">1.5.</span> <span class="toc-text">02-(01-03). Cool Overview</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/18/problem_1/" class="archive-article-date">
-  	<time datetime="2017-08-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-18</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/18/problem_1/">刷题选集（一）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">贪心</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">水题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/18/problem_tree/" class="archive-article-date">
-  	<time datetime="2017-08-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/18/problem_tree/">题目小结：二叉树 ( 建树和遍历 )</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二叉树</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/15/tree/" class="archive-article-date">
-  	<time datetime="2017-08-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/15/tree/">数据结构笔记（三）：二叉树</a>
-    </h1>
-  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'true'; // required: replace example with your forum shortname
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二叉树</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/14/stack/" class="archive-article-date">
-  	<time datetime="2017-08-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/14/stack/">数据结构笔记（二）：栈和队列</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/12/list/" class="archive-article-date">
-  	<time datetime="2017-08-11T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/12/list/">数据结构笔记（一）：链表</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">链表</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/15/sat/" class="archive-article-date">
-  	<time datetime="2017-07-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/15/sat/">浅析基于分离轴原理的碰撞检测及分离算法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">游戏制作</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/14/Hello,World/" class="archive-article-date">
-  	<time datetime="2017-07-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/14/Hello,World/">Hello,World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">others</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -620,8 +418,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
