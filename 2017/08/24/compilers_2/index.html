@@ -9,7 +9,7 @@
   <title>编译原理笔记（二）：词法分析 | Zedom</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="03-01. Lexical AnalysisGoal : 1 - Recognize substrings corresponding to tokens. ( lexemes: substrings ) 2 - Identify the token class of each lexeme. 3 - Communicate tokens to the parser.">
-<meta name="keywords" content="编译原理,学习笔记">
+<meta name="keywords" content="学习笔记,编译原理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="编译原理笔记（二）：词法分析">
 <meta property="og:url" content="http://zedom1.top/2017/08/24/compilers_2/index.html">
@@ -18,6 +18,7 @@
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170824/c2DJbIjL0F.JPG">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170824/0bJg7Gfidl.JPG">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170824/ci2A7H3E5i.JPG">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170830/c3GCd3ElG2.JPG">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170824/hJfgaJGKEm.JPG">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170824/LDGkL285mA.JPG">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170824/BfBClc54ha.JPG">
@@ -30,6 +31,7 @@
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170824/Ehe5KDm9DK.JPG">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170824/lGg51K9GmI.JPG">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170824/60A270jmd5.JPG">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170830/Dm5hjkKeGC.JPG">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170824/FKD6FFmgJ2.JPG">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170824/gdLcfhGJKB.JPG">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170825/bKF0cmjGKd.JPG">
@@ -57,7 +59,7 @@
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170825/c0J8K5GjJL.JPG">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170825/icagcIlIEF.png?imageslim">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170825/ak0L0mdIeA.png?imageslim">
-<meta property="og:updated_time" content="2017-08-28T16:35:28.804Z">
+<meta property="og:updated_time" content="2017-08-30T15:32:11.967Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编译原理笔记（二）：词法分析">
 <meta name="twitter:description" content="03-01. Lexical AnalysisGoal : 1 - Recognize substrings corresponding to tokens. ( lexemes: substrings ) 2 - Identify the token class of each lexeme. 3 - Communicate tokens to the parser.">
@@ -224,7 +226,7 @@
 <p>What the likes of human being will see:<br><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170824/c2DJbIjL0F.JPG" alt="mark"><br>What the likes of analyzer will see:<br><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170824/0bJg7Gfidl.JPG" alt="mark"></p>
 <p><strong>Token classes</strong>:  the role of different elements<br>In a programming language: Identifiers、keywords、’(‘、’)’、numbers….<br><strong>Token classes correspond to sets of strings.</strong></p>
 <ul>
-<li><p>Identifier: </p>
+<li><p>Identifier:  标识符</p>
 <blockquote>
 <p>strings of letters or digits, starting with a letter<br>like “a1”,”A0o”</p>
 </blockquote>
@@ -234,7 +236,7 @@
 <p>a non-empty string of digits<br>like “9”,”001”</p>
 </blockquote>
 </li>
-<li><p>Keyword:</p>
+<li><p>Keyword:  关键字</p>
 <blockquote>
 <p>“else” or “if” or “begin “…</p>
 </blockquote>
@@ -256,6 +258,10 @@
 <blockquote>
 <p>but we would like to <strong>minimize</strong> the amount of look ahead.</p>
 </blockquote>
+<h2 id="extra-03-02x-词法分析器的实现"><a href="#extra-03-02x-词法分析器的实现" class="headerlink" title="(extra) 03-02x 词法分析器的实现"></a>(extra) 03-02x 词法分析器的实现</h2><p> 1 - 手工编码实现<br>相对复杂，且容易出错<br>但是目前主流的实现方式<br>对词法分析器各部分掌握精确，效率高<br>如 GCC、LLVM</p>
+<p> 2 - 词法分析器的生成器<br>可快速生成原型、代码量小<br>难以控制实现细节<br>如 lex、flex、jlex</p>
+<h3 id="03-02x-01-手工编码实现"><a href="#03-02x-01-手工编码实现" class="headerlink" title="03-02x-01 手工编码实现"></a>03-02x-01 手工编码实现</h3><h4 id="方法一：转移图算法"><a href="#方法一：转移图算法" class="headerlink" title="方法一：转移图算法"></a>方法一：转移图算法</h4><p>根据需求画出状态转移图：<br><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170830/c3GCd3ElG2.JPG" alt="mark"><br>而后实现该算法：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">enum</span> kind&#123;IF , LPAREN , ID, INTLIT, ...&#125;;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">token</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">enum</span> kind k;</div><div class="line">	<span class="keyword">char</span> *lexeme;</div><div class="line">&#125;;</div><div class="line"><span class="function">token <span class="title">nextToken</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	c=getchar();</div><div class="line">	<span class="keyword">switch</span>(c)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">case</span> <span class="string">'&lt;'</span>: c=getchar();</div><div class="line">			<span class="keyword">switch</span>(c)</div><div class="line">			&#123;</div><div class="line">				<span class="keyword">case</span> <span class="string">'='</span>: <span class="keyword">return</span> LE;</div><div class="line">				<span class="keyword">case</span> <span class="string">'&gt;'</span>: <span class="keyword">return</span> NE;</div><div class="line">				<span class="keyword">default</span>: rollback(); <span class="keyword">return</span> LT;</div><div class="line">			&#125;</div><div class="line">		<span class="keyword">case</span> <span class="string">'='</span>: <span class="keyword">return</span> EQ;</div><div class="line">		<span class="keyword">case</span> <span class="string">'&gt;'</span>: c=getchar();</div><div class="line">			<span class="keyword">switch</span>(c)</div><div class="line">			&#123;</div><div class="line">				<span class="keyword">case</span> <span class="string">'='</span> <span class="keyword">return</span> GE;</div><div class="line">				<span class="keyword">default</span>: rollback(); <span class="keyword">return</span> GT;</div><div class="line">			&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="方法二：关键字表算法"><a href="#方法二：关键字表算法" class="headerlink" title="方法二：关键字表算法"></a>方法二：关键字表算法</h4><p>对给定语言中所有关键字，构造关键字构成的哈希表H<br>对所有标识符和关键字，先统一按转移图识别<br>识别后，查看表H是否为关键字<br>通过合理构造哈希表H(完美哈希)，可以以O(1)时间完成</p>
 <h2 id="03-03-Regular-Languages-正则语言"><a href="#03-03-Regular-Languages-正则语言" class="headerlink" title="03-03. Regular Languages (正则语言)"></a>03-03. Regular Languages (正则语言)</h2><p>We must say what set of strings is in a token class.</p>
 <ul>
 <li><p>The usual tool is to use regular languages( 正则语言 ).</p>
@@ -361,8 +367,13 @@
 </ol>
 </blockquote>
 </li>
+<li><p>Regular expression</p>
+<blockquote>
+<p>$\epsilon$<br>a<br>a|b<br>ab<br>a<em><br>[a-z] == a|b|c…|z<br>a+  == a(a)</em><br>a?  == $\epsilon$|a<br>“a<em>“ != a</em><br>e{1,3} == (e)|(ee)|(eee)<br>. == [^\n]</p>
+</blockquote>
+</li>
 </ul>
-<h2 id="04-02-Finite-Automata-有限自动机"><a href="#04-02-Finite-Automata-有限自动机" class="headerlink" title="04-02. Finite Automata (有限自动机)"></a>04-02. Finite Automata (有限自动机)</h2><p><strong>Finite Automata</strong>: are a very convenience as an implementation mechanism for regular expressions.</p>
+<h2 id="04-02-Finite-Automata-有限状态自动机"><a href="#04-02-Finite-Automata-有限状态自动机" class="headerlink" title="04-02. Finite Automata (有限状态自动机)"></a>04-02. Finite Automata (有限状态自动机)</h2><p><strong>Finite Automata</strong>: are a very convenience as an implementation mechanism for regular expressions.</p>
 <h3 id="A-finite-automaton-consists-of"><a href="#A-finite-automaton-consists-of" class="headerlink" title="A finite automaton consists of :"></a>A finite automaton consists of :</h3><ul>
 <li>An input alphabet  <strong>$\Sigma$</strong></li>
 <li>A finite set of states   <strong>S</strong></li>
@@ -370,6 +381,7 @@
 <li>A set of accepting states    <strong>F \subseteq S</strong></li>
 <li>A set of transitions     state -&gt; (input) state</li>
 </ul>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170830/Dm5hjkKeGC.JPG" alt="mark"></p>
 <p>Transition s1 -&gt;(a) -&gt; s2<br>If end of input and in accepting state =&gt; accept state<br>Otherwise =&gt; reject state</p>
 <blockquote>
 <p>terminates in state S \not\in $ Final state<br>gets stuck. (no transition)</p>
@@ -389,6 +401,7 @@
 </ul>
 <h2 id="04-03-Regular-expressions-into-NFAs"><a href="#04-03-Regular-expressions-into-NFAs" class="headerlink" title="04-03. Regular expressions into NFAs"></a>04-03. Regular expressions into NFAs</h2><p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170825/bKF0cmjGKd.JPG" alt="steps"></p>
 <p>For each kind of regular expression, define an equivalent NFA.</p>
+<p><strong>Thompson Algorithm:</strong></p>
 <p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170825/i3FI550glK.JPG" alt="Transition"><br><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170825/EgEe117kFh.JPG" alt="Transition"><br><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170825/3E2G1150hL.JPG" alt="Transition"></p>
 <p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170825/9AlcACHLHD.JPG" alt="quiz"></p>
 <h2 id="04-04-NFA-to-DFA"><a href="#04-04-NFA-to-DFA" class="headerlink" title="04-04. NFA to DFA"></a>04-04. NFA to DFA</h2><p><strong>$\epsilon$-closure </strong><br>choose a state and look at the states that can be reached by following <strong>only epsilon moves</strong>.</p>
@@ -399,13 +412,19 @@
 </blockquote>
 <p>How to convert an NFA to a DFA?</p>
 <blockquote>
-<p>There are $2^n -1 $ possible subsets of n states.<br><strong>This is a finite set of possible configurations.</strong><br>Use DFA to <strong>simulate the behaviour</strong> of the NFA.</p>
+<p>There are $2^n -1 $ possible subsets of n states.<br><strong>This is a finite set of possible configurations.</strong><br>Use DFA to <strong>simulate the behaviour</strong> of the NFA.<br>O($2^n$)</p>
 </blockquote>
 <p>Define an NFA:<br><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170825/744hcDeEhc.JPG" alt="NFA"></p>
 <p>Define a DFA:<br><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170825/050HKEm80c.JPG" alt="DFA"></p>
 <p>Transition<br><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170825/JA4Eaa9917.JPG" alt="Transition"></p>
+<p><strong>子集构造算法：</strong><br>工作表算法伪代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">q0 &lt;- eps_closure(s0)   // s0为NFA起始状态，q0为新构造的DFA的状态</div><div class="line">// eps_closure 为找到s0的所有$\epsilon$可到达的状态</div><div class="line">Q &lt;- &#123;q0&#125;    // Q 为DFA的所有状态集合</div><div class="line">workList &lt;- q0   // 队列</div><div class="line">while( workList != [] )    </div><div class="line">&#123;</div><div class="line">	remove q from workList // 队列不为空则取队首元素</div><div class="line">	foreach (character c)   // 循环判断每个字符</div><div class="line">	&#123;</div><div class="line">		t &lt;- e-closure( delta(q,c) ) </div><div class="line">		  // delta函数 计算q中每个状态通过c所能到的状态</div><div class="line">		  // t为q通过c所能到的下一个状态集合</div><div class="line">		D[q ,c ] &lt;- t   // 在DFA中记录：q通过c可以转换到t</div><div class="line">		if( t \not \in Q)  // t在队列中未出现的话，还需要继续扩展</div><div class="line">			add t to Q and workList</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="04-05-Implementing-Finite-Automata"><a href="#04-05-Implementing-Finite-Automata" class="headerlink" title="04-05. Implementing Finite Automata"></a>04-05. Implementing Finite Automata</h2><h3 id="DFA-gt-Table-driven-Implemetation"><a href="#DFA-gt-Table-driven-Implemetation" class="headerlink" title="DFA -&gt; Table-driven Implemetation"></a>DFA -&gt; Table-driven Implemetation</h3><p>NFA -&gt; DFA -&gt; list a 2-dimensional state table -&gt; translate into code<br><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170825/j94m246b37.JPG" alt="mark"></p>
 <p>We can also use 1-dimensional tables save space.<br>The table contains a pointer to a vector of moves for that particular state.<br><strong>share the rows that are duplicated in the automaton</strong><br><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170825/0bCIjdDL14.JPG" alt="mark"></p>
+<h4 id="DFA-最小化"><a href="#DFA-最小化" class="headerlink" title="DFA 最小化"></a>DFA 最小化</h4><p><strong>Hopcroft 最小化算法</strong><br>伪代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">split(S)  // 集合切分</div><div class="line">&#123;	</div><div class="line">	foreach (character c )</div><div class="line">		if(c can split S) // S中某些状态通过c转移到同样的状态</div><div class="line">			split S into T1 , ... Tk</div><div class="line">&#125;</div><div class="line">hopcroft()</div><div class="line">&#123;</div><div class="line">	split all nodes into N,A  // 先把大状态集合根据是否为接受状态分成两份</div><div class="line">	while( set is still changes ) // S是否刚刚被切分</div><div class="line">		split(S)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="DFA-代码实现"><a href="#DFA-代码实现" class="headerlink" title="DFA 代码实现"></a>DFA 代码实现</h4><p>DFA是一个有向图<br>可以根据转移表（类似邻接矩阵），哈希表，跳转表</p>
+<h5 id="转移表"><a href="#转移表" class="headerlink" title="转移表"></a>转移表</h5><p>将字符和状态先填入一个二维数组table<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">table [0][&apos;a&apos;]=1;</div><div class="line">table [1][&apos;b&apos;]=1;</div><div class="line">....</div></pre></td></tr></table></figure></p>
+<p>伪代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">nextToken()</div><div class="line">&#123;</div><div class="line">	state=0;  // 当前到了哪个状态，如q0</div><div class="line">	stack=[];  // 为了实现最长匹配机制</div><div class="line">	while( state!=ERROR )</div><div class="line">	&#123;</div><div class="line">		c=getchar();</div><div class="line">		if(state is ACCEPT)</div><div class="line">			clear(stack) </div><div class="line">		push(state)</div><div class="line">		// 保留最接近的接受状态，然后尽可能向前看进行尝试，若向前看失败，则可通过下面的循环不断弹出直到最接近的接受状态</div><div class="line">		state = table [state][c]  // 查表知当前状态通过c能到哪个状态</div><div class="line">		// 若当前状态无法通过c到达别的状态，则赋值为ERROR，退出循环</div><div class="line">	&#125;</div><div class="line">	while( state is not ACCEPT )</div><div class="line">	&#123;</div><div class="line">		state=pop();</div><div class="line">		rollback();   // 把刚刚读入的那个字符扔回流中(多读了一个字符)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="跳转表-jump-table"><a href="#跳转表-jump-table" class="headerlink" title="跳转表 jump table"></a>跳转表 jump table</h5><p>好处：不需要维护一个状态和字符的二维数组并且效率高<br>伪代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">nextToken()</div><div class="line">&#123;</div><div class="line">	state =0</div><div class="line">	stack = []</div><div class="line">	goto q0</div><div class="line"></div><div class="line">q0:</div><div class="line">	c=getchar()</div><div class="line">	if(state is ACCEPT)</div><div class="line">		clear(stack)</div><div class="line">	push (state)</div><div class="line">	if(c==&apos;a&apos;)</div><div class="line">	goto q1</div><div class="line"></div><div class="line">q1:</div><div class="line">	c=getchar()</div><div class="line">	if(state is ACCEPT)</div><div class="line">		clear(stack)</div><div class="line">	push(state)</div><div class="line">	if(c==&apos;b&apos;||c==&apos;c&apos;)</div><div class="line">		goto q1</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="NFA-gt-Table-driven-Implemetation"><a href="#NFA-gt-Table-driven-Implemetation" class="headerlink" title="NFA -&gt; Table-driven Implemetation"></a>NFA -&gt; Table-driven Implemetation</h3><p>It is also possible that we might not want to convert to a DFA.<br>It might be that the particular specification we gave is very expensive to turn into a DFA.</p>
 <p>Implement transition via a table<br><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170825/F9dfJ3Kb7b.JPG" alt="mark"></p>
 <h2 id="Quiz"><a href="#Quiz" class="headerlink" title="Quiz"></a>Quiz</h2><h3 id="Quiz-1"><a href="#Quiz-1" class="headerlink" title="Quiz 1"></a>Quiz 1</h3><p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170825/2GkiL3207F.JPG" alt="mark"></p>
@@ -455,11 +474,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">编译原理</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">编译原理</a>
         		</li>
       		
 		</ul>
@@ -516,7 +535,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#03-01-Lexical-Analysis"><span class="toc-number">1.</span> <span class="toc-text">03-01. Lexical Analysis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-02-Lexical-Analysis-example"><span class="toc-number">2.</span> <span class="toc-text">03-02. Lexical Analysis example</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-03-Regular-Languages-正则语言"><span class="toc-number">3.</span> <span class="toc-text">03-03. Regular Languages (正则语言)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-04-Formal-Languages-形式语言"><span class="toc-number">4.</span> <span class="toc-text">03-04. Formal Languages (形式语言)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Meaning-function-L"><span class="toc-number">4.1.</span> <span class="toc-text">Meaning function: L</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-05-Lexical-Specifications"><span class="toc-number">5.</span> <span class="toc-text">03-05. Lexical Specifications</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#write-regular-expressions"><span class="toc-number">5.1.</span> <span class="toc-text">write regular expressions</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-01-Lexical-Specification"><span class="toc-number">6.</span> <span class="toc-text">04-01. Lexical Specification</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Questions"><span class="toc-number">6.1.</span> <span class="toc-text">Questions:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Summary"><span class="toc-number">6.2.</span> <span class="toc-text">Summary:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-02-Finite-Automata-有限自动机"><span class="toc-number">7.</span> <span class="toc-text">04-02. Finite Automata (有限自动机)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-finite-automaton-consists-of"><span class="toc-number">7.1.</span> <span class="toc-text">A finite automaton consists of :</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deterministic-Finite-Automata-DFA-确定的有穷状态自动机"><span class="toc-number">7.2.</span> <span class="toc-text">Deterministic Finite Automata (DFA) (确定的有穷状态自动机)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nondeterministic-Finite-Automata-NFA-非确定的有穷状态自动机"><span class="toc-number">7.3.</span> <span class="toc-text">Nondeterministic Finite Automata (NFA) (非确定的有穷状态自动机)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-03-Regular-expressions-into-NFAs"><span class="toc-number">8.</span> <span class="toc-text">04-03. Regular expressions into NFAs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-04-NFA-to-DFA"><span class="toc-number">9.</span> <span class="toc-text">04-04. NFA to DFA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-05-Implementing-Finite-Automata"><span class="toc-number">10.</span> <span class="toc-text">04-05. Implementing Finite Automata</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DFA-gt-Table-driven-Implemetation"><span class="toc-number">10.1.</span> <span class="toc-text">DFA -> Table-driven Implemetation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NFA-gt-Table-driven-Implemetation"><span class="toc-number">10.2.</span> <span class="toc-text">NFA -> Table-driven Implemetation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Quiz"><span class="toc-number">11.</span> <span class="toc-text">Quiz</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-1"><span class="toc-number">11.1.</span> <span class="toc-text">Quiz 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-2"><span class="toc-number">11.2.</span> <span class="toc-text">Quiz 2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-3"><span class="toc-number">11.3.</span> <span class="toc-text">Quiz 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-4"><span class="toc-number">11.4.</span> <span class="toc-text">Quiz 4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-5"><span class="toc-number">11.5.</span> <span class="toc-text">Quiz 5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-6"><span class="toc-number">11.6.</span> <span class="toc-text">Quiz 6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-7"><span class="toc-number">11.7.</span> <span class="toc-text">Quiz 7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-8"><span class="toc-number">11.8.</span> <span class="toc-text">Quiz 8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-9"><span class="toc-number">11.9.</span> <span class="toc-text">Quiz 9</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-10"><span class="toc-number">11.10.</span> <span class="toc-text">Quiz 10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-11"><span class="toc-number">11.11.</span> <span class="toc-text">Quiz 11</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-12"><span class="toc-number">11.12.</span> <span class="toc-text">Quiz 12</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#03-01-Lexical-Analysis"><span class="toc-number">1.</span> <span class="toc-text">03-01. Lexical Analysis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-02-Lexical-Analysis-example"><span class="toc-number">2.</span> <span class="toc-text">03-02. Lexical Analysis example</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#extra-03-02x-词法分析器的实现"><span class="toc-number">3.</span> <span class="toc-text">(extra) 03-02x 词法分析器的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#03-02x-01-手工编码实现"><span class="toc-number">3.1.</span> <span class="toc-text">03-02x-01 手工编码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#方法一：转移图算法"><span class="toc-number">3.1.1.</span> <span class="toc-text">方法一：转移图算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法二：关键字表算法"><span class="toc-number">3.1.2.</span> <span class="toc-text">方法二：关键字表算法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-03-Regular-Languages-正则语言"><span class="toc-number">4.</span> <span class="toc-text">03-03. Regular Languages (正则语言)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-04-Formal-Languages-形式语言"><span class="toc-number">5.</span> <span class="toc-text">03-04. Formal Languages (形式语言)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Meaning-function-L"><span class="toc-number">5.1.</span> <span class="toc-text">Meaning function: L</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-05-Lexical-Specifications"><span class="toc-number">6.</span> <span class="toc-text">03-05. Lexical Specifications</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#write-regular-expressions"><span class="toc-number">6.1.</span> <span class="toc-text">write regular expressions</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-01-Lexical-Specification"><span class="toc-number">7.</span> <span class="toc-text">04-01. Lexical Specification</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Questions"><span class="toc-number">7.1.</span> <span class="toc-text">Questions:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Summary"><span class="toc-number">7.2.</span> <span class="toc-text">Summary:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-02-Finite-Automata-有限状态自动机"><span class="toc-number">8.</span> <span class="toc-text">04-02. Finite Automata (有限状态自动机)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-finite-automaton-consists-of"><span class="toc-number">8.1.</span> <span class="toc-text">A finite automaton consists of :</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deterministic-Finite-Automata-DFA-确定的有穷状态自动机"><span class="toc-number">8.2.</span> <span class="toc-text">Deterministic Finite Automata (DFA) (确定的有穷状态自动机)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nondeterministic-Finite-Automata-NFA-非确定的有穷状态自动机"><span class="toc-number">8.3.</span> <span class="toc-text">Nondeterministic Finite Automata (NFA) (非确定的有穷状态自动机)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-03-Regular-expressions-into-NFAs"><span class="toc-number">9.</span> <span class="toc-text">04-03. Regular expressions into NFAs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-04-NFA-to-DFA"><span class="toc-number">10.</span> <span class="toc-text">04-04. NFA to DFA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-05-Implementing-Finite-Automata"><span class="toc-number">11.</span> <span class="toc-text">04-05. Implementing Finite Automata</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DFA-gt-Table-driven-Implemetation"><span class="toc-number">11.1.</span> <span class="toc-text">DFA -> Table-driven Implemetation</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DFA-最小化"><span class="toc-number">11.1.1.</span> <span class="toc-text">DFA 最小化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DFA-代码实现"><span class="toc-number">11.1.2.</span> <span class="toc-text">DFA 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#转移表"><span class="toc-number">11.1.2.1.</span> <span class="toc-text">转移表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#跳转表-jump-table"><span class="toc-number">11.1.2.2.</span> <span class="toc-text">跳转表 jump table</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NFA-gt-Table-driven-Implemetation"><span class="toc-number">11.2.</span> <span class="toc-text">NFA -> Table-driven Implemetation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Quiz"><span class="toc-number">12.</span> <span class="toc-text">Quiz</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-1"><span class="toc-number">12.1.</span> <span class="toc-text">Quiz 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-2"><span class="toc-number">12.2.</span> <span class="toc-text">Quiz 2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-3"><span class="toc-number">12.3.</span> <span class="toc-text">Quiz 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-4"><span class="toc-number">12.4.</span> <span class="toc-text">Quiz 4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-5"><span class="toc-number">12.5.</span> <span class="toc-text">Quiz 5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-6"><span class="toc-number">12.6.</span> <span class="toc-text">Quiz 6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-7"><span class="toc-number">12.7.</span> <span class="toc-text">Quiz 7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-8"><span class="toc-number">12.8.</span> <span class="toc-text">Quiz 8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-9"><span class="toc-number">12.9.</span> <span class="toc-text">Quiz 9</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-10"><span class="toc-number">12.10.</span> <span class="toc-text">Quiz 10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-11"><span class="toc-number">12.11.</span> <span class="toc-text">Quiz 11</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quiz-12"><span class="toc-number">12.12.</span> <span class="toc-text">Quiz 12</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -662,11 +681,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">编译原理</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">图</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编译原理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -678,19 +709,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">图</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">链表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">游戏制作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -707,18 +738,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">水题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">游戏制作</a>
               </li>
             
             <div class="clearfix"></div>
