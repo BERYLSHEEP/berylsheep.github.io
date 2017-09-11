@@ -6,26 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://zedom1.top">
-  <title>题目小结：二叉树 ( 建树和遍历 ) | Zedom</title>
+  <title>JAVA笔记（一）：基础 | Zedom</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="二叉树练习：1. 树的构建有关二叉树的题目有以下几种输入建树方式：1.前序+中序遍历序列2.中序+后序遍历序列3.前序+后序序列，同时说明该二叉树的所有节点子节点数为偶数4.每个节点子节点数目以及子节点编号5.先序序列，空节点以’,’代替">
-<meta name="keywords" content="数据结构,c++,刷题,二叉树">
+  <meta name="description" content="概述JAVA学习过程中的简要笔记 从已有C++基础的前提下开始学习java 内容包括java的特性和机制、基本的语法、数组、几个容器、面向对象三大特性、内部类、异常处理、常见的类和简单的内存分析等 各版本和体系架构 J2EE  JAVA 2(to) Enterprise Edition: 定位在服务器端的应用   J2SE  JAVA 2(to) Standard Edition: 定位在个人计算">
+<meta name="keywords" content="学习笔记,JAVA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="题目小结：二叉树 ( 建树和遍历 )">
-<meta property="og:url" content="http://zedom1.top/2017/08/18/problem_tree/index.html">
+<meta property="og:title" content="JAVA笔记（一）：基础">
+<meta property="og:url" content="http://zedom1.top/2017/09/11/java/index.html">
 <meta property="og:site_name" content="Zedom">
-<meta property="og:description" content="二叉树练习：1. 树的构建有关二叉树的题目有以下几种输入建树方式：1.前序+中序遍历序列2.中序+后序遍历序列3.前序+后序序列，同时说明该二叉树的所有节点子节点数为偶数4.每个节点子节点数目以及子节点编号5.先序序列，空节点以’,’代替">
-<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170818/hCiffgFFLD.JPG">
-<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170818/lJ1GBIf81b.JPG">
-<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170818/miHddAiGEf.JPG">
-<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170818/5aAHAglgKi.png?imageslim">
-<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170818/dha1ah025f.png?imageslim">
-<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170822/BEacbGD51k.png?imageslim">
-<meta property="og:updated_time" content="2017-08-22T05:58:03.082Z">
+<meta property="og:description" content="概述JAVA学习过程中的简要笔记 从已有C++基础的前提下开始学习java 内容包括java的特性和机制、基本的语法、数组、几个容器、面向对象三大特性、内部类、异常处理、常见的类和简单的内存分析等 各版本和体系架构 J2EE  JAVA 2(to) Enterprise Edition: 定位在服务器端的应用   J2SE  JAVA 2(to) Standard Edition: 定位在个人计算">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170908/gg4hmL0CDi.JPG">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170908/c3j416JG4A.JPG">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170910/197ED2Bj8D.JPG">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170903/gfj3geAc0f.JPG">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170909/Jd69EhEaBa.JPG">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170909/70jHJ3hJEi.JPG">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170907/8B7I3088Hh.JPG">
+<meta property="og:updated_time" content="2017-09-11T15:55:47.589Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="题目小结：二叉树 ( 建树和遍历 )">
-<meta name="twitter:description" content="二叉树练习：1. 树的构建有关二叉树的题目有以下几种输入建树方式：1.前序+中序遍历序列2.中序+后序遍历序列3.前序+后序序列，同时说明该二叉树的所有节点子节点数为偶数4.每个节点子节点数目以及子节点编号5.先序序列，空节点以’,’代替">
-<meta name="twitter:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170818/hCiffgFFLD.JPG">
+<meta name="twitter:title" content="JAVA笔记（一）：基础">
+<meta name="twitter:description" content="概述JAVA学习过程中的简要笔记 从已有C++基础的前提下开始学习java 内容包括java的特性和机制、基本的语法、数组、几个容器、面向对象三大特性、内部类、异常处理、常见的类和简单的内存分析等 各版本和体系架构 J2EE  JAVA 2(to) Enterprise Edition: 定位在服务器端的应用   J2SE  JAVA 2(to) Standard Edition: 定位在个人计算">
+<meta name="twitter:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170908/gg4hmL0CDi.JPG">
   
     <link rel="alternative" href="/atom.xml" title="Zedom" type="application/atom+xml">
   
@@ -163,82 +164,1122 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-problem_tree" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-java" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      题目小结：二叉树 ( 建树和遍历 )
+      JAVA笔记（一）：基础
     </h1>
   
 
         
-        <a href="/2017/08/18/problem_tree/" class="archive-article-date">
-  	<time datetime="2017-08-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-18</time>
+        <a href="/2017/09/11/java/" class="archive-article-date">
+  	<time datetime="2017-09-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="二叉树练习："><a href="#二叉树练习：" class="headerlink" title="二叉树练习："></a>二叉树练习：</h1><h2 id="1-树的构建"><a href="#1-树的构建" class="headerlink" title="1. 树的构建"></a>1. 树的构建</h2><p>有关二叉树的题目有以下几种输入建树方式：<br>1.前序+中序遍历序列<br>2.中序+后序遍历序列<br>3.前序+后序序列，同时说明该二叉树的所有节点子节点数为偶数<br>4.每个节点子节点数目以及子节点编号<br>5.先序序列，空节点以’,’代替</p>
-<a id="more"></a>
-<h3 id="1-前序-中序遍历序列"><a href="#1-前序-中序遍历序列" class="headerlink" title="1. 前序+中序遍历序列"></a>1. 前序+中序遍历序列</h3><p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170818/hCiffgFFLD.JPG" alt="前序+中序"></p>
-<p>从图中可以看出，前序的第一个节点为根节点，第二个为左孩子，通过拿根节点在中序中搜索，可以将中序的序列分成左右两部分，由此可以得到左序列的长度，进而能够在前序中确定右孩子，而后在递归构建左子树和右子树。</p>
-<p>用流程表述如下：<br>在前序中确定根节点-&gt;在中序中确定根节点-&gt;得知左右序列的长度-&gt;递归左右序列</p>
-<p>你可能会疑惑，那左右节点呢？不是能够确定吗？<br>没错，但是会额外增加判断和细节确定，不如一次递归确定根节点，然后递归左右子树。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function">node *<span class="title">build</span><span class="params">( <span class="keyword">char</span> *pre, <span class="keyword">char</span> * ins, <span class="keyword">int</span> n)</span></span></div><div class="line">&#123;</div><div class="line">	node *s=<span class="literal">NULL</span>;</div><div class="line">	<span class="keyword">if</span>(n&lt;=<span class="number">0</span>) <span class="keyword">return</span> s;</div><div class="line">	<span class="keyword">if</span>(n==<span class="number">1</span>)</div><div class="line">	&#123;</div><div class="line">		s=<span class="keyword">new</span> node(*pre);</div><div class="line">		<span class="keyword">return</span> s;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> i;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; *(ins+i)!=*pre ; i++);</div><div class="line">	s= <span class="keyword">new</span> node (*pre);</div><div class="line">	s-&gt;lc=build(pre+<span class="number">1</span>,ins,i);</div><div class="line">	s-&gt;rc=build(pre+i+<span class="number">1</span>,ins+i+<span class="number">1</span>,n-i<span class="number">-1</span>);</div><div class="line">	<span class="keyword">return</span> s;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="2-中序-后序遍历序列"><a href="#2-中序-后序遍历序列" class="headerlink" title="2. 中序+后序遍历序列"></a>2. 中序+后序遍历序列</h3><p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170818/lJ1GBIf81b.JPG" alt="中序+后序"></p>
-<p>和前序+中序一般，这次不过是根节点在最后，流程是类似的。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function">node *<span class="title">build</span><span class="params">(<span class="keyword">char</span> *ins, <span class="keyword">char</span> *post, <span class="keyword">int</span> n)</span></span></div><div class="line">&#123;</div><div class="line">	node *s=<span class="literal">NULL</span>;</div><div class="line">	<span class="keyword">if</span>(n&lt;=<span class="number">0</span>) <span class="keyword">return</span> s;</div><div class="line">	<span class="keyword">if</span>(n==<span class="number">1</span>)</div><div class="line">	&#123;</div><div class="line">		s=<span class="keyword">new</span> node (*(post+n<span class="number">-1</span>));</div><div class="line">		<span class="keyword">return</span> s;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> i;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; *(ins+i)!=*(post+n<span class="number">-1</span>); i++);</div><div class="line">	s=<span class="keyword">new</span> node (*(post+n<span class="number">-1</span>));</div><div class="line">	s-&gt;lc=build(ins,post,i);</div><div class="line">	s-&gt;rc=build(ins+i+<span class="number">1</span>,post+i,n-i<span class="number">-1</span>);</div><div class="line">	<span class="keyword">return</span> s;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="3-前序-后序序列"><a href="#3-前序-后序序列" class="headerlink" title="3. 前序+后序序列"></a>3. 前序+后序序列</h3><p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170818/miHddAiGEf.JPG" alt="前序+后序"></p>
-<p>那在前序+后序中，根节点不是最前就是最后，怎么确定左右序列长度呢？<br>这时候就靠左孩子了。而根据给出的性质：<strong>所有节点的子节点数均为偶数</strong>可以判断，一个节点要么没有孩子，要么就有两个孩子，这也是我们能够大胆判定序列第二个是左孩子而不用担心只有左孩子而没有右孩子的情况。（没有左右孩子，只有根节点就直接返回了）</p>
-<p>明确思路后修改一下细节就可以得到如下代码<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function">node * <span class="title">build</span><span class="params">( <span class="keyword">char</span> *pre , <span class="keyword">char</span> *post, <span class="keyword">int</span> len )</span></span></div><div class="line">&#123; </div><div class="line">	node *s=<span class="literal">NULL</span>;</div><div class="line">	<span class="keyword">if</span>(len&lt;=<span class="number">0</span> ) <span class="keyword">return</span> s;</div><div class="line">	<span class="keyword">if</span>(len==<span class="number">1</span>)</div><div class="line">	&#123;</div><div class="line">		s=<span class="keyword">new</span> node (*pre);</div><div class="line">		<span class="keyword">return</span> s;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> i;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; *(post+i)!=*(pre+<span class="number">1</span>); i++);</div><div class="line">	s=<span class="keyword">new</span> node (*pre);</div><div class="line">	s-&gt;lc=build(pre+<span class="number">1</span>,post,i+<span class="number">1</span>);</div><div class="line">	s-&gt;rc=build(pre+i+<span class="number">2</span>,post+i+<span class="number">1</span>,len-i<span class="number">-2</span>);</div><div class="line">	<span class="keyword">return</span> s;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="4-子节点编号"><a href="#4-子节点编号" class="headerlink" title="4. 子节点编号"></a>4. 子节点编号</h3><p>假设题目的输入如下：<br>第一行为节点总数n，节点编号1-n<br>紧接n行，每行三个数字，第一个数字代表该节点权值，第二三为左右孩子的编号，若无孩子，以0代替。<br>范例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">7 </div><div class="line">1 6 3</div><div class="line">2 0 4</div><div class="line">1 7 0</div><div class="line">3 0 0</div><div class="line">1 2 1</div><div class="line">2 0 0</div><div class="line">2 0 0</div></pre></td></tr></table></figure></p>
-<p>显然，我们有四种数据需要处理：该节点编号，该节点权值，该节点左右孩子编号。而最重要的一点是：<strong>没有给出根节点编号！</strong>，除非题目明确表示几号为根节点，否则默认将1号当做根节点那可就从开始就错了。</p>
-<p>我个人的做法是：用3个int数组(视情况可能1个char+2个int) +1个bool数组<br>3个int数组a[i],llc[i],rrc[i]分别保存编号为i的权值、左孩子编号、右孩子编号。<br>1个bool数组isroot用来确定根节点。题目保证必定能够构造一棵合法的二叉树，那么就不会出现1棵树+1个孤立节点的情况，那么，不被任何节点当做左右孩子的节点就自然是根节点了。只需要在输入左右孩子编号时额外在isroot里维护一下，最后扫描一遍isroot数组就能够确定root的编号了。</p>
-<p>build函数很简单，若有孩子则递归构建。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function">node * <span class="title">build</span><span class="params">(<span class="keyword">int</span> n)</span></span></div><div class="line">&#123;</div><div class="line">	node *s=<span class="keyword">new</span> node(a[n]);</div><div class="line">	<span class="keyword">if</span>(llc[n])</div><div class="line">		s-&gt;lc=build(llc[n]);</div><div class="line">	<span class="keyword">if</span>(rrc[n])</div><div class="line">		s-&gt;rc=build(rrc[n]);</div><div class="line">	<span class="keyword">return</span> s;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>那输入要怎么处理？<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">memset</span>(isroot,<span class="number">0</span>,<span class="keyword">sizeof</span>(isroot)); <span class="comment">// 数组归零，很重要！</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</div><div class="line">&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;llc[i],&amp;rrc[i]);</div><div class="line">	isroot[llc[i]]=isroot[rrc[i]]=<span class="number">1</span>;   <span class="comment">// 此处题目已经说若无孩子则为0，而编号从1开始，因此无关紧要，若是规定为-1，则需要额外处理</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span>(nroot=<span class="number">1</span>; isroot[nroot]==<span class="number">1</span>; nroot++);</div><div class="line">tree=build(nroot);</div></pre></td></tr></table></figure></p>
-<h3 id="5-先序序列"><a href="#5-先序序列" class="headerlink" title="5. 先序序列"></a>5. 先序序列</h3><p>还有的时候，题目只给出先序序列，但是额外表明了空节点（一般以’,’标明）<br>如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">abc,,de,g,,f,,,</div></pre></td></tr></table></figure></p>
-<p>很简单，只需要模仿先序遍历的过程即可，重要的在于要确定数组的秩</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function">node *<span class="title">build</span><span class="params">( <span class="keyword">int</span> &amp;fir , <span class="keyword">int</span> n)</span> <span class="comment">// 用引用很重要！否则在递归中会丢失自增的数据</span></span></div><div class="line"><span class="comment">// 而之所以不把传fir改为把数组的首地址传进来，因为判断是否到达数组尾部需要额外的功夫，不如一句if(fir&gt;=n)方便</span></div><div class="line">&#123;</div><div class="line">	node *s=<span class="literal">NULL</span>;</div><div class="line">	<span class="keyword">if</span>(fir&gt;=n) <span class="keyword">return</span> s;</div><div class="line">	<span class="keyword">if</span>(pre[fir]==<span class="string">','</span> ) <span class="keyword">return</span> s;</div><div class="line">	s=<span class="keyword">new</span> node(pre[fir]);</div><div class="line">	s-&gt;lc=build(++fir,n);</div><div class="line">	s-&gt;rc=build(++fir,n);</div><div class="line">	<span class="keyword">return</span> s;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="2-树的同构"><a href="#2-树的同构" class="headerlink" title="2. 树的同构"></a>2. 树的同构</h2><p><a href="http://acm.sdut.edu.cn/onlinejudge2/index.php/Home/Index/problemdetail/pid/3340.html" target="_blank" rel="external">SDUT 3340: 数据结构实验之二叉树一：树的同构</a></p>
-<p>题意：给定两棵树T1和T2。如果T1可以通过若干次左右孩子互换就变成T2，则我们称两棵树是“同构”的。</p>
-<p>例如图1给出的两棵树就是同构的，因为我们把其中一棵树的结点A、B、G的左右孩子互换后，就得到另外一棵树。而图2就不是同构的。</p>
-<p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170818/5aAHAglgKi.png?imageslim" alt="图1"></p>
-<p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170818/dha1ah025f.png?imageslim" alt="图2"></p>
-<p>难点：</p>
-<ol>
-<li>树的构建</li>
-<li>同构判断</li>
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>JAVA学习过程中的简要笔记</p>
+<p>从已有C++基础的前提下开始学习java</p>
+<p>内容包括java的特性和机制、基本的语法、数组、几个容器、面向对象三大特性、内部类、异常处理、常见的类和简单的内存分析等</p>
+<h3 id="各版本和体系架构"><a href="#各版本和体系架构" class="headerlink" title="各版本和体系架构"></a>各版本和体系架构</h3><ul>
+<li>J2EE <ul>
+<li>JAVA 2(to) Enterprise Edition:</li>
+<li>定位在服务器端的应用</li>
+</ul>
+</li>
+<li>J2SE <ul>
+<li>JAVA 2(to) Standard Edition:</li>
+<li>定位在个人计算机的应用</li>
+</ul>
+</li>
+<li>J2EE <ul>
+<li>JAVA 2(to) Micro Edition:</li>
+<li>定位在消费性电子产品的应用</li>
+</ul>
+</li>
+</ul>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><pre><code>- JDK
+    - Java Development Kit Java开发工具包
+- JRE
+    - Java Runtime Environment java运行环境
+- JVM
+    - Java Virtual Machine java虚拟机
+</code></pre><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170908/gg4hmL0CDi.JPG" alt="数据类型"></p>
+<h3 id="整型变量"><a href="#整型变量" class="headerlink" title="整型变量"></a>整型变量</h3><pre><code>- 表示形式
+    - 十进制
+    - 八进制：以0开头
+    - 十六进制：以0x或0X开头
+</code></pre><p>整型默认为int型，long型常量后加”l”或”L”</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>占用空间</th>
+<th>表示范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>1字节</td>
+<td>-128~127</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2字节</td>
+<td>-$2^15$~$2^15-1$</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4字节</td>
+<td>-$2^31$~$2^31-1$</td>
+</tr>
+<tr>
+<td>long</td>
+<td>8字节</td>
+<td>-$2^63$~$2^63-1$</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>超过long的数字使用<strong>BigInteger</strong>类</li>
+</ul>
+<h3 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>占用空间</th>
+<th>表示范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>float</td>
+<td>4字节</td>
+<td>-3.403E38~3.403E38</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8字节</td>
+<td>-1.798E308~1.798E308</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>默认为double</li>
+<li>若需要不产生舍入误差的精确计算，需要用<strong>BigDecimal</strong>类</li>
+<li>double变float：在数字后加”f”或”F”</li>
+</ul>
+<h3 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h3><ul>
+<li>char采用Unicode编码表，，占用2个字节</li>
+<li>同c++,可以和整数相互转型，可以使用转义字符</li>
+</ul>
+<h3 id="boolean"><a href="#boolean" class="headerlink" title="boolean"></a>boolean</h3><ul>
+<li>占1位(非字节)</li>
+<li>java中boolean无法和整数之间转换</li>
+</ul>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><pre><code>- 变量使用前需要声明
+</code></pre><h4 id="final"><a href="#final" class="headerlink" title="final"></a>final</h4><p>类似c++的const</p>
+<pre><code>- final修饰变量，则该变量无法修改
+- final修饰类，则说明该类不能被继承，不能有子类
+    - 如 Math、String
+- final修饰方法，则该方法不能被子类重写，但是可以被重载
+</code></pre><p><strong>命名规范</strong>：</p>
+<ul>
+<li><p>变量、方法名：</p>
+<ul>
+<li>首字母小写+驼峰原则</li>
+</ul>
+</li>
+<li><p>常量：</p>
+<ul>
+<li>大写字母+下划线</li>
+</ul>
+</li>
+<li><p>类名：</p>
+<ul>
+<li>首字母大写+驼峰原则</li>
+</ul>
+</li>
+</ul>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><pre><code>- 算术运算符： +,-,*,/,%,++,--
+    - 不同于c++, java中浮点数可以使用&quot;%&quot;运算符！
+    - 加号两边只要有一个字符串，则为字符串连接符，整个结果为字符串
+- 赋值运算符： =
+- 关系运算符： &lt;,&gt;,&lt;=,&gt;=,==,!=, instanceof
+    - instanceof 判断内存中实际对象是否属于某个类 （通常用于造型cast）
+        - 返回值：boolean  true代表属于
+        - 使用： boolean ret= a instanceof A;
+- 逻辑运算符： &amp;&amp;,||,!
+    - 同c++,逻辑与和或采用**短路**方式，从左至右，若确定了值则不会继续计算
+- 位运算符： &amp;,|,^,~,&gt;&gt;,&lt;&lt;,&gt;&gt;&gt;
+    - &gt;&gt; 表示有符号右移：左边以该数的符号位补充，移出的部分将抛弃
+        - 01110&gt;&gt;1 右移一位： 00111
+        - 10010&gt;&gt;1 右移一位： 11001
+    - &gt;&gt;&gt; 表示无符号右移：左边以0补充，移出的部分将抛弃
+        - 01110&gt;&gt;&gt;1 右移一位：00111   (正数时和&quot;&gt;&gt;&quot;相同)
+        - 10010&gt;&gt;&gt;1 右移一位：01001
+    - &lt;&lt; 没有 &quot;&lt;&lt;&lt;&quot;
+- 条件运算符：  ?:
+- 扩展赋值运算符： +=,-=,*=,/=,%=
+</code></pre><h3 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h3><ul>
+<li>在JDK7之前，switch表达式结果只能是Int(可以转Int的byte,char,short),枚举类型</li>
+<li>JDK7之后，switch表达式结果还可以是字符串</li>
+<li>使用方法同c++,进入一条语句后若未遇到break则自动执行下面的所有语句</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span>(a)</div><div class="line">&#123;</div><div class="line">	<span class="keyword">case</span> <span class="number">1</span>: <span class="keyword">break</span>;</div><div class="line">	<span class="keyword">case</span> <span class="number">2</span>: System.out.println(<span class="number">1</span>);</div><div class="line">	<span class="keyword">default</span>: <span class="keyword">break</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h3><ul>
+<li>if,while语句同c++</li>
+<li>while中可以使用break,continue关键字</li>
+<li>goto作为保留字无法作为变量，但也不能使用，取而代之的是带标签的continue和break</li>
+<li><strong>可以使用带标签的continue和break</strong><ul>
+<li>带标签的continue：跳转继续执行标签指向的循环</li>
+<li>带标签的break：停止标签指向的循环，跳至标签外的那层循环（若存在）</li>
+</ul>
+</li>
+</ul>
+<h3 id="方法-method，function"><a href="#方法-method，function" class="headerlink" title="方法 method，function"></a>方法 method，function</h3><p>[修饰符1 修饰符2..] 返回值  方法名(形参列表){<br>    语句<br>}</p>
+<pre><code>- **Java中只有值传递！**
+- 基本类型传递数据值本身，引用类型传递对象的引用而非对象本身
+    - 即：基本类型传进去副本，不改变原来的值，引用类型传进去的为引用，会改变原来的值
+</code></pre><h3 id="内存分析"><a href="#内存分析" class="headerlink" title="内存分析"></a>内存分析</h3><pre><code>- 栈
+    - 存放：局部变量
+    - 自动分配连续的空间
+- 堆
+    - 存放new出来的对象
+    - 空间不连续
+- 方法区
+    - 包含于堆区
+    - 存放：类的信息(代码)、static变量、常量池(字符串常量)等
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Teacher</span></span>&#123;</div><div class="line">	String name;</div><div class="line">	<span class="keyword">int</span> age;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">teach</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</div><div class="line">	String name;</div><div class="line">	<span class="keyword">int</span> age;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">study</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">		Student st1=<span class="keyword">new</span> Student();</div><div class="line">		Student st2=<span class="keyword">new</span> Student();</div><div class="line">		st1.age=<span class="number">18</span>;</div><div class="line">		st1.name=<span class="string">"张三"</span>;</div><div class="line">		st2.age=<span class="number">30</span>;</div><div class="line">		st2.name=<span class="string">"李四"</span>;</div><div class="line">		</div><div class="line">		Teacher t1=<span class="keyword">new</span> Teacher();</div><div class="line">		t1.age=<span class="number">30</span>;</div><div class="line">		t1.name=<span class="string">"李四"</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170908/c3j416JG4A.JPG" alt="mark"></p>
+<h2 id="包-package"><a href="#包-package" class="headerlink" title="包 package"></a>包 package</h2><p>定义：Java的类库管理机制，借助文件系统的目录</p>
+<ul>
+<li><p>为什么需要使用Package</p>
+<ul>
+<li>为了解决类的重名问题</li>
+<li>为了便于管理类：合适的类位于合适的包</li>
+</ul>
+</li>
+<li><p>怎么使用package</p>
+<ul>
+<li>通常是类的第一句非注释性语句<ul>
+<li>规则：通常域名倒过来写，加上模块名<blockquote>
+<p>com.qq.test</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>一个包内的所有的类必须放在一个目录下，那个目录的名字必须是包的名字</p>
+<p>包名称内可以带有”.”，每个”.”代表文件系统的下一级目录</p>
+<p>如<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> p1;</div><div class="line"><span class="keyword">package</span> p1.s1;</div></pre></td></tr></table></figure></p>
+<p>则在文件系统中，p1文件夹下有个名为s1的文件夹包</p>
+<h3 id="使用其它包里的类"><a href="#使用其它包里的类" class="headerlink" title="使用其它包里的类:"></a>使用其它包里的类:</h3><p>1 . 使用<strong>import</strong>预先声明</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> package1.T;  <span class="comment">// 引入package1包里的T</span></div><div class="line"><span class="keyword">import</span> package2.*   <span class="comment">// 引入package2包里的所有类</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">T2</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">private</span> T t1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> 2 . 每次使用时附带说明包的名</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">T2</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">private</span> package1.T t1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="API文档"><a href="#API文档" class="headerlink" title="API文档"></a>API文档</h2><p>使用<strong>JAVADOC</strong>生成API文档</p>
+<pre><code>- 解决代码文档分离的问题
+</code></pre><ul>
+<li>特殊的注释<ul>
+<li>文档注释： “/**”</li>
+</ul>
+</li>
+<li>常用的java注释标签<ul>
+<li>@Author 作者</li>
+<li>@version 版本</li>
+<li>@param 参数</li>
+<li>@return 返回值含义</li>
+<li>@throws 抛出异常描述</li>
+<li>@deprecated 废弃，建议用户不再使用该方法</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 类的描述、功能</div><div class="line"> * <span class="doctag">@author</span> aa</div><div class="line"> * <span class="doctag">@version</span> 1.0</div><div class="line"> */</div></pre></td></tr></table></figure>
+<h3 id="垃圾回收机制-Garbage-Collection"><a href="#垃圾回收机制-Garbage-Collection" class="headerlink" title="垃圾回收机制 (Garbage Collection)"></a>垃圾回收机制 (Garbage Collection)</h3><pre><code>- 对象空间的分配
+    - 使用&quot;new&quot;关键字创建对象
+- 对象空间的释放：
+    - 将对象赋值为null即可，垃圾回收器将负责回收所有不可达的对象的内存空间
+- 要点：
+    - 程序员无权调用垃圾回收器
+    - 程序员可以通过System.gc()通知GC运行，但JAVA规范并不能保证立刻运行
+    - finalize方法是JAVA提供给程序员用来释放对象或资源的方法，但尽量少用
+</code></pre><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="定义数组变量"><a href="#定义数组变量" class="headerlink" title="定义数组变量"></a>定义数组变量</h3><p> 1 - &lt;类型&gt;[]&lt;数组名&gt;=new &lt;类型&gt;[元素个数];</p>
+<blockquote>
+<p>例如：</p>
+<p>int [] grade = new int [100];</p>
+<p>这样创建的数组会是默认的0值</p>
+</blockquote>
+<p> 2 - &lt;类型&gt;[]&lt;数组名&gt;={元素1，元素2…};</p>
+<blockquote>
+<p>例如： int []a={1,2,3};</p>
+</blockquote>
+<p> 3 - &lt;类型&gt;[]b = a;  (a为同类型的数组)</p>
+<blockquote>
+<p>与c++中数组名的含义类似，数组名变量管理数组空间</p>
+<p>b和a管理同一个数组</p>
+</blockquote>
+<h3 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h3><p> 1 - 所有元素的数据类型相同<br> 2 - 一旦创建则不能改变大小</p>
+<h3 id="要求："><a href="#要求：" class="headerlink" title="要求："></a>要求：</h3><ul>
+<li>元素个数必须是整数</li>
+<li>元素个数必须给出</li>
+<li>元素个数可以是变量</li>
+</ul>
+<h3 id="内部成员："><a href="#内部成员：" class="headerlink" title="内部成员："></a>内部成员：</h3><p>length : 返回元素个数</p>
+<blockquote>
+<p>for(int i=0; i&lt;grade.length ; ++i)</p>
+</blockquote>
+<h3 id="数组和数组变量："><a href="#数组和数组变量：" class="headerlink" title="数组和数组变量："></a>数组和数组变量：</h3><ul>
+<li>数组变量为数组的管理者，而非其本身</li>
+<li>数组创建出来后交给数组变量管理</li>
+<li>数组变量之间的赋值为管理权限的赋予</li>
+<li>数组变量的比较是判断是否管理同一个数组</li>
+</ul>
+<h3 id="常用操作："><a href="#常用操作：" class="headerlink" title="常用操作："></a>常用操作：</h3><ol>
+<li><p>数组复制<br> System的arraycopy函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">arraycopy</span><span class="params">(Object src,</span></span></div><div class="line">                             <span class="keyword">int</span> srcPos,</div><div class="line">                             Object dest,</div><div class="line">                             <span class="keyword">int</span> destPos,</div><div class="line">                             <span class="keyword">int</span> length)</div><div class="line"><span class="comment">// src 源数组</span></div><div class="line"><span class="comment">// srcPos 源数组开始复制的位置</span></div><div class="line"><span class="comment">// dest 目标数组</span></div><div class="line"><span class="comment">// destPos 目标数组开始复制的位置</span></div><div class="line"><span class="comment">// length 复制长度</span></div><div class="line"><span class="comment">// [srcPos,srcPos+length-1)</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>二分查找<br> Arrays.sort(Object obj); // 非基本类型需要实现Comparable接口<br> Arrays.binarySearch(Object obj, Object goal);</p>
+</li>
+<li><p>填充<br> Arrays.fill(Object obj, int start, int end, Object goal)<br> 将目标数组[start,end)填充为goal</p>
+</li>
 </ol>
-<p>坑：</p>
+<h3 id="for-each循环："><a href="#for-each循环：" class="headerlink" title="for-each循环："></a>for-each循环：</h3><p>例如：for( int k: data )</p>
+<p>对于data数组的每一个元素，循环每一轮取一个元素作为k</p>
+<p>第一轮 k=data[0] , 第二轮 k=data[1]</p>
+<p><strong>for-each循环复制基础类型数组元素，无法修改基础类型数组元素的值</strong></p>
+<h2 id="包裹类型"><a href="#包裹类型" class="headerlink" title="包裹类型"></a>包裹类型</h2><ul>
+<li>每种基础类型都有对应的包裹类型</li>
+<li>出现原因：基本数据类型不面向对象，但我们经常需要将基本数据转化成对象</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>基础类型</th>
+<th>包裹类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>Boolean</td>
+</tr>
+<tr>
+<td>char</td>
+<td>Character</td>
+</tr>
+<tr>
+<td>int</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>double</td>
+<td>Double</td>
+</tr>
+</tbody>
+</table>
+<h3 id="用处："><a href="#用处：" class="headerlink" title="用处："></a>用处：</h3><ul>
+<li>声明变量时包裹类型同基础类型</li>
+</ul>
+<blockquote>
+<p>int a=1;   &lt;=&gt;   Integer a=1;</p>
+</blockquote>
+<ul>
+<li>可以获取该类型的信息，如最大值最小值</li>
+</ul>
+<blockquote>
+<p>如 System.out.println(Integer.MAX_VALUE);</p>
+<p>( Integer.MAX_VALUE=2147483647 )</p>
+</blockquote>
+<ul>
+<li>Character</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>函数声明</th>
+<th>参数</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>static boolean isDigit</td>
+<td>char ch</td>
+<td>判断该字符是否是数字</td>
+</tr>
+<tr>
+<td>static boolean isLetter</td>
+<td>char ch</td>
+<td>判断该字符是否是字母</td>
+</tr>
+<tr>
+<td>static boolean isLetterOrDigit</td>
+<td>char ch</td>
+<td>判断该字符是否是数字或字母</td>
+</tr>
+<tr>
+<td>static boolean isLowerCase</td>
+<td>char ch</td>
+<td>判断该字符是否是小写字母</td>
+</tr>
+<tr>
+<td>static boolean isUpperCase</td>
+<td>char ch</td>
+<td>判断该字符是否是大写字母</td>
+</tr>
+<tr>
+<td>static boolean isWhitespace</td>
+<td>char ch</td>
+<td>判断该字符是否是一种空格</td>
+</tr>
+<tr>
+<td>static char toLowerCase</td>
+<td>char ch</td>
+<td>把该字符转换成小写</td>
+</tr>
+<tr>
+<td>static char toUpperCase</td>
+<td>char ch</td>
+<td>把该字符转换成大写</td>
+</tr>
+</tbody>
+</table>
+<p><strong>转换仅体现在返回值，原变量的值没有改变</strong></p>
+<h4 id="自动装箱和自动拆箱-auto-boxing-amp-unboxing"><a href="#自动装箱和自动拆箱-auto-boxing-amp-unboxing" class="headerlink" title="自动装箱和自动拆箱  auto-boxing &amp; unboxing"></a>自动装箱和自动拆箱  auto-boxing &amp; unboxing</h4><ul>
+<li><p>自动装箱</p>
+<ul>
+<li>基本类型自动封装到和它相同类型的包装里</li>
+<li>本质： Integer i=100;  编译器编译时： Integer i = new Integer(100);</li>
+</ul>
+</li>
+<li><p>自动拆箱</p>
+<ul>
+<li>包装类对象自动转换成基本数据类型</li>
+<li>本质： int a = new Integer(100); 编译器编译：int a = new Integer(100).intValue();</li>
+</ul>
+</li>
+</ul>
+<h4 id="缓存处理"><a href="#缓存处理" class="headerlink" title="缓存处理"></a><strong>缓存处理</strong></h4><pre><code>-  [-128,127]之间的数，仍然当做基本数据类型处理（增加效率）
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Integer d1=<span class="number">1234</span>;</div><div class="line">Integer d2=<span class="number">1234</span>;</div><div class="line"></div><div class="line">System.out.println(d1==d2);</div><div class="line">System.out.println(d1.equals(d2));</div><div class="line"></div><div class="line">Integer d3=<span class="number">123</span>;</div><div class="line">Integer d4=<span class="number">123</span>;</div><div class="line"></div><div class="line">System.out.println(d3==d4);</div><div class="line">System.out.println(d3.equals(d4));</div></pre></td></tr></table></figure>
+<p>结果：</p>
+<blockquote>
+<p>false  (d1==d2)<br>true   (d1.equals(d2))<br>true   (d3==d4)<br>true   (d3.equals(d4))</p>
+</blockquote>
+<h2 id="字符串-String"><a href="#字符串-String" class="headerlink" title="字符串 String"></a>字符串 String</h2><ul>
+<li>String是一个类，String变量是对象的管理者而非所有者</li>
+</ul>
+<h3 id="创建："><a href="#创建：" class="headerlink" title="创建："></a>创建：</h3><p> 1 - String s = new String(“hello world”);</p>
+<p> 2 - String s = “hello”;</p>
+<h3 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接"></a>字符串连接</h3><ul>
+<li>用 “+” 连接两个字符串</li>
+</ul>
+<blockquote>
+<p>“hello “+”world” -&gt; “hello world”</p>
+</blockquote>
+<ul>
+<li>若“+”一边为字符串一边非字符串，则将另一边表达为字符串而后进行连接</li>
+</ul>
+<blockquote>
+<p>“I am “+18 -&gt; “I am 18”</p>
+<p>1+2+”age” -&gt; “3age”</p>
+<p>“age”+1+2 -&gt; “age12”</p>
+</blockquote>
+<h3 id="字符串输入"><a href="#字符串输入" class="headerlink" title="字符串输入"></a>字符串输入</h3><ul>
+<li>in.next();<br>读入一个单词，以空格结束</li>
+<li>in.nextLine();<br>读入一整行</li>
+</ul>
+<h3 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h3><ul>
+<li>用 “==” ：比较两个对象是同一个字符串</li>
+</ul>
+<blockquote>
+<p>if(input == “hello”)</p>
+</blockquote>
+<ul>
+<li>用 “.equals” ：比较两个字符串的内容是否相同</li>
+</ul>
+<blockquote>
+<p>if(input.equals(“hello”))</p>
+</blockquote>
+<h3 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h3><ul>
+<li>字符串是<strong>对象</strong>，所有操作是通过“.”进行的</li>
+<li>表示对“.”左边的字符串做右边的操作</li>
+<li>字符串可以是<strong>变量</strong>也可以是<strong>常量</strong></li>
+</ul>
+<h3 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h3><p><strong>所有操作都不会对字符串本身进行修改</strong></p>
+<ul>
+<li>s1.compareTo(String s2)</li>
+</ul>
+<blockquote>
+<p>比较两个字符串大小</p>
+<p>s1&gt;s2 返回正数</p>
+<p>s1&lt;s2 返回负数</p>
+<p>s1和s2内容相同，返回0</p>
+<p>字符串长者大</p>
+<p>字符串长度相同时，从第一位开始以字典序比较</p>
+</blockquote>
+<ul>
+<li>s1.length()</li>
+</ul>
+<blockquote>
+<p>获得String的长度</p>
+</blockquote>
+<ul>
+<li>s1.charAt(int index)</li>
+</ul>
+<blockquote>
+<p>访问String里的字符</p>
+<p>返回index上的单个字符</p>
+<p>0&lt;=index&lt;=s1.length()-1</p>
+<p><strong>不能用for-each循环遍历字符串</strong></p>
+</blockquote>
+<ul>
+<li>s1.substring(int begin ,int end)</li>
+</ul>
+<blockquote>
+<p>获得 s1 下标于[begin,end)的子串</p>
+<p>end可省略，默认为s1.length()</p>
+</blockquote>
+<ul>
+<li>s1.indexOf( (char)|(String) c, int n)</li>
+</ul>
+<blockquote>
+<p>寻找c字符或字符串第一个所在位置，-1为不存在</p>
+<p>从n开始找(包括n)，n可以省略，默认为0</p>
+<p>s1.lastIndexOf(c,n) 从n开始向右边找，此时n默认为s1.length()</p>
+<p>寻找字符串中第二个的方法： s1.indexOf(c, s1.indexOf(c)+1);</p>
+</blockquote>
+<ul>
+<li>s1.startsWith( String s2)</li>
+</ul>
+<blockquote>
+<p>判断s1的前缀是否为s2</p>
+</blockquote>
+<ul>
+<li>s1.endsWith( String s2)</li>
+</ul>
+<blockquote>
+<p>判断s1的后缀是否为s2</p>
+</blockquote>
+<ul>
+<li>s1.trim()</li>
+</ul>
+<blockquote>
+<p>清除s1左右两端的空格</p>
+<p>要保留清除可以 s1=s1.trim();</p>
+</blockquote>
+<ul>
+<li>s1.replace( (char)|(String) c1,(char)|(String) c2)  (c1、c2同类型)</li>
+</ul>
+<blockquote>
+<p>将s1中所有字符或字符串c1替换成c2</p>
+</blockquote>
+<ul>
+<li>s1.toLowerCase()  s1.toUpperCase()</li>
+</ul>
+<blockquote>
+<p>s1大小写切换</p>
+</blockquote>
+<ul>
+<li>s1.split(char a)</li>
+</ul>
+<blockquote>
+<p>以a作为分隔符分割字符串s1，将结果作为字符串数组返回</p>
+<p>String [] s= s1.split(“ “);</p>
+<p>多种分隔符用”|”分割，(“a”|”b”)</p>
+<p>以”.””|”作为分隔符时要加”\\“，即(\\.)(\\|)</p>
+</blockquote>
+<h3 id="StringBuilder-和-StringBuffer"><a href="#StringBuilder-和-StringBuffer" class="headerlink" title="StringBuilder 和 StringBuffer"></a>StringBuilder 和 StringBuffer</h3><p>StringBuilder：线程不安全，效率高<br>StringBuffer：线程安全，效率低<br>两者基本相同</p>
+<p>String无法进行修改，若用”+=”操作符时，系统会自动创建一个新的字符串，因此开销很大。</p>
+<p>用StringBuffer/StringBuilder能够很好解决string的扩展问题</p>
+<ul>
+<li>StringBuilder sb= new StringBuilder();</li>
+<li><p>sb.append(“1”);</p>
+<blockquote>
+<p>扩展字符串<br>其返回值为StringBuilder,因此可以连续调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// JDK源码</span></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> StringBuilder <span class="title">append</span><span class="params">(String str)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.append(str);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 因此可以使用</span></div><div class="line">sb.append(<span class="string">"1"</span>).append(<span class="string">"2"</span>);</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>sb.toString();</p>
+<blockquote>
+<p>将StringBuilder形成字符串，可作为函数的String返回值</p>
+</blockquote>
+</li>
+<li><p>sb.delete(int start , int end);</p>
+<blockquote>
+<p>删除下标为[start,end)的字符</p>
+</blockquote>
+</li>
+<li><p>sb.reverse();</p>
+<blockquote>
+<p>反转sb</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="容量机制"><a href="#容量机制" class="headerlink" title="容量机制"></a>容量机制</h4><pre><code>- StringBuffer和StringBuilder继承自AbstractStringBuilder，AbstractStringBuilder有非final的value字符串数组（String的value字符串数组为final）
+- 默认容量为16，或是给定初始字符串长度+16或是给定初始长度
+- 扩容为当前容量*2+2
+</code></pre><h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><h3 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h3><p>对象变量是对象的<strong>管理者</strong></p>
+<ul>
+<li>T tem = new T();</li>
+</ul>
+<h3 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h3><ul>
+<li>定义：类内部的变量</li>
+<li>特点：成员变量的生存期是对象的生存期，作用域为类内部的成员函数</li>
+<li>若没有初始化，则会自动被赋值(0)</li>
+<li>初始化<ul>
+<li>定义时就可以给出初始值</li>
+<li>对象变量的0值表示没有管理任何对象，也可以主动给null值</li>
+<li>定义初始化可以调用函数，可以使用已经定义的成员变量</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">T</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> a=<span class="number">1</span>;</div><div class="line">	<span class="keyword">int</span> b=f();</div><div class="line">	<span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> <span class="number">1</span>;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><ul>
+<li>名字和类名字完全相同，创建对象时会自动调用</li>
+<li>没有返回值</li>
+<li>调用时先完成外部成员变量初始化，而后再逐步执行构造函数内的语句</li>
+</ul>
+<h3 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h3><ul>
+<li>定义：同名但参数列表不同的函数</li>
+<li>可以有多个构造函数，但参数列表要不同</li>
+<li>构造函数内可以通过this()调用其它构造函数,但只能是第一句，只能在构造函数内使用，只能使用一次</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">T</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> a=<span class="number">1</span>;</div><div class="line">	T() &#123;a=<span class="number">2</span>;&#125;</div><div class="line">	T(<span class="keyword">int</span> a)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">this</span>();</div><div class="line">		<span class="keyword">this</span>.a=a;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>若调用带参数a的构造函数，a的最终值为a，但赋值过程为：1-&gt;2-&gt;3，调用过程为：T(int a)-&gt;T()-&gt;int a=1;-&gt;执行T()-&gt;执行T(int a)</p>
+<h3 id="访问属性"><a href="#访问属性" class="headerlink" title="访问属性"></a>访问属性</h3><ul>
+<li>public (同c++)</li>
+<li>private (同c++)</li>
+<li>protected (同c++)</li>
+<li>friendly</li>
+</ul>
+<h4 id="public"><a href="#public" class="headerlink" title="public"></a>public</h4><ul>
+<li><p>任何人都可以直接使用</p>
+<ul>
+<li><p>任何函数或定义初始化中可以使用</p>
+</li>
+<li><p>使用是指调用、访问、定义变量</p>
+</li>
+</ul>
+</li>
+<li><p>public类必须定义在自己的文件里</p>
+</li>
+<li><p>一个编译单元只能有一个public类 (一个编译单元：一个.java文件，一次对这一个文件进行编译)</p>
+</li>
+</ul>
+<h4 id="private"><a href="#private" class="headerlink" title="private"></a>private</h4><ul>
+<li><p>只有类的内部能够访问</p>
+<ul>
+<li><p>类的成员函数</p>
+</li>
+<li><p>定义初始化</p>
+</li>
+</ul>
+</li>
+<li><p>限制是针对类而非对象</p>
+<ul>
+<li>对象之间可以相互访问private成员变量(a对象的成员函数可以直接访问b对象的私有变量)</li>
+</ul>
+</li>
+</ul>
+<h4 id="friendly"><a href="#friendly" class="headerlink" title="friendly"></a>friendly</h4><ul>
+<li><p>未加private或public声明的成员 (即<strong>默认值</strong>)</p>
+</li>
+<li><p>属于同一个包内的所有类都可以访问</p>
+</li>
+</ul>
+<h3 id="System-out-println"><a href="#System-out-println" class="headerlink" title="System.out.println"></a>System.out.println</h3><p>正常情况下，调用System.out.println直接输出类的对象，则会输出其地址</p>
+<p>若是在类中包含 public String toString 函数，则在println时自动调用该函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">T</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> c;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span> <span class="params">()</span> </span>&#123;<span class="keyword">return</span> <span class="string">""</span>+c;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="常用类"><a href="#常用类" class="headerlink" title="常用类"></a>常用类</h2><h3 id="时间处理："><a href="#时间处理：" class="headerlink" title="时间处理："></a>时间处理：</h3><h4 id="java-util-Date"><a href="#java-util-Date" class="headerlink" title="java.util.Date"></a>java.util.Date</h4><p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170910/197ED2Bj8D.JPG" alt="mark"></p>
+<ul>
+<li>对象表示一个特定的瞬间，精确到毫秒</li>
+<li>时间的表示为数字：从 标准纪元1970.01.01 0点开始到某个时刻的毫秒数，类型为long</li>
+</ul>
+<h4 id="DateFormat-SimpleDateFormat"><a href="#DateFormat-SimpleDateFormat" class="headerlink" title="DateFormat, SimpleDateFormat"></a>DateFormat, SimpleDateFormat</h4><p>java.text.*</p>
+<ul>
+<li>用来将字符串和时间相互转换</li>
+<li>DateFormat 是抽象类，无法实例化对象</li>
+<li>SimpleDateFormat非抽象类</li>
+</ul>
+<p>使用方法（详见API文档）</p>
 <ol>
-<li>n和m可能不同<br> 在n、m不等的情况下，你还是必须要把数据录入完，不然像这样连续输入的数据，上一组不录完直接出结果会影响下一组的录入。</li>
-<li>n和m可能为0 (分别或同时)</li>
+<li><p>已知毫秒转相应时间和字符串</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">DateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy年MM月dd日hh时mm分ss秒"</span>);</div><div class="line">DateFormat df1 = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yy-MM-dd hh:mm:ss"</span>);</div><div class="line">Date d = <span class="keyword">new</span> Date(<span class="number">1321454564</span>);</div><div class="line">String str=df1.format(d);</div><div class="line">System.out.println(str);</div></pre></td></tr></table></figure>
+</li>
+<li><p>已知字符串及输入格式转毫秒数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">String str2 = <span class="string">"1977-07-07"</span>;</div><div class="line">DateFormat df2 = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>);</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">	Date d2 = df2.parse(str2);</div><div class="line">	System.out.println(d2);</div><div class="line">&#125; <span class="keyword">catch</span> (ParseException e) &#123;</div><div class="line">	<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">	e.printStackTrace();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ol>
-<p>判等思路：<br>1.粗糙版：贪心同构tree1，看看能不能变成tree2。<br>    tree1和tree2同步递归，每到一个节点判断左右节点是否相同（可能不存在），若不同就交换左右节点。最后两棵树都出先序遍历的序列判断是不是一模一样</p>
-<p>2.递归巧妙版：判断当前节点数值是否相等<br>    若两个节点都不存在，返回正确。<br>    若均存在且相等，递归查询（tree1左孩子+tree2左孩子）&amp;&amp;（tree1右孩子+tree2右孩子） 或者 （tree1左孩子+tree2右孩子）&amp;&amp;（tree1右孩子+tree2左孩子）。<br>    若不等或者只有其中一个存在，返回错。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctime&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">char</span> a[<span class="number">15</span>];</div><div class="line"><span class="keyword">int</span> llc[<span class="number">15</span>],rrc[<span class="number">15</span>];</div><div class="line"><span class="keyword">int</span> n,m;</div><div class="line"><span class="keyword">char</span> tem1,tem2;</div><div class="line"><span class="keyword">bool</span> isroot[<span class="number">15</span>];</div><div class="line"><span class="keyword">int</span> nroot;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">char</span> data;</div><div class="line">	node *lc,*rc;</div><div class="line">	node()&#123; lc=rc=<span class="literal">NULL</span>;&#125;</div><div class="line">	node(<span class="keyword">char</span> d, node * llc = <span class="literal">NULL</span>, node * rrc=<span class="literal">NULL</span>):data(d),lc(llc),rc(rrc)&#123;&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function">node * <span class="title">build</span><span class="params">(<span class="keyword">int</span> i)</span></span></div><div class="line">&#123;</div><div class="line">	node *s=<span class="keyword">new</span> node (a[i]);</div><div class="line">	<span class="keyword">if</span>(llc[i]!=<span class="number">-1</span>)</div><div class="line">		s-&gt;lc=build(llc[i]);</div><div class="line">	<span class="keyword">if</span>(rrc[i]!=<span class="number">-1</span>)</div><div class="line">		s-&gt;rc=build(rrc[i]);</div><div class="line">	<span class="keyword">return</span> s;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">node * <span class="title">rebuild</span><span class="params">(<span class="keyword">int</span> n1)</span>  <span class="comment">// 坑点！ 需要把节点数传进去，若用全局的n或者m会错，因为nm不一定相等</span></span></div><div class="line">&#123;</div><div class="line">	nroot=<span class="number">0</span>;</div><div class="line">	<span class="built_in">memset</span>(isroot,<span class="number">0</span>,<span class="keyword">sizeof</span>(isroot));</div><div class="line">	<span class="built_in">memset</span>(llc,<span class="number">0</span>,<span class="keyword">sizeof</span>(llc));</div><div class="line">	<span class="built_in">memset</span>(rrc,<span class="number">0</span>,<span class="keyword">sizeof</span>(rrc));</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n1; i++)</div><div class="line">	&#123;	</div><div class="line">		<span class="built_in">cin</span>&gt;&gt;a[i]&gt;&gt;tem1&gt;&gt;tem2;</div><div class="line">		<span class="keyword">if</span>(tem1==<span class="string">'-'</span>) </div><div class="line">			llc[i]=<span class="number">-1</span>;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			llc[i]=tem1-<span class="string">'0'</span>;</div><div class="line">			isroot[llc[i]]=<span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(tem2==<span class="string">'-'</span>) </div><div class="line">			rrc[i]=<span class="number">-1</span>;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			rrc[i]=tem2-<span class="string">'0'</span>;</div><div class="line">			isroot[rrc[i]]=<span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>( nroot=<span class="number">0</span>; nroot&lt;n1; nroot++)</div><div class="line">		<span class="keyword">if</span>(isroot[nroot]==<span class="number">0</span>)</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">	<span class="keyword">return</span> build(nroot);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">change</span><span class="params">(node*r1, node *r2)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span>(!r1 &amp;&amp; !r2) </div><div class="line">		<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span>(r1&amp;&amp;r2)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span>(r1-&gt;data==r2-&gt;data)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span>( (change(r1-&gt;rc,r2-&gt;rc))&amp;&amp;(change(r1-&gt;lc,r2-&gt;lc))  || (change(r1-&gt;lc,r2-&gt;rc))&amp;&amp;(change(r1-&gt;rc,r2-&gt;lc))   )</div><div class="line">				<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line"><span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n)</div><div class="line">&#123;</div><div class="line">	node* tree1,*tree2;</div><div class="line">	<span class="keyword">if</span>(n)</div><div class="line">		tree1=rebuild(n);</div><div class="line">	<span class="built_in">cin</span>&gt;&gt;m;</div><div class="line">	<span class="keyword">if</span>(m)</div><div class="line">		tree2=rebuild(m);</div><div class="line">	<span class="keyword">if</span>( n!=m || (n==<span class="number">0</span>&amp;&amp;m!=<span class="number">0</span>) || (m==<span class="number">0</span>&amp;&amp;n!=<span class="number">0</span>) )</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"No\n"</span>);</div><div class="line">		<span class="keyword">continue</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>( n==<span class="number">0</span> &amp;&amp; m==<span class="number">0</span> )</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"Yes\n"</span>);</div><div class="line">		<span class="keyword">continue</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(change(tree1,tree2))</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"Yes\n"</span>);</div><div class="line">	<span class="keyword">else</span></div><div class="line">		<span class="built_in">printf</span>(<span class="string">"No\n"</span>);</div><div class="line">&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="3-子树节点数"><a href="#3-子树节点数" class="headerlink" title="3. 子树节点数"></a>3. 子树节点数</h2><p><a href="http://ac.jobdu.com/problem.php?pid=1113" target="_blank" rel="external">九度OJ 1113：二叉树</a></p>
-<p>题意：一棵完全二叉树，层次遍历为1-n。给定一节点数值m和最后一个节点数值n，求m的子树节点数</p>
-<p>一道数学题，不需要构造二叉树，但是需要对二叉树的各种性质比较了解。</p>
-<p>个人想法（不一定为最简）：<br>    先求得m和n所在二叉树的高度lenm和lenn，求得’&lt;’lenn时的总子树节点数，问题就在于最后一层。我的做法是通过n求得最后一层有多少个节点，然后看m同层左边有多少个节点(count)，假设在最后一层m可以加上po个节点，那左边还有count*po个节点，最后一层的节点数减去count*po后，剩下在po范围里的则是最后一层m可以加上的节点数。</p>
-<p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170822/BEacbGD51k.png?imageslim" alt="解法图示"></p>
-<p>cmath里的log函数是以e为底，因此需要手动用换底公式换成以2为底。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctime&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">getheight</span><span class="params">(<span class="keyword">int</span> num)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> (<span class="keyword">int</span>)(<span class="built_in">log</span>(num)*<span class="number">1.0</span>/(<span class="built_in">log</span>(<span class="number">2</span>)*<span class="number">1.0</span>));</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;   </div><div class="line">    <span class="keyword">int</span> m,n;</div><div class="line">	<span class="keyword">while</span>(  <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;m,&amp;n)&amp;&amp; m+n  )</div><div class="line">	&#123;   </div><div class="line">		<span class="keyword">int</span> lenm=getheight(m),lenn=getheight(n);</div><div class="line">		<span class="keyword">int</span> count=<span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> po=<span class="number">1</span>;</div><div class="line">		<span class="keyword">int</span> ans=<span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=m<span class="number">-1</span>; ; i--)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span>(getheight(i)!=lenm)</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			count++;  <span class="comment">// 找出同层中m左边有多少个节点</span></div><div class="line">		&#125;</div><div class="line">    </div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=lenm; i&lt;lenn; i++)</div><div class="line">		&#123;</div><div class="line">			ans+=po;   <span class="comment">// 在lenn层前的子树节点总数</span></div><div class="line">			po*=<span class="number">2</span>;</div><div class="line">		&#125;</div><div class="line">		count*=po;</div><div class="line">		<span class="keyword">int</span> fir=<span class="built_in">pow</span>(<span class="number">2</span>,lenn);  <span class="comment">// 第lenn层第一个节点的编号</span></div><div class="line">		<span class="keyword">if</span>(n&lt;=count+fir<span class="number">-1</span>)   <span class="comment">// n数目很少，都没有进入m在这层的子树范围</span></div><div class="line">			<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			n-= count+fir<span class="number">-1</span>;</div><div class="line">			n=min(n,po);    <span class="comment">// 也可能n很大，超出了m的子树范围</span></div><div class="line">			ans+=n;</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="4-自定义遍历顺序"><a href="#4-自定义遍历顺序" class="headerlink" title="4. 自定义遍历顺序"></a>4. 自定义遍历顺序</h2><p><a href="http://acm.sdut.edu.cn/onlinejudge2/index.php/Home/Index/problemdetail/pid/3133.html" target="_blank" rel="external">SDUT 3133: C要–二叉树中的秘密</a></p>
-<p>题意：在给定的二叉树中遍历查找某个点，给定遍历顺序，输出从根节点开始遍历到目标点需要多少步。</p>
-<p>遍历顺序：<br>若根节点只有左子树或右子树，则遍历子树。<br>若左右子树均没有，则返回父节点<br>若左右子树均有<br>    若左右节点高度不同，优先遍历高度小的<br>    若左右节点高度相同，优先遍历储存的数据较小的</p>
-<p>难点：<br>1.建树<br>2.按规则实现遍历</p>
-<p>思路：<br>跟着题意走就行，注意细节。<br>每个节点储存数据外还维护一个值size，size为以该节点为根节点的子树的总结点数，用update函数递归地自顶向下求size</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctime&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> data;</div><div class="line">	<span class="keyword">int</span> size;</div><div class="line">	node *pa,*lc,*rc;</div><div class="line">	node()&#123; pa=lc=rc=<span class="literal">NULL</span>; size=<span class="number">1</span>;&#125;</div><div class="line">	node(<span class="keyword">int</span> d, node*ppa=<span class="literal">NULL</span>,node * llc = <span class="literal">NULL</span>, node * rrc=<span class="literal">NULL</span>):data(d),pa(ppa),lc(llc),rc(rrc)&#123;size=<span class="number">1</span>;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">int</span> x;</div><div class="line"><span class="keyword">int</span> llc[<span class="number">3010</span>],rrc[<span class="number">3010</span>];</div><div class="line"><span class="keyword">int</span> a[<span class="number">3010</span>];</div><div class="line"><span class="keyword">bool</span> hasfound;</div><div class="line"><span class="keyword">int</span> ans;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">updateh</span><span class="params">(node *s)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span>(!s) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	<span class="keyword">return</span> s-&gt;size=updateh(s-&gt;lc)+updateh(s-&gt;rc)+<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">node * <span class="title">build</span><span class="params">(<span class="keyword">int</span> n)</span></span></div><div class="line">&#123;</div><div class="line">	node *s=<span class="keyword">new</span> node(a[n]);</div><div class="line">	<span class="keyword">if</span>(llc[a[n]])</div><div class="line">	&#123;	</div><div class="line">		s-&gt;lc=build(llc[a[n]]);</div><div class="line">		<span class="keyword">if</span>(s-&gt;lc)</div><div class="line">			s-&gt;lc-&gt;pa=s;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(rrc[a[n]])</div><div class="line">	&#123;	</div><div class="line">		s-&gt;rc=build(rrc[a[n]]);</div><div class="line">		<span class="keyword">if</span>(s-&gt;rc)</div><div class="line">			s-&gt;rc-&gt;pa=s;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> s;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">found</span><span class="params">(node *s)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span>(hasfound==<span class="literal">true</span>) <span class="keyword">return</span>;</div><div class="line">	ans++;</div><div class="line">	<span class="keyword">if</span>(s-&gt;data==x)</div><div class="line">	&#123;</div><div class="line">		hasfound=<span class="literal">true</span>;</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>( !s-&gt;lc&amp;&amp;s-&gt;rc )</div><div class="line">		found(s-&gt;rc);</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span>( !s-&gt;rc &amp;&amp; s-&gt;lc )</div><div class="line">		found(s-&gt;lc);</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span>( !s-&gt;rc &amp;&amp; !s-&gt;lc)</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span>(s-&gt;rc-&gt;size &lt; s-&gt;lc-&gt;size || (s-&gt;rc-&gt;size==s-&gt;lc-&gt;size &amp;&amp; s-&gt;rc-&gt;data &lt; s-&gt;lc-&gt;data) )</div><div class="line">		&#123;</div><div class="line">			found(s-&gt;rc);</div><div class="line">			found(s-&gt;lc);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			found(s-&gt;lc);</div><div class="line">			found(s-&gt;rc);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;   </div><div class="line">	<span class="keyword">int</span> n;</div><div class="line">	node *tree;</div><div class="line">	<span class="keyword">int</span> tem1;</div><div class="line"><span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;x))</div><div class="line">&#123;</div><div class="line">	hasfound=<span class="literal">false</span>;</div><div class="line">	ans=<span class="number">0</span>;</div><div class="line">	<span class="built_in">memset</span>(llc,<span class="number">0</span>,<span class="keyword">sizeof</span>(llc));</div><div class="line">	<span class="built_in">memset</span>(rrc,<span class="number">0</span>,<span class="keyword">sizeof</span>(rrc));</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</div><div class="line">	&#123;</div><div class="line">		a[i]=i;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;tem1);</div><div class="line">		<span class="keyword">if</span>(tem1==<span class="number">0</span>) <span class="keyword">continue</span>;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(tem1==<span class="number">1</span>) </div><div class="line">		&#123;	</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;llc[i]);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;	</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;llc[i],&amp;rrc[i]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	tree=build(<span class="number">1</span>);</div><div class="line">	updateh(tree);</div><div class="line">	found(tree);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">&#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="5-子树相同"><a href="#5-子树相同" class="headerlink" title="5. 子树相同"></a>5. 子树相同</h2><p><a href="http://acm.sdut.edu.cn/onlinejudge2/index.php/Home/Index/problemdetail/pid/3926.html" target="_blank" rel="external">SDUT 3926: bLue的二叉树</a></p>
-<p>题意：给定两棵二叉树tree1和tree2，求tree1中有多少子树和tree2完全相同。</p>
-<p>思路：<br>显然，直接暴力递归求等必定超时，我的简化方法是每个节点维护一个size值，如上题所示，size为以该节点为根节点的子树总节点数目。<br>在判断时，<br>若tree1中当前节点的size和tree2的根节点size不等或者data不等<br>    若子树（左右均可）的size大于等于根节点的size，递归判断子树根节点<br>    若子树的size小于tree2的size，就不判断了<br>若当前节点和tree2的根节点size相同并且数据相同，那就可以开始递归判断是否完全相等了，相等的话ans计数器自增，不等就返回。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctime&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> data;</div><div class="line">	<span class="keyword">int</span> size;</div><div class="line">	node *lc,*rc;</div><div class="line">	node()&#123; lc=rc=<span class="literal">NULL</span>; size=<span class="number">1</span>;&#125;</div><div class="line">	node(<span class="keyword">int</span> d, node * llc = <span class="literal">NULL</span>, node * rrc=<span class="literal">NULL</span>):data(d),lc(llc),rc(rrc)&#123;size=<span class="number">1</span>; &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">int</span> llc[<span class="number">100010</span>],rrc[<span class="number">100010</span>];</div><div class="line"><span class="keyword">int</span> a[<span class="number">100010</span>];</div><div class="line"><span class="keyword">bool</span> isroot[<span class="number">100010</span>];</div><div class="line"><span class="keyword">int</span> nroot;</div><div class="line"><span class="keyword">int</span> ans;</div><div class="line"><span class="keyword">int</span> pre1[<span class="number">100010</span>],pre2[<span class="number">100010</span>];</div><div class="line"><span class="keyword">int</span> npre1,npre2;</div><div class="line"></div><div class="line">node *tree1,*tree2;</div><div class="line"></div><div class="line"><span class="function">node * <span class="title">build</span><span class="params">(<span class="keyword">int</span> n)</span></span></div><div class="line">&#123;</div><div class="line">	node *s=<span class="keyword">new</span> node(a[n]);</div><div class="line">	<span class="keyword">if</span>(llc[n])</div><div class="line">		s-&gt;lc=build(llc[n]);</div><div class="line">	<span class="keyword">if</span>(rrc[n])</div><div class="line">		s-&gt;rc=build(rrc[n]);</div><div class="line">	<span class="keyword">return</span> s;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">bbb</span><span class="params">(node *&amp;tree, <span class="keyword">int</span> n)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="built_in">memset</span>(llc,<span class="number">0</span>,<span class="keyword">sizeof</span>(llc));</div><div class="line">	<span class="built_in">memset</span>(rrc,<span class="number">0</span>,<span class="keyword">sizeof</span>(rrc));</div><div class="line">	<span class="built_in">memset</span>(isroot,<span class="number">0</span>,<span class="keyword">sizeof</span>(isroot));</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;llc[i],&amp;rrc[i]);</div><div class="line">		isroot[llc[i]]=isroot[rrc[i]]=<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(nroot=<span class="number">1</span>; isroot[nroot]==<span class="number">1</span>; nroot++);</div><div class="line">	tree=build(nroot);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">update</span><span class="params">(node *tree)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span>(!tree) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	<span class="keyword">return</span> tree-&gt;size=<span class="number">1</span>+update(tree-&gt;lc)+update(tree-&gt;rc);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">int</span> n,m;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">equal</span><span class="params">(node *tree1, node *tree2)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span>( !tree1 &amp;&amp; !tree2 ) <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">	<span class="keyword">if</span>( (!tree1 &amp;&amp; tree2) || ( tree1&amp;&amp;!tree2 ) ) <span class="keyword">return</span> <span class="literal">false</span>; </div><div class="line">	<span class="keyword">if</span>(tree1-&gt;size!=tree2-&gt;size || tree1-&gt;data!=tree2-&gt;data)</div><div class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">	<span class="keyword">return</span> equal(tree1-&gt;lc,tree2-&gt;lc)&amp;&amp;equal(tree1-&gt;rc,tree2-&gt;rc);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">com</span><span class="params">(node *tree)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span>(tree-&gt;size!=tree2-&gt;size || tree-&gt;data!=tree2-&gt;data)</div><div class="line">	&#123;</div><div class="line">		</div><div class="line">		<span class="keyword">if</span>( tree-&gt;lc &amp;&amp; tree-&gt;lc-&gt;size&gt;=tree2-&gt;size)</div><div class="line">			com(tree-&gt;lc);</div><div class="line">		<span class="keyword">if</span>( tree-&gt;rc &amp;&amp; tree-&gt;rc-&gt;size&gt;=tree2-&gt;size)</div><div class="line">			com(tree-&gt;rc);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span></div><div class="line">		<span class="keyword">if</span>(equal(tree,tree2)==<span class="literal">true</span>)</div><div class="line">			ans++;</div><div class="line">	<span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">release</span><span class="params">(node *tree)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span>(!tree) <span class="keyword">return</span>;</div><div class="line">	release(tree-&gt;lc);</div><div class="line">	release(tree-&gt;rc);</div><div class="line">	<span class="keyword">delete</span> tree;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;   </div><div class="line"><span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m))</div><div class="line">&#123;</div><div class="line">	ans=<span class="number">0</span>;</div><div class="line">	npre1=npre2=<span class="number">0</span>;</div><div class="line">	<span class="built_in">memset</span>(pre1,<span class="number">0</span>,<span class="keyword">sizeof</span>(pre1));</div><div class="line">	<span class="built_in">memset</span>(pre2,<span class="number">0</span>,<span class="keyword">sizeof</span>(pre2));</div><div class="line">	bbb(tree1,n);</div><div class="line">	bbb(tree2,m);</div><div class="line">	<span class="keyword">if</span>(m&gt;n)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"0\n"</span>);</div><div class="line">		<span class="keyword">continue</span>;</div><div class="line">	&#125;</div><div class="line">	update(tree1);</div><div class="line">	update(tree2);</div><div class="line">	com(tree1);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">	release(tree1);</div><div class="line">	release(tree2);</div><div class="line">&#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="Calendar，GregorianCalendar-日历类"><a href="#Calendar，GregorianCalendar-日历类" class="headerlink" title="Calendar，GregorianCalendar 日历类"></a>Calendar，GregorianCalendar 日历类</h4><p>java.util.*</p>
+<ul>
+<li>Calendar是抽象类，无法实例化对象</li>
+<li>GregorianCalendar是Calendar的一个具体子类，提供了大多数国家和地区使用的标准日历系统</li>
+<li>Calendar类用来和Date类做切换，把计算机保存的时间转换成人能看懂的日期</li>
+<li>注意<ul>
+<li>月份：1月是0，2月是1，…12月是11<ul>
+<li>星期：周日是1，周一是2…周六是7</li>
+<li>可以使用 Calendar.FEBRUARY 表示数字</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>使用方法：（详见API文档）</p>
+<ol>
+<li><p>整体设置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Calendar c = <span class="keyword">new</span> GregorianCalendar();</div><div class="line">c.set(<span class="number">2001</span>, Calendar.FEBRUARY ,<span class="number">15</span>);</div><div class="line">Date date = c.getTime();</div></pre></td></tr></table></figure>
+</li>
+<li><p>单独设置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">c.set(Calendar.YEAR , <span class="number">2001</span>);</div><div class="line">c.set(Calendar.MONTH , <span class="number">1</span>|Calendar.FEBRUARY);</div><div class="line"><span class="comment">// 未设置参数则自动采用当前时间 (日期、时分秒等)</span></div><div class="line">System.out.println(c.get(Calendar.YEAR));</div></pre></td></tr></table></figure>
+</li>
+<li><p>用Date赋值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">c.setTime(<span class="keyword">new</span> Date());</div></pre></td></tr></table></figure>
+</li>
+<li><p>日期计算</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">c.add(Calendar.YEAR, <span class="number">30</span>);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="File-类"><a href="#File-类" class="headerlink" title="File 类"></a>File 类</h3><p>java.io.File:文件和目录路径名的抽象表现形式</p>
+<pre><code>- 通过File对象可以访问、修改文件属性
+- 可以创建空文件或目录
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">File f = new File(&quot;d:/aaa/bbb/ccc&quot;);</div><div class="line">f.mkdir();  // 若父目录存在则创建</div><div class="line">f.mkdirs(); // 若父目录不存在则自动创建父目录</div></pre></td></tr></table></figure>
+<h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><ul>
+<li><p>容器类的两个类型：</p>
+<p>  1 . 容器的类型</p>
+<p>  2 . 元素的类型</p>
+</li>
+</ul>
+<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><ul>
+<li>import java.util.ArrayList;</li>
+<li>特点：元素可以相同，元素以与进入的顺序排序 </li>
+<li>基础类型：存放值</li>
+<li><p>非基础类型：作为管理者，存放地址</p>
+</li>
+<li><p>定义：</p>
+<p>ArrayList<string> notes = new ArrayList<string>();</string></string></p>
+</li>
+</ul>
+<h4 id="常用操作-1"><a href="#常用操作-1" class="headerlink" title="常用操作"></a>常用操作</h4><ul>
+<li>notes.add(int location, String s);</li>
+</ul>
+<blockquote>
+<p>向下标为location的位置中插入元素</p>
+<p>location可省略，默认为末尾</p>
+</blockquote>
+<ul>
+<li>notes.size();</li>
+</ul>
+<blockquote>
+<p>返回容器中存放元素数目</p>
+</blockquote>
+<ul>
+<li>notes.get(int index);</li>
+</ul>
+<blockquote>
+<p>返回下标为Index的元素</p>
+</blockquote>
+<ul>
+<li>nodes.remove(int index);</li>
+</ul>
+<blockquote>
+<p>移除下标为Index的元素</p>
+</blockquote>
+<ul>
+<li>notes.toArray(String []a);</li>
+</ul>
+<blockquote>
+<p>将notes里所有元素依次填入a中</p>
+</blockquote>
+<h4 id="for-each循环"><a href="#for-each循环" class="headerlink" title="for-each循环"></a>for-each循环</h4><p>若ArrayList存放的非基础类型，则for-each中可以修改值</p>
+<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><ul>
+<li>import java.util.HashSet</li>
+<li>特点：元素均不相同，不排序，与进入的顺序无关</li>
+</ul>
+<h3 id="Hash表-散列表"><a href="#Hash表-散列表" class="headerlink" title="Hash表(散列表)"></a>Hash表(散列表)</h3><ul>
+<li><p>import java.util.HashMap;</p>
+</li>
+<li><p>HashMap &lt; Key, Value &gt;  a=new HashMap &lt; Key,Value &gt; ();<br>数据以一对值放进去，一个为键(KEY),一个为值(value)<br>值对应键</p>
+</li>
+<li><p>键不能重复，只留相同的最后一个，元素不以先后排序</p>
+</li>
+</ul>
+<h4 id="常用操作-2"><a href="#常用操作-2" class="headerlink" title="常用操作"></a>常用操作</h4><ul>
+<li>a.put(Key k1, Value v1);</li>
+</ul>
+<blockquote>
+<p>向HashMap里添加元素，键k1对应值为v1</p>
+</blockquote>
+<ul>
+<li>a.get(Key k);</li>
+</ul>
+<blockquote>
+<p>返回键k对应的值，若为空，则返回null</p>
+</blockquote>
+<ul>
+<li>a.containsKey(Key k);</li>
+</ul>
+<blockquote>
+<p>查询是否存在键为k的数据</p>
+</blockquote>
+<ul>
+<li>a.keySet();</li>
+</ul>
+<blockquote>
+<p>返回key的集合</p>
+<p>可以通过 a.keySet().size()获取存放的键的数目</p>
+<p>通过keySet使用for-each循环</p>
+</blockquote>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><ul>
+<li><p>extends</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">son</span> <span class="keyword">extends</span> <span class="title">parent</span></span></div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>java只允许单继承，一个类只能有一个父类</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>父类成员访问属性</th>
+<th>在父类中的含义</th>
+<th>在子类中的含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public</td>
+<td>对所有人开放</td>
+<td>对所有人开放</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>只有包内其它类、自己和子类可以访问</td>
+<td>只有包内其它类、自己和子类可以访问</td>
+</tr>
+<tr>
+<td>缺省</td>
+<td>只有包内其它类可以访问</td>
+<td>如果子类与父类在同一个包内：只有包内其它类可以访问</td>
+<td>否则：相当于private，不能访问</td>
+</tr>
+<tr>
+<td>private</td>
+<td>只有自己可以访问</td>
+<td>不能访问</td>
+</tr>
+</tbody>
+</table>
+<p>子类同样继承了父类的private成员，只是子类无法访问！<br>但子类可以通过调用父类的非private函数来间接修改父类的private成员变量</p>
+<h3 id="继承VS组合"><a href="#继承VS组合" class="headerlink" title="继承VS组合"></a>继承VS组合</h3><ul>
+<li>“is-a”关系使用继承<ul>
+<li>如：Bird类继承自Animal类</li>
+</ul>
+</li>
+<li>“has-a”关系使用组合<ul>
+<li>如：Computer类包含CPU类，每个Computer对象都有一个CPU对象</li>
+</ul>
+</li>
+</ul>
+<h3 id="super"><a href="#super" class="headerlink" title="super"></a>super</h3><p>本质：一个<strong>关键字</strong>，类似this(this的本质为指针),是直接父类的引用</p>
+<p>用法<br> 1 . 直接引用</p>
+<p>相当于指向当前对象的父类，用”.”访问父类的成员</p>
+<p> 2 . 子类成员变量或方法与父类同名时，用super加以区分<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">son</span> <span class="keyword">extends</span> <span class="title">parent</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">a</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">b</span><span class="params">()</span></span>&#123;</div><div class="line">		a();   <span class="comment">// son的a函数</span></div><div class="line">		<span class="keyword">super</span>.a();  <span class="comment">// parent的a函数</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p> 3 . 调用父类的构造函数</p>
+<p>规定：必须写在子类构造的第一行，不能和this同时出现在一个构造函数</p>
+<p>子类的构造函数第一行都会隐含地包含super()函数，若此时父类没有不含参数的构造函数，则无法通过编译</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">son</span> <span class="keyword">extends</span> <span class="title">parent</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> a;</div><div class="line">	son(<span class="keyword">int</span> a1)&#123;</div><div class="line">		<span class="keyword">super</span>(a1);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="同名变量"><a href="#同名变量" class="headerlink" title="同名变量"></a>同名变量</h3><p>若没有明确指明，则在谁的成员函数中就使用谁的成员变量</p>
+<h3 id="子类和子类型"><a href="#子类和子类型" class="headerlink" title="子类和子类型"></a>子类和子类型</h3><ul>
+<li>类定义了类型</li>
+<li>子类定义了子类型 (son是parent的一个子类型)</li>
+<li><p>子类对象可以被当做父类的对象使用</p>
+<ul>
+<li>赋值给父类变量</li>
+<li>传递给需要父类对象的函数</li>
+<li>放进存放分类对象的容器里</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170903/gfj3geAc0f.JPG" alt="mark"><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Vehicle v1 = <span class="keyword">new</span> Vehicle();</div><div class="line">Vehicle v2 = <span class="keyword">new</span> Car();</div><div class="line">Vehicle v3 = <span class="keyword">new</span> Bicycle();</div></pre></td></tr></table></figure></p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>主要用来实现<strong>动态联编</strong></p>
+<p>即程序的最终状态只有在执行过程中才被决定而非在编译时期就决定了</p>
+<p>以此提高系统的灵活性和扩展性</p>
+<h3 id="如何实现多态"><a href="#如何实现多态" class="headerlink" title="如何实现多态"></a>如何实现多态</h3><pre><code>- 引用变量的两种类型
+
+    - 编译时类型（一般是父类）
+        - 由声明时的类型决定
+
+    - 运行时类型（运行时具体的子类）
+        - 由实际对应的对象类型决定
+
+- 三个必要条件
+    - 要有继承
+    - 要有方法重写
+    - 父类引用指向子类对象
+</code></pre><h3 id="多态变量"><a href="#多态变量" class="headerlink" title="多态变量"></a>多态变量</h3><ul>
+<li>对象变量能够保存不止一种的对象</li>
+<li>可以保存声明类型的对象或是声明类型的子类的对象</li>
+<li>子类对象赋给父类变量，发生<strong>向上造型</strong></li>
+</ul>
+<h3 id="造型-cast"><a href="#造型-cast" class="headerlink" title="造型 cast"></a>造型 cast</h3><p>造型(cast)：把一个类型的对象赋值给另一个类型的变量</p>
+<ul>
+<li>子类对象可以复制给父类变量<ul>
+<li>与C++不同：java不存在对象与对象的赋值，只能是管理者修改指向的对象</li>
+</ul>
+</li>
+<li>父类对象不能赋值给子类变量</li>
+<li>可以使用造型强制赋值，但只有当父类变量实际管理的是子类的对象才行</li>
+<li>类型转换 ！= 造型<ul>
+<li>类型转换中对象发生改变，如 int i=(int)10.2;</li>
+<li>造型中对象本身没有改变，只是改变了看待它的方式</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Vehicle v;</div><div class="line">Car car = <span class="keyword">new</span> Car();</div><div class="line">v=car;  <span class="comment">//可以</span></div><div class="line">c=v;   <span class="comment">//编译错误</span></div><div class="line">c=(Car)v <span class="comment">// 编译通过</span></div><div class="line"></div><div class="line">若</div><div class="line">Vehicle v=<span class="keyword">new</span> Vehicle();</div><div class="line">Car car=(Car)v; <span class="comment">// 编辑器不报错，但会出现ClassCastException异常</span></div></pre></td></tr></table></figure>
+<h4 id="向上造型"><a href="#向上造型" class="headerlink" title="向上造型"></a>向上造型</h4><ul>
+<li>子类对象当做父类对象使用</li>
+<li>向上造型是默认的，不需要运算符</li>
+<li>向上造型是安全的</li>
+</ul>
+<h3 id="绑定"><a href="#绑定" class="headerlink" title="绑定"></a>绑定</h3><p> 同名函数调用父类对象时，会根据实际管理对象的类型调用相应的函数</p>
+<ul>
+<li>静态绑定：根据变量声明类型决定</li>
+<li>动态绑定：根据变量的动态类型决定 ( 实际管理的类型 )</li>
+<li>默认使用动态绑定</li>
+<li>成员函数中调用其它成员函数通过this变量调用</li>
+</ul>
+<h3 id="覆盖-override"><a href="#覆盖-override" class="headerlink" title="覆盖 override"></a>覆盖 override</h3><ul>
+<li>覆盖关系：子类和父类中存在名称和参数表完全相同的函数</li>
+<li>通过父类变量调用存在覆盖关系的函数时，会调用变量当前所管理的对象所属的类的函数</li>
+</ul>
+<h3 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h3><ul>
+<li><p>所有的类都继承自Object类</p>
+</li>
+<li><p>几乎所有OOP都有Object类（除c++）</p>
+</li>
+</ul>
+<h4 id="Object类的函数-部分"><a href="#Object类的函数-部分" class="headerlink" title="Object类的函数(部分)"></a>Object类的函数(部分)</h4><ul>
+<li>toString()</li>
+<li>equals()</li>
+</ul>
+<h3 id="多态的内存分析"><a href="#多态的内存分析" class="headerlink" title="多态的内存分析"></a>多态的内存分析</h3><p> 1 . 基本的继承关系和方法调用</p>
+<pre><code>- 父类：Animal  有voice方法
+- 子类：Cat 重写voice方法，自己有catchMouse方法
+- 测试：分别声明父类和子类变量并指向子类对象
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showVoice</span><span class="params">(Animal c)</span> </span>&#123;</div><div class="line">		c.voice();</div><div class="line">		<span class="keyword">if</span>(c <span class="keyword">instanceof</span> Cat)</div><div class="line">			((Cat) c).catchMouse();</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		Animal a=<span class="keyword">new</span> Cat();</div><div class="line">		Cat cat=(Cat)a;</div><div class="line">		Test.showVoice(cat);</div><div class="line">		Test.showVoice(a);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;</div><div class="line">	String name;</div><div class="line">	<span class="keyword">int</span> age;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">voice</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">voice</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"miao"</span>);</div><div class="line">	&#125;;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">catchMouse</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170909/Jd69EhEaBa.JPG" alt="mark"></p>
+<p> 2 . 深化多态</p>
+<pre><code>- 父类：HttpServlet 有service方法和doGet方法，其中service方法中调用doGet方法
+- 子类：MyServlet 重写了doGet方法
+- 测试：父类变量指向子类对象，调用父类的service方法观察doGet执行的版本
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HttpServlet</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"HttpServlet.service()"</span>);</div><div class="line">		doGet();</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"HttpServlet.doGet()"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"MyServlet.doGet()"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		HttpServlet s = <span class="keyword">new</span> MyServlet();</div><div class="line">		s.service();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 输出结果：</span></div><div class="line"><span class="comment">// HttpServlet.service()</span></div><div class="line"><span class="comment">// MyServlet.doGet()</span></div></pre></td></tr></table></figure>
+<p>原因分析：<br>函数调用本身隐含着 this 引用， 在service中实际是 this.doGet()，此时this指向的为MyServlet即是子类的对象，因此调用子类重写的doGet函数</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170909/70jHJ3hJEi.JPG" alt="mark"></p>
+<h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><h3 id="消除代码复制"><a href="#消除代码复制" class="headerlink" title="消除代码复制"></a>消除代码复制</h3><ul>
+<li><p>代码复制是不良设计的一种表现</p>
+<p>解决方法：使用函数封装重复的代码</p>
+</li>
+</ul>
+<h3 id="增加可扩展性"><a href="#增加可扩展性" class="headerlink" title="增加可扩展性"></a>增加可扩展性</h3><ul>
+<li><p>后期的可维护性</p>
+<p>解决方法：用封装降低耦合，用接口实现聚合，借助类继承</p>
+<p>耦合：类和类之间的关系</p>
+<p>耦合越低越好</p>
+</li>
+</ul>
+<h2 id="抽象和接口"><a href="#抽象和接口" class="headerlink" title="抽象和接口"></a>抽象和接口</h2><p>关键词：<strong>abstract</strong> (抽象)</p>
+<blockquote>
+<p>public abstract class a</p>
+</blockquote>
+<ul>
+<li>抽象函数：表达概念而<strong>无法实现具体代码</strong>的函数</li>
+<li><p>抽象类：表达概念而<strong>无法构造出实体</strong>的类</p>
+</li>
+<li><p>为什么需要抽象类</p>
+<ul>
+<li><strong>模板模式</strong>，抽象类为子类提供了一个通用模板，子类可以在模板基础上进行扩展</li>
+<li><strong>通过抽象类，可以避免子类设计的随意性</strong>，严格限制子类的设计，使得子类之间更加通用。</li>
+</ul>
+</li>
+<li><p>抽象方法的意义：<strong>使方法的设计和实现分离！</strong></p>
+</li>
+<li><p>要点：</p>
+<ul>
+<li>有抽象函数的类一定是抽象类<ul>
+<li>抽象类<strong>不能制造对象</strong>，但可以定义变量</li>
+</ul>
+</li>
+<li>任何继承了抽象类的非抽象类对象可以赋值给抽象类变量</li>
+<li>抽象类可以拥有非抽象函数、属性和构造方法，但构造方法只能用来被子类调用</li>
+<li>继承自抽象类的子类必须覆盖父类的抽象函数，不然也成为抽象类</li>
+</ul>
+</li>
+</ul>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>关键词：<strong>interface</strong></p>
+<blockquote>
+<p>public interface a{}</p>
+</blockquote>
+<ul>
+<li>接口是纯抽象类(接口中只有常量、抽象方法)</li>
+<li>所有成员变量都是public abstract static final （默认的，可以不写）</li>
+<li>接口意义：设计和实现分离，利于大项目制作</li>
+<li>接口变量的含义为任何实现了接口的对象</li>
+</ul>
+<p>关键词：<strong>implements</strong></p>
+<blockquote>
+<p>public class b implements a{}</p>
+</blockquote>
+<ul>
+<li>类可以实现很多接口</li>
+<li>接口可以继承接口，不能继承类</li>
+<li><p>接口不能实现接口</p>
+</li>
+<li><p>接口和抽象类</p>
+<ul>
+<li>接口是比”抽象类”还要”抽象”的”抽象类”，全面地专业地实现了<strong>规范和具体实现的分离</strong></li>
+<li><strong>接口就是规范，定义了一组规则</strong></li>
+<li><strong>接口的本质是契约</strong>，制定好后大家都遵守</li>
+<li>项目的具体需求是多变的，我们需要以不变应万变，这就是规范，因此需要<strong>面向接口编程</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="面向接口的编程方式"><a href="#面向接口的编程方式" class="headerlink" title="面向接口的编程方式"></a>面向接口的编程方式</h4><ul>
+<li>设计程序时先定义接口，再实现类</li>
+<li>任何需要在函数间传入传出的一定是接口而不是具体的类</li>
+<li>Java成功的关键之一，极适合多人同时写一个大程序</li>
+<li>Java被批评的要点之一，代码量膨胀地很快</li>
+</ul>
+<h2 id="控制反转与MVC模式"><a href="#控制反转与MVC模式" class="headerlink" title="控制反转与MVC模式"></a>控制反转与MVC模式</h2><h3 id="Swing"><a href="#Swing" class="headerlink" title="Swing"></a>Swing</h3><p>容器、部件</p>
+<ul>
+<li><p>容器继承自部件，因此可以作为部件被放入其它容器中</p>
+</li>
+<li><p>容器使用布局管理器管理内部的部件,能够根据不同的环境自动调整</p>
+</li>
+<li><p>JFrame使用BorderLayout管理部件，并且将界面划分为五个区域</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170907/8B7I3088Hh.JPG" alt="mark"></p>
+</li>
+<li><p>容器使用 add 函数添加部件，JFrame中若不指定放置区域，则默认为BorderLayout.CENTER,后添加的部件会覆盖前面的部件</p>
+</li>
+</ul>
+<h3 id="控制反转"><a href="#控制反转" class="headerlink" title="控制反转"></a>控制反转</h3><ul>
+<li>按钮公布一个listener接口和一对注册、注销函数</li>
+<li>实现接口后将把listener对象注册在按钮上</li>
+<li>一旦按钮被按下，就会反过来调用listener对象的函数</li>
+</ul>
+<h3 id="内部类-innerclasses"><a href="#内部类-innerclasses" class="headerlink" title="内部类 innerclasses"></a>内部类 innerclasses</h3><p>定义在别的类内部、函数内部的类</p>
+<h4 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h4><pre><code>- 提供了更好的封装，只能让外部类直接访问，不允许同一个包中其它类直接访问
+- 内部类可以访问外部类的所有成员，但外部类不能访问内部类的内部属性
+</code></pre><h4 id="使用场合"><a href="#使用场合" class="headerlink" title="使用场合"></a>使用场合</h4><p>在内部类只为所在外部类提供服务的情况优先使用</p>
+<h4 id="分类："><a href="#分类：" class="headerlink" title="分类："></a>分类：</h4><h5 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h5><p>（可以使用private,public,protected修饰）</p>
+<h6 id="非静态内部类"><a href="#非静态内部类" class="headerlink" title="非静态内部类"></a>非静态内部类</h6><pre><code>- 外部类使用非静态内部类和使用其它类相同
+ - 非静态内部类必须寄存在外部类的对象里，相当于外部类的一个属性。**非静态内部类对象单独属于外部类的某个对象**
+- 非静态内部类不能有静态方法、静态属性、静态初始化块
+- 静态成员不能访问非静态成员：外部类的静态方法、静态代码块补鞥呢访问非静态内部类，包括不能使用非静态内部类定义变量、创建实例
+- 成员变量访问要点：
+    1. 内部类里方法的局部变量：变量名
+    2. 内部类属性：this.变量名
+    3. 外部类属性：外部类名.this.变量名
+- 内部类的访问：
+    - 外部类中定义内部类： new innerClass()
+    - 外部类以外的地方使用非静态内部类
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Outer.inner n = OuterObject.new Inner();</div></pre></td></tr></table></figure>
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		Face f=<span class="keyword">new</span> Face();</div><div class="line">		Face.Nose n= f.new Nose();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Face</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> type;</div><div class="line">	</div><div class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Nose</span></span>&#123;</div><div class="line">		String type;</div><div class="line">		</div><div class="line">		<span class="function"><span class="keyword">void</span> <span class="title">breath</span><span class="params">()</span> </span>&#123;</div><div class="line">			Face.<span class="keyword">this</span>.type=<span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h6><pre><code>- 要点：
+    - 静态内部类对象存在时，不一定存在对应的外部类对象
+    - 静态内部类无法直接访问外部类实例方法
+    - 静态内部类看作**外部类的一个静态成员**
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Face f= <span class="keyword">new</span> Face();</div><div class="line"><span class="comment">// Nose为非静态内部类</span></div><div class="line">Face.Nose n=f.new Nose();</div><div class="line"><span class="comment">// Ear为静态内部类</span></div><div class="line">Face.Ear e=<span class="keyword">new</span> Face.Ear();</div></pre></td></tr></table></figure>
+<h6 id="局部内部类：定义在方法内部，作用于仅限于本方法，但用的极少"><a href="#局部内部类：定义在方法内部，作用于仅限于本方法，但用的极少" class="headerlink" title="局部内部类：定义在方法内部，作用于仅限于本方法，但用的极少"></a>局部内部类：定义在方法内部，作用于仅限于本方法，但用的极少</h6><pre><code>- 访问函数的本地变量时只能访问函数的final变量
+</code></pre><h5 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h5><p>适用于只需要使用一次的类，例如：键盘监听操作等<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> 父类构造器(实参) 实现接口()&#123;</div><div class="line">	匿名内部类类体</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>匿名类可以继承某类，也可以实现接口</li>
+<li>Swing的消息机制广泛使用匿名类</li>
+</ul>
+<h3 id="MVC设计模式"><a href="#MVC设计模式" class="headerlink" title="MVC设计模式"></a>MVC设计模式</h3><ul>
+<li><strong>数据、表现和控制</strong>三者分离<ul>
+<li>M = Model 模型</li>
+<li>V = View 表现</li>
+<li>C = Control 控制</li>
+</ul>
+</li>
+<li>模型：保存和维护数据，提供接口让外部修改数据，通知表现需要刷新</li>
+<li>表现：从模型获取数据，根据数据画出表现</li>
+<li>控制：从用户得到输入，根据输入调整数据</li>
+</ul>
+<h3 id="异常机制-Exception"><a href="#异常机制-Exception" class="headerlink" title="异常机制 Exception"></a>异常机制 Exception</h3><h4 id="常见的异常"><a href="#常见的异常" class="headerlink" title="常见的异常"></a>常见的异常</h4><pre><code>用户输入错误
+设备错误
+硬件问题：如打印机关掉、服务器问题
+磁盘满了
+</code></pre><h4 id="异常Exception"><a href="#异常Exception" class="headerlink" title="异常Exception"></a>异常Exception</h4><pre><code>Java提供的用来处理程序中错误的一种机制
+
+Java采用**面向对象** 方式来处理异常。处理过程：
+    抛出异常：执行方法时若发生异常，则这个方法生成代表异常的一个对象，停止当前执行路径，把异常对象提交给JRE
+    捕获异常：JRE得到异常后寻找相应代码处理该异常。JRE在方法的调用栈中查找，从生成异常的方法开始回溯，直到找到相应的异常处理代码位置
+</code></pre><h4 id="常见异常"><a href="#常见异常" class="headerlink" title="常见异常"></a>常见异常</h4><pre><code>1. ArithmeticException
+    例如试图除以0
+2. NullPointerException
+    对象为null但调用了对象的方法或属性
+3. ClassCastException
+    转型错误，解决：使用istanceof判断
+4. ArrayIndexOutOfBoundsException
+    访问元素超出数组长度
+5. NumberFormatException
+    数字格式异常，如把String转换成int
+</code></pre><h4 id="异常的处理方法："><a href="#异常的处理方法：" class="headerlink" title="异常的处理方法："></a>异常的处理方法：</h4><pre><code>捕获异常（try，catch，finally）
+    <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>&#123;</div><div class="line"><span class="comment">// 可能出现异常的语句</span></div><div class="line">&#125;<span class="keyword">catch</span>(Exception e)&#123;</div><div class="line"><span class="comment">// </span></div><div class="line">&#125;<span class="keyword">finally</span>&#123;</div><div class="line"><span class="comment">// </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+    未遇到异常时，执行完try内的语句后不执行catch，而后执行finally
+    出现异常时，跳转至catch，执行catch后，执行finally
+
+        try
+             try语句指定了一段代码，该段代码就是一次捕获并处理的范围。在执行过程中，当任意一条语句产生异常时，就会跳过该段中后面的代码。代码中可能会产生并抛出一种或几种类型的异常对象，它后面的catch语句要分别对这些异常做相应的处理
+            一个try语句必须带有至少一个catch语句块或一个finally语句块 。。
+                当异常处理的代码执行结束以后，是不会回到try语句去执行尚未执行的代码。
+
+        catch
+            每个try可以搭配多个catch，用来处理不同的异常
+            捕获异常时：越是顶层的类越是放在下面
+            常用方法：
+                toString() 显示异常类名和异常原因
+                getMessage() 只显示异常原因
+                printStackTrace() 跟踪异常发生时堆栈内容
+
+        finally
+            不管是否发生异常都需要执行的语句，一般是关闭资源
+            不要在finally中使用return
+
+        执行顺序：
+            1. 执行try、catch，给返回值赋值
+            2. 执行finally
+            3. return
+
+抛出异常 throws
+    方法声明中加throws，则谁调用该方法谁用try catch处理异常
+    可以throws多个异常
+    用**throw**(没有s)手动new异常对象并抛出异常
+</code></pre><h4 id="方法重写中声明异常原则："><a href="#方法重写中声明异常原则：" class="headerlink" title="方法重写中声明异常原则："></a>方法重写中声明异常原则：</h4><pre><code>**子类声明的异常范围不能超出父类的范围**
+    - 父类没有声明异常，子类也不能
+    - 不能抛出 原有方法抛出的父类或上层类
+    - 抛出的异常类型数目不能比原有方法多（类型多 非 个数多）
+</code></pre><h4 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h4><pre><code>- 在程序中，可能会遇到任何标准异常类都没有充分描述清楚的问题，这时候可以创建自己的异常类
+- 从Exception类或它的子类派生一个子类
+- 习惯上，定义的类应该包含2个构造器，一个是默认构造器，一个是带有详细信息的构造器
+
+建议：
+    - 避免使用异常机制代替错误处理
+    - 处理异常不能代替简单测试
+    - 不要进行**小力度**的异常处理（如一行一个try catch）
+    - 异常往往在**高层**处理
+</code></pre>
       
 
       
@@ -251,19 +1292,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二叉树</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
         		</li>
       		
 		</ul>
@@ -282,18 +1315,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/08/18/problem_1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          刷题选集（一）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/08/15/tree/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">数据结构笔记（三）：二叉树</div>
+    <a href="/2017/09/10/Binary search tree/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -320,7 +1344,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#二叉树练习："><span class="toc-number">1.</span> <span class="toc-text">二叉树练习：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-树的构建"><span class="toc-number">1.1.</span> <span class="toc-text">1. 树的构建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-前序-中序遍历序列"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 前序+中序遍历序列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-中序-后序遍历序列"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 中序+后序遍历序列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-前序-后序序列"><span class="toc-number">1.1.3.</span> <span class="toc-text">3. 前序+后序序列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-子节点编号"><span class="toc-number">1.1.4.</span> <span class="toc-text">4. 子节点编号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-先序序列"><span class="toc-number">1.1.5.</span> <span class="toc-text">5. 先序序列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-树的同构"><span class="toc-number">1.2.</span> <span class="toc-text">2. 树的同构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-子树节点数"><span class="toc-number">1.3.</span> <span class="toc-text">3. 子树节点数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-自定义遍历顺序"><span class="toc-number">1.4.</span> <span class="toc-text">4. 自定义遍历顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-子树相同"><span class="toc-number">1.5.</span> <span class="toc-text">5. 子树相同</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#各版本和体系架构"><span class="toc-number">1.1.</span> <span class="toc-text">各版本和体系架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#概念"><span class="toc-number">1.2.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据类型"><span class="toc-number">1.3.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#整型变量"><span class="toc-number">1.4.</span> <span class="toc-text">整型变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#浮点型"><span class="toc-number">1.5.</span> <span class="toc-text">浮点型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符型"><span class="toc-number">1.6.</span> <span class="toc-text">字符型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#boolean"><span class="toc-number">1.7.</span> <span class="toc-text">boolean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量"><span class="toc-number">1.8.</span> <span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#final"><span class="toc-number">1.8.1.</span> <span class="toc-text">final</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运算符"><span class="toc-number">1.9.</span> <span class="toc-text">运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#switch语句"><span class="toc-number">1.10.</span> <span class="toc-text">switch语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#语句"><span class="toc-number">1.11.</span> <span class="toc-text">语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法-method，function"><span class="toc-number">1.12.</span> <span class="toc-text">方法 method，function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内存分析"><span class="toc-number">1.13.</span> <span class="toc-text">内存分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#包-package"><span class="toc-number">2.</span> <span class="toc-text">包 package</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用其它包里的类"><span class="toc-number">2.1.</span> <span class="toc-text">使用其它包里的类:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API文档"><span class="toc-number">3.</span> <span class="toc-text">API文档</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#垃圾回收机制-Garbage-Collection"><span class="toc-number">3.1.</span> <span class="toc-text">垃圾回收机制 (Garbage Collection)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组"><span class="toc-number">4.</span> <span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义数组变量"><span class="toc-number">4.1.</span> <span class="toc-text">定义数组变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特点："><span class="toc-number">4.2.</span> <span class="toc-text">特点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#要求："><span class="toc-number">4.3.</span> <span class="toc-text">要求：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内部成员："><span class="toc-number">4.4.</span> <span class="toc-text">内部成员：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组和数组变量："><span class="toc-number">4.5.</span> <span class="toc-text">数组和数组变量：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用操作："><span class="toc-number">4.6.</span> <span class="toc-text">常用操作：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for-each循环："><span class="toc-number">4.7.</span> <span class="toc-text">for-each循环：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#包裹类型"><span class="toc-number">5.</span> <span class="toc-text">包裹类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用处："><span class="toc-number">5.1.</span> <span class="toc-text">用处：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#自动装箱和自动拆箱-auto-boxing-amp-unboxing"><span class="toc-number">5.1.1.</span> <span class="toc-text">自动装箱和自动拆箱  auto-boxing & unboxing</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存处理"><span class="toc-number">5.1.2.</span> <span class="toc-text">缓存处理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串-String"><span class="toc-number">6.</span> <span class="toc-text">字符串 String</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建："><span class="toc-number">6.1.</span> <span class="toc-text">创建：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串连接"><span class="toc-number">6.2.</span> <span class="toc-text">字符串连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串输入"><span class="toc-number">6.3.</span> <span class="toc-text">字符串输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串比较"><span class="toc-number">6.4.</span> <span class="toc-text">字符串比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串操作"><span class="toc-number">6.5.</span> <span class="toc-text">字符串操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用操作"><span class="toc-number">6.6.</span> <span class="toc-text">常用操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#StringBuilder-和-StringBuffer"><span class="toc-number">6.7.</span> <span class="toc-text">StringBuilder 和 StringBuffer</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#容量机制"><span class="toc-number">6.7.1.</span> <span class="toc-text">容量机制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类"><span class="toc-number">7.</span> <span class="toc-text">类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建对象"><span class="toc-number">7.1.</span> <span class="toc-text">创建对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#成员变量"><span class="toc-number">7.2.</span> <span class="toc-text">成员变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构造函数"><span class="toc-number">7.3.</span> <span class="toc-text">构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数重载"><span class="toc-number">7.4.</span> <span class="toc-text">函数重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#访问属性"><span class="toc-number">7.5.</span> <span class="toc-text">访问属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#public"><span class="toc-number">7.5.1.</span> <span class="toc-text">public</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#private"><span class="toc-number">7.5.2.</span> <span class="toc-text">private</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#friendly"><span class="toc-number">7.5.3.</span> <span class="toc-text">friendly</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#System-out-println"><span class="toc-number">7.6.</span> <span class="toc-text">System.out.println</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用类"><span class="toc-number">8.</span> <span class="toc-text">常用类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间处理："><span class="toc-number">8.1.</span> <span class="toc-text">时间处理：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#java-util-Date"><span class="toc-number">8.1.1.</span> <span class="toc-text">java.util.Date</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DateFormat-SimpleDateFormat"><span class="toc-number">8.1.2.</span> <span class="toc-text">DateFormat, SimpleDateFormat</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Calendar，GregorianCalendar-日历类"><span class="toc-number">8.1.3.</span> <span class="toc-text">Calendar，GregorianCalendar 日历类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#File-类"><span class="toc-number">8.2.</span> <span class="toc-text">File 类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#容器"><span class="toc-number">9.</span> <span class="toc-text">容器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ArrayList"><span class="toc-number">9.1.</span> <span class="toc-text">ArrayList</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#常用操作-1"><span class="toc-number">9.1.1.</span> <span class="toc-text">常用操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#for-each循环"><span class="toc-number">9.1.2.</span> <span class="toc-text">for-each循环</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Set"><span class="toc-number">9.2.</span> <span class="toc-text">Set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hash表-散列表"><span class="toc-number">9.3.</span> <span class="toc-text">Hash表(散列表)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#常用操作-2"><span class="toc-number">9.3.1.</span> <span class="toc-text">常用操作</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#继承"><span class="toc-number">10.</span> <span class="toc-text">继承</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#继承VS组合"><span class="toc-number">10.1.</span> <span class="toc-text">继承VS组合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#super"><span class="toc-number">10.2.</span> <span class="toc-text">super</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同名变量"><span class="toc-number">10.3.</span> <span class="toc-text">同名变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#子类和子类型"><span class="toc-number">10.4.</span> <span class="toc-text">子类和子类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多态"><span class="toc-number">11.</span> <span class="toc-text">多态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何实现多态"><span class="toc-number">11.1.</span> <span class="toc-text">如何实现多态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多态变量"><span class="toc-number">11.2.</span> <span class="toc-text">多态变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#造型-cast"><span class="toc-number">11.3.</span> <span class="toc-text">造型 cast</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#向上造型"><span class="toc-number">11.3.1.</span> <span class="toc-text">向上造型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绑定"><span class="toc-number">11.4.</span> <span class="toc-text">绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#覆盖-override"><span class="toc-number">11.5.</span> <span class="toc-text">覆盖 override</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Object类"><span class="toc-number">11.6.</span> <span class="toc-text">Object类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Object类的函数-部分"><span class="toc-number">11.6.1.</span> <span class="toc-text">Object类的函数(部分)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多态的内存分析"><span class="toc-number">11.7.</span> <span class="toc-text">多态的内存分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计原则"><span class="toc-number">12.</span> <span class="toc-text">设计原则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#消除代码复制"><span class="toc-number">12.1.</span> <span class="toc-text">消除代码复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#增加可扩展性"><span class="toc-number">12.2.</span> <span class="toc-text">增加可扩展性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象和接口"><span class="toc-number">13.</span> <span class="toc-text">抽象和接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#接口"><span class="toc-number">13.1.</span> <span class="toc-text">接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#面向接口的编程方式"><span class="toc-number">13.1.1.</span> <span class="toc-text">面向接口的编程方式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#控制反转与MVC模式"><span class="toc-number">14.</span> <span class="toc-text">控制反转与MVC模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Swing"><span class="toc-number">14.1.</span> <span class="toc-text">Swing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#控制反转"><span class="toc-number">14.2.</span> <span class="toc-text">控制反转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内部类-innerclasses"><span class="toc-number">14.3.</span> <span class="toc-text">内部类 innerclasses</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#作用："><span class="toc-number">14.3.1.</span> <span class="toc-text">作用：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用场合"><span class="toc-number">14.3.2.</span> <span class="toc-text">使用场合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分类："><span class="toc-number">14.3.3.</span> <span class="toc-text">分类：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#成员内部类"><span class="toc-number">14.3.3.1.</span> <span class="toc-text">成员内部类</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#非静态内部类"><span class="toc-number">14.3.3.1.1.</span> <span class="toc-text">非静态内部类</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#静态内部类"><span class="toc-number">14.3.3.1.2.</span> <span class="toc-text">静态内部类</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#局部内部类：定义在方法内部，作用于仅限于本方法，但用的极少"><span class="toc-number">14.3.3.1.3.</span> <span class="toc-text">局部内部类：定义在方法内部，作用于仅限于本方法，但用的极少</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#匿名内部类"><span class="toc-number">14.3.3.2.</span> <span class="toc-text">匿名内部类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVC设计模式"><span class="toc-number">14.4.</span> <span class="toc-text">MVC设计模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异常机制-Exception"><span class="toc-number">14.5.</span> <span class="toc-text">异常机制 Exception</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#常见的异常"><span class="toc-number">14.5.1.</span> <span class="toc-text">常见的异常</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#异常Exception"><span class="toc-number">14.5.2.</span> <span class="toc-text">异常Exception</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常见异常"><span class="toc-number">14.5.3.</span> <span class="toc-text">常见异常</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#异常的处理方法："><span class="toc-number">14.5.4.</span> <span class="toc-text">异常的处理方法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法重写中声明异常原则："><span class="toc-number">14.5.5.</span> <span class="toc-text">方法重写中声明异常原则：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#自定义异常"><span class="toc-number">14.5.6.</span> <span class="toc-text">自定义异常</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
