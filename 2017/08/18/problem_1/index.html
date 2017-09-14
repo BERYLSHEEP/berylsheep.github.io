@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://zedom1.top">
   <title>刷题选集（一） | Zedom</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录第一个选集，选的比较基础比较水，主要是思维+细节 贪心SDUT 2072 删数问题SDUT 2072 活动选择 栈SDUT 3334 出栈序列判定SDUT 2132 后缀表达式转换">
-<meta name="keywords" content="c++,刷题,贪心,栈,水题">
+  <meta name="description" content="目录第一个选集，选的比较基础比较水，主要是思维+细节 贪心SDUT 2072 删数问题SDUT 2072 活动选择 栈SDUT 3334 出栈序列判定SDUT 2132 后缀表达式转换 动态规划最大子列和最大子列和及区间">
+<meta name="keywords" content="c++,刷题,栈,贪心,水题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="刷题选集（一）">
 <meta property="og:url" content="http://zedom1.top/2017/08/18/problem_1/index.html">
 <meta property="og:site_name" content="Zedom">
-<meta property="og:description" content="目录第一个选集，选的比较基础比较水，主要是思维+细节 贪心SDUT 2072 删数问题SDUT 2072 活动选择 栈SDUT 3334 出栈序列判定SDUT 2132 后缀表达式转换">
-<meta property="og:updated_time" content="2017-08-23T14:54:00.746Z">
+<meta property="og:description" content="目录第一个选集，选的比较基础比较水，主要是思维+细节 贪心SDUT 2072 删数问题SDUT 2072 活动选择 栈SDUT 3334 出栈序列判定SDUT 2132 后缀表达式转换 动态规划最大子列和最大子列和及区间">
+<meta property="og:updated_time" content="2017-09-12T12:07:40.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="刷题选集（一）">
-<meta name="twitter:description" content="目录第一个选集，选的比较基础比较水，主要是思维+细节 贪心SDUT 2072 删数问题SDUT 2072 活动选择 栈SDUT 3334 出栈序列判定SDUT 2132 后缀表达式转换">
+<meta name="twitter:description" content="目录第一个选集，选的比较基础比较水，主要是思维+细节 贪心SDUT 2072 删数问题SDUT 2072 活动选择 栈SDUT 3334 出栈序列判定SDUT 2132 后缀表达式转换 动态规划最大子列和最大子列和及区间">
   
     <link rel="alternative" href="/atom.xml" title="Zedom" type="application/atom+xml">
   
@@ -179,6 +179,7 @@
         <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p>第一个选集，选的比较基础比较水，主要是思维+细节</p>
 <h3 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h3><p>SDUT 2072 删数问题<br>SDUT 2072 活动选择</p>
 <h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>SDUT 3334 出栈序列判定<br>SDUT 2132 后缀表达式转换</p>
+<h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><p>最大子列和<br>最大子列和及区间</p>
 <a id="more"></a>
 <h2 id="贪心-1"><a href="#贪心-1" class="headerlink" title="贪心"></a>贪心</h2><h3 id="删数问题"><a href="#删数问题" class="headerlink" title="删数问题"></a>删数问题</h3><p><a href="http://acm.sdut.edu.cn/onlinejudge2/index.php/Home/Contest/contestproblem/cid/2187/pid/2072" target="_blank" rel="external">SDUT 2072 删数问题</a></p>
 <p>题意：给一串100位以内的数字s和一个数字n，在s中删除n个数使得剩下的数字按原来次序自左向右排最小</p>
@@ -206,6 +207,17 @@
 <p>细节：<br>左右括号和#出运算符栈后不进入答案栈<br>两个#号看作一对括号，在开始人为加入一个#号和最后的配对</p>
 <p>最后答案栈保存的是要输出答案的<strong>逆序</strong>，但若用数组模拟的话就可以直接从头输出到尾</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">char</span> s[<span class="number">1000</span>];  <span class="comment">// 输入表达式</span></div><div class="line">	<span class="keyword">char</span> op[<span class="number">1000</span>]; <span class="keyword">int</span> m=<span class="number">0</span>;   <span class="comment">// 运算符栈，用数组模拟，m为栈顶</span></div><div class="line">	<span class="keyword">char</span> ans[<span class="number">1000</span>]; <span class="keyword">int</span> ansm=<span class="number">0</span>;  <span class="comment">// 答案栈，用数组模拟，ansm为栈顶</span></div><div class="line">	<span class="keyword">int</span> l=<span class="number">0</span>;   <span class="comment">// 记录输入表达式的长度</span></div><div class="line">	op[m++]=<span class="string">'#'</span>;   <span class="comment">// 栈底加入一个#用来和最后的#配对</span></div><div class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%c"</span>,&amp;s[l])&amp;&amp;s[l++]!=<span class="string">'#'</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;l; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span>(s[i]!=<span class="string">'+'</span>&amp;&amp;s[i]!=<span class="string">'-'</span>&amp;&amp;s[i]!=<span class="string">'*'</span>&amp;&amp;s[i]!=<span class="string">'/'</span>&amp;&amp;s[i]!=<span class="string">'('</span>&amp;&amp;s[i]!=<span class="string">')'</span>&amp;&amp;s[i]!=<span class="string">'#'</span>)    <span class="comment">// 该字符为变量</span></div><div class="line">		&#123;	</div><div class="line">			ans[ansm++]=s[i];</div><div class="line">			<span class="keyword">continue</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">switch</span>(s[i])</div><div class="line">		&#123;</div><div class="line">		<span class="keyword">case</span> <span class="string">'+'</span>: </div><div class="line">		<span class="keyword">case</span> <span class="string">'-'</span>:</div><div class="line">			&#123;</div><div class="line">				<span class="keyword">if</span>(op[m<span class="number">-1</span>]==<span class="string">'('</span>||op[m<span class="number">-1</span>]==<span class="string">'#'</span>)</div><div class="line">				&#123;	</div><div class="line">					op[m++]=s[i];</div><div class="line">					<span class="keyword">break</span>;</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">else</span>  <span class="comment">// 除非为左括号或井号，不然在这道题中其它栈内的运算符优先级都要更大</span></div><div class="line">				&#123;</div><div class="line">					ans[ansm++]=op[--m];</div><div class="line">					op[m++]=s[i];</div><div class="line">					<span class="keyword">break</span>;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		<span class="keyword">case</span> <span class="string">'*'</span>: <span class="keyword">case</span> <span class="string">'/'</span>: <span class="keyword">case</span> <span class="string">'('</span>:</div><div class="line">			&#123;</div><div class="line">				op[m++]=s[i];</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">		<span class="keyword">case</span> <span class="string">')'</span>:</div><div class="line">			&#123;</div><div class="line">				<span class="keyword">while</span>(op[m<span class="number">-1</span>]!=<span class="string">'('</span>)  <span class="comment">// 把左右括号之间的都依次入答案栈</span></div><div class="line">				&#123;</div><div class="line">					ans[ansm++]=op[--m];</div><div class="line">				&#125;</div><div class="line">				--m;  <span class="comment">// 左括号出栈</span></div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">		<span class="keyword">case</span> <span class="string">'#'</span>:</div><div class="line">			&#123;</div><div class="line">				<span class="keyword">while</span>(op[m<span class="number">-1</span>]!=<span class="string">'#'</span>)</div><div class="line">				&#123;</div><div class="line">					ans[ansm++]=op[--m];</div><div class="line">				&#125;</div><div class="line">				--m;</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;ansm; i++)</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%c"</span>,ans[i]);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="动态规划-1"><a href="#动态规划-1" class="headerlink" title="动态规划"></a>动态规划</h2><h3 id="最大子列和"><a href="#最大子列和" class="headerlink" title="最大子列和"></a>最大子列和</h3><p>题意：给定n个数的序列，求其中和最大的连续子列</p>
+<p>网上从O(n2)的暴力到O(nlogn)的分治再到O(n)的动态规划的优化都有，因此不再赘述，直接来O(n)的在线的动态规划方法</p>
+<p>思路：若某个元素或某段元素和为负数，那么它就不可能是最终答案的开头部分，因为它对那个最大的子序列的贡献是负的。（也可能所有数字都是负数，那么某个元素就是最终答案本身） 那么我们从最开头开始扫到最尾，用一个累加器累加沿途的值，一旦累加器超过目前的最大值，那么更新最大值，一旦累加器小于0，那么继续加下去的话，贡献是负数，还不如清空累加器从0开始，直到处理到数组末尾</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> n;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">	<span class="keyword">int</span> now,maxn;</div><div class="line">	<span class="keyword">int</span> tem;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;tem);  <span class="comment">// 先读入第一个数字，并把now和maxn置位tem而非0，防止出现所有数字都是负数的情况</span></div><div class="line">	now=maxn=tem;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; i++)</div><div class="line">	&#123;</div><div class="line">		now=max(<span class="number">0</span>,now);</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;tem);</div><div class="line">		now+=tem;</div><div class="line">		maxn=max(maxn,now);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,maxn);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="最大子列和及区间"><a href="#最大子列和及区间" class="headerlink" title="最大子列和及区间"></a>最大子列和及区间</h3><p>我们在最大子列和的基础上做一点修改，现在我们不仅要得到最大的和，还需要那个最大的区间，要怎么改呢？</p>
+<p>在理解了上一题的动态规划解法之后，要求得最大区间，我们只需要增加三个变量，分别记录当前这段可能是最大子列的开头first、和最大的子列的开头ansfirst、和最大的子列的结尾last</p>
+<p>思路：</p>
+<pre><code>每当now累加器小于0时，说明前面一段将对后面没有贡献，要舍弃，那要以下一个读入的数字作为开头，以此更新first。
+
+一旦now累加器大于最大和maxn，说明我们找到了一个可能是答案的序列，而first此时正指着这个序列的头，因此需要把它正式保存下来给ansfirst，此时的数字tem也是当前最大序列的结尾，也把它保存下来给last
+</code></pre><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> n;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">	<span class="keyword">int</span> now=<span class="number">0</span>,maxn=<span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> tem;</div><div class="line">	<span class="keyword">int</span> first,last,ansfirst;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;tem);</div><div class="line">	first=last=ansfirst=now=maxn=tem;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;tem);</div><div class="line">		<span class="keyword">if</span>(now&lt;<span class="number">0</span>)</div><div class="line">		&#123; </div><div class="line">			now=<span class="number">0</span>;</div><div class="line">			first=tem;</div><div class="line">		&#125;</div><div class="line">		now+=tem;</div><div class="line">		<span class="keyword">if</span>(now&gt;maxn)</div><div class="line">		&#123;</div><div class="line">			last=tem;</div><div class="line">			maxn=now;</div><div class="line">			ansfirst=first;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d %d %d\n"</span>,maxn,ansfirst,last);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
 
       
@@ -226,11 +238,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">贪心</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">贪心</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -253,18 +265,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/08/19/graph/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/08/18/problem_tree/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          数据结构笔记（四）：图
+          题目小结：二叉树 ( 建树和遍历 )
         
       </div>
     </a>
   
   
-    <a href="/2017/08/18/problem_tree/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">题目小结：二叉树 ( 建树和遍历 )</div>
+    <a href="/2017/08/15/tree/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据结构笔记（三）：二叉树</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -291,7 +303,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目录"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#贪心"><span class="toc-number">1.1.</span> <span class="toc-text">贪心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#栈"><span class="toc-number">1.2.</span> <span class="toc-text">栈</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#贪心-1"><span class="toc-number">2.</span> <span class="toc-text">贪心</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#删数问题"><span class="toc-number">2.1.</span> <span class="toc-text">删数问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#活动选择"><span class="toc-number">2.2.</span> <span class="toc-text">活动选择</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栈-1"><span class="toc-number">3.</span> <span class="toc-text">栈</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#栈混洗"><span class="toc-number">3.1.</span> <span class="toc-text">栈混洗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#后缀表达式转换"><span class="toc-number">3.2.</span> <span class="toc-text">后缀表达式转换</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目录"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#贪心"><span class="toc-number">1.1.</span> <span class="toc-text">贪心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#栈"><span class="toc-number">1.2.</span> <span class="toc-text">栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态规划"><span class="toc-number">1.3.</span> <span class="toc-text">动态规划</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#贪心-1"><span class="toc-number">2.</span> <span class="toc-text">贪心</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#删数问题"><span class="toc-number">2.1.</span> <span class="toc-text">删数问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#活动选择"><span class="toc-number">2.2.</span> <span class="toc-text">活动选择</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栈-1"><span class="toc-number">3.</span> <span class="toc-text">栈</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#栈混洗"><span class="toc-number">3.1.</span> <span class="toc-text">栈混洗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#后缀表达式转换"><span class="toc-number">3.2.</span> <span class="toc-text">后缀表达式转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态规划-1"><span class="toc-number">4.</span> <span class="toc-text">动态规划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#最大子列和"><span class="toc-number">4.1.</span> <span class="toc-text">最大子列和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最大子列和及区间"><span class="toc-number">4.2.</span> <span class="toc-text">最大子列和及区间</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -437,11 +449,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">others</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随想</a>
+                <a href="javascript:void(0)" class="js-tag color2">图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -453,19 +469,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">图</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
+                <a href="javascript:void(0)" class="js-tag color4">线性表</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -473,11 +477,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">刷题</a>
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+                <a href="javascript:void(0)" class="js-tag color3">随想</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">刷题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -485,11 +497,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">水题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
+                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -498,6 +506,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">游戏制作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">水题</a>
               </li>
             
             <div class="clearfix"></div>
