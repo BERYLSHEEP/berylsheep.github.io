@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170818/5aAHAglgKi.png?imageslim">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170818/dha1ah025f.png?imageslim">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170822/BEacbGD51k.png?imageslim">
-<meta property="og:updated_time" content="2017-08-22T05:58:03.082Z">
+<meta property="og:updated_time" content="2017-09-17T03:20:20.494Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="题目小结：二叉树 ( 建树和遍历 )">
 <meta name="twitter:description" content="二叉树练习：1. 树的构建有关二叉树的题目有以下几种输入建树方式：1.前序+中序遍历序列2.中序+后序遍历序列3.前序+后序序列，同时说明该二叉树的所有节点子节点数为偶数4.每个节点子节点数目以及子节点编号5.先序序列，空节点以’,’代替">
@@ -221,7 +221,7 @@
 </ol>
 <p>判等思路：<br>1.粗糙版：贪心同构tree1，看看能不能变成tree2。<br>    tree1和tree2同步递归，每到一个节点判断左右节点是否相同（可能不存在），若不同就交换左右节点。最后两棵树都出先序遍历的序列判断是不是一模一样</p>
 <p>2.递归巧妙版：判断当前节点数值是否相等<br>    若两个节点都不存在，返回正确。<br>    若均存在且相等，递归查询（tree1左孩子+tree2左孩子）&amp;&amp;（tree1右孩子+tree2右孩子） 或者 （tree1左孩子+tree2右孩子）&amp;&amp;（tree1右孩子+tree2左孩子）。<br>    若不等或者只有其中一个存在，返回错。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctime&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">char</span> a[<span class="number">15</span>];</div><div class="line"><span class="keyword">int</span> llc[<span class="number">15</span>],rrc[<span class="number">15</span>];</div><div class="line"><span class="keyword">int</span> n,m;</div><div class="line"><span class="keyword">char</span> tem1,tem2;</div><div class="line"><span class="keyword">bool</span> isroot[<span class="number">15</span>];</div><div class="line"><span class="keyword">int</span> nroot;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">char</span> data;</div><div class="line">	node *lc,*rc;</div><div class="line">	node()&#123; lc=rc=<span class="literal">NULL</span>;&#125;</div><div class="line">	node(<span class="keyword">char</span> d, node * llc = <span class="literal">NULL</span>, node * rrc=<span class="literal">NULL</span>):data(d),lc(llc),rc(rrc)&#123;&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function">node * <span class="title">build</span><span class="params">(<span class="keyword">int</span> i)</span></span></div><div class="line">&#123;</div><div class="line">	node *s=<span class="keyword">new</span> node (a[i]);</div><div class="line">	<span class="keyword">if</span>(llc[i]!=<span class="number">-1</span>)</div><div class="line">		s-&gt;lc=build(llc[i]);</div><div class="line">	<span class="keyword">if</span>(rrc[i]!=<span class="number">-1</span>)</div><div class="line">		s-&gt;rc=build(rrc[i]);</div><div class="line">	<span class="keyword">return</span> s;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">node * <span class="title">rebuild</span><span class="params">(<span class="keyword">int</span> n1)</span>  <span class="comment">// 坑点！ 需要把节点数传进去，若用全局的n或者m会错，因为nm不一定相等</span></span></div><div class="line">&#123;</div><div class="line">	nroot=<span class="number">0</span>;</div><div class="line">	<span class="built_in">memset</span>(isroot,<span class="number">0</span>,<span class="keyword">sizeof</span>(isroot));</div><div class="line">	<span class="built_in">memset</span>(llc,<span class="number">0</span>,<span class="keyword">sizeof</span>(llc));</div><div class="line">	<span class="built_in">memset</span>(rrc,<span class="number">0</span>,<span class="keyword">sizeof</span>(rrc));</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n1; i++)</div><div class="line">	&#123;	</div><div class="line">		<span class="built_in">cin</span>&gt;&gt;a[i]&gt;&gt;tem1&gt;&gt;tem2;</div><div class="line">		<span class="keyword">if</span>(tem1==<span class="string">'-'</span>) </div><div class="line">			llc[i]=<span class="number">-1</span>;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			llc[i]=tem1-<span class="string">'0'</span>;</div><div class="line">			isroot[llc[i]]=<span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(tem2==<span class="string">'-'</span>) </div><div class="line">			rrc[i]=<span class="number">-1</span>;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			rrc[i]=tem2-<span class="string">'0'</span>;</div><div class="line">			isroot[rrc[i]]=<span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>( nroot=<span class="number">0</span>; nroot&lt;n1; nroot++)</div><div class="line">		<span class="keyword">if</span>(isroot[nroot]==<span class="number">0</span>)</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">	<span class="keyword">return</span> build(nroot);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">change</span><span class="params">(node*r1, node *r2)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span>(!r1 &amp;&amp; !r2) </div><div class="line">		<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span>(r1&amp;&amp;r2)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span>(r1-&gt;data==r2-&gt;data)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span>( (change(r1-&gt;rc,r2-&gt;rc))&amp;&amp;(change(r1-&gt;lc,r2-&gt;lc))  || (change(r1-&gt;lc,r2-&gt;rc))&amp;&amp;(change(r1-&gt;rc,r2-&gt;lc))   )</div><div class="line">				<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line"><span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n)</div><div class="line">&#123;</div><div class="line">	node* tree1,*tree2;</div><div class="line">	<span class="keyword">if</span>(n)</div><div class="line">		tree1=rebuild(n);</div><div class="line">	<span class="built_in">cin</span>&gt;&gt;m;</div><div class="line">	<span class="keyword">if</span>(m)</div><div class="line">		tree2=rebuild(m);</div><div class="line">	<span class="keyword">if</span>( n!=m || (n==<span class="number">0</span>&amp;&amp;m!=<span class="number">0</span>) || (m==<span class="number">0</span>&amp;&amp;n!=<span class="number">0</span>) )</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"No\n"</span>);</div><div class="line">		<span class="keyword">continue</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>( n==<span class="number">0</span> &amp;&amp; m==<span class="number">0</span> )</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"Yes\n"</span>);</div><div class="line">		<span class="keyword">continue</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(change(tree1,tree2))</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"Yes\n"</span>);</div><div class="line">	<span class="keyword">else</span></div><div class="line">		<span class="built_in">printf</span>(<span class="string">"No\n"</span>);</div><div class="line">&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctime&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">char</span> a[<span class="number">15</span>];</div><div class="line"><span class="keyword">int</span> llc[<span class="number">15</span>],rrc[<span class="number">15</span>];</div><div class="line"><span class="keyword">int</span> n,m;</div><div class="line"><span class="keyword">char</span> tem1,tem2;</div><div class="line"><span class="keyword">bool</span> isroot[<span class="number">15</span>];</div><div class="line"><span class="keyword">int</span> nroot;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">char</span> data;</div><div class="line">	node *lc,*rc;</div><div class="line">	node()&#123; lc=rc=<span class="literal">NULL</span>;&#125;</div><div class="line">	node(<span class="keyword">char</span> d, node * llc = <span class="literal">NULL</span>, node * rrc=<span class="literal">NULL</span>):data(d),lc(llc),rc(rrc)&#123;&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function">node * <span class="title">build</span><span class="params">(<span class="keyword">int</span> i)</span></span></div><div class="line">&#123;</div><div class="line">	node *s=<span class="keyword">new</span> node (a[i]);</div><div class="line">	<span class="keyword">if</span>(llc[i]!=<span class="number">-1</span>)</div><div class="line">		s-&gt;lc=build(llc[i]);</div><div class="line">	<span class="keyword">if</span>(rrc[i]!=<span class="number">-1</span>)</div><div class="line">		s-&gt;rc=build(rrc[i]);</div><div class="line">	<span class="keyword">return</span> s;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">node * <span class="title">rebuild</span><span class="params">(<span class="keyword">int</span> n1)</span>  <span class="comment">// 坑点！ 需要把节点数传进去，若用全局的n或者m会错，因为nm不一定相等</span></span></div><div class="line">&#123;</div><div class="line">	nroot=<span class="number">0</span>;</div><div class="line">	<span class="built_in">memset</span>(isroot,<span class="number">0</span>,<span class="keyword">sizeof</span>(isroot));</div><div class="line">	<span class="built_in">memset</span>(llc,<span class="number">0</span>,<span class="keyword">sizeof</span>(llc));</div><div class="line">	<span class="built_in">memset</span>(rrc,<span class="number">0</span>,<span class="keyword">sizeof</span>(rrc));</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n1; i++)</div><div class="line">	&#123;	</div><div class="line">		<span class="built_in">cin</span>&gt;&gt;a[i]&gt;&gt;tem1&gt;&gt;tem2;</div><div class="line">		<span class="keyword">if</span>(tem1==<span class="string">'-'</span>) </div><div class="line">			llc[i]=<span class="number">-1</span>;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			llc[i]=tem1-<span class="string">'0'</span>;</div><div class="line">			isroot[llc[i]]=<span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(tem2==<span class="string">'-'</span>) </div><div class="line">			rrc[i]=<span class="number">-1</span>;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			rrc[i]=tem2-<span class="string">'0'</span>;</div><div class="line">			isroot[rrc[i]]=<span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>( nroot=<span class="number">0</span>; nroot&lt;n1; nroot++)</div><div class="line">		<span class="keyword">if</span>(isroot[nroot]==<span class="number">0</span>)</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">	<span class="keyword">return</span> build(nroot);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">change</span><span class="params">(node*r1, node *r2)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span>(!r1 &amp;&amp; !r2) </div><div class="line">		<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span>(r1&amp;&amp;r2)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span>(r1-&gt;data==r2-&gt;data)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span>( (change(r1-&gt;rc,r2-&gt;rc))&amp;&amp;(change(r1-&gt;lc,r2-&gt;lc))  || (change(r1-&gt;lc,r2-&gt;rc))&amp;&amp;(change(r1-&gt;rc,r2-&gt;lc))   )</div><div class="line">				<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line"><span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n)</div><div class="line">&#123;</div><div class="line">	node* tree1,*tree2;</div><div class="line">	<span class="keyword">if</span>(n)</div><div class="line">		tree1=rebuild(n);</div><div class="line">	<span class="built_in">cin</span>&gt;&gt;m;</div><div class="line">	<span class="keyword">if</span>(m)</div><div class="line">		tree2=rebuild(m);</div><div class="line">	<span class="keyword">if</span>(change(tree1,tree2))</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"Yes\n"</span>);</div><div class="line">	<span class="keyword">else</span></div><div class="line">		<span class="built_in">printf</span>(<span class="string">"No\n"</span>);</div><div class="line">&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="3-子树节点数"><a href="#3-子树节点数" class="headerlink" title="3. 子树节点数"></a>3. 子树节点数</h2><p><a href="http://ac.jobdu.com/problem.php?pid=1113" target="_blank" rel="external">九度OJ 1113：二叉树</a></p>
 <p>题意：一棵完全二叉树，层次遍历为1-n。给定一节点数值m和最后一个节点数值n，求m的子树节点数</p>
 <p>一道数学题，不需要构造二叉树，但是需要对二叉树的各种性质比较了解。</p>
@@ -282,18 +282,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/08/19/graph/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/08/18/problem_1/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          数据结构笔记（四）：图
+          刷题选集（一）
         
       </div>
     </a>
   
   
-    <a href="/2017/08/18/problem_1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">刷题选集（一）</div>
+    <a href="/2017/08/15/tree/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据结构笔记（三）：树</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -458,6 +458,14 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随想</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">编译原理</a>
               </li>
              
@@ -486,34 +494,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线性表</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">链表</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">others</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随想</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">刷题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">栈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
               </li>
              
@@ -526,11 +506,51 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">刷题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">水题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">线性表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">链表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">二叉搜索树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AVL树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">哈夫曼树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">堆</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
             
             <div class="clearfix"></div>
