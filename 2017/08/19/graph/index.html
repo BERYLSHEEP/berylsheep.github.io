@@ -17,7 +17,7 @@
 <meta property="og:description" content="概念什么是图(Graph)：    表示多对多的关系    包含        一组顶点：通常用V(Vertex)表示顶点集合        一组边：通常用E(Edge)表示边的集合            边是顶点对            无向边 (v,w)$\in$E ， 其中 v,w $\in$ V            有向边 表示从v指向w的边            不考虑重边和自回路 此">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170819/FhHfljELG8.png?imageslim">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170819/20c7c6lK0G.png?imageslim">
-<meta property="og:updated_time" content="2017-09-17T10:47:00.950Z">
+<meta property="og:updated_time" content="2017-09-18T12:08:09.303Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构笔记（四）：图">
 <meta name="twitter:description" content="概念什么是图(Graph)：    表示多对多的关系    包含        一组顶点：通常用V(Vertex)表示顶点集合        一组边：通常用E(Edge)表示边的集合            边是顶点对            无向边 (v,w)$\in$E ， 其中 v,w $\in$ V            有向边 表示从v指向w的边            不考虑重边和自回路 此">
@@ -187,16 +187,16 @@
 <p>以有向图为根本学习，因为无向图可以变为邻接顶点之间双向连接的有向图，混合图也可以化成有向图。</p>
 <p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170819/20c7c6lK0G.png?imageslim" alt="分类图"></p>
 <p>概念：</p>
-<pre><code>**路径**：
+<pre><code>- **路径**：
     定义：顶点按依次邻接的关系连成的序列
     **简单路径**：不含重复节点的路径
     **一般路径**：可能含重复节点
     **环路**：起点和终点重合
 
-**彼此邻接**：
+- **彼此邻接**：
     彼此间存在边的两个顶点
 
-**连通**：
+- **连通**：
     若v到w存在一条路径，则称v和w是连通的
     强连通：
         有向图中v和w存在双向路径
@@ -211,20 +211,36 @@
         **强连通图**：
             有向图中所有顶点都是强连通
 
-**有向无环图**(directed acyclic graph DAG)：
+- **有向无环图**(directed acyclic graph DAG)：
     图为有向图且不包含任何环路
 
-**欧拉环路**：
+- **欧拉环路**：
     经过所有边且恰好只经过所有边一次的环路
 
-**哈密尔顿环路**：
+- **哈密尔顿环路**：
     经过所有节点且只经过所有点一次
 
-**简单图**：
+- **简单图**：
     所有节点均不含自环的图
-</code></pre><h2 id="抽象数据类型定义"><a href="#抽象数据类型定义" class="headerlink" title="抽象数据类型定义"></a>抽象数据类型定义</h2><p>名称： 图 Graph<br>数据对象集：G(V,E)由一个非空的有限顶点集合V和一个有限边集合E组成<br>操作集：<br>    Graph Create();<br>        建立并返回空图<br>    Graph InsertVertex(Graph G, Vertex v);<br>        把顶点V插入G<br>    Graph InsertEdge(Graph G, Edge e);<br>        把顶点E插入G<br>    void DFS(Graph G , Vertex v);<br>        从v出发深度优先遍历G<br>    void BFS(Graph G , Vertex v);<br>        从v出发广度优先遍历G<br>    void ShortestPath(Graph G , Vertex v, int Dist[]);<br>        计算图G中顶点v到任意其它顶点的最短距离<br>    void MST(Graph G);<br>        计算图G的最小生成树</p>
-<h2 id="表示"><a href="#表示" class="headerlink" title="表示"></a>表示</h2><h3 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h3><p>邻接矩阵：G[N][N]——N个顶点从0到N-1编号<br>    G[i][j]=1 <vi,vj>是边<br>    G[i][j]=0 <vi,vj>不是边</vi,vj></vi,vj></p>
-<p>优点</p>
+</code></pre><h2 id="抽象数据类型定义"><a href="#抽象数据类型定义" class="headerlink" title="抽象数据类型定义"></a>抽象数据类型定义</h2><p>名称： 图 Graph<br>数据对象集：G(V,E)由一个非空的有限顶点集合V和一个有限边集合E组成<br>操作集：</p>
+<pre><code>- Graph Create();
+    建立并返回空图
+- Graph InsertVertex(Graph G, Vertex v);
+    把顶点V插入G
+- Graph InsertEdge(Graph G, Edge e);
+    把顶点E插入G    
+- void DFS(Graph G , Vertex v);
+    从v出发深度优先遍历G
+- void BFS(Graph G , Vertex v);
+    从v出发广度优先遍历G
+- void ShortestPath(Graph G , Vertex v, int Dist[]);
+    计算图G中顶点v到任意其它顶点的最短距离
+- void MST(Graph G);
+    计算图G的最小生成树
+</code></pre><h2 id="表示"><a href="#表示" class="headerlink" title="表示"></a>表示</h2><h3 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h3><p>邻接矩阵：G[N][N]——N个顶点从0到N-1编号</p>
+<pre><code>- G[i][j]=1 &lt;vi,vj&gt;是边
+- G[i][j]=0 &lt;vi,vj&gt;不是边
+</code></pre><p>优点</p>
 <pre><code>- 方便、直观
 - 方便检查任意一对顶点间是否有边
 - 方便找任一顶点所有邻接点
@@ -248,8 +264,10 @@
 <p>伪代码:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">( Vertex v )</span></span></div><div class="line">&#123;</div><div class="line">	visited[v]=<span class="literal">true</span>;</div><div class="line">	<span class="keyword">for</span>( v的每个邻接点w )</div><div class="line">		<span class="keyword">if</span>(!visited[w])</div><div class="line">			DFS(w);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="广度优先搜索-BFS-Breadth-First-Search"><a href="#广度优先搜索-BFS-Breadth-First-Search" class="headerlink" title="广度优先搜索 BFS (Breadth First Search)"></a>广度优先搜索 BFS (Breadth First Search)</h3><p>相当于树的层序遍历</p>
 <p>用<strong>队列</strong>实现，把起始结点加入队列后<br>每次取队头节点，把该结点所有未访问的结点加入队尾，重复该操作直至队列为空，即所有结点都被访问过</p>
-<p>N个顶点，E条边，时间复杂度和DFS相同：<br>    用邻接表存储时，为O(N+E)<br>    用邻接矩阵存储时，为O($N^2$);</p>
-<p>伪代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFS</span><span class="params">( Vertex v )</span></span></div><div class="line">&#123;</div><div class="line">	visited[v]=<span class="literal">true</span>;</div><div class="line">	<span class="built_in">queue</span>.enqueue(v);</div><div class="line">	<span class="keyword">while</span>(!q.empty())</div><div class="line">	&#123;</div><div class="line">		v=q.dequeue();</div><div class="line">		<span class="keyword">for</span>( v 的每个邻接点w )</div><div class="line">			<span class="keyword">if</span>(!visited[w])</div><div class="line">			&#123;</div><div class="line">				visited[w]=<span class="literal">true</span>;</div><div class="line">				q.enqueue(w);</div><div class="line">			&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>N个顶点，E条边，时间复杂度和DFS相同：</p>
+<pre><code>- 用邻接表存储时，为O(N+E)
+- 用邻接矩阵存储时，为O($N^2$);
+</code></pre><p>伪代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFS</span><span class="params">( Vertex v )</span></span></div><div class="line">&#123;</div><div class="line">	visited[v]=<span class="literal">true</span>;</div><div class="line">	<span class="built_in">queue</span>.enqueue(v);</div><div class="line">	<span class="keyword">while</span>(!q.empty())</div><div class="line">	&#123;</div><div class="line">		v=q.dequeue();</div><div class="line">		<span class="keyword">for</span>( v 的每个邻接点w )</div><div class="line">			<span class="keyword">if</span>(!visited[w])</div><div class="line">			&#123;</div><div class="line">				visited[w]=<span class="literal">true</span>;</div><div class="line">				q.enqueue(w);</div><div class="line">			&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>BFS适合找最优解<br>DFS适合找任意一解</p>
 
       
