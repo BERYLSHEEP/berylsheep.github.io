@@ -6,14 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://zedom1.top">
-  <title>Tag: 图 | Zedom</title>
+  <title>数据结构笔记（四）：图 | Zedom</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Zedom">
-<meta property="og:url" content="http://zedom1.top/tags/图/index.html">
+  <meta name="description" content="概念什么是图(Graph)：    表示多对多的关系    包含        一组顶点：通常用V(Vertex)表示顶点集合        一组边：通常用E(Edge)表示边的集合            边是顶点对            无向边 (v,w)$\in$E ， 其中 v,w $\in$ V            有向边 表示从v指向w的边            不考虑重边和自回路 此">
+<meta name="keywords" content="学习笔记,数据结构,图,c++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构笔记（四）：图">
+<meta property="og:url" content="http://zedom1.top/2017/08/19/~pgrhle02.55q/index.html">
 <meta property="og:site_name" content="Zedom">
+<meta property="og:description" content="概念什么是图(Graph)：    表示多对多的关系    包含        一组顶点：通常用V(Vertex)表示顶点集合        一组边：通常用E(Edge)表示边的集合            边是顶点对            无向边 (v,w)$\in$E ， 其中 v,w $\in$ V            有向边 表示从v指向w的边            不考虑重边和自回路 此">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170819/FhHfljELG8.png?imageslim">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170819/20c7c6lK0G.png?imageslim">
+<meta property="og:updated_time" content="2017-09-18T12:02:00.543Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zedom">
+<meta name="twitter:title" content="数据结构笔记（四）：图">
+<meta name="twitter:description" content="概念什么是图(Graph)：    表示多对多的关系    包含        一组顶点：通常用V(Vertex)表示顶点集合        一组边：通常用E(Edge)表示边的集合            边是顶点对            无向边 (v,w)$\in$E ， 其中 v,w $\in$ V            有向边 表示从v指向w的边            不考虑重边和自回路 此">
+<meta name="twitter:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170819/FhHfljELG8.png?imageslim">
   
     <link rel="alternative" href="/atom.xml" title="Zedom" type="application/atom+xml">
   
@@ -151,36 +159,106 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-~pgrhle02.55q" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/19/graph/" class="archive-article-date">
-  	<time datetime="2017-08-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-19</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/19/graph/">数据结构笔记（四）：图</a>
+    <h1 class="article-title" itemprop="name">
+      数据结构笔记（四）：图
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/08/19/~pgrhle02.55q/" class="archive-article-date">
+  	<time datetime="2017-08-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a><strong>概念</strong></h2><p>什么是图(Graph)：<br>    表示多对多的关系<br>    包含<br>        一组顶点：通常用V(Vertex)表示顶点集合<br>        一组边：通常用E(Edge)表示边的集合<br>            边是顶点对<br>            无向边 (v,w)$\in$E ， 其中 v,w $\in$ V<br>            有向边 <v,w>表示从v指向w的边<br>            不考虑重边和自回路</v,w></p>
+<p>此前学过的树、线性序列，均可视作图的<strong>特例</strong>。<br>在线性序列中，只有直接前驱和后继有邻接关系<br>在树中，只有父节点和子节点之间定义邻接关系</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170819/FhHfljELG8.png?imageslim" alt="序列、树、图"></p>
+<a id="more"></a>
+<p><strong>分类：</strong><br>1.<strong>无向图(undigraph)</strong>：所有邻接顶点之间次序无所谓 (u为v好友，则v也必定为u好友)<br>2.<strong>有向图(digraph)</strong>：所有邻接顶点之间有次序(u为v好友，v不一定为u好友) u-&gt;v 即 (u,v) u为尾(tail)，v为头(head)<br>3.<strong>混合图</strong>：邻接关系中有的与次序有关，有的与次序无关<br>4.<strong>网络(network)</strong>：边有权重</p>
+<p>以有向图为根本学习，因为无向图可以变为邻接顶点之间双向连接的有向图，混合图也可以化成有向图。</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170819/20c7c6lK0G.png?imageslim" alt="分类图"></p>
+<p>概念：</p>
+<pre><code>**路径**：
+    定义：顶点按依次邻接的关系连成的序列
+    **简单路径**：不含重复节点的路径
+    **一般路径**：可能含重复节点
+    **环路**：起点和终点重合
+
+**彼此邻接**：
+    彼此间存在边的两个顶点
+
+**连通**：
+    若v到w存在一条路径，则称v和w是连通的
+    强连通：
+        有向图中v和w存在双向路径
+    **连通分量**：
+        无向图的**极大**连通子图
+            极大顶点数：再加1个顶点就不连通
+            极大边数：包含子图中所有顶点相连的所有边
+        **强连通分量**：
+            有向图的极大强连通子图
+    **连通图**：
+        图中任意两顶点均连通
+        **强连通图**：
+            有向图中所有顶点都是强连通
+
+**有向无环图**(directed acyclic graph DAG)：
+    图为有向图且不包含任何环路
+
+**欧拉环路**：
+    经过所有边且恰好只经过所有边一次的环路
+
+**哈密尔顿环路**：
+    经过所有节点且只经过所有点一次
+
+**简单图**：
+    所有节点均不含自环的图
+</code></pre><h2 id="抽象数据类型定义"><a href="#抽象数据类型定义" class="headerlink" title="抽象数据类型定义"></a>抽象数据类型定义</h2><p>名称： 图 Graph<br>数据对象集：G(V,E)由一个非空的有限顶点集合V和一个有限边集合E组成<br>操作集：<br>    Graph Create();<br>        建立并返回空图<br>    Graph InsertVertex(Graph G, Vertex v);<br>        把顶点V插入G<br>    Graph InsertEdge(Graph G, Edge e);<br>        把顶点E插入G<br>    void DFS(Graph G , Vertex v);<br>        从v出发深度优先遍历G<br>    void BFS(Graph G , Vertex v);<br>        从v出发广度优先遍历G<br>    void ShortestPath(Graph G , Vertex v, int Dist[]);<br>        计算图G中顶点v到任意其它顶点的最短距离<br>    void MST(Graph G);<br>        计算图G的最小生成树</p>
+<h2 id="表示"><a href="#表示" class="headerlink" title="表示"></a>表示</h2><h3 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h3><p>邻接矩阵：G[N][N]——N个顶点从0到N-1编号<br>    G[i][j]=1 <vi,vj>是边<br>    G[i][j]=0 <vi,vj>不是边</vi,vj></vi,vj></p>
+<p>优点</p>
+<pre><code>- 方便、直观
+- 方便检查任意一对顶点间是否有边
+- 方便找任一顶点所有邻接点
+- 方便计算任一顶点的度
+    入度：指向该点的边数
+    出度：从该点发出的边数
+</code></pre><p>缺点</p>
+<pre><code>- 浪费空间，存稀疏图（顶点多，边很少的图）时有大量无效元素
+- 浪费时间，统计稀疏图中共多少条边
+</code></pre><p>基本定义与建图：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> Vertex;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Edge;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 1000</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x7fffffff</span></div><div class="line"><span class="keyword">enum</span> GraphType&#123; DG, UG, DN, UN &#125;;</div><div class="line"><span class="comment">/* 有向图，无向图，有向网图，无向网图 */</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Graph</span></span></div><div class="line">&#123;</div><div class="line">	Vertex vertex[MaxSize];      <span class="comment">// 顶点表</span></div><div class="line">	Edge edge[MaxSize][MaxSize]; <span class="comment">// 邻接矩阵，边表</span></div><div class="line">	<span class="keyword">int</span> n , e;                   <span class="comment">// 顶点总数和边总数</span></div><div class="line">	GraphType type;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateGraph</span> <span class="params">( Graph * g)</span></span></div><div class="line">&#123;</div><div class="line">	g-&gt;type = UN;</div><div class="line">	<span class="keyword">int</span> i,j,w;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;g-&gt;n,&amp;g-&gt;e);   <span class="comment">// 顶点数和边数</span></div><div class="line">	<span class="keyword">for</span>( i=<span class="number">0</span>; i&lt;g-&gt;n; i++ )</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%c"</span>,&amp;(g-&gt;vertex[i]));</div><div class="line">	<span class="keyword">for</span>( i=<span class="number">0</span>; i&lt;g-&gt;n ; i++ )     <span class="comment">// 初始化</span></div><div class="line">		<span class="keyword">for</span>( j=<span class="number">0</span>; j&lt;g-&gt;n ; j++ )</div><div class="line">			g-&gt;edge[i][j]=INF;</div><div class="line">	<span class="keyword">for</span>( <span class="keyword">int</span> k=<span class="number">0</span>; k&lt;g-&gt;e ; k++ )</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;i,&amp;j,&amp;w);  <span class="comment">// 输入e条边的权值</span></div><div class="line">		g-&gt;edge[i][j]=w;</div><div class="line">		g-&gt;edge[j][i]=w;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h3><p>邻接表：G[N]为指针数组，对应矩阵每行一个链表，只存非0元素<br>优点：</p>
+<pre><code>- 方便找任一顶点的所有邻接点
+- 节约稀疏图的空间
+    需要N个头指针，2E个结点（每个节点至少两个域）
+    E &lt; n(n-1)/4 时省空间
+- 方便计算无向图的度
+    有向图只能计算出度，需要构造逆邻接表（存指向自己的边）
+</code></pre><p>基本定义与实现<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> Vertex;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Edge;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 1000</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x7fffffff</span></div><div class="line"><span class="keyword">enum</span> GraphType&#123; DG, UG, DN, UN &#125;;</div><div class="line"><span class="comment">/* 有向图，无向图，有向网图，无向网图 */</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ENode</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> adjv;    <span class="comment">// 指向顶点的序号</span></div><div class="line">	ENode * next;</div><div class="line">	<span class="keyword">int</span> weight;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">VNode</span></span></div><div class="line">&#123;</div><div class="line">	Vertex vertex;</div><div class="line">	ENode *firstEdge;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Graph</span></span></div><div class="line">&#123;</div><div class="line">	VNode nodeList[MaxSize];</div><div class="line">	<span class="keyword">int</span> n,e;</div><div class="line">	GraphType type;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateGraph</span><span class="params">( Graph *g )</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> i,j;</div><div class="line">	ENode *edge;</div><div class="line">	g-&gt;type = DG;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;(g-&gt;n),&amp;(g-&gt;e));</div><div class="line">	<span class="keyword">for</span>( i=<span class="number">0</span> ; i&lt;g-&gt;n ; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%c"</span>,&amp;(g-&gt;nodeList[i].vertex));</div><div class="line">		g-&gt;nodeList[i].firstEdge=<span class="literal">NULL</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>( <span class="keyword">int</span> k=<span class="number">0</span>; k&lt;g-&gt;e ; k++ )</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;i,&amp;j);</div><div class="line">		edge = <span class="keyword">new</span> ENode();</div><div class="line">		edge-&gt;adjv = j;</div><div class="line">		edge-&gt;next = g-&gt;nodeList[i].firstEdge;</div><div class="line">		g-&gt;nodeList[i].firstEdge = edge;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><h3 id="深度优先搜索-DFS-Depth-First-Search"><a href="#深度优先搜索-DFS-Depth-First-Search" class="headerlink" title="深度优先搜索 DFS (Depth First Search)"></a>深度优先搜索 DFS (Depth First Search)</h3><p>相当于树的先序遍历</p>
+<p>N个顶点，E条边，时间复杂度：<br>    用邻接表存储时，为O(N+E)<br>    用邻接矩阵存储时，为O($N^2$);</p>
+<p>伪代码:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">( Vertex v )</span></span></div><div class="line">&#123;</div><div class="line">	visited[v]=<span class="literal">true</span>;</div><div class="line">	<span class="keyword">for</span>( v的每个邻接点w )</div><div class="line">		<span class="keyword">if</span>(!visited[w])</div><div class="line">			DFS(w);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="广度优先搜索-BFS-Breadth-First-Search"><a href="#广度优先搜索-BFS-Breadth-First-Search" class="headerlink" title="广度优先搜索 BFS (Breadth First Search)"></a>广度优先搜索 BFS (Breadth First Search)</h3><p>相当于树的层序遍历</p>
+<p>用<strong>队列</strong>实现，把起始结点加入队列后<br>每次取队头节点，把该结点所有未访问的结点加入队尾，重复该操作直至队列为空，即所有结点都被访问过</p>
+<p>N个顶点，E条边，时间复杂度和DFS相同：<br>    用邻接表存储时，为O(N+E)<br>    用邻接矩阵存储时，为O($N^2$);</p>
+<p>伪代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFS</span><span class="params">( Vertex v )</span></span></div><div class="line">&#123;</div><div class="line">	visited[v]=<span class="literal">true</span>;</div><div class="line">	<span class="built_in">queue</span>.enqueue(v);</div><div class="line">	<span class="keyword">while</span>(!q.empty())</div><div class="line">	&#123;</div><div class="line">		v=q.dequeue();</div><div class="line">		<span class="keyword">for</span>( v 的每个邻接点w )</div><div class="line">			<span class="keyword">if</span>(!visited[w])</div><div class="line">			&#123;</div><div class="line">				visited[w]=<span class="literal">true</span>;</div><div class="line">				q.enqueue(w);</div><div class="line">			&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>BFS适合找最优解<br>DFS适合找任意一解</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -204,69 +282,76 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/19/~pgrhle02.55q/" class="archive-article-date">
-  	<time datetime="2017-08-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-19</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2017/08/19/graph/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          数据结构笔记（四）：图
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/18/problem_1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">刷题选集（一）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/19/~pgrhle02.55q/">数据结构笔记（四）：图</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">图</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象数据类型定义"><span class="toc-number">2.</span> <span class="toc-text">抽象数据类型定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表示"><span class="toc-number">3.</span> <span class="toc-text">表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#邻接矩阵"><span class="toc-number">3.1.</span> <span class="toc-text">邻接矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#邻接表"><span class="toc-number">3.2.</span> <span class="toc-text">邻接表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遍历"><span class="toc-number">4.</span> <span class="toc-text">遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#深度优先搜索-DFS-Depth-First-Search"><span class="toc-number">4.1.</span> <span class="toc-text">深度优先搜索 DFS (Depth First Search)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#广度优先搜索-BFS-Breadth-First-Search"><span class="toc-number">4.2.</span> <span class="toc-text">广度优先搜索 BFS (Breadth First Search)</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+  
+
+  
 
 
           </div>
@@ -289,9 +374,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: false,

@@ -8,21 +8,19 @@
   <link rel="dns-prefetch" href="http://zedom1.top">
   <title>数据结构笔记（四）：图 | Zedom</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="概念图的两要素：顶点集和边集 彼此邻接：彼此间存在边的两个顶点 此前学过的树、线性序列，均可视作图的特例。在线性序列中，只有直接前驱和后继有邻接关系在树中，只有父节点和子节点之间定义邻接关系">
+  <meta name="description" content="概念什么是图(Graph)：    表示多对多的关系    包含        一组顶点：通常用V(Vertex)表示顶点集合        一组边：通常用E(Edge)表示边的集合            边是顶点对            无向边 (v,w)$\in$E ， 其中 v,w $\in$ V            有向边 表示从v指向w的边            不考虑重边和自回路 此">
 <meta name="keywords" content="学习笔记,数据结构,图,c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构笔记（四）：图">
 <meta property="og:url" content="http://zedom1.top/2017/08/19/graph/index.html">
 <meta property="og:site_name" content="Zedom">
-<meta property="og:description" content="概念图的两要素：顶点集和边集 彼此邻接：彼此间存在边的两个顶点 此前学过的树、线性序列，均可视作图的特例。在线性序列中，只有直接前驱和后继有邻接关系在树中，只有父节点和子节点之间定义邻接关系">
+<meta property="og:description" content="概念什么是图(Graph)：    表示多对多的关系    包含        一组顶点：通常用V(Vertex)表示顶点集合        一组边：通常用E(Edge)表示边的集合            边是顶点对            无向边 (v,w)$\in$E ， 其中 v,w $\in$ V            有向边 表示从v指向w的边            不考虑重边和自回路 此">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170819/FhHfljELG8.png?imageslim">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170819/20c7c6lK0G.png?imageslim">
-<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170819/56KIH5GGKC.png?imageslim">
-<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170820/Ha8l2JEc0J.JPG">
-<meta property="og:updated_time" content="2017-08-22T05:38:22.862Z">
+<meta property="og:updated_time" content="2017-09-17T10:47:00.950Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构笔记（四）：图">
-<meta name="twitter:description" content="概念图的两要素：顶点集和边集 彼此邻接：彼此间存在边的两个顶点 此前学过的树、线性序列，均可视作图的特例。在线性序列中，只有直接前驱和后继有邻接关系在树中，只有父节点和子节点之间定义邻接关系">
+<meta name="twitter:description" content="概念什么是图(Graph)：    表示多对多的关系    包含        一组顶点：通常用V(Vertex)表示顶点集合        一组边：通常用E(Edge)表示边的集合            边是顶点对            无向边 (v,w)$\in$E ， 其中 v,w $\in$ V            有向边 表示从v指向w的边            不考虑重边和自回路 此">
 <meta name="twitter:image" content="http://ot1c7ttzm.bkt.clouddn.com/image/170819/FhHfljELG8.png?imageslim">
   
     <link rel="alternative" href="/atom.xml" title="Zedom" type="application/atom+xml">
@@ -181,29 +179,78 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a><strong>概念</strong></h2><p>图的两要素：<strong>顶点集</strong>和<strong>边集</strong></p>
-<p><strong>彼此邻接</strong>：彼此间存在边的两个顶点</p>
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a><strong>概念</strong></h2><p>什么是图(Graph)：<br>    表示多对多的关系<br>    包含<br>        一组顶点：通常用V(Vertex)表示顶点集合<br>        一组边：通常用E(Edge)表示边的集合<br>            边是顶点对<br>            无向边 (v,w)$\in$E ， 其中 v,w $\in$ V<br>            有向边 <v,w>表示从v指向w的边<br>            不考虑重边和自回路</v,w></p>
 <p>此前学过的树、线性序列，均可视作图的<strong>特例</strong>。<br>在线性序列中，只有直接前驱和后继有邻接关系<br>在树中，只有父节点和子节点之间定义邻接关系</p>
 <p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170819/FhHfljELG8.png?imageslim" alt="序列、树、图"></p>
 <a id="more"></a>
-<p><strong>分类：</strong><br>1.<strong>无向图(undigraph)</strong>：所有邻接顶点之间次序无所谓 (u为v好友，则v也必定为u好友)<br>2.<strong>有向图(digraph)</strong>：所有邻接顶点之间有次序(u为v好友，v不一定为u好友) u-&gt;v 即 (u,v) u为尾(tail)，v为头(head)<br>3.<strong>混合图</strong>：邻接关系中有的与次序有关，有的与次序无关</p>
+<p><strong>分类：</strong><br>1.<strong>无向图(undigraph)</strong>：所有邻接顶点之间次序无所谓 (u为v好友，则v也必定为u好友)<br>2.<strong>有向图(digraph)</strong>：所有邻接顶点之间有次序(u为v好友，v不一定为u好友) u-&gt;v 即 (u,v) u为尾(tail)，v为头(head)<br>3.<strong>混合图</strong>：邻接关系中有的与次序有关，有的与次序无关<br>4.<strong>网络(network)</strong>：边有权重</p>
 <p>以有向图为根本学习，因为无向图可以变为邻接顶点之间双向连接的有向图，混合图也可以化成有向图。</p>
 <p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170819/20c7c6lK0G.png?imageslim" alt="分类图"></p>
-<p><strong>路径：</strong><br><strong>定义</strong>：顶点按依次邻接的关系连成的序列<br><strong>简单路径</strong>：不含重复节点的路径<br><strong>一般路径</strong>：可能含重复节点<br><strong>环路</strong>：起点和终点重合</p>
-<p>概念：<br>有向无环图(directed acyclic graph DAG)：图为有向图且不包含任何环路<br>欧拉环路：经过所有边且恰好只经过所有边一次的环路<br>哈密尔顿环路：经过所有节点且只经过所有点一次<br>简单图：所有节点均不含自环的图</p>
-<h2 id="表示"><a href="#表示" class="headerlink" title="表示"></a><strong>表示</strong></h2><h3 id="1-邻接矩阵"><a href="#1-邻接矩阵" class="headerlink" title="1. 邻接矩阵"></a><strong>1. 邻接矩阵</strong></h3><p>若节点数目为n，则用一个n*n的矩阵来表示节点的邻接关系。<br>在无权图( 边无权重，仅是有无之分 )中，若两个节点间存在边则为1，不存在边则为0.<br>同时，若此为无向图，则a[i][j]应该等于a[j][i]<br>在有权图( 边有权重之分 )，将权重w存入对应区域</p>
-<h3 id="2-关联矩阵"><a href="#2-关联矩阵" class="headerlink" title="2. 关联矩阵"></a><strong>2. 关联矩阵</strong></h3><p>若节点数目为n，边数为e，则用一个n*e的矩阵来表示关联关系。<br>每一列中仅有两个单元为1</p>
-<p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170819/56KIH5GGKC.png?imageslim" alt="邻接矩阵和关联矩阵"></p>
-<h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a><strong>遍历</strong></h2><p>如同树在遍历时向线性结构转换一般，图也企图借由遍历向半线性结构转换。<br>在图中的遍历过程，更多的体现为对某一节点的搜索过程。</p>
-<h3 id="1-广度优先搜索-Breadth-First-Search"><a href="#1-广度优先搜索-Breadth-First-Search" class="headerlink" title="1. 广度优先搜索 ( Breadth-First Search )"></a><strong>1. 广度优先搜索 ( Breadth-First Search )</strong></h3><p>流程：<br>1.访问节点s<br>2.依次取s的<strong>尚未访问</strong>的邻接节点<br>3.依次访问那些节点的尚未访问的邻接节点，直至所有节点均被访问过</p>
-<p><img src="http://ot1c7ttzm.bkt.clouddn.com/image/170820/Ha8l2JEc0J.JPG" alt="广度优先搜索"></p>
-<p>通过广度优先搜索，形成了一个新的无环图(浅色的边在广度优先中不被采纳)，也同时形成了以s为根节点的多棵树，称作<strong>支撑树 ( spanning tree )</strong>，而按照每个节点到s的距离，也如同在<strong>树中的层次遍历</strong>。</p>
-<p>时间复杂度O( n+e )  ( n为节点数，e为边数 )</p>
-<p><strong>最短路径(无权图)：</strong></p>
-<p>在以节点s为起始点生成的BFS树中，每个节点到s的路径均为原图中到s的最短路径，到s的距离也为到原图中到s的最短距离</p>
-<h3 id="2-深度优先搜索-Depth-First-Search"><a href="#2-深度优先搜索-Depth-First-Search" class="headerlink" title="2. 深度优先搜索( Depth-First Search )"></a><strong>2. 深度优先搜索( Depth-First Search )</strong></h3><p>流程：<br>1.访问节点s<br>2.递归访问s的尚未访问的邻接节点</p>
-<p>结论：经过DFS遍历之后的图包含<strong>原图的所有信息</strong></p>
-<p>证明：<strong>括号引理</strong><br>引入概念：<strong>活跃期</strong>：active[u]=( dtime(u), ftime(u) )<br>若u为v的祖先 当且仅当 $ active[u] \subseteq active[v] $<br>若u为v的后代 当且仅当 $ active[u] \supseteq active[v] $<br>若u和v无关 当且仅当 $ active[u] \cap active[v] = \emptyset $</p>
+<p>概念：</p>
+<pre><code>**路径**：
+    定义：顶点按依次邻接的关系连成的序列
+    **简单路径**：不含重复节点的路径
+    **一般路径**：可能含重复节点
+    **环路**：起点和终点重合
+
+**彼此邻接**：
+    彼此间存在边的两个顶点
+
+**连通**：
+    若v到w存在一条路径，则称v和w是连通的
+    强连通：
+        有向图中v和w存在双向路径
+    **连通分量**：
+        无向图的**极大**连通子图
+            极大顶点数：再加1个顶点就不连通
+            极大边数：包含子图中所有顶点相连的所有边
+        **强连通分量**：
+            有向图的极大强连通子图
+    **连通图**：
+        图中任意两顶点均连通
+        **强连通图**：
+            有向图中所有顶点都是强连通
+
+**有向无环图**(directed acyclic graph DAG)：
+    图为有向图且不包含任何环路
+
+**欧拉环路**：
+    经过所有边且恰好只经过所有边一次的环路
+
+**哈密尔顿环路**：
+    经过所有节点且只经过所有点一次
+
+**简单图**：
+    所有节点均不含自环的图
+</code></pre><h2 id="抽象数据类型定义"><a href="#抽象数据类型定义" class="headerlink" title="抽象数据类型定义"></a>抽象数据类型定义</h2><p>名称： 图 Graph<br>数据对象集：G(V,E)由一个非空的有限顶点集合V和一个有限边集合E组成<br>操作集：<br>    Graph Create();<br>        建立并返回空图<br>    Graph InsertVertex(Graph G, Vertex v);<br>        把顶点V插入G<br>    Graph InsertEdge(Graph G, Edge e);<br>        把顶点E插入G<br>    void DFS(Graph G , Vertex v);<br>        从v出发深度优先遍历G<br>    void BFS(Graph G , Vertex v);<br>        从v出发广度优先遍历G<br>    void ShortestPath(Graph G , Vertex v, int Dist[]);<br>        计算图G中顶点v到任意其它顶点的最短距离<br>    void MST(Graph G);<br>        计算图G的最小生成树</p>
+<h2 id="表示"><a href="#表示" class="headerlink" title="表示"></a>表示</h2><h3 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h3><p>邻接矩阵：G[N][N]——N个顶点从0到N-1编号<br>    G[i][j]=1 <vi,vj>是边<br>    G[i][j]=0 <vi,vj>不是边</vi,vj></vi,vj></p>
+<p>优点</p>
+<pre><code>- 方便、直观
+- 方便检查任意一对顶点间是否有边
+- 方便找任一顶点所有邻接点
+- 方便计算任一顶点的度
+    入度：指向该点的边数
+    出度：从该点发出的边数
+</code></pre><p>缺点</p>
+<pre><code>- 浪费空间，存稀疏图（顶点多，边很少的图）时有大量无效元素
+- 浪费时间，统计稀疏图中共多少条边
+</code></pre><p>基本定义与建图：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> Vertex;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Edge;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 1000</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x7fffffff</span></div><div class="line"><span class="keyword">enum</span> GraphType&#123; DG, UG, DN, UN &#125;;</div><div class="line"><span class="comment">/* 有向图，无向图，有向网图，无向网图 */</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Graph</span></span></div><div class="line">&#123;</div><div class="line">	Vertex vertex[MaxSize];      <span class="comment">// 顶点表</span></div><div class="line">	Edge edge[MaxSize][MaxSize]; <span class="comment">// 邻接矩阵，边表</span></div><div class="line">	<span class="keyword">int</span> n , e;                   <span class="comment">// 顶点总数和边总数</span></div><div class="line">	GraphType type;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateGraph</span> <span class="params">( Graph * g)</span></span></div><div class="line">&#123;</div><div class="line">	g-&gt;type = UN;</div><div class="line">	<span class="keyword">int</span> i,j,w;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;g-&gt;n,&amp;g-&gt;e);   <span class="comment">// 顶点数和边数</span></div><div class="line">	<span class="keyword">for</span>( i=<span class="number">0</span>; i&lt;g-&gt;n; i++ )</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%c"</span>,&amp;(g-&gt;vertex[i]));</div><div class="line">	<span class="keyword">for</span>( i=<span class="number">0</span>; i&lt;g-&gt;n ; i++ )     <span class="comment">// 初始化</span></div><div class="line">		<span class="keyword">for</span>( j=<span class="number">0</span>; j&lt;g-&gt;n ; j++ )</div><div class="line">			g-&gt;edge[i][j]=INF;</div><div class="line">	<span class="keyword">for</span>( <span class="keyword">int</span> k=<span class="number">0</span>; k&lt;g-&gt;e ; k++ )</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;i,&amp;j,&amp;w);  <span class="comment">// 输入e条边的权值</span></div><div class="line">		g-&gt;edge[i][j]=w;</div><div class="line">		g-&gt;edge[j][i]=w;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h3><p>邻接表：G[N]为指针数组，对应矩阵每行一个链表，只存非0元素<br>优点：</p>
+<pre><code>- 方便找任一顶点的所有邻接点
+- 节约稀疏图的空间
+    需要N个头指针，2E个结点（每个节点至少两个域）
+    E &lt; n(n-1)/4 时省空间
+- 方便计算无向图的度
+    有向图只能计算出度，需要构造逆邻接表（存指向自己的边）
+</code></pre><p>基本定义与实现<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> Vertex;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Edge;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 1000</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x7fffffff</span></div><div class="line"><span class="keyword">enum</span> GraphType&#123; DG, UG, DN, UN &#125;;</div><div class="line"><span class="comment">/* 有向图，无向图，有向网图，无向网图 */</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ENode</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> adjv;    <span class="comment">// 指向顶点的序号</span></div><div class="line">	ENode * next;</div><div class="line">	<span class="keyword">int</span> weight;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">VNode</span></span></div><div class="line">&#123;</div><div class="line">	Vertex vertex;</div><div class="line">	ENode *firstEdge;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Graph</span></span></div><div class="line">&#123;</div><div class="line">	VNode nodeList[MaxSize];</div><div class="line">	<span class="keyword">int</span> n,e;</div><div class="line">	GraphType type;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateGraph</span><span class="params">( Graph *g )</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> i,j;</div><div class="line">	ENode *edge;</div><div class="line">	g-&gt;type = DG;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;(g-&gt;n),&amp;(g-&gt;e));</div><div class="line">	<span class="keyword">for</span>( i=<span class="number">0</span> ; i&lt;g-&gt;n ; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%c"</span>,&amp;(g-&gt;nodeList[i].vertex));</div><div class="line">		g-&gt;nodeList[i].firstEdge=<span class="literal">NULL</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>( <span class="keyword">int</span> k=<span class="number">0</span>; k&lt;g-&gt;e ; k++ )</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;i,&amp;j);</div><div class="line">		edge = <span class="keyword">new</span> ENode();</div><div class="line">		edge-&gt;adjv = j;</div><div class="line">		edge-&gt;next = g-&gt;nodeList[i].firstEdge;</div><div class="line">		g-&gt;nodeList[i].firstEdge = edge;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><h3 id="深度优先搜索-DFS-Depth-First-Search"><a href="#深度优先搜索-DFS-Depth-First-Search" class="headerlink" title="深度优先搜索 DFS (Depth First Search)"></a>深度优先搜索 DFS (Depth First Search)</h3><p>相当于树的先序遍历</p>
+<p>N个顶点，E条边，时间复杂度：<br>    用邻接表存储时，为O(N+E)<br>    用邻接矩阵存储时，为O($N^2$);</p>
+<p>伪代码:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">( Vertex v )</span></span></div><div class="line">&#123;</div><div class="line">	visited[v]=<span class="literal">true</span>;</div><div class="line">	<span class="keyword">for</span>( v的每个邻接点w )</div><div class="line">		<span class="keyword">if</span>(!visited[w])</div><div class="line">			DFS(w);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="广度优先搜索-BFS-Breadth-First-Search"><a href="#广度优先搜索-BFS-Breadth-First-Search" class="headerlink" title="广度优先搜索 BFS (Breadth First Search)"></a>广度优先搜索 BFS (Breadth First Search)</h3><p>相当于树的层序遍历</p>
+<p>用<strong>队列</strong>实现，把起始结点加入队列后<br>每次取队头节点，把该结点所有未访问的结点加入队尾，重复该操作直至队列为空，即所有结点都被访问过</p>
+<p>N个顶点，E条边，时间复杂度和DFS相同：<br>    用邻接表存储时，为O(N+E)<br>    用邻接矩阵存储时，为O($N^2$);</p>
+<p>伪代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFS</span><span class="params">( Vertex v )</span></span></div><div class="line">&#123;</div><div class="line">	visited[v]=<span class="literal">true</span>;</div><div class="line">	<span class="built_in">queue</span>.enqueue(v);</div><div class="line">	<span class="keyword">while</span>(!q.empty())</div><div class="line">	&#123;</div><div class="line">		v=q.dequeue();</div><div class="line">		<span class="keyword">for</span>( v 的每个邻接点w )</div><div class="line">			<span class="keyword">if</span>(!visited[w])</div><div class="line">			&#123;</div><div class="line">				visited[w]=<span class="literal">true</span>;</div><div class="line">				q.enqueue(w);</div><div class="line">			&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>BFS适合找最优解<br>DFS适合找任意一解</p>
 
       
 
@@ -258,8 +305,8 @@
     </a>
   
   
-    <a href="/2017/08/18/problem_1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">刷题选集（一）</div>
+    <a href="/2017/08/19/~pgrhle02.55q/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据结构笔记（四）：图</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -286,7 +333,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表示"><span class="toc-number">2.</span> <span class="toc-text">表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-邻接矩阵"><span class="toc-number">2.1.</span> <span class="toc-text">1. 邻接矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-关联矩阵"><span class="toc-number">2.2.</span> <span class="toc-text">2. 关联矩阵</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遍历"><span class="toc-number">3.</span> <span class="toc-text">遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-广度优先搜索-Breadth-First-Search"><span class="toc-number">3.1.</span> <span class="toc-text">1. 广度优先搜索 ( Breadth-First Search )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-深度优先搜索-Depth-First-Search"><span class="toc-number">3.2.</span> <span class="toc-text">2. 深度优先搜索( Depth-First Search )</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象数据类型定义"><span class="toc-number">2.</span> <span class="toc-text">抽象数据类型定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表示"><span class="toc-number">3.</span> <span class="toc-text">表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#邻接矩阵"><span class="toc-number">3.1.</span> <span class="toc-text">邻接矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#邻接表"><span class="toc-number">3.2.</span> <span class="toc-text">邻接表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遍历"><span class="toc-number">4.</span> <span class="toc-text">遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#深度优先搜索-DFS-Depth-First-Search"><span class="toc-number">4.1.</span> <span class="toc-text">深度优先搜索 DFS (Depth First Search)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#广度优先搜索-BFS-Breadth-First-Search"><span class="toc-number">4.2.</span> <span class="toc-text">广度优先搜索 BFS (Breadth First Search)</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -424,14 +471,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">others</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随想</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">编译原理</a>
               </li>
              
@@ -460,19 +499,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">游戏制作</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
+                <a href="javascript:void(0)" class="js-tag color3">随想</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -497,6 +528,22 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">链表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">游戏制作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
               </li>
              
               <li class="article-tag-list-item">
