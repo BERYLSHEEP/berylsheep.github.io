@@ -6,6 +6,4 @@
 
 主题采用[yilia](https://github.com/litten/hexo-theme-yilia)
 
-评论托管选用[Disqus](https://disqus.com/)
-
 图床使用[七牛云](https://www.qiniu.com/)
