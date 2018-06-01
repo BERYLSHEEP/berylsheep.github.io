@@ -14,3 +14,10 @@
 	npm install、
 	npm install hexo-deployer-git
 	（不需要hexo init）
+
+使用七牛云qshell上传文件
+	1. 获取空间名： qshell buckets
+	2. 获取domain: qshell domains picture   (空间名为picture)
+	3. 上传单个文件： qshell fput picture <filename> <filepath>  
+		 (filename为上传之后在空间内的名字)
+	4. 获取外链： 链接 =  <domains返回结果> + "/" + <filename>
