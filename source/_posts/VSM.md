@@ -4,6 +4,7 @@ title: "复现Entropy-based Term Weighting Schemes for Text Categorization in VS
 date: 2018-06-01
 comments: true
 tags: 
+   - 机器学习
    - NLP
    - VSM
 ---

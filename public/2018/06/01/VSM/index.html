@@ -6,15 +6,39 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://zedom1.github.io">
-  <title>Tag: 深度学习 | Zedom</title>
+  <title>复现Entropy-based Term Weighting Schemes for Text Categorization in VSM小结 | Zedom</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Zedom">
-<meta property="og:url" content="https://zedom1.github.io/tags/深度学习/index.html">
+  <meta name="description" content="论文 Entropy-based Term Weighting Schemes for Text Categorization in VSM 提出了新的基于熵的用于文本分类的词权重计算方法tf·dc,tf·bdc，通过和目前流行的权重计算方法如tf·idf, tf·chi, tf·ig, tf·eccd, tf·rf and iqf·qf·icf进行实验比较，证实其提出的计算方法的可行性和优越性。">
+<meta name="keywords" content="NLP,VSM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="复现Entropy-based Term Weighting Schemes for Text Categorization in VSM小结">
+<meta property="og:url" content="https://zedom1.github.io/2018/06/01/VSM/index.html">
 <meta property="og:site_name" content="Zedom">
+<meta property="og:description" content="论文 Entropy-based Term Weighting Schemes for Text Categorization in VSM 提出了新的基于熵的用于文本分类的词权重计算方法tf·dc,tf·bdc，通过和目前流行的权重计算方法如tf·idf, tf·chi, tf·ig, tf·eccd, tf·rf and iqf·qf·icf进行实验比较，证实其提出的计算方法的可行性和优越性。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/abcd.png">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/vsm_chi.png">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/ig.png">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/eccd0.png">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/eccd1.png">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/rf.png">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/iqf.png">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/iqf1.png">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/dc.png">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/bdc.png">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/vsm_freq1.png">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/vsm_freq2.png">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/cosine.png">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/result.png">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/Result.png">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/vsm_result.png">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/knn.png">
+<meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/vsm_knn.png">
+<meta property="og:updated_time" content="2018-06-01T09:44:54.498Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zedom">
+<meta name="twitter:title" content="复现Entropy-based Term Weighting Schemes for Text Categorization in VSM小结">
+<meta name="twitter:description" content="论文 Entropy-based Term Weighting Schemes for Text Categorization in VSM 提出了新的基于熵的用于文本分类的词权重计算方法tf·dc,tf·bdc，通过和目前流行的权重计算方法如tf·idf, tf·chi, tf·ig, tf·eccd, tf·rf and iqf·qf·icf进行实验比较，证实其提出的计算方法的可行性和优越性。">
+<meta name="twitter:image" content="http://ot1c7ttzm.bkt.clouddn.com/abcd.png">
   
   
     <link rel="icon" href="http://ot1c7ttzm.bkt.clouddn.com/favicon.ico">
@@ -155,36 +179,192 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-VSM" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/22/RC_DuReader/" class="archive-article-date">
-  	<time datetime="2018-05-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/22/RC_DuReader/">百度机器阅读理解比赛赛后总结</a>
+    <h1 class="article-title" itemprop="name">
+      复现Entropy-based Term Weighting Schemes for Text Categorization in VSM小结
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/06/01/VSM/" class="archive-article-date">
+  	<time datetime="2018-05-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>论文 <a href="https://ieeexplore.ieee.org/document/7372153/" target="_blank" rel="noopener">Entropy-based Term Weighting Schemes for Text Categorization in VSM</a> 提出了新的基于熵的用于文本分类的词权重计算方法tf·dc,tf·bdc，通过和目前流行的权重计算方法如tf·idf, tf·chi, tf·ig, tf·eccd, tf·rf and iqf·qf·icf进行实验比较，证实其提出的计算方法的可行性和优越性。 笔者通过复现论文新提出的tf_dc，tf_bdc，以及用于实验比较的tf·idf, tf·chi, tf·ig, tf·eccd, tf·rf and iqf·qf·icf，在使用和论文实验一样的语料库 Reuters-R8 和 同样的分类模型 ：KNN和SVM后，发现确实如同论文说的outperform，起码在Reuters上的分类结果优于tf-idf。</p>
+<p>在此将整个复现的流程记录和小结一下，从阅读论文到实现计算方法再到使用分类模型到评估结果，整个过程虽然遇到了不少问题，但最终能够逐个克服并最终完成复现。</p>
+<p>复现基于python2.7，KNN使用<a href="http://scikit-learn.org/" target="_blank" rel="noopener">sklearn</a>包，SVM和原论文同样使用<a href="https://www.csie.ntu.edu.tw/~cjlin/liblinear/" target="_blank" rel="noopener">liblinear</a>，鉴于只是大致复现，因此除了和原论文同样对KNN的邻居数目参数进行实验外，没有细致对knn和SVM做调参。</p>
+<a id="more"></a>
+<h2 id="理论介绍"><a href="#理论介绍" class="headerlink" title="理论介绍"></a>理论介绍</h2><h3 id="VSM向量空间模型"><a href="#VSM向量空间模型" class="headerlink" title="VSM向量空间模型"></a>VSM向量空间模型</h3><p>在自然语言处理过程中，第一步都是将要处理的字、词或文本转换成向量，毕竟计算机不懂文字，它只会处理数字。把词转换成向量我们有one hot, word embedding。到了文档层级，既然文档是由词语组成的，那么可以试着用词语来表示文档。来看看一个用one hot表示文章的例子：</p>
+<p>假设词汇表有  [‘one’, ‘apple’,’a’,’day’,’an’], 此时只使用one hot，即只判断记录词是否出现，不记录词的频率</p>
+<p>文章a = “one day”. 那么 它的向量则是 [1,0,0,1,0]</p>
+<p>文章b = “an apple”， 则代表b的向量是[0,1,0,0,1]</p>
+<p>one hot表示法虽然简单，但也有很多缺点，比如只记录词出现与否，词的区分能力被认为是一样的等等，由此人们提出了很多计算方法，核心思想就是表示出<strong>一个词的辨别能力</strong>。词语的辨别能力是指：这个词将一篇文档从其它文档中区分出来的能力（或者将一个类从其它类区分出来的能力）,比如说一篇文章出现 “算法” 这个词较多，那么它通常会是计算机等领域的文章，而不太可能会是体育、艺术类的文章。</p>
+<p>就拿之前的例子而言，an和One这种词明显在很多地方都会出现，因此它们的辨别能力不强，而apple就比它们好一点，那么在特征权重计算中，它的权重就会比其它两个高一些。</p>
+<p>由此，每个词语对应一个维度，每个词语有一定的权重（由训练语料训练出来，代表这个词区分各类文档或各个标签的能力），再结合词语在文本出现的次数，就能够构成一个多维向量，将文档成功投射到多维空间中，这就是向量空间模型。投射之后，计算文章之间的相似度就可以有很多方法了，比如直接计算空间当中的距离啊，cosine啊等等，那么我们就可以将文章归到和它相似度高的那类中，由此完成文档分类的过程。</p>
+<h3 id="旧方法"><a href="#旧方法" class="headerlink" title="旧方法"></a>旧方法</h3><p>为什么需要提出新的权重计算方法呢？因为旧的不够好，不够好在哪里？论文给出了理由：</p>
+<p>大多数监督学习的计算方法基于词在 PC（positive category） 和 NC（negative category） 中的出现次数，就会有以下问题：</p>
+<ol>
+<li>PC是单独一个类， 而 NC包含多个类，而把它们统一成一个数字，那么显然NC的数目要远远大于PC，在权重计算中也会占主导地位。</li>
+<li>NC包含多个类，仅归为一个数字后，词语在这些类中的分布信息就丢失了</li>
+<li>计算权重得基于标签，但测试文档本身就不具备标签</li>
+</ol>
+<p>对于非监督的计算方法，就拿tf-idf来说，其能力在于<strong>将一篇文档从其它文档区分出来，而不是将一个类从其它类区分出来</strong>。</p>
+<p>文章列举了其它较为流行的权重计算方法，并依照上面提出的问题一一举出了例子。</p>
+<h4 id="tf·idf"><a href="#tf·idf" class="headerlink" title="tf·idf"></a>tf·idf</h4><p>作为最流行的权重计算方法，其计算方法分为两个部分</p>
+<p>一个是tf(i,j)，即词i在文章j中出现的频率： $tf(i,j) = \frac{n<em>{i,j}}{\sum</em>{k} n_{k,j}}$ , 用词i出现的次数 / 这篇文章总长即可</p>
+<p>另一个是 idf(i,j)，称为逆文档频率，和这个词出现的文档数相关：  $idf(i) = log \frac{|D|}{nd_{i}}$ , 用文档总数 / 出现了 i 的文档数目，而后再取log，一般为了防止分母为0会在分母上加一</p>
+<p>最终的 tf-idf就等于两者相乘。</p>
+<h4 id="tf·chi"><a href="#tf·chi" class="headerlink" title="tf·chi"></a>tf·chi</h4><p>基于统计的卡方检验和下面一些计算方法都基于以下这个表格：</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/abcd.png" alt=""></p>
+<p>A：类别k中出现了词j的文档数目</p>
+<p>B：除类别k外的其它类出现了词j的文档总数，用词j出现的文档总数 - A 即可</p>
+<p>C：负文档数目，即类别k中不包含词j的数目，用 类别k的文章总数-A</p>
+<p>D：其它类别不包含词j的数目，用其它类文档总数 - B</p>
+<p>卡方检验的原始公式和近似公式：</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/vsm_chi.png" alt=""></p>
+<h4 id="tf·ig"><a href="#tf·ig" class="headerlink" title="tf·ig"></a>tf·ig</h4><p>Information Gain 信息增益：增加了这个信息使得系统的熵降低了多少。</p>
+<p>在特征权重计算中，以词语出现与否分别计算整个语料库的熵，以熵的差值作为词语的信息增益，即词的权重。</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/ig.png" alt=""></p>
+<p>P(Ci)：表示类别Ci出现的概率，用Ci包含的文档数除以文档总数 </p>
+<p>P(t)：词语T出现的概率，用出现过T的文档数除以总文档数 </p>
+<p>P(Ci|t)：出现T的时候，类别Ci出现的概率，用出现了T并且属于类别Ci的文档数除以出现了T的文档数 </p>
+<p>P(～t)：词语T不出现的概率，用 1 - P(t) 即可</p>
+<p>P(Ci|～t)表示未出现T的时候，类别Ci出现的概率，用未出现了T并且属于类别Ci的文档数除以未出现T的文档数 </p>
+<h4 id="tf·eccd"><a href="#tf·eccd" class="headerlink" title="tf·eccd"></a>tf·eccd</h4><p>论文 <a href="https://hal.archives-ouvertes.fr/hal-00617969/document" target="_blank" rel="noopener">Entropy based feature selection for text categorization</a> 同样提出了一种基于熵的权重计算方法</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/eccd0.png" alt=""></p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/eccd1.png" alt=""></p>
+<h4 id="tf·rf"><a href="#tf·rf" class="headerlink" title="tf·rf"></a>tf·rf</h4><p>由于表格中B、D的数目显然很大，为了避免它们带来的影响，人们提出了relevance frequency（rf），只是用 a和c的比值来表明一个词的辨别能力。</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/rf.png" alt=""></p>
+<h4 id="iqf·qf·icf"><a href="#iqf·qf·icf" class="headerlink" title="iqf·qf·icf"></a>iqf·qf·icf</h4><p>这篇论文  <a href="https://www.ncbi.nlm.nih.gov/pubmed/20733219" target="_blank" rel="noopener">Term weighting schemes for question categorization</a> 面对短文本（用户提出的问题）提出三种新的权重计算方式： iqf*qf*icf、qf*icf 和 vrf。</p>
+<p>和rf相比，iqf*qf*icf额外考虑了一个词出现了类数目，然而正如论文提出的那样，只考虑了类的数目，却没有考虑到词在这些类内部的分布情况。</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/iqf.png" alt=""></p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/iqf1.png" alt=""></p>
+<h3 id="新的权重计算方法"><a href="#新的权重计算方法" class="headerlink" title="新的权重计算方法"></a>新的权重计算方法</h3><h4 id="tf·dc"><a href="#tf·dc" class="headerlink" title="tf·dc"></a>tf·dc</h4><p>论文论证了用熵来表示词语辨别能力的可行性，由此提出了新的计算方法 dc：distribution concentration。</p>
+<p>思想基于两点：</p>
+<ol>
+<li>辨别能力和词语在所有类的集中程度有关，词语集中程度越高，则它只出现在很少几个类，那么它的辨别能力就越高</li>
+<li>集中程度越高的词，具有的熵越小</li>
+</ol>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/dc.png" alt=""></p>
+<p>H(t)即代表t的熵， f(t,ci)表明词语t在类别 ci出现的文档数目</p>
+<p>由于 $H(t) \in [0,log(|C|)]$ ，在除了log(|C|)之后就能将熵化为[0,1]区间，这使得同一篇文章内的词有了可比性。</p>
+<h4 id="tf·bdc"><a href="#tf·bdc" class="headerlink" title="tf·bdc"></a>tf·bdc</h4><p>考虑到现实中语料库类别包含的文档数目有差异，并非理想中所有类的文档数大致相等，那么为了平衡类之间的规模差异，论文在dc的基础上提出了bdc：balanced distribution concentration。</p>
+<p>为了避免大类文档数目过多带来的偏差，论文将绝对频率换成了概率，由此平衡类之间的差异。</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/bdc.png" alt=""></p>
+<h2 id="复现过程"><a href="#复现过程" class="headerlink" title="复现过程"></a>复现过程</h2><h3 id="用特征权重进行文本分类的思路"><a href="#用特征权重进行文本分类的思路" class="headerlink" title="用特征权重进行文本分类的思路"></a>用特征权重进行文本分类的思路</h3><p>文本分类的整个过程如下：</p>
+<ol>
+<li>通过训练语料库计算得到词语权重，并通过将语料库文章投影成向量构成训练特征，标签则为类标签索引，以此训练KNN或SVM模型。 此步主要得到三样东西：<ol>
+<li>词语权重表</li>
+<li>词汇表：计算词语频率后删减频率过高和过低的词的产物，每个词汇表里面的词将作为一维，每篇文章为 1*n 的向量，n为词汇表大小。</li>
+<li>模型参数</li>
+</ol>
+</li>
+<li>对于每篇测试文档：<ol>
+<li>根据词汇表删去无关词汇</li>
+<li>查词语权重表，若使用tf则额外计算每个词语在文本中出现的频率。 得到每个词语的词语权重，由此得到文档的向量表示</li>
+<li>将文档向量作为特征输入分类模型中，得到预测结果</li>
+</ol>
+</li>
+</ol>
+<h3 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h3><p>语料库和论文中同样选用路透社的语料 Reuters-21578 R8，鉴于Reuters的语料是有名的难处理再加上复现的重点不在此，因此笔者直接使用处理好的语料：<a href="http://ana.cachopo.org/datasets-for-single-label-text-categorization" target="_blank" rel="noopener">Reuters-21578 R8</a>，<a href="http://ana.cachopo.org/datasets-for-single-label-text-categorization/r8-train-all-terms.txt?attredirects=0" target="_blank" rel="noopener">TrainingSet</a>， <a href="http://ana.cachopo.org/datasets-for-single-label-text-categorization/r8-test-all-terms.txt?attredirects=0" target="_blank" rel="noopener">TestSet</a> .</p>
+<p>获得语料之后，一个比较重要的地方在于制作特征向量和标签。</p>
+<p>我的特征向量和标签制作方法是：</p>
+<ol>
+<li>对于文档，首先将所有词转换成one hot，转换使用了sklearn.preprocessing中的Encoder，然而一件很重要的事情在于one hot的顺序，因为Encoder会按照词汇出现顺序设置one hot的顺序，因此我的做法是把文档的词连接在词汇表后面一起导入Encoder，而后再对生成的one hot进行截取，因为词汇表的顺序和大小是固定的，所以截取也很方便。 需要注意的是要将词汇表设置为全局的，并且仅在训练集中构造词汇表，而测试集仅用词汇表进行筛选。</li>
+<li>对于类别标签，同样在训练集中构造标签表，而后串接起来导入Encoder再截取，然后用argmax获得唯一的1所在的下标，由此将字符串转换成了单个数字。</li>
+</ol>
+<h3 id="维度压缩"><a href="#维度压缩" class="headerlink" title="维度压缩"></a>维度压缩</h3><p>在复现的过程中，首先遇到的第一个小问题就是维度过大，虽然只使用了几MB的语料库，但要是把每个词都作为一维的话，那就有将近两万维，刚开始直接运行的时候电脑就报出超出内存的错误了。</p>
+<p>解决方法就是删去频率过高和过低的词：</p>
+<ol>
+<li>统计训练语料中的词语频率得到词频表和词汇表</li>
+<li>使用Counter得到各个频率的词汇数目并使用matplotlib.pyplot将词汇频率绘制成直方图，此外还将词汇表的长度作为额外参考</li>
+<li>根据长度、频率分布挑选阈值，根据上下界删减词汇表</li>
+<li>根据词汇表删去训练和测试语料的其它词，仅保留在词汇表中的词语。</li>
+</ol>
+<p>通过这么个维度压缩，使得维度从两万维降低到五千多维，不仅加快了运行速度，减少了运行需要的空间，同时也减少了停用词和自造词的干扰。</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/vsm_freq1.png" alt=""></p>
+<center>删减前</center>
+
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/vsm_freq2.png" alt=""></p>
+<center>删减后</center>
+
+<h3 id="KNN中的cos近似"><a href="#KNN中的cos近似" class="headerlink" title="KNN中的cos近似"></a>KNN中的cos近似</h3><p>下一个比较重要的小问题在于sklearn中的KNN提供的计算距离的函数并没有cos距离，而后在寻找解决方案时发现了这条<a href="https://stackoverflow.com/questions/34144632/using-cosine-distance-with-scikit-learn-kneighborsclassifier" target="_blank" rel="noopener">stackoverflow上的回答</a>：</p>
+<p>回答分为两个方面：</p>
+<ol>
+<li><p>指出为什么cosine相似度没有在sklearn包中：</p>
+<p>cosine相似度在两个向量完全一样时的输出结果是1，在它们完全相反时结果是-1，而这严格上并不能算作衡量指标，其它如欧几里得距离，向量相似度越高距离越小即越接近于0. （不过为什么通过1-cos近似），因此不能使用knn的加速结构来加快运算。</p>
+</li>
+<li><p>给出了解决方法：</p>
+<ol>
+<li>可以自行实现cos相似度并作为函数参数传进去，代价就是不能使用knn中用于加速的结构，只能使用暴力计算。</li>
+<li>第二个方案比较巧妙，通过深入到公式的转换把计算cosine相似度转换成用归一化之后的欧几里得即可。 </li>
+</ol>
+</li>
+</ol>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/cosine.png" alt=""></p>
+<p>看完之后笔者被那个公式转换惊叹到，而后果断地采用了这个方案，在计算出文档向量之后，额外做一次归一化，之后只需要正常传入knn，距离函数用默认的欧几里得距离即可。</p>
+<h3 id="论文细节"><a href="#论文细节" class="headerlink" title="论文细节"></a>论文细节</h3><p>论文中的实验部分有这么一句话：</p>
+<blockquote>
+<p>To represent test documents with category-specific schemes, e.g., tf·chi, tf·ig, tf·eccd, tf·rf and iqf·qf·icf, we adopt a popular method in previous studies hat assigning the maximum value among |C| estimated weights to each term in test documents.</p>
+</blockquote>
+<p>鉴于笔者缺乏大量阅读英文文档的经验，再加上当时没有考虑到实现，所以阅读论文的时候始终不明白这句话的意思，但后来在实现话中提到的 tf-chi、tf-ig等方法时程序频繁报出词典key error，而后想起这句似乎关键但并不太明白什么意思的话，再结合实现时候的问题，终于明白了。</p>
+<p>权重计算方法如 tf-idf 分为两个部分，一个是 tf ，由一个词在一篇文章内出现的频率得到，训练集和测试集均要计算，用python代码表示即是一个两层的词典  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf[document][word] = frequency[document][word] / doclength[document]</span><br></pre></td></tr></table></figure>
+<p>另一个是 idf ，由一个词在语料库中出现的文档数和文档总数计算得到，对于训练集是需要计算得到的，对于测试集则相当于权重词典，要用的时候直接查就行，而它的表现形式在tf-idf中是一个单层的词典，idf只计算每个词，和词在哪个类中没有关系。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf_idf[document][word] = tf[document][word] * idf[word]</span><br></pre></td></tr></table></figure>
+<p>而对于如chi等词，它们词权重计算不仅和词相关，还和类别相关。意思就是每个词的权重在不同类是不一样的，用代码表示出来即是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf_chi[document][word] = tf[document][word] * chi[label][word]</span><br></pre></td></tr></table></figure>
+<p>那么就有一个比较重要的问题：要是测试集的词在测试文档属于的类中不存在怎么办？那句话就给出了答案：若是词在所属类中不存在权重，那么就在其它类里面选择这个词权重最大的那个作为权重，用代码表示就是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> weights[labell].has_key(word):</span><br><span class="line">	tf_chi[doc][word] *= weights[labell][word]</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	tf_chi[doc][word] *= max([ weights[x][word]  <span class="keyword">for</span> x <span class="keyword">in</span> weights <span class="keyword">if</span> weights[x].has_key(word)])</span><br></pre></td></tr></table></figure>
+<p>由此，缺失的拼图找到了，笔者最终成功实现了这些权重计算方法。</p>
+<h3 id="衡量标准"><a href="#衡量标准" class="headerlink" title="衡量标准"></a>衡量标准</h3><p>根据论文原文，实验采用了两种衡量标准：MicroF1和MacroF1：</p>
+<ol>
+<li><p>MicroF1就是一般说的准确率：预测正确的数目 / 测试样本总数</p>
+</li>
+<li><p>MacroF1 就是通常的F1的均值：</p>
+<ol>
+<li><p>$ MacroF1 = avg(F1)$ </p>
+</li>
+<li><p>$ F1(C) = \frac{2<em>precision</em>recall}{(precision + recall)}$ </p>
+</li>
+<li><p>$ precision = \frac{TP} { (TP + FN)} $： 正确预测为C的数目 / 预测为C的总数<br>$ recall = \frac{ TP}{(TP + TN)}$：  正确预测为C的数目 / 真实为C的数目</p>
+</li>
+<li><p>TP: true positive  属于C被分到C（预测正确）<br>TN: true nagative  属于C被分到其它类（预测错误）</p>
+<p>FP: false positive 不属于C被正确分类（预测正确）<br>FN: false nagative 不属于C被分到C（预测错误）</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="复现结果"><a href="#复现结果" class="headerlink" title="复现结果"></a>复现结果</h2><p>下面是复现之后的结果：</p>
+<p>笔者在未调参的SVM、KNN上，使用Reuters R8语料库的结果（KNN邻居数在1-35内选择结果最优的）：</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/result.png" alt=""></p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/Result.png" alt=""></p>
+<p>论文给出的最终结果：</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/vsm_result.png" alt=""></p>
+<p>笔者复现的在Reuters R8中KNN邻居数和MicroF1的关系：</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/knn.png" alt=""></p>
+<p>论文给出的关系图：</p>
+<p><img src="http://ot1c7ttzm.bkt.clouddn.com/vsm_knn.png" alt=""></p>
+<p>可以看到，虽然数据上略微有差距，但经过在模型上的优化之后应该能够接近或达到论文给出的结果，提出的新的权重计算方式tf_dc和tf_bdc在Reuters R8上的表现还是不错的，不说能够傲视所有权重计算方式，起码表现足够优异，有一席之地。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>通过这次复现，笔者较为深入地学习了向量空间模型VSM，还了解了各种权重计算方法，谈到权重计算也不再只有单一的tf_idf了。此外，这么一个完整的，从数据到特征（虽然语料库预处理不是我做的），再到导入模型进行训练，再到预测，最后进行评估，这么个流程走下来之后，笔者对于机器学习的理解也加深了。光是从调包上讲也知道怎么用KNN和SVM，怎么做数据可视化了。</p>
+<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><p>原论文、笔者实现过程的完整代码（包括训练模型、测试、评估、所有权重计算方法）、笔者实验得到的数据（MicroF1和MacroF1，knn各个邻居数上的MicroF1，可直接调用评估函数查看结果）都可以在这里看到：<a href="https://github.com/zedom1/nlp/tree/master/VSM" target="_blank" rel="noopener">我的github</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -194,29 +374,74 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">阅读理解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">VSM</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/05/22/RC_DuReader/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">百度机器阅读理解比赛赛后总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#理论介绍"><span class="toc-number">1.</span> <span class="toc-text">理论介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#VSM向量空间模型"><span class="toc-number">1.1.</span> <span class="toc-text">VSM向量空间模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#旧方法"><span class="toc-number">1.2.</span> <span class="toc-text">旧方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#tf·idf"><span class="toc-number">1.2.1.</span> <span class="toc-text">tf·idf</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tf·chi"><span class="toc-number">1.2.2.</span> <span class="toc-text">tf·chi</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tf·ig"><span class="toc-number">1.2.3.</span> <span class="toc-text">tf·ig</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tf·eccd"><span class="toc-number">1.2.4.</span> <span class="toc-text">tf·eccd</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tf·rf"><span class="toc-number">1.2.5.</span> <span class="toc-text">tf·rf</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#iqf·qf·icf"><span class="toc-number">1.2.6.</span> <span class="toc-text">iqf·qf·icf</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新的权重计算方法"><span class="toc-number">1.3.</span> <span class="toc-text">新的权重计算方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#tf·dc"><span class="toc-number">1.3.1.</span> <span class="toc-text">tf·dc</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tf·bdc"><span class="toc-number">1.3.2.</span> <span class="toc-text">tf·bdc</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复现过程"><span class="toc-number">2.</span> <span class="toc-text">复现过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用特征权重进行文本分类的思路"><span class="toc-number">2.1.</span> <span class="toc-text">用特征权重进行文本分类的思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据处理"><span class="toc-number">2.2.</span> <span class="toc-text">数据处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#维度压缩"><span class="toc-number">2.3.</span> <span class="toc-text">维度压缩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#KNN中的cos近似"><span class="toc-number">2.4.</span> <span class="toc-text">KNN中的cos近似</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#论文细节"><span class="toc-number">2.5.</span> <span class="toc-text">论文细节</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#衡量标准"><span class="toc-number">2.6.</span> <span class="toc-text">衡量标准</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复现结果"><span class="toc-number">3.</span> <span class="toc-text">复现结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">4.</span> <span class="toc-text">小结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#源代码"><span class="toc-number">5.</span> <span class="toc-text">源代码</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -239,9 +464,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: false,
@@ -342,15 +567,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">others</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">刷题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -362,11 +583,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">深度学习</a>
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">VSM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
               </li>
             
             <div class="clearfix"></div>
