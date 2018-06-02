@@ -4,20 +4,18 @@
 
     
   <url>
-    <loc>http://zedom1.top/2017/08/19/graph/</loc>
-    <lastmod>2017-09-20T11:13:48.355Z</lastmod>
+    <loc>https://zedom1.github.io/2018/06/01/VSM/</loc>
+    <lastmod>2018-06-01T09:53:02.125Z</lastmod>
     <data>
         <display>
-        <title>数据结构笔记（四）：图</title>
-        <pubTime>2017-08-18T16:00:00.000Z</pubTime>
+        <title>复现Entropy-based Term Weighting Schemes for Text Categorization in VSM小结</title>
+        <pubTime>2018-05-31T16:00:00.000Z</pubTime>
         
-        <tag>学习笔记</tag>
+        <tag>NLP</tag>
          
-        <tag>c++</tag>
+        <tag>机器学习</tag>
          
-        <tag>数据结构</tag>
-         
-        <tag>图</tag>
+        <tag>VSM</tag>
          
          
            
@@ -27,8 +25,29 @@
 
     
   <url>
-    <loc>http://zedom1.top/2017/08/18/problem_tree/</loc>
-    <lastmod>2017-09-19T07:33:01.681Z</lastmod>
+    <loc>https://zedom1.github.io/2018/05/22/RC_DuReader/</loc>
+    <lastmod>2018-05-25T12:41:12.886Z</lastmod>
+    <data>
+        <display>
+        <title>百度机器阅读理解比赛赛后总结</title>
+        <pubTime>2018-05-21T16:00:00.000Z</pubTime>
+        
+        <tag>NLP</tag>
+         
+        <tag>阅读理解</tag>
+         
+        <tag>机器学习</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://zedom1.github.io/2017/08/18/ProblemSet_Tree/</loc>
+    <lastmod>2018-05-25T12:41:12.805Z</lastmod>
     <data>
         <display>
         <title>题目小结：二叉树 ( 建树和遍历 )</title>
@@ -40,8 +59,6 @@
          
         <tag>刷题</tag>
          
-        <tag>二叉树</tag>
-         
          
            
         </display>
@@ -50,30 +67,14 @@
 
     
   <url>
-    <loc>http://zedom1.top/2017/08/15/tree/</loc>
-    <lastmod>2017-09-16T15:52:44.975Z</lastmod>
+    <loc>https://zedom1.github.io/2017/05/10/Hello,World/</loc>
+    <lastmod>2018-05-25T12:41:12.717Z</lastmod>
     <data>
         <display>
-        <title>数据结构笔记（三）：树</title>
-        <pubTime>2017-08-14T16:00:00.000Z</pubTime>
+        <title>Hello,World</title>
+        <pubTime>2017-05-09T16:00:00.000Z</pubTime>
         
-        <tag>学习笔记</tag>
-         
-        <tag>c++</tag>
-         
-        <tag>数据结构</tag>
-         
-        <tag>二叉树</tag>
-         
-        <tag>二叉搜索树</tag>
-         
-        <tag>AVL树</tag>
-         
-        <tag>哈夫曼树</tag>
-         
-        <tag>堆</tag>
-         
-        <tag>并查集</tag>
+        <tag>others</tag>
          
          
            
@@ -83,20 +84,16 @@
 
     
   <url>
-    <loc>http://zedom1.top/2017/08/14/stack/</loc>
-    <lastmod>2017-09-14T14:52:13.896Z</lastmod>
+    <loc>https://zedom1.github.io/2017/07/15/SAT/</loc>
+    <lastmod>2018-05-25T12:41:12.646Z</lastmod>
     <data>
         <display>
-        <title>数据结构笔记（二）：栈和队列</title>
-        <pubTime>2017-08-13T16:00:00.000Z</pubTime>
+        <title>浅析基于分离轴原理的碰撞检测及分离算法</title>
+        <pubTime>2017-07-14T16:00:00.000Z</pubTime>
         
-        <tag>学习笔记</tag>
+        <tag>游戏</tag>
          
-        <tag>c++</tag>
-         
-        <tag>数据结构</tag>
-         
-        <tag>栈</tag>
+        <tag>算法</tag>
          
          
            
@@ -106,33 +103,8 @@
 
     
   <url>
-    <loc>http://zedom1.top/2017/08/12/list/</loc>
-    <lastmod>2017-09-12T12:52:13.616Z</lastmod>
-    <data>
-        <display>
-        <title>数据结构笔记（一）：线性表</title>
-        <pubTime>2017-08-11T16:00:00.000Z</pubTime>
-        
-        <tag>学习笔记</tag>
-         
-        <tag>c++</tag>
-         
-        <tag>数据结构</tag>
-         
-        <tag>线性表</tag>
-         
-        <tag>链表</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://zedom1.top/2017/08/18/problem_1/</loc>
-    <lastmod>2017-09-12T12:07:40.366Z</lastmod>
+    <loc>https://zedom1.github.io/2017/08/18/ProblemSet1/</loc>
+    <lastmod>2018-05-25T12:41:12.572Z</lastmod>
     <data>
         <display>
         <title>刷题选集（一）</title>
@@ -142,12 +114,6 @@
          
         <tag>刷题</tag>
          
-        <tag>贪心</tag>
-         
-        <tag>栈</tag>
-         
-        <tag>水题</tag>
-         
          
            
         </display>
@@ -156,8 +122,8 @@
 
     
   <url>
-    <loc>http://zedom1.top/2017/09/11/java/</loc>
-    <lastmod>2017-09-11T16:00:14.837Z</lastmod>
+    <loc>https://zedom1.github.io/2017/09/11/Java_note1/</loc>
+    <lastmod>2018-05-25T12:41:12.485Z</lastmod>
     <data>
         <display>
         <title>JAVA笔记（一）：基础</title>
@@ -175,8 +141,130 @@
 
     
   <url>
-    <loc>http://zedom1.top/2017/08/24/compilers_2/</loc>
-    <lastmod>2017-08-30T15:32:11.967Z</lastmod>
+    <loc>https://zedom1.github.io/2017/08/15/DataStructure_Tree/</loc>
+    <lastmod>2018-05-25T12:41:12.394Z</lastmod>
+    <data>
+        <display>
+        <title>数据结构笔记（三）：树</title>
+        <pubTime>2017-08-14T16:00:00.000Z</pubTime>
+        
+        <tag>学习笔记</tag>
+         
+        <tag>c++</tag>
+         
+        <tag>数据结构</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://zedom1.github.io/2017/08/14/DataStructure_Stack/</loc>
+    <lastmod>2018-05-25T12:41:12.313Z</lastmod>
+    <data>
+        <display>
+        <title>数据结构笔记（二）：栈和队列</title>
+        <pubTime>2017-08-13T16:00:00.000Z</pubTime>
+        
+        <tag>学习笔记</tag>
+         
+        <tag>c++</tag>
+         
+        <tag>数据结构</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://zedom1.github.io/2017/08/12/DataStructure_List/</loc>
+    <lastmod>2018-05-25T12:41:12.233Z</lastmod>
+    <data>
+        <display>
+        <title>数据结构笔记（一）：线性表</title>
+        <pubTime>2017-08-11T16:00:00.000Z</pubTime>
+        
+        <tag>学习笔记</tag>
+         
+        <tag>c++</tag>
+         
+        <tag>数据结构</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://zedom1.github.io/2017/08/19/DataStructure_Graph/</loc>
+    <lastmod>2018-05-25T12:41:12.161Z</lastmod>
+    <data>
+        <display>
+        <title>数据结构笔记（四）：图</title>
+        <pubTime>2017-08-18T16:00:00.000Z</pubTime>
+        
+        <tag>学习笔记</tag>
+         
+        <tag>c++</tag>
+         
+        <tag>数据结构</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://zedom1.github.io/2017/08/28/Cyclooctane%202/</loc>
+    <lastmod>2018-05-25T12:41:12.071Z</lastmod>
+    <data>
+        <display>
+        <title>C++大作业 Cyclooctane 2.0</title>
+        <pubTime>2017-08-27T16:00:00.000Z</pubTime>
+        
+        <tag>游戏</tag>
+         
+        <tag>c++</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://zedom1.github.io/2017/05/11/Cyclooctane/</loc>
+    <lastmod>2018-05-25T12:41:11.994Z</lastmod>
+    <data>
+        <display>
+        <title>第一个自制c++小游戏：Cyclooctane</title>
+        <pubTime>2017-05-10T16:00:00.000Z</pubTime>
+        
+        <tag>游戏</tag>
+         
+        <tag>c++</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://zedom1.github.io/2017/08/24/Compiler2/</loc>
+    <lastmod>2018-05-25T12:41:11.924Z</lastmod>
     <data>
         <display>
         <title>编译原理笔记（二）：词法分析</title>
@@ -194,8 +282,8 @@
 
     
   <url>
-    <loc>http://zedom1.top/2017/08/23/compilers_1/</loc>
-    <lastmod>2017-08-30T14:00:02.421Z</lastmod>
+    <loc>https://zedom1.github.io/2017/08/23/Compiler1/</loc>
+    <lastmod>2018-05-25T12:41:11.535Z</lastmod>
     <data>
         <display>
         <title>编译原理笔记（一）：概述</title>
@@ -204,86 +292,6 @@
         <tag>编译原理</tag>
          
         <tag>学习笔记</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://zedom1.top/2017/08/28/cyclooctane2/</loc>
-    <lastmod>2017-08-30T10:06:11.394Z</lastmod>
-    <data>
-        <display>
-        <title>C++大作业 Cyclooctane 2.0</title>
-        <pubTime>2017-08-27T16:00:00.000Z</pubTime>
-        
-        <tag>游戏</tag>
-         
-        <tag>other</tag>
-         
-        <tag>c++</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://zedom1.top/2017/05/11/cyclooctane1/</loc>
-    <lastmod>2017-08-28T09:26:57.348Z</lastmod>
-    <data>
-        <display>
-        <title>第一个自制c++小游戏：Cyclooctane</title>
-        <pubTime>2017-05-10T16:00:00.000Z</pubTime>
-        
-        <tag>游戏</tag>
-         
-        <tag>other</tag>
-         
-        <tag>c++</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://zedom1.top/2017/07/14/Hello,World/</loc>
-    <lastmod>2017-08-19T02:39:48.032Z</lastmod>
-    <data>
-        <display>
-        <title>Hello,World</title>
-        <pubTime>2017-07-13T16:00:00.000Z</pubTime>
-        
-        <tag>others</tag>
-         
-        <tag>随想</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://zedom1.top/2017/07/15/sat/</loc>
-    <lastmod>2017-08-19T02:39:21.201Z</lastmod>
-    <data>
-        <display>
-        <title>浅析基于分离轴原理的碰撞检测及分离算法</title>
-        <pubTime>2017-07-14T16:00:00.000Z</pubTime>
-        
-        <tag>算法</tag>
-         
-        <tag>游戏制作</tag>
          
          
            

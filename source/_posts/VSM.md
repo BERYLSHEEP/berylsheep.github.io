@@ -258,14 +258,13 @@ else:
 
    1. $ MacroF1 = avg(F1)$ 
 
-   2. $ F1(C) = \frac{2*precision*recall}{(precision + recall)}$ 
+   2. $ F1(C) = \frac{2\*precision\*recall}{(precision + recall)}$ 
 
    3. $ precision = \frac{TP} { (TP + FN)} $： 正确预测为C的数目 / 预测为C的总数
       $ recall = \frac{ TP}{(TP + TN)}$：  正确预测为C的数目 / 真实为C的数目
 
    4. TP: true positive  属于C被分到C（预测正确）
       TN: true nagative  属于C被分到其它类（预测错误）
-
       FP: false positive 不属于C被正确分类（预测正确）
       FN: false nagative 不属于C被分到C（预测错误）
 

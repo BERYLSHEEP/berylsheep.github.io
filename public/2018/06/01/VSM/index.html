@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/vsm_result.png">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/knn.png">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/vsm_knn.png">
-<meta property="og:updated_time" content="2018-06-01T09:53:02.125Z">
+<meta property="og:updated_time" content="2018-06-02T02:59:52.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="复现Entropy-based Term Weighting Schemes for Text Categorization in VSM小结">
 <meta name="twitter:description" content="论文 Entropy-based Term Weighting Schemes for Text Categorization in VSM 提出了新的基于熵的用于文本分类的词权重计算方法tf·dc,tf·bdc，通过和目前流行的权重计算方法如tf·idf, tf·chi, tf·ig, tf·eccd, tf·rf and iqf·qf·icf进行实验比较，证实其提出的计算方法的可行性和优越性。">
@@ -78,11 +78,11 @@
 			
 				<li><a href="/">主页</a></li>
 	        
+				<li><a href="/tags/机器学习/">机器学习</a></li>
+	        
 				<li><a href="/tags/学习笔记/">学习笔记</a></li>
 	        
 				<li><a href="/tags/数据结构/">数据结构</a></li>
-	        
-				<li><a href="/tags/机器学习/">机器学习</a></li>
 	        
 			</ul>
 		</nav>
@@ -160,11 +160,11 @@
 				
 					<li style="width: 25%"><a href="/">主页</a></li>
 		        
+					<li style="width: 25%"><a href="/tags/机器学习/">机器学习</a></li>
+		        
 					<li style="width: 25%"><a href="/tags/学习笔记/">学习笔记</a></li>
 		        
 					<li style="width: 25%"><a href="/tags/数据结构/">数据结构</a></li>
-		        
-					<li style="width: 25%"><a href="/tags/机器学习/">机器学习</a></li>
 		        
 				</ul>
 			</nav>
@@ -334,12 +334,11 @@
 <ol>
 <li><p>$ MacroF1 = avg(F1)$ </p>
 </li>
-<li><p>$ F1(C) = \frac{2<em>precision</em>recall}{(precision + recall)}$ </p>
+<li><p>$ F1(C) = \frac{2*precision*recall}{(precision + recall)}$ </p>
 </li>
 <li><p>$ precision = \frac{TP} { (TP + FN)} $： 正确预测为C的数目 / 预测为C的总数<br>$ recall = \frac{ TP}{(TP + TN)}$：  正确预测为C的数目 / 真实为C的数目</p>
 </li>
-<li><p>TP: true positive  属于C被分到C（预测正确）<br>TN: true nagative  属于C被分到其它类（预测错误）</p>
-<p>FP: false positive 不属于C被正确分类（预测正确）<br>FN: false nagative 不属于C被分到C（预测错误）</p>
+<li><p>TP: true positive  属于C被分到C（预测正确）<br>TN: true nagative  属于C被分到其它类（预测错误）<br>FP: false positive 不属于C被正确分类（预测正确）<br>FN: false nagative 不属于C被分到C（预测错误）</p>
 </li>
 </ol>
 </li>
@@ -571,11 +570,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">刷题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -591,15 +586,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">others</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">VSM</a>
+                <a href="javascript:void(0)" class="js-tag color3">刷题</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">VSM</a>
               </li>
             
             <div class="clearfix"></div>
