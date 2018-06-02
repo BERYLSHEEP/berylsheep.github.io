@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JAVA笔记（一）：基础"
+title: "JAVA笔记：基础篇"
 date: 2017-09-11
 comments: true
 tags: 
