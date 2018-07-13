@@ -81,6 +81,7 @@ deploy:
   repo: git@github.com:zedom1/zedom1.github.io.git
   branch: master
 
+
 sitemap:
     path: sitemap.xml
 baidusitemap:

@@ -20,4 +20,4 @@
 	2. 获取domain: qshell domains picture   (空间名为picture)
 	3. 上传单个文件： qshell fput picture <filename> <filepath>  
 		 (filename为上传之后在空间内的名字)
-	4. 获取外链： 链接 =  <domains返回结果> + "/" + <filename>
+	4. 获取外链： 链接 = http:// <domains返回结果> + "/" + <filename>
