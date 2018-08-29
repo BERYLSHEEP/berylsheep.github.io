@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/tf_csc_trick0_result1.png">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/tf_csc_trick0_result2.png">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/tf_csc_trick0_result3.png">
-<meta property="og:updated_time" content="2018-08-29T07:21:13.721Z">
+<meta property="og:updated_time" content="2018-08-29T07:24:45.062Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tensorflow 文本序列检错的tricks (0)">
 <meta name="twitter:description" content="这一大段时期，笔者一直在研究序列检错问题，最近涉及到字级序列的检错。字级序列进行错误检测其实就是一个和标注词性一样的序列标注问题，对于给定的字级序列，预测该序列中每个字是正确还是错误。在用tensorflow使用双向lstm对序列进行检错的过程中，笔者不断根据需要和模型反映的问题对模型进行修改，再加上参考其他人写的代码和总结，由此有了一些体会，在此说说其中几个。 本文介绍两个tricks：  Se">
@@ -38,11 +38,15 @@
       background: linear-gradient(200deg,#a0cfe4,#e8c37e);
     }
   </style>
+  <!-- 加载gitment的css和js文件 -->
+  <link rel="stylesheet" href="/css/gitment.css"> 
+  <script src="/js/gitment.js"></script>
   
 
   
 
 </head>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -196,13 +200,13 @@
 <a id="more"></a>
 <h3 id="Sequence-Mask"><a href="#Sequence-Mask" class="headerlink" title="Sequence Mask"></a>Sequence Mask</h3><p>在获得文本语料之后，我们会将文本根据逗号、句号等标点符号切分成一个个句子序列，句子序列显然并不是固定长度的，然而在构造batch时需要所有的序列是同一长度才可以形成矩阵方便运算，由此需要设定一个最大长度，并将句子序列进行尾填充至最大长度。但在训练中，我们希望lstm只考虑非填充部分的序列，由此我们可以使用dynamic_rnn并将sequence length（sequence length的size为[batch_size, 1]）作为参数传进去，这样lstm会根据当前句子的length进行计算，由此提高了准确度和效率。</p>
 <p>在lstm和全连接后，我们得到了句子序列每个字的概率值，将其和标准答案计算得到loss，但填充部分也同样有loss，我们不希望填充部分的loss被考虑进去，由此就需要sequence mask了，它以sequence length( size 为 [batch_size, ])和max length( size 为 [1,])为参数，构造出 [batch_size, max_length]的bool矩阵：</p>
-<p><a href="https://gist.github.com/zedom1/1a45e9b1f28be677839b3349a68197bc" target="_blank" rel="noopener">https://gist.github.com/zedom1/1a45e9b1f28be677839b3349a68197bc</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">max_length = <span class="number">3</span></span><br><span class="line">batch_size = <span class="number">5</span></span><br><span class="line"></span><br><span class="line">sequence_length = array([randint(<span class="number">1</span>,max_length) <span class="keyword">for</span> _ <span class="keyword">in</span> range(batch_size)])</span><br><span class="line">loss_mask = tf.sequence_mask(tf.to_int32(sequence_length), tf.to_int32(max_length))</span><br><span class="line"></span><br><span class="line">print(loss_mask)</span><br><span class="line">print(<span class="string">"sequence length: "</span>+str(sequence_length))</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">	print(<span class="string">"sequence mask:"</span>)</span><br><span class="line">	print(sess.run(loss_mask))</span><br></pre></td></tr></table></figure>
 <p><img src="http://ot1c7ttzm.bkt.clouddn.com/tf_trick_smask0.png" alt=""></p>
 <p>可以看到，我们构造出了一个二维的bool矩阵，里面每行true的数目和sequence相应索引的数值是一样的，再将bool转换成float之后，我们就可以将它和loss相乘，把无关部分的loss遮挡去了。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">targets = array([[<span class="number">1</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(max_length)] <span class="keyword">for</span> _ <span class="keyword">in</span> range(batch_size)])</span><br><span class="line">logits = array([[[randint(<span class="number">0</span>,<span class="number">10</span>)/<span class="number">10</span>,randint(<span class="number">0</span>,<span class="number">10</span>)/<span class="number">10</span>] <span class="keyword">for</span> _ <span class="keyword">in</span> range(max_length)] <span class="keyword">for</span> _ <span class="keyword">in</span> range(batch_size)])</span><br><span class="line"></span><br><span class="line">targets = tf.convert_to_tensor(targets, dtype = tf.int32)</span><br><span class="line">logits = tf.convert_to_tensor(logits, dtype = tf.float32)</span><br><span class="line"></span><br><span class="line">loss_before_mask = tf.nn.sparse_softmax_cross_entropy_with_logits(logits=logits, labels=targets)</span><br><span class="line">loss_mask = tf.sequence_mask(tf.to_int32(sequence_length), tf.to_int32(max_length))</span><br><span class="line">loss_after_mask = loss_before_mask * tf.to_float(loss_mask)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">  print(<span class="string">"loss before mask:"</span>)</span><br><span class="line">  print((loss_before_mask))</span><br><span class="line">  print(sess.run(loss_before_mask))</span><br><span class="line">  print(<span class="string">"*"</span>*<span class="number">20</span>)</span><br><span class="line">  print(<span class="string">"loss after mask:"</span>)</span><br><span class="line">  print((loss_after_mask))</span><br><span class="line">  print(sess.run(loss_after_mask))</span><br></pre></td></tr></table></figure>
 <p><img src="http://ot1c7ttzm.bkt.clouddn.com/tf_trick_smask1.png" alt=""></p>
 <p>之后我们就可以将loss累加或取均值作为整体的cost并进行优化了，当然，我们也可以同样将mask用于序列的准确率计算上。</p>
+<p>完整代码： <a href="https://gist.github.com/zedom1/1a45e9b1f28be677839b3349a68197bc" target="_blank" rel="noopener">https://gist.github.com/zedom1/1a45e9b1f28be677839b3349a68197bc</a></p>
 <h3 id="Weighted-Loss"><a href="#Weighted-Loss" class="headerlink" title="Weighted Loss"></a>Weighted Loss</h3><p>在对每个字进行正确与否的二分类时，有一个很大的问题就是类别分布不均衡。显然，正确字的数目要远远大于不正确的字的数目。对于包含错误的句子，一个很长的句子中或许只有一两个字是错的，更别提全对的句子了。类别分布不均在其它分类问题上也很常见，更是由此引发了f1等评价指标的诞生。毕竟若只看正确率的话，一个将所有字都认为是正确的模型在以字为单位统计正确率时将会近似于1！当然，在以句子为单位，即只有模型正确诊断出错误点时整句才算一个正确样本时，正确率将低得伤人。</p>
 <p>因此我们想要让模型更加重视样本数本身就少的类别，从目的上看，就是让模型更大胆地预测错误字，而不是胆小地把所有字都标记为正确，以此求得较小的loss。</p>
 <p>既然模型只盯着优化最小Loss这个目标，并且更新参数也是以Loss作为基准，那么我们下手的地方自然就是loss了。核心思想很简单，就是将原本的loss再根据类别的权重进行加权并求和得到最终的cost，为了最小化带了权重的loss，模型会将权重也同样进行反向传播。因此，与权重大的类别有关的更新会更加得到重视，而模型也敢放开手脚大胆预测错误字了。</p>
@@ -223,6 +227,7 @@
 <p>结果如下：</p>
 <p><img src="http://ot1c7ttzm.bkt.clouddn.com/tf_csc_trick0_result2.png" alt=""></p>
 <p><img src="http://ot1c7ttzm.bkt.clouddn.com/tf_csc_trick0_result3.png" alt=""></p>
+<p>完整代码： <a href="https://gist.github.com/zedom1/14d2b10f1fcae97527382fe2adbc3bf6" target="_blank" rel="noopener">https://gist.github.com/zedom1/14d2b10f1fcae97527382fe2adbc3bf6</a></p>
 
       
 
@@ -258,6 +263,57 @@
 
       
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode"> 
+      <img src="http://b.bshare.cn/barCode?site=weixin&url=https://zedom1.github.io/2018/08/29/tf_csc_trick/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
@@ -315,6 +371,22 @@
 
   
 
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: 'Wed Aug 29 2018 00:00:00 GMT+0800',
+  owner: 'zedom1',
+  repo: 'zedom1.github.io',
+  oauth: {
+    client_id: '84dac9a490c676df3fec',
+    client_secret: '88a989399d5ca58702d8a394a973f14dff77be92',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
