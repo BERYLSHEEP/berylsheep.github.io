@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "tensorflow 文本序列检错的tricks(0)"
+title: "tensorflow 文本序列检错的tricks (0)"
 date: 2018-08-29
 comments: true
 tags: 
