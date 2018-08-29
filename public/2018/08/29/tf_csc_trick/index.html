@@ -9,7 +9,7 @@
   <title>tensorflow 文本序列检错的tricks (0) | Zedom</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="这一大段时期，笔者一直在研究序列检错问题，最近涉及到字级序列的检错。字级序列进行错误检测其实就是一个和标注词性一样的序列标注问题，对于给定的字级序列，预测该序列中每个字是正确还是错误。在用tensorflow使用双向lstm对序列进行检错的过程中，笔者不断根据需要和模型反映的问题对模型进行修改，再加上参考其他人写的代码和总结，由此有了一些体会，在此说说其中几个。 本文介绍两个tricks：  Se">
-<meta name="keywords" content="NLP,文本纠错,tensorflow">
+<meta name="keywords" content="NLP,机器学习,文本纠错,tensorflow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tensorflow 文本序列检错的tricks (0)">
 <meta property="og:url" content="https://zedom1.github.io/2018/08/29/tf_csc_trick/index.html">
@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/tf_csc_trick0_result1.png">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/tf_csc_trick0_result2.png">
 <meta property="og:image" content="http://ot1c7ttzm.bkt.clouddn.com/tf_csc_trick0_result3.png">
-<meta property="og:updated_time" content="2018-08-29T07:00:29.198Z">
+<meta property="og:updated_time" content="2018-08-29T07:21:13.721Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tensorflow 文本序列检错的tricks (0)">
 <meta name="twitter:description" content="这一大段时期，笔者一直在研究序列检错问题，最近涉及到字级序列的检错。字级序列进行错误检测其实就是一个和标注词性一样的序列标注问题，对于给定的字级序列，预测该序列中每个字是正确还是错误。在用tensorflow使用双向lstm对序列进行检错的过程中，笔者不断根据需要和模型反映的问题对模型进行修改，再加上参考其他人写的代码和总结，由此有了一些体会，在此说说其中几个。 本文介绍两个tricks：  Se">
@@ -196,6 +196,7 @@
 <a id="more"></a>
 <h3 id="Sequence-Mask"><a href="#Sequence-Mask" class="headerlink" title="Sequence Mask"></a>Sequence Mask</h3><p>在获得文本语料之后，我们会将文本根据逗号、句号等标点符号切分成一个个句子序列，句子序列显然并不是固定长度的，然而在构造batch时需要所有的序列是同一长度才可以形成矩阵方便运算，由此需要设定一个最大长度，并将句子序列进行尾填充至最大长度。但在训练中，我们希望lstm只考虑非填充部分的序列，由此我们可以使用dynamic_rnn并将sequence length（sequence length的size为[batch_size, 1]）作为参数传进去，这样lstm会根据当前句子的length进行计算，由此提高了准确度和效率。</p>
 <p>在lstm和全连接后，我们得到了句子序列每个字的概率值，将其和标准答案计算得到loss，但填充部分也同样有loss，我们不希望填充部分的loss被考虑进去，由此就需要sequence mask了，它以sequence length( size 为 [batch_size, ])和max length( size 为 [1,])为参数，构造出 [batch_size, max_length]的bool矩阵：</p>
+<p><a href="https://gist.github.com/zedom1/1a45e9b1f28be677839b3349a68197bc" target="_blank" rel="noopener">https://gist.github.com/zedom1/1a45e9b1f28be677839b3349a68197bc</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">max_length = <span class="number">3</span></span><br><span class="line">batch_size = <span class="number">5</span></span><br><span class="line"></span><br><span class="line">sequence_length = array([randint(<span class="number">1</span>,max_length) <span class="keyword">for</span> _ <span class="keyword">in</span> range(batch_size)])</span><br><span class="line">loss_mask = tf.sequence_mask(tf.to_int32(sequence_length), tf.to_int32(max_length))</span><br><span class="line"></span><br><span class="line">print(loss_mask)</span><br><span class="line">print(<span class="string">"sequence length: "</span>+str(sequence_length))</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">	print(<span class="string">"sequence mask:"</span>)</span><br><span class="line">	print(sess.run(loss_mask))</span><br></pre></td></tr></table></figure>
 <p><img src="http://ot1c7ttzm.bkt.clouddn.com/tf_trick_smask0.png" alt=""></p>
 <p>可以看到，我们构造出了一个二维的bool矩阵，里面每行true的数目和sequence相应索引的数值是一样的，再将bool转换成float之后，我们就可以将它和loss相乘，把无关部分的loss遮挡去了。</p>
@@ -236,6 +237,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NLP</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
         		</li>
       		 
         		<li class="article-tag-list-item">

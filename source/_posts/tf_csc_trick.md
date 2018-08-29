@@ -25,6 +25,7 @@ tags:
 
 在lstm和全连接后，我们得到了句子序列每个字的概率值，将其和标准答案计算得到loss，但填充部分也同样有loss，我们不希望填充部分的loss被考虑进去，由此就需要sequence mask了，它以sequence length( size 为 [batch_size, ])和max length( size 为 [1,])为参数，构造出 [batch_size, max_length]的bool矩阵：
 
+
 ```python
 from random import randint
 import tensorflow as tf
@@ -72,7 +73,7 @@ with tf.Session() as sess:
 
 之后我们就可以将loss累加或取均值作为整体的cost并进行优化了，当然，我们也可以同样将mask用于序列的准确率计算上。
 
-
+完整代码： https://gist.github.com/zedom1/1a45e9b1f28be677839b3349a68197bc
 
 ### Weighted Loss
 
@@ -191,7 +192,7 @@ with tf.Session() as sess:
 
 ![](http://ot1c7ttzm.bkt.clouddn.com/tf_csc_trick0_result3.png)
 
-
+完整代码： https://gist.github.com/zedom1/14d2b10f1fcae97527382fe2adbc3bf6
 
 
 
