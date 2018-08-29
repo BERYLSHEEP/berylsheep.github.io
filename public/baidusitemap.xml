@@ -4,6 +4,46 @@
 
     
   <url>
+    <loc>https://zedom1.github.io/2018/08/29/tf_csc_trick/</loc>
+    <lastmod>2018-08-29T06:58:35.241Z</lastmod>
+    <data>
+        <display>
+        <title>tensorflow 文本序列检错的tricks(0)</title>
+        <pubTime>2018-08-28T16:00:00.000Z</pubTime>
+        
+        <tag>NLP</tag>
+         
+        <tag>文本纠错</tag>
+         
+        <tag>tensorflow</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://zedom1.github.io/2018/08/28/csc_corpus/</loc>
+    <lastmod>2018-08-28T09:04:43.251Z</lastmod>
+    <data>
+        <display>
+        <title>拼音型简单错误语料获取与处理</title>
+        <pubTime>2018-08-27T16:00:00.000Z</pubTime>
+        
+        <tag>NLP</tag>
+         
+        <tag>文本纠错</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://zedom1.github.io/2018/07/22/chineseErrorDectection_n_gram/</loc>
     <lastmod>2018-07-22T12:38:57.548Z</lastmod>
     <data>
@@ -53,9 +93,9 @@
         
         <tag>NLP</tag>
          
-        <tag>机器学习</tag>
-         
         <tag>阅读理解</tag>
+         
+        <tag>机器学习</tag>
          
          
            
