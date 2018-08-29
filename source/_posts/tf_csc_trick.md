@@ -4,6 +4,7 @@ title: "tensorflow 文本序列检错的tricks (0)"
 date: 2018-08-29
 comments: true
 tags: 
+	- 机器学习
 	- NLP
 	- 文本纠错
 	- tensorflow

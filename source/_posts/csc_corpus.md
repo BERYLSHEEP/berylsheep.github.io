@@ -4,6 +4,7 @@ title: "拼音型简单错误语料获取与处理"
 date: 2018-08-28
 comments: true
 tags: 
+	- 机器学习
 	- NLP
 	- 文本纠错
 ---
