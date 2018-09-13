@@ -148,6 +148,113 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-CS231n_Stochatic Gradient Descent" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="CS231n-Stochatic-Gradient-Descent"><a href="#CS231n-Stochatic-Gradient-Descent" class="headerlink" title="CS231n_Stochatic Gradient Descent"></a>CS231n_Stochatic Gradient Descent</h2><p>[TOC]</p>
+<h4 id="Visualing-the-loss-function"><a href="#Visualing-the-loss-function" class="headerlink" title="Visualing the loss function"></a>Visualing the loss function</h4><ul>
+<li>二维：L(W + aW~1~)  a:x-asis  y:L  W~1~:random <strong>direction</strong> matrix</li>
+<li>三维：L(W + aW~1~ + bW~2~)  a:x-asis  b:y-asis  L:different color</li>
+</ul>
+<p><img src="http://cs231n.github.io/assets/svm1d.png" alt="img"></p>
+<p><img src="http://cs231n.github.io/assets/svm_one.jpg" alt="img"></p>
+<h4 id="Multiply-SVM-loss"><a href="#Multiply-SVM-loss" class="headerlink" title="Multiply SVM loss"></a>Multiply SVM loss</h4><p><img src="C:\Users\56278\AppData\Local\Temp\1536821398605.png" alt="1536821398605"></p>
+<ul>
+<li><p>delta: the min distance between the correct class with the other class</p>
+</li>
+<li><p>i: the i_th correct class</p>
+</li>
+<li><p>threshold : max(0,-)</p>
+<p><img src="http://cs231n.github.io/assets/margin.jpg" alt="img"></p>
+</li>
+</ul>
+<p>  <strong>1-dimensional illustration of the data loss</strong></p>
+<p>  <img src="http://cs231n.github.io/assets/svmbowl.png" alt="img"></p>
+<p>  1维数据损失中得到的图形是凸函数( convex function)</p>
+<p>  之后学到的神经网络，卷积的数据损失将是non-convex .</p>
+<h4 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h4><p><strong>iterative refinement</strong>  迭代优化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A(random search)--&gt;B(random local search)</span><br><span class="line">B--&gt;C(following the gradient)</span><br></pre></td></tr></table></figure>
+<h4 id="Computing-the-gradient"><a href="#Computing-the-gradient" class="headerlink" title="Computing the gradient"></a>Computing the gradient</h4><ul>
+<li><p><strong>numerical gradient</strong></p>
+<p>对每一维都计算出相应的梯度，再往该梯度方向走few steps。</p>
+<p>注：<strong>update in negative gradient direction</strong> and <strong>effect of step size</strong></p>
+</li>
+<li><p><strong>analytically calculus</strong></p>
+<p><img src="C:\Users\56278\AppData\Local\Temp\1536828287567.png" alt="1536828287567"></p>
+<p>单一纬度计算梯度。</p>
+<p>idea：count the number of classes that didn’t meet the desired margin</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>numerical gradient</th>
+<th>analytically calculus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>近似计算梯度</td>
+<td>准确计算梯度</td>
+</tr>
+<tr>
+<td>实现简单</td>
+<td>实现容易出错</td>
+</tr>
+<tr>
+<td>耗费计算资源过多</td>
+<td>计算迅速</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>mini-batch gradient descent</li>
+<li>SGD</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/13/CS231n_Stochatic Gradient Descent/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Typora使用教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
